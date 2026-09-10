@@ -61,6 +61,10 @@ Efrain Ricardo Bautista Ubillus
 - [1.1. Startup Profile](#11-startup-profile)
     - [1.1.1. Descripción de la Startup](#111-descripción-de-la-startup)
     - [1.1.2. Perfiles de integrantes del equipo](#112-perfiles-de-integrantes-del-equipo)
+    - * Nicolas Tantalean Granda
+      * Código: U202410728
+      * Carrera: Ingeniería de Software
+      * Perfil: Estudiante de Ingeniería de Software con experiencia en desarrollo backend utilizando JetBrains IntelliJ IDEA para el diseño e implementación de APIs RESTful con Java y Spring Boot. Encargado de la configuración del entorno de desarrollo backend, integración con bases de datos y desarrollo de lógica de negocio para la plataforma MaquiControl.
 - [1.2. Solution Profile](#12-solution-profile)
     - [1.2.1. Antecedentes y problemática](#121-antecedentes-y-problemática)
         - [What](#1211-what) · [Who](#1212-who) · [Where](#1213-where) · [When](#1214-when) · [Why](#1215-why) · [How](#1216-how) · [How Much](#1217-how-much)
