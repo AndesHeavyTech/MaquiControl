@@ -61,10 +61,6 @@ Efrain Ricardo Bautista Ubillus
 - [1.1. Startup Profile](#11-startup-profile)
     - [1.1.1. Descripción de la Startup](#111-descripción-de-la-startup)
     - [1.1.2. Perfiles de integrantes del equipo](#112-perfiles-de-integrantes-del-equipo)
-    - * Nicolas Tantalean Granda
-      * Código: U202410728
-      * Carrera: Ingeniería de Software
-      * Perfil: Estudiante de Ingeniería de Software con experiencia en desarrollo backend utilizando JetBrains IntelliJ IDEA para el diseño e implementación de APIs RESTful con Java y Spring Boot. Encargado de la configuración del entorno de desarrollo backend, integración con bases de datos y desarrollo de lógica de negocio para la plataforma MaquiControl.
 - [1.2. Solution Profile](#12-solution-profile)
     - [1.2.1. Antecedentes y problemática](#121-antecedentes-y-problemática)
         - [What](#1211-what) · [Who](#1212-who) · [Where](#1213-where) · [When](#1214-when) · [Why](#1215-why) · [How](#1216-how) · [How Much](#1217-how-much)
@@ -210,6 +206,11 @@ Una de las principales fortalezas del sistema es su capacidad para adaptarse a l
     * **Carrea:** Ingeniería de Software (6.º ciclo)
     * **Perfil:** Estudiante de Ingeniería de Software con conocimientos en desarrollo web, incluyendo HTML, CSS y JavaScript, así como en los lenguajes de programación C++ y Python. Cuenta con nociones básicas sobre el consumo de APIs y el manejo de bases de datos, tanto relacionales como no relacionales.
 
+* **Nicolas Tantalean Granda**
+    * **Codigo:** U202410728
+    * **Carrea:** Ingeniería de Software (5.º ciclo)
+    * **Perfil:** Estudiante de Ingeniería de Software con conocimientos en desarrollo web, incluyendo HTML, CSS y JavaScript, así como en los lenguajes de programación C++ y Python. Aportare conocimientos al equipo sobre los lenguajes de programacion.
+
 ### 1.2 Solution Profile
 Esta sección describe la problemática que MaquiControl busca resolver y la propuesta de solución planteada por HeavyMach. Se analizan las principales dificultades relacionadas con el alquiler, control y disponibilidad de maquinaria pesada, y se aplica el proceso Lean UX para definir las necesidades, supuestos e hipótesis que orientan el desarrollo del producto.
 
@@ -351,11 +352,59 @@ Para el desarrollo y validación de MaquiControl se han definido dos segmentos o
 
 ### 2.1.1 Análisis competitivo
 
+### Competitive Analysis Landscape
+
+**¿Por qué llevar a cabo este análisis?**  
+*¿De qué manera MaquiControl puede diferenciarse de las soluciones de alquiler de maquinaria pesada locales e internacionales mediante una plataforma SaaS integral que unifique la gestión operativa de flota, la programación preventiva de mantenimientos y la facturación electrónica instantánea compatible con SUNAT?*
+
+| Sección | Criterio / Perfil | Su startup: **MaquiControl (HeavyMach)** | Competidor 1: **RentaFacil / Portales Locales** | Competidor 2: **EquipmentShare** | Competidor 3: **Gestión Manual / Excel** |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Perfil** | **Overview** | Plataforma SaaS integral para la gestión, reserva, mantenimiento preventivo y facturación electrónica de maquinaria pesada. | Portales web de directorio, anuncios clasificados y empresas tradicionales de alquiler local. | Plataforma internacional avanzada de telemetría, rastreo GPS y gestión de flota para construcción. | Control interno informal ejecutado en hojas de cálculo, cuadernos y mensajería instantánea. |
+| **Perfil** | **Ventaja competitiva / ¿Qué valor ofrece a los clientes?** | Unificación en un solo flujo digital del alquiler, control técnico de mantenimiento y emisión automática de facturas SUNAT. Transparencia y eliminación de tiempos muertos. | Presencia local previa y red de contactos directos. Contacto rápido vía telefónica o WhatsApp para cotizaciones puntuales. | Telemetría IoT avanzada y alta escala internacional. Control preciso de activos mediante hardware especializado y sensores en tiempo real. | Cero costo directo de software e implementación inmediata. Flexibilidad absoluta en la anotación empírica de datos. |
+| **Perfil de Marketing** | **Mercado objetivo** | PYMEs de alquiler de maquinaria y pequeños/medianos contratistas en Perú y Latinoamérica. | Empresas de construcción y contratistas independientes que buscan equipamiento urgente. | Grandes corporaciones de construcción, minería e infraestructura masiva en EE.UU./Global. | Maestros de obra, contratistas independientes y microproveedores informales. |
+| **Perfil de Marketing** | **Estrategias de marketing** | Inbound marketing B2B, alianzas con gremios de construcción (CAPECO) y prueba gratuita SaaS. | Anuncios pagados en redes sociales, clasificados impresos/web y prospección telefónica. | Marketing corporativo B2B, eventos de la industria pesada y fuerza de ventas directa. | Recomendación boca a boca (*Word of Mouth*) y redes de contactos personales. |
+| **Perfil de Producto** | **Productos & Servicios** | Catálogo interactivo, motor de reservas, alertas de mantenimiento y facturación XML/PDF. | Listado estático de equipos, formulario de contacto y cotización bajo solicitud. | Rastreo GPS, diagnóstico de motores, control de activos y portal de alquiler corporativo. | Planillas de Excel editables, cuadernos de campo y comprobantes en portal externo. |
+| **Perfil de Producto** | **Precios & Costos** | Suscripción mensual/anual por tamaño de flota + comisión por transacción de alquiler. | Cotizaciones variables según negociación directa, volumen y duración del servicio. | Suscripción Enterprise de alto costo + tarifas corporativas de arrendamiento. | Sin costo de software (cubierto por licencias estándar de ofimática o papel). |
+| **Perfil de Producto** | **Canales de distribución (Web y/o Móvil)** | Aplicación Web Progresiva (PWA) accesible desde navegadores web y dispositivos móviles. | Sitio web informativo, llamadas telefónicas directas y mensajería vía WhatsApp. | Plataforma web Enterprise y aplicación móvil nativa (iOS / Android). | Archivos locales de computadora, hojas impresas y carpetas físicas. |
+| **Análisis SWOT** | **Fortalezas** | • Plataforma SaaS All-In-One (alquiler, mantenimiento, SUNAT).<br>• Interfaz responsiva intuitiva.<br>• Automatización de alertas preventivas. | • Posicionamiento de marca local.<br>• Confianza por relaciones comerciales previas. | • Tecnología IoT y telemetría de vanguardia.<br>• Respaldo de grandes capitales. | • Cero costo de software.<br>• Familiaridad total de uso. |
+| **Análisis SWOT** | **Debilidades** | • Marca nueva en el mercado peruano.<br>• Dependencia de la adopción tecnológica inicial. | • Proceso de reserva estático y manual.<br>• Sin gestión interna de mantenimiento. | • Costos inaccesibles para PYMEs.<br>• Sin localización tributaria SUNAT. | • Alto riesgo de pérdida de datos y sobreventa.<br>• Sin alertas ni análisis en tiempo real. |
+| **Análisis SWOT** | **Oportunidades** | • Exigencia de formalización SUNAT.<br>• Insatisfacción por averías imprevistas. | • Migración digital mediante alianzas. | • Captura de sector minero corporativo. | • Gran volumen de mercado por digitalizar. |
+| **Análisis SWOT** | **Amenazas** | • Resistencia al cambio informal.<br>• Entrada de competidores globales. | • Pérdida de cuota ante plataformas en tiempo real. | • Barreras normativas en LATAM. | • Perpetuación de la informalidad. |
+
+---
+
 ### 2.1.2 Estrategias y tácticas frente a competidores
+A partir del análisis FODA cruzado, MaquiControl aplicará las siguientes estrategias y tácticas preliminares:
+
+1. **Estrategia de Penetración de Mercado vs. Gestión Manual (Excel/WhatsApp):**
+    * *Táctica:* Ofrecer una prueba gratuita (*Free Trial*) de 30 días acompañada de una plantilla de migración asistida, demostrando la reducción del 50% en tiempo administrativo y la eliminación de cruces de reservas desde la primera semana.
+2. **Estrategia de Diferenciación vs. Portales Locales Tradicionales:**
+    * *Táctica:* Promover la funcionalidad de **Catálogo Dinámico con Disponibilidad Garantizada en Tiempo Real** e integración instantánea con **Facturación Electrónica SUNAT**, posicionando a MaquiControl no solo como un directorio, sino como el sistema operativo del negocio de alquiler.
+3. **Estrategia de Costo-Efectividad vs. Competidores Internacionales (EquipmentShare):**
+    * *Táctica:* Comercializar una solución SaaS *cloud-native* sin necesidad de instalación de hardware costoso en etapas iniciales, ofreciendo planes de suscripción adaptados a la cantidad de máquinas de la PYME (desde 1 hasta 20 equipos).
+4. **Estrategia de Mitigación de Amenazas Operativas:**
+    * *Táctica:* Implementar un módulo de **Historial Técnico Certificado** que otorgue un "Sello de Mantenimiento al Día" a las máquinas registradas, incrementando la confianza de los contratistas y justificando tarifas de alquiler más competitivas.
 
 ## 2.2 Entrevistas
 
 ### 2.2.1 Diseño de entrevistas
+Para la recolección de requerimientos se diseñaron guías de entrevista breves y estructuradas de 5 preguntas clave por segmento objetivo. Estas combinan datos demográficos/tecnológicos para el perfilamiento de arquetipos (*User Personas*) con preguntas profundas sobre la problemática operativa y de negocio.
+
+### Segmento 1: Propietarios y administradores de empresas de alquiler de maquinaria
+
+1. **¿Cuál es su nombre, edad, cargo, dispositivos y aplicaciones que utiliza a diario para administrar su negocio?** *(Complementaria)*
+2. **¿Qué marcas o proveedores prefiere y qué fuentes consulta antes de tomar decisiones operativas?** *(Complementaria)*
+3. **¿Cómo gestiona actualmente el inventario, la disponibilidad y los mantenimientos de su flota?** *(Principal)*
+4. **¿Qué sucede cuando una máquina sufre una avería inesperada en obra y cómo gestiona las pérdidas?** *(Principal)*
+5. **¿Cómo realiza la conciliación de horas trabajadas y la emisión de facturas electrónicas (SUNAT)?** *(Principal)*
+
+### Segmento 2: Contratistas independientes y responsables de obras de construcción
+
+1. **¿Cuál es su nombre, edad, cargo, nivel educativo y qué dispositivos/navegadores utiliza en obra?** *(Complementaria)*
+2. **¿A través de qué canales o influencias del sector busca y contrata proveedores de maquinaria?** *(Complementaria)*
+3. **¿Qué dificultades encuentra respecto a la transparencia de tarifas y la disponibilidad real de los equipos?** *(Principal)*
+4. **¿Ha experimentado paradas de obra por fallas mecánicas en maquinaria alquilada? ¿Cómo afectó sus costos?** *(Principal)*
+5. **¿Cómo valida el conteo de horas trabajadas y qué exige en una plataforma digital para reservar maquinaria?** *(Principal)*
 
 ### 2.2.2 Registro de entrevistas
 
