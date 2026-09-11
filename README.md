@@ -548,6 +548,9 @@ La comparación completa entre ambos segmentos se realizará cuando se incorpore
 ### 2.3.3 User Journey Mapping
 
 
+El siguiente User Journey Map representa el proceso actual seguido por el User Persona Luis Herrera para gestionar el alquiler de maquinaria, desde la recepción de una solicitud hasta el cierre del servicio. El recorrido muestra sus principales acciones, canales utilizados, problemas, emociones y oportunidades de mejora en el contexto actual, sin considerar todavía la solución MaquiControl.
+
+![User Journey Map - Luis Herrera](assets/user-journey-luis-herrera.png)
 
 
 ### 2.3.4 Empathy Mapping
