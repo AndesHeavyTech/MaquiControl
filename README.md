@@ -504,13 +504,115 @@ Este análisis es preliminar y deberá actualizarse cuando se incorporen las dem
 
 ## 2.3 Needfinding
 
+En esta sección se presentan los artefactos resultantes del proceso de análisis de la información recolectada durante las entrevistas y el análisis competitivo. A partir de las características objetivas y subjetivas identificadas en los segmentos objetivo, se construyeron los User Personas, el User Task Matrix, los User Journey Maps (versión As-Is) y los Empathy Maps correspondientes a cada arquetipo, utilizando la herramienta UXPressia.
+
 ### 2.3.1 User Personas
+
+A partir del análisis de las entrevistas realizadas a representantes de ambos segmentos objetivo, así como de la información recolectada en el análisis competitivo, se identificaron las características demográficas, tecnológicas y de comportamiento más representativas de cada segmento. Estas características fueron la base para la construcción de las siguientes fichas de User Persona, una por cada segmento objetivo de MaquiControl.
+
+#### User Persona 1: Segmento "Propietarios y administradores de pequeñas empresas de alquiler de maquinaria"
+
+| Campo | Detalle |
+| :--- | :--- |
+| **Nombre** | José Ramírez (arquetipo) |
+| **Edad** | 52 años |
+| **Ocupación** | Director de una pequeña empresa de alquiler de maquinaria |
+| **Ubicación** | Lima Metropolitana |
+| **Cita representativa** | "No puedo darme el lujo de que una máquina figure disponible y en realidad ya esté comprometida." |
+| **Bio / Background** | Dirige un negocio familiar de alquiler de maquinaria pesada desde hace más de 10 años. Gestiona directamente la disponibilidad de la flota, coordina con clientes y supervisa el estado de mantenimiento de los equipos. |
+| **Dispositivos y tecnología** | Teléfono Android, laptop, navegador Chrome. Usa WhatsApp y llamadas telefónicas como canal principal, Excel para registros. |
+| **Personalidad** | Práctico, orientado a la confianza y las relaciones comerciales de largo plazo; cauteloso con nuevas herramientas digitales si no ve un beneficio claro e inmediato. |
+| **Objetivos** | Evitar cruces de reservas, mantener la maquinaria operativa, controlar costos y mantenimientos, fidelizar clientes. |
+| **Frustraciones (Pains)** | Falta de transparencia en tarifas (costos ocultos de transporte/combustible), máquinas marcadas como disponibles que en realidad no lo están, fallas mecánicas inesperadas que generan pérdidas. |
+| **Necesidades (Gains)** | Información centralizada y confiable sobre disponibilidad real, alertas de mantenimiento preventivo, comprobantes formales de reserva. |
+| **Canales digitales de interacción** | WhatsApp, Google, Facebook, páginas web de empresas del rubro. |
+
+#### User Persona 2: Segmento "Contratistas independientes y responsables de pequeñas obras de construcción"
+
+| Campo | Detalle |
+| :--- | :--- |
+| **Nombre** | Renzo Huamán (arquetipo) |
+| **Edad** | 38 años |
+| **Ocupación** | Contratista independiente, supervisa obras pequeñas y medianas |
+| **Ubicación** | Lima Metropolitana y zonas urbanas con alta actividad de construcción |
+| **Cita representativa** | "El precio que te dan por teléfono casi nunca es el precio final." |
+| **Bio / Background** | Contratista independiente con formación técnica en construcción civil. Coordina el alquiler de maquinaria según las etapas de cada obra, gestionando directamente con proveedores y cuadrillas. |
+| **Dispositivos y tecnología** | Celular Android, laptop ocasional, navegador Chrome. |
+| **Personalidad** | Orientado a resultados y cumplimiento de plazos; impaciente ante demoras de proveedores; confía en recomendaciones de otros contratistas antes que en publicidad. |
+| **Objetivos** | Cumplir el cronograma de obra comprometido con el cliente, evitar tiempos muertos de cuadrilla, controlar el presupuesto de cada obra. |
+| **Frustraciones (Pains)** | Tarifas poco claras (costos adicionales no informados de inicio), disponibilidad real distinta a la ofrecida, paradas de obra por fallas mecánicas sin aviso previo. |
+| **Necesidades (Gains)** | Precio exacto desde el inicio, confirmación digital de reserva, visibilidad del estado y disponibilidad real de la maquinaria en tiempo real. |
+| **Canales digitales de interacción** | WhatsApp, Facebook, Google Maps, búsquedas en Google. |
+
+> **Nota:** ambas fichas deben trasladarse a UXPressia (herramienta indicada en el enunciado) para generar el artefacto visual final, e incluir el screenshot correspondiente en el informe.
 
 ### 2.3.2 User Task Matrix
 
+Considerando los dos segmentos objetivo de MaquiControl (Propietarios/administradores de empresas de alquiler y Contratistas independientes), se identificaron las tareas (*tasks*) que ambos User Persona realizan de forma independiente a la existencia de una solución de software, para cumplir sus objetivos relacionados con la gestión y el alquiler de maquinaria pesada.
+
+| Tarea (Task) | José Ramírez — Frecuencia | José Ramírez — Importancia | Renzo Huamán — Frecuencia | Renzo Huamán — Importancia |
+| :--- | :---: | :---: | :---: | :---: |
+| Verificar disponibilidad real de una máquina | Alta | Alta | Alta | Alta |
+| Coordinar reservas con clientes/proveedores vía WhatsApp o llamada | Alta | Alta | Alta | Media |
+| Registrar/controlar el estado de mantenimiento de los equipos | Alta | Alta | Baja | Media |
+| Cotizar y comparar precios de alquiler entre proveedores | Media | Alta | Alta | Alta |
+| Gestionar imprevistos por fallas mecánicas en obra | Media | Alta | Media | Alta |
+| Validar y conciliar las horas trabajadas de la maquinaria | Alta | Media | Media | Media |
+| Emitir o recibir comprobantes/facturas del servicio | Media | Media | Baja | Media |
+| Buscar referencias o recomendaciones de proveedores | Baja | Media | Media | Alta |
+
+**Análisis:** la tarea con mayor frecuencia e importancia compartida por ambos User Persona es **verificar la disponibilidad real de la maquinaria**, lo cual confirma que la disponibilidad poco confiable es el dolor central identificado en ambos segmentos. José Ramírez, al administrar la flota, prioriza con mayor frecuencia e importancia el control del mantenimiento, tarea que para Renzo Huamán es secundaria, pues él consume el servicio en vez de administrarlo. En cambio, Renzo le da mayor peso a cotizar y comparar precios y a buscar recomendaciones, dado que su rol implica seleccionar proveedores para cada nueva obra. Ambos coinciden en la relevancia alta de gestionar imprevistos por fallas mecánicas, reflejando que este riesgo operativo afecta a toda la cadena, tanto a quien alquila como a quien administra la flota.
+
 ### 2.3.3 User Journey Mapping
 
+Se elaboraron dos User Journey Maps en su versión **As-Is** (situación actual, sin la existencia de MaquiControl), uno por cada User Persona identificado, ilustrando el recorrido *end-to-end* desde que surge la necesidad de alquilar/administrar maquinaria hasta la finalización del servicio. A continuación se resume el contenido que debe trasladarse a UXPressia para construir el diagrama visual (con su respectivo screenshot vinculado a la ficha de User Persona correspondiente).
+
+#### Journey Map — José Ramírez (Propietario/administrador)
+
+| Etapa | Detectar necesidad | Coordinar disponibilidad | Confirmar reserva | Ejecutar el alquiler | Gestionar mantenimiento/incidencias | Cerrar el servicio |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Acciones** | Recibe solicitud de un cliente por WhatsApp o llamada | Revisa cuaderno/Excel para ver si la máquina está libre | Confirma de palabra o por WhatsApp, sin comprobante formal | Coordina traslado y operador | Atiende avería, busca técnico o máquina alterna | Cobra y anota el cierre manualmente |
+| **Pensamientos** | "Espero tener la máquina libre esa fecha" | "¿Ya la comprometí con alguien más?" | "Ojalá se acuerde de la fecha exacta" | "Que no haya ningún cruce" | "Esto me va a generar un reclamo del cliente" | "Tengo que anotar esto antes de olvidarlo" |
+| **Emociones** | Neutral / expectante | Incertidumbre | Cierta tranquilidad, pero sin respaldo | Tensión moderada | Frustración / estrés | Alivio, pero con carga administrativa |
+| **Puntos de dolor** | Canal informal, sin registro centralizado | Riesgo de cruce de reservas por falta de sistema | Sin comprobante formal para ninguna de las partes | Coordinación manual propensa a errores | Pérdida de tiempo e ingresos por falla imprevista | Registro manual, propenso a errores u olvidos |
+| **Oportunidades** | Canal digital único de solicitud | Calendario de disponibilidad centralizado en tiempo real | Confirmación digital automática | Notificaciones de coordinación | Historial de mantenimiento y alertas preventivas | Cierre y facturación automatizada |
+
+#### Journey Map — Renzo Huamán (Contratista independiente)
+
+| Etapa | Detectar necesidad de obra | Buscar proveedor | Solicitar cotización | Reservar maquinaria | Recibir el servicio en obra | Validar horas y pagar |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Acciones** | Identifica que la obra requiere una máquina específica | Pregunta a otros contratistas, busca en Facebook/Google | Solicita precio por WhatsApp o llamada | Coordina fecha de forma verbal | Recibe la máquina, a veces con retraso o sin operador acordado | Anota horas en cuaderno, compara con lo reportado por el proveedor |
+| **Pensamientos** | "Necesito esto para no atrasar el cronograma" | "¿A quién le pregunto que sea de confianza?" | "Espero que el precio no cambie después" | "Ojalá se cumpla la fecha que acordamos" | "Que no me salga con una sorpresa" | "Espero que las horas coincidan" |
+| **Emociones** | Urgencia | Incertidumbre | Desconfianza | Ansiedad | Frustración si hay incumplimiento | Tensión al validar montos |
+| **Puntos de dolor** | No hay forma rápida de verificar disponibilidad real | Depende de contactos informales | Precios no siempre incluyen todos los costos | Sin confirmación formal de la reserva | Fallas mecánicas o incumplimientos sin aviso previo | Discrepancias en el conteo de horas |
+| **Oportunidades** | Catálogo digital con disponibilidad en tiempo real | Directorio confiable de proveedores | Cotización transparente y completa desde el inicio | Confirmación digital de la reserva | Trazabilidad del estado de la máquina y del operador | Registro digital y verificable de horas trabajadas |
+
 ### 2.3.4 Empathy Mapping
+
+Se elaboraron dos Empathy Maps, uno por cada User Persona, con el objetivo de generar empatía con cada arquetipo a partir de las observaciones recogidas en las entrevistas. El proceso consistió en colocar al User Persona al centro del mapa y completar cada cuadrante en base a las respuestas registradas en las entrevistas, respondiendo a las preguntas: ¿Qué está diciendo? ¿Qué está pensando? ¿Qué está haciendo? ¿Qué está escuchando? ¿Qué le preocupa (Pains)? ¿Qué lo ayudaría (Gains)?
+
+#### Empathy Map — José Ramírez
+
+| Cuadrante | Contenido |
+| :--- | :--- |
+| **Dice (Says)** | "Una máquina disponible no siempre significa que realmente lo esté." / "Necesito un comprobante de la reserva." |
+| **Piensa (Thinks)** | Le preocupa perder clientes por errores de coordinación que podrían evitarse con mejor información. |
+| **Hace (Does)** | Revisa manualmente su Excel y cuaderno antes de confirmar cualquier reserva; coordina todo por WhatsApp y llamadas. |
+| **Escucha (Hears)** | Comentarios de otros propietarios del rubro sobre plataformas digitales; quejas de clientes por demoras. |
+| **Dolores (Pains)** | Cruces de reservas, fallas mecánicas inesperadas, falta de transparencia hacia sus propios clientes. |
+| **Ganancias (Gains)** | Un sistema que le muestre disponibilidad real, historial de mantenimiento y le permita emitir comprobantes automáticamente. |
+
+#### Empathy Map — Renzo Huamán
+
+| Cuadrante | Contenido |
+| :--- | :--- |
+| **Dice (Says)** | "El precio que te dan por teléfono casi nunca es el precio final." / "Necesito saber si de verdad está disponible." |
+| **Piensa (Thinks)** | Teme que un atraso por maquinaria afecte su reputación frente al cliente de la obra. |
+| **Hace (Does)** | Pregunta a otros contratistas, compara cotizaciones informales, anota horas en un cuaderno de obra. |
+| **Escucha (Hears)** | Recomendaciones boca a boca de proveedores; comentarios en grupos de Facebook sobre maquinaria. |
+| **Dolores (Pains)** | Costos ocultos, disponibilidad no confiable, fallas mecánicas sin aviso, pérdidas por tiempos muertos de cuadrilla. |
+| **Ganancias (Gains)** | Precio transparente desde el inicio, confirmación digital de reserva, visibilidad del estado de la maquinaria en tiempo real. |
+
 
 ## 2.4 Big Picture Event Storming
 
