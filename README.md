@@ -506,6 +506,8 @@ Este análisis es preliminar y deberá actualizarse cuando se incorporen las dem
 
 En esta sección se presentan los principales artefactos obtenidos a partir del análisis de la información recolectada durante las entrevistas y el estudio de los segmentos objetivo. El proceso de Needfinding permite identificar las necesidades, comportamientos, objetivos y dificultades de los usuarios, sirviendo como base para la elaboración de los User Personas, User Task Matrix, User Journey Maps y Empathy Maps.
 
+En esta sección se presentan los artefactos resultantes del proceso de análisis de la información recolectada durante las entrevistas y el análisis competitivo. A partir de las características objetivas y subjetivas identificadas en los segmentos objetivo, se construyeron los User Personas, el User Task Matrix, los User Journey Maps (versión As-Is) y los Empathy Maps correspondientes a cada arquetipo, utilizando la herramienta UXPressia.
+
 ### 2.3.1 User Personas
 
 Los User Personas representan arquetipos construidos a partir de la información recopilada durante las entrevistas y el análisis de los segmentos objetivo. Estos perfiles permiten sintetizar características, necesidades, objetivos, motivaciones y frustraciones comunes de los usuarios, sirviendo como base para los siguientes artefactos del proceso de Needfinding.
@@ -522,28 +524,19 @@ Luis Herrera representa al administrador de una pequeña empresa dedicada al alq
 
 ### 2.3.2 User Task Matrix
 
-El User Task Matrix permite identificar y comparar las principales tareas que realizan los User Personas para cumplir sus objetivos dentro de su contexto habitual. Estas tareas representan actividades que los usuarios realizan independientemente de la existencia de MaquiControl y permiten reconocer cuáles son más frecuentes y relevantes para cada segmento.
 
-| Tarea | Luis Herrera - Frecuencia | Luis Herrera - Importancia | User Persona Segmento 2 - Frecuencia | User Persona Segmento 2 - Importancia |
-|---|---|---|---|---|
-| Revisar la disponibilidad de maquinaria | Alta | Alta | Pendiente | Pendiente |
-| Coordinar reservas y alquileres con clientes | Alta | Alta | Pendiente | Pendiente |
-| Controlar las horas de uso de la maquinaria | Media | Alta | Pendiente | Pendiente |
-| Verificar y programar mantenimientos | Media | Alta | Pendiente | Pendiente |
-| Coordinar con operadores y trabajadores | Alta | Alta | Pendiente | Pendiente |
-| Revisar costos de operación y alquiler | Alta | Alta | Pendiente | Pendiente |
-| Buscar proveedores, equipos o repuestos | Media | Media | Pendiente | Pendiente |
-| Atender problemas ocasionados por fallas mecánicas | Media | Alta | Pendiente | Pendiente |
-| Confirmar el estado y disponibilidad de equipos antes de una reserva | Alta | Alta | Pendiente | Pendiente |
-| Revisar registros relacionados con reservas, horas y mantenimientos | Media | Alta | Pendiente | Pendiente |
+| Tarea (Task) | José Ramírez — Frecuencia | José Ramírez — Importancia | Renzo Huamán — Frecuencia | Renzo Huamán — Importancia |
+| :--- | :---: | :---: | :---: | :---: |
+| Verificar disponibilidad real de una máquina | Alta | Alta | Alta | Alta |
+| Coordinar reservas con clientes/proveedores vía WhatsApp o llamada | Alta | Alta | Alta | Media |
+| Registrar/controlar el estado de mantenimiento de los equipos | Alta | Alta | Baja | Media |
+| Cotizar y comparar precios de alquiler entre proveedores | Media | Alta | Alta | Alta |
+| Gestionar imprevistos por fallas mecánicas en obra | Media | Alta | Media | Alta |
+| Validar y conciliar las horas trabajadas de la maquinaria | Alta | Media | Media | Media |
+| Emitir o recibir comprobantes/facturas del servicio | Media | Media | Baja | Media |
+| Buscar referencias o recomendaciones de proveedores | Baja | Media | Media | Alta |
 
-A partir del análisis del User Persona Luis Herrera, se observa que las tareas de mayor frecuencia e importancia están relacionadas con la revisión de disponibilidad de maquinaria, la coordinación de alquileres, la comunicación con clientes y operadores, y el control de los costos de operación.
-
-También presentan una importancia alta las tareas relacionadas con el mantenimiento, el control de horas de uso y la gestión de problemas ocasionados por fallas mecánicas, debido a que estas situaciones pueden provocar retrasos, tiempos muertos y costos adicionales.
-
-Las tareas de búsqueda de proveedores o repuestos presentan una frecuencia menor, aunque siguen siendo relevantes para mantener la continuidad de las operaciones.
-
-La comparación completa entre ambos segmentos se realizará cuando se incorpore el User Persona correspondiente al segundo segmento objetivo.
+**Análisis:** la tarea con mayor frecuencia e importancia compartida por ambos User Persona es **verificar la disponibilidad real de la maquinaria**, lo cual confirma que la disponibilidad poco confiable es el dolor central identificado en ambos segmentos. José Ramírez, al administrar la flota, prioriza con mayor frecuencia e importancia el control del mantenimiento, tarea que para Renzo Huamán es secundaria, pues él consume el servicio en vez de administrarlo. En cambio, Renzo le da mayor peso a cotizar y comparar precios y a buscar recomendaciones, dado que su rol implica seleccionar proveedores para cada nueva obra. Ambos coinciden en la relevancia alta de gestionar imprevistos por fallas mecánicas, reflejando que este riesgo operativo afecta a toda la cadena, tanto a quien alquila como a quien administra la flota.
 
 ### 2.3.3 User Journey Mapping
 
@@ -554,6 +547,31 @@ El siguiente User Journey Map representa el proceso actual seguido por el User P
 
 
 ### 2.3.4 Empathy Mapping
+
+Se elaboraron dos Empathy Maps, uno por cada User Persona, con el objetivo de generar empatía con cada arquetipo a partir de las observaciones recogidas en las entrevistas. El proceso consistió en colocar al User Persona al centro del mapa y completar cada cuadrante en base a las respuestas registradas en las entrevistas, respondiendo a las preguntas: ¿Qué está diciendo? ¿Qué está pensando? ¿Qué está haciendo? ¿Qué está escuchando? ¿Qué le preocupa (Pains)? ¿Qué lo ayudaría (Gains)?
+
+#### Empathy Map — José Ramírez
+
+| Cuadrante | Contenido |
+| :--- | :--- |
+| **Dice (Says)** | "Una máquina disponible no siempre significa que realmente lo esté." / "Necesito un comprobante de la reserva." |
+| **Piensa (Thinks)** | Le preocupa perder clientes por errores de coordinación que podrían evitarse con mejor información. |
+| **Hace (Does)** | Revisa manualmente su Excel y cuaderno antes de confirmar cualquier reserva; coordina todo por WhatsApp y llamadas. |
+| **Escucha (Hears)** | Comentarios de otros propietarios del rubro sobre plataformas digitales; quejas de clientes por demoras. |
+| **Dolores (Pains)** | Cruces de reservas, fallas mecánicas inesperadas, falta de transparencia hacia sus propios clientes. |
+| **Ganancias (Gains)** | Un sistema que le muestre disponibilidad real, historial de mantenimiento y le permita emitir comprobantes automáticamente. |
+
+#### Empathy Map — Renzo Huamán
+
+| Cuadrante | Contenido |
+| :--- | :--- |
+| **Dice (Says)** | "El precio que te dan por teléfono casi nunca es el precio final." / "Necesito saber si de verdad está disponible." |
+| **Piensa (Thinks)** | Teme que un atraso por maquinaria afecte su reputación frente al cliente de la obra. |
+| **Hace (Does)** | Pregunta a otros contratistas, compara cotizaciones informales, anota horas en un cuaderno de obra. |
+| **Escucha (Hears)** | Recomendaciones boca a boca de proveedores; comentarios en grupos de Facebook sobre maquinaria. |
+| **Dolores (Pains)** | Costos ocultos, disponibilidad no confiable, fallas mecánicas sin aviso, pérdidas por tiempos muertos de cuadrilla. |
+| **Ganancias (Gains)** | Precio transparente desde el inicio, confirmación digital de reserva, visibilidad del estado de la maquinaria en tiempo real. |
+
 
 ## 2.4 Big Picture Event Storming
 
