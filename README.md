@@ -544,7 +544,11 @@ También presentan una importancia alta las tareas relacionadas con el mantenimi
 Las tareas de búsqueda de proveedores o repuestos presentan una frecuencia menor, aunque siguen siendo relevantes para mantener la continuidad de las operaciones.
 
 La comparación completa entre ambos segmentos se realizará cuando se incorpore el User Persona correspondiente al segundo segmento objetivo.
+
 ### 2.3.3 User Journey Mapping
+
+
+
 
 ### 2.3.4 Empathy Mapping
 
