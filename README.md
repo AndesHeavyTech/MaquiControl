@@ -504,7 +504,21 @@ Este análisis es preliminar y deberá actualizarse cuando se incorporen las dem
 
 ## 2.3 Needfinding
 
+En esta sección se presentan los principales artefactos obtenidos a partir del análisis de la información recolectada durante las entrevistas y el estudio de los segmentos objetivo. El proceso de Needfinding permite identificar las necesidades, comportamientos, objetivos y dificultades de los usuarios, sirviendo como base para la elaboración de los User Personas, User Task Matrix, User Journey Maps y Empathy Maps.
+
 ### 2.3.1 User Personas
+
+Los User Personas representan arquetipos construidos a partir de la información recopilada durante las entrevistas y el análisis de los segmentos objetivo. Estos perfiles permiten sintetizar características, necesidades, objetivos, motivaciones y frustraciones comunes de los usuarios, sirviendo como base para los siguientes artefactos del proceso de Needfinding.
+
+#### Segmento 1: Propietarios y administradores de pequeñas empresas de alquiler de maquinaria
+
+A partir de las entrevistas realizadas al primer segmento objetivo, se identificaron patrones relacionados con la gestión de disponibilidad de maquinaria, control de costos, coordinación con clientes, mantenimiento de equipos y uso de herramientas digitales. Estos hallazgos fueron utilizados para construir el siguiente User Persona.
+
+##### Luis Herrera
+
+Luis Herrera representa al administrador de una pequeña empresa dedicada al alquiler de maquinaria. Su perfil refleja las principales características, necesidades, objetivos y frustraciones identificadas en las entrevistas realizadas al segmento.
+
+![User Persona - Luis Herrera](assets/user-persona-luis-herrera.png)
 
 ### 2.3.2 User Task Matrix
 
