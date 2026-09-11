@@ -211,6 +211,11 @@ Una de las principales fortalezas del sistema es su capacidad para adaptarse a l
     * **Carrea:** Ingeniería de Software (5.º ciclo)
     * **Perfil:** Estudiante de Ingeniería de Software con conocimientos en desarrollo web, incluyendo HTML, CSS y JavaScript, así como en los lenguajes de programación C++ y Python. Aportare conocimientos al equipo sobre los lenguajes de programacion.
 
+* **Mathias Alejandro Castillo Guevara**
+    * **Codigo:** U202410783
+    * **Carrea:** Ingeniería de Software (5.º ciclo)
+    * **Perfil:** Estudiante de Ingeniería de Software con conocimientos en desarrollo web, incluyendo HTML, CSS y JavaScript, tambien lenguajes de programación como  C++ y Python. Aportare al equipo conocimientos sobre tecnologias y desarrollo web.
+
 ### 1.2 Solution Profile
 Esta sección describe la problemática que MaquiControl busca resolver y la propuesta de solución planteada por HeavyMach. Se analizan las principales dificultades relacionadas con el alquiler, control y disponibilidad de maquinaria pesada, y se aplica el proceso Lean UX para definir las necesidades, supuestos e hipótesis que orientan el desarrollo del producto.
 
@@ -419,7 +424,7 @@ En esta sección se presentan las entrevistas realizadas a representantes de los
 
 #### Segmento 1: Propietarios y administradores de pequeñas empresas de alquiler de maquinaria
 
-##### Entrevista 1 
+##### Entrevista 1
 
 - **Nombre y apellidos:** José Ramírez
 - **Edad:** 52
@@ -447,7 +452,7 @@ El control de las horas trabajadas se realiza en coordinación con el operador y
 
 Sus principales prioridades son garantizar la disponibilidad de la maquinaria, reducir retrasos y mantener un adecuado control de costos. Entre sus principales frustraciones se encuentran la falta de información clara, las fallas inesperadas de los equipos y las demoras en las entregas.
 
-##### Entrevista 2 
+##### Entrevista 2
 
 - **Nombre y apellidos:** Stephano Mendoza
 - **Edad:** 34 años
