@@ -522,6 +522,28 @@ Luis Herrera representa al administrador de una pequeña empresa dedicada al alq
 
 ### 2.3.2 User Task Matrix
 
+El User Task Matrix permite identificar y comparar las principales tareas que realizan los User Personas para cumplir sus objetivos dentro de su contexto habitual. Estas tareas representan actividades que los usuarios realizan independientemente de la existencia de MaquiControl y permiten reconocer cuáles son más frecuentes y relevantes para cada segmento.
+
+| Tarea | Luis Herrera - Frecuencia | Luis Herrera - Importancia | User Persona Segmento 2 - Frecuencia | User Persona Segmento 2 - Importancia |
+|---|---|---|---|---|
+| Revisar la disponibilidad de maquinaria | Alta | Alta | Pendiente | Pendiente |
+| Coordinar reservas y alquileres con clientes | Alta | Alta | Pendiente | Pendiente |
+| Controlar las horas de uso de la maquinaria | Media | Alta | Pendiente | Pendiente |
+| Verificar y programar mantenimientos | Media | Alta | Pendiente | Pendiente |
+| Coordinar con operadores y trabajadores | Alta | Alta | Pendiente | Pendiente |
+| Revisar costos de operación y alquiler | Alta | Alta | Pendiente | Pendiente |
+| Buscar proveedores, equipos o repuestos | Media | Media | Pendiente | Pendiente |
+| Atender problemas ocasionados por fallas mecánicas | Media | Alta | Pendiente | Pendiente |
+| Confirmar el estado y disponibilidad de equipos antes de una reserva | Alta | Alta | Pendiente | Pendiente |
+| Revisar registros relacionados con reservas, horas y mantenimientos | Media | Alta | Pendiente | Pendiente |
+
+A partir del análisis del User Persona Luis Herrera, se observa que las tareas de mayor frecuencia e importancia están relacionadas con la revisión de disponibilidad de maquinaria, la coordinación de alquileres, la comunicación con clientes y operadores, y el control de los costos de operación.
+
+También presentan una importancia alta las tareas relacionadas con el mantenimiento, el control de horas de uso y la gestión de problemas ocasionados por fallas mecánicas, debido a que estas situaciones pueden provocar retrasos, tiempos muertos y costos adicionales.
+
+Las tareas de búsqueda de proveedores o repuestos presentan una frecuencia menor, aunque siguen siendo relevantes para mantener la continuidad de las operaciones.
+
+La comparación completa entre ambos segmentos se realizará cuando se incorpore el User Persona correspondiente al segundo segmento objetivo.
 ### 2.3.3 User Journey Mapping
 
 ### 2.3.4 Empathy Mapping
