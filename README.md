@@ -415,7 +415,87 @@ Para la recolección de requerimientos se diseñaron guías de entrevista breves
 
 ### 2.2.2 Registro de entrevistas
 
+En esta sección se presentan las entrevistas realizadas a representantes de los segmentos objetivo de MaquiControl. Cada entrevista permite recopilar información sobre sus experiencias, necesidades, problemas y hábitos relacionados con la gestión y alquiler de maquinaria. Los resultados obtenidos servirán como base para el análisis de entrevistas y la construcción de los artefactos de Needfinding.
+
+#### Segmento 1: Propietarios y administradores de pequeñas empresas de alquiler de maquinaria
+
+##### Entrevista 1 
+
+- **Nombre y apellidos:** José Ramírez
+- **Edad:** 52
+- **Distrito:**
+- **Ocupacion:** Director de una pequeña empresa dedicada al alquiler de maquinaria
+- **Duración:**
+- **Timing en el video:**
+- **URL del video:**
+
+**Captura de la entrevista:**
+
+
+
+**Resumen de la entrevista:**
+
+José Ramírez dirige una pequeña empresa dedicada al alquiler de maquinaria y utiliza principalmente un teléfono Android y una laptop con navegador Chrome para realizar sus actividades laborales. Para coordinar con clientes y trabajadores utiliza principalmente WhatsApp y llamadas telefónicas, mientras que Excel le permite llevar algunos registros relacionados con el negocio.
+
+Para encontrar proveedores de maquinaria, suele recurrir a recomendaciones de otros contratistas y contactos del sector. También utiliza WhatsApp, Google, Facebook y páginas web de empresas para comparar diferentes alternativas antes de tomar una decisión.
+
+Uno de los principales problemas que identifica en el proceso de alquiler es la falta de transparencia en las tarifas, debido a que algunos precios pueden variar dependiendo del tiempo de uso o del costo del transporte. Asimismo, ha experimentado situaciones en las que una máquina supuestamente disponible finalmente se encontraba alquilada o en mantenimiento.
+
+Respecto a las fallas mecánicas, indicó que en una ocasión una avería provocó aproximadamente un día de retraso en una obra. La espera por la llegada del técnico ocasionó que parte del personal permaneciera inactivo y que el cronograma se viera afectado, incrementando los costos de la operación.
+
+El control de las horas trabajadas se realiza en coordinación con el operador y el encargado de la obra. En una futura plataforma digital, considera importante poder consultar claramente las horas registradas, el precio del alquiler, la disponibilidad y el estado de la maquinaria, además de recibir un comprobante de la reserva.
+
+Sus principales prioridades son garantizar la disponibilidad de la maquinaria, reducir retrasos y mantener un adecuado control de costos. Entre sus principales frustraciones se encuentran la falta de información clara, las fallas inesperadas de los equipos y las demoras en las entregas.
+
+##### Entrevista 2 
+
+- **Nombre y apellidos:** Stephano Mendoza
+- **Edad:** 34 años
+- **Ocupación:** Encargado de operaciones en un pequeño negocio de alquiler de maquinaria
+- **Distrito:**
+- **Duración:**
+- **Timing en el video:**
+- **URL del video:**
+
+**Captura de la entrevista:**
+
+
+
+**Resumen de la entrevista:**
+
+Stephano Mendoza se desempeña como encargado de operaciones en un pequeño negocio dedicado al alquiler de maquinaria. Para realizar sus actividades utiliza principalmente un teléfono celular y una computadora de escritorio. Su navegador habitual es Google Chrome y emplea WhatsApp para coordinar con clientes y trabajadores.
+
+Para seleccionar proveedores, generalmente recurre a empresas o personas con las que ya ha trabajado anteriormente o que han sido recomendadas por otros empresarios del sector. También realiza búsquedas mediante Google y consulta grupos de Facebook relacionados con construcción y maquinaria.
+
+Entre los problemas que encuentra durante el proceso de alquiler destaca la falta de claridad en los precios, debido a que algunas cotizaciones no incluyen inicialmente costos adicionales como transporte o combustible. También ha experimentado situaciones en las que una máquina aparecía como disponible, pero ya había sido reservada por otro cliente.
+
+Las fallas mecánicas representan otra dificultad frecuente. Cuando una máquina presenta una avería, debe esperar la llegada de un técnico y, en caso de que la reparación tome demasiado tiempo, buscar un equipo alternativo. Esto puede ocasionar pérdidas de tiempo, gastos adicionales de transporte y problemas en el cumplimiento de los compromisos asumidos con los clientes.
+
+Para validar las horas trabajadas, compara la información del horómetro de la máquina con el reporte entregado por el operador. En una plataforma digital de alquiler considera importante poder consultar el historial de uso de la maquinaria, el precio por hora, las fechas disponibles y recibir una confirmación formal de la reserva.
+
+Sus principales prioridades son mantener las máquinas operativas, cumplir con los plazos acordados con los clientes y reducir los tiempos muertos. Sus mayores frustraciones están relacionadas con cambios de último momento, máquinas que dejan de estar disponibles pese a haber sido coordinadas previamente y problemas en el registro de los mantenimientos.
+
+Entre las herramientas digitales que utiliza con mayor frecuencia se encuentran WhatsApp, Excel, Gmail, Google Maps, páginas web de proveedores y Facebook Marketplace.
+
 ### 2.2.3 Análisis de entrevistas
+
+#### Análisis preliminar del Segmento 1
+
+A partir de las dos entrevistas realizadas hasta el momento a representantes del primer segmento objetivo, se identificaron algunas coincidencias relacionadas con sus hábitos de trabajo, principales dificultades y expectativas frente a una plataforma digital para la gestión y alquiler de maquinaria.
+
+El 100% de los entrevistados utiliza WhatsApp como una de sus principales herramientas de comunicación y coordinación laboral. Asimismo, ambos utilizan Excel para llevar determinados registros y Google Chrome como navegador frecuente.
+
+En relación con el proceso de alquiler, el 100% de los entrevistados manifestó haber experimentado dificultades relacionadas con la disponibilidad real de las máquinas. Ambos señalaron situaciones en las que un equipo aparentemente disponible finalmente no podía ser utilizado debido a una reserva previa o mantenimiento.
+
+También se identificaron problemas relacionados con la transparencia de los precios. El 100% de los entrevistados mencionó que los costos pueden no estar completamente claros desde el inicio, ya sea por conceptos adicionales como transporte o combustible, o por variaciones asociadas al tiempo de uso.
+
+Respecto a las fallas mecánicas, el 100% indicó haber enfrentado situaciones en las que una avería generó retrasos, pérdida de tiempo y costos adicionales.
+
+En cuanto a sus expectativas sobre una plataforma digital, ambos entrevistados consideran importante disponer de información actualizada sobre disponibilidad, precios, estado de la maquinaria y confirmación de las reservas.
+
+Finalmente, las principales prioridades identificadas están relacionadas con mantener la maquinaria operativa, cumplir con los tiempos acordados y reducir retrasos y costos innecesarios.
+
+Este análisis es preliminar y deberá actualizarse cuando se incorporen las demás entrevistas del segmento.
 
 ## 2.3 Needfinding
 
