@@ -354,6 +354,7 @@ Para el desarrollo y validación de MaquiControl se han definido dos segmentos o
 # Capítulo II: Requirements Elicitation & Analysis
 
 ## 2.1 Competidores
+En esta sección se identifican y describen los principales competidores de MaquiControl, considerando soluciones digitales que ofrecen funcionalidades relacionadas con la gestión, alquiler y control de maquinaria. El análisis permite conocer sus principales características, fortalezas y debilidades, con el fin de identificar oportunidades de diferenciación para nuestra propuesta de valor.
 
 ### 2.1.1 Análisis competitivo
 
@@ -427,7 +428,7 @@ En esta sección se presentan las entrevistas realizadas a representantes de los
 ##### Entrevista 1
 
 - **Nombre y apellidos:** José Ramírez
-- **Edad:** 52
+- **Edad:** 27
 - **Distrito:** Comas
 - **Ocupacion:** Director de una pequeña empresa dedicada al alquiler de maquinaria
 - **Timing en el video:**
@@ -453,7 +454,7 @@ Sus principales prioridades son garantizar la disponibilidad de la maquinaria, r
 ##### Entrevista 2
 
 - **Nombre y apellidos:** Stephano Mendoza
-- **Edad:** 34 años
+- **Edad:** 52 años
 - **Ocupación:** Encargado de operaciones en un pequeño negocio de alquiler de maquinaria
 - **Distrito:** San Juan de Lurigancho
 - **Timing en el video:**
@@ -479,17 +480,26 @@ Sus principales prioridades son mantener las máquinas operativas, cumplir con l
 Entre las herramientas digitales que utiliza con mayor frecuencia se encuentran WhatsApp, Excel, Gmail, Google Maps, páginas web de proveedores y Facebook Marketplace.
 Segmento 2: Contratistas independientes y responsables de obras de construcción
 Entrevista 1
-- Nombre y apellidos: Harold Angello
-- Edad: 41 años
-- Ocupación: Ingeniero civil y propietario de una pequeña constructora
-- Obras supervisadas: Entre 2 y 3 obras simultáneamente
-- Dispositivos y navegador: iPhone en obra; laptop con Google Chrome en oficina.
-  Resumen de la entrevista:
-  Harold Angello es ingeniero civil y dirige una pequeña constructora. Supervisa entre dos y tres obras de forma simultánea. En campo utiliza principalmente su iPhone, mientras que en la oficina revisa cotizaciones y correos desde una laptop con Google Chrome.
-  Para buscar maquinaria, primero contacta a proveedores de confianza. Cuando requiere equipos nuevos o especializados, realiza búsquedas en Google, revisa reseñas y solicita recomendaciones en grupos de WhatsApp de colegas ingenieros.
-  Su principal dificultad es la falta de disponibilidad real de las máquinas: algunos proveedores confirman equipos que luego ya fueron comprometidos con otras obras. Asimismo, las fallas mecánicas generan paradas de obra, costos por tiempos muertos y retrasos que afectan el cumplimiento de los plazos acordados con sus clientes.
-  Actualmente, los encargados de cada obra reportan las horas trabajadas por WhatsApp al finalizar el día. En una plataforma digital, Harold espera visualizar en un solo lugar el estado de las reservas y los equipos asignados a todas sus obras.
-  Sus principales prioridades son evitar que las obras se detengan por falta de maquinaria y cumplir los plazos comprometidos con sus clientes. Sus mayores frustraciones son las dobles reservas, las fallas mecánicas y la falta de visibilidad centralizada de sus equipos. Utiliza WhatsApp, Gmail, Google Calendar y Microsoft Excel como herramientas de trabajo.
+
+##### Entrevista 3
+
+- **Nombre y apellidos:** Andrea López
+- **Edad:** 40 años
+- **Ocupación:** Administradora de una empresa familiar de alquiler de maquinaria
+- **Distrito:** Surco
+- **Timing en el video:**
+
+**Captura de la entrevista:**
+
+
+
+**Resumen de la entrevista:**
+
+Andrea López, administradora de 40 años de una pequeña empresa familiar dedicada al alquiler de maquinaria, señala que actualmente la gestión del negocio se realiza principalmente mediante WhatsApp y hojas de cálculo de Excel. Esta forma de trabajo genera dificultades para mantener actualizada la información sobre disponibilidad, reservas y mantenimiento de los equipos.
+
+Uno de los principales problemas identificados es el cruce de fechas de alquiler, provocado por la falta de actualización o comunicación entre las personas encargadas. También menciona situaciones en las que se ofrece una máquina que posteriormente resulta estar en mantenimiento. Para Andrea, sería especialmente útil contar con una plataforma que centralice la información del negocio y permita consultar rápidamente el estado de cada equipo.
+
+La entrevistada considera indispensable disponer de un calendario de disponibilidad y valora que la plataforma pueda utilizarse fácilmente desde un teléfono móvil. Asimismo, destaca que una solución sencilla, clara y con pocos pasos facilitaría su adopción.
 
 #### Segmento 2: Contratistas independientes y responsables de obras de construcción
 
@@ -512,20 +522,6 @@ Su principal dificultad es la falta de disponibilidad real de las máquinas: alg
 Actualmente, los encargados de cada obra reportan las horas trabajadas por WhatsApp al finalizar el día. En una plataforma digital, Harold espera visualizar en un solo lugar el estado de las reservas y los equipos asignados a todas sus obras.
 
 Sus principales prioridades son evitar que las obras se detengan por falta de maquinaria y cumplir los plazos comprometidos con sus clientes. Sus mayores frustraciones son las dobles reservas, las fallas mecánicas y la falta de visibilidad centralizada de sus equipos. Utiliza WhatsApp, Gmail, Google Calendar y Microsoft Excel como herramientas de trabajo.
-
-##### Entrevista 3
-
-- **Nombre y apellidos:** Andrea Lopez
-- **Edad:** 40 años
-- **Ocupación:** Administradora de una empresa familiar de alquiler de maquinaria
-- **Distrito:** Surco
-- **Timing en el video:**
-
-Andrea López, administradora de 40 años de una pequeña empresa familiar dedicada al alquiler de maquinaria, señala que actualmente la gestión del negocio se realiza principalmente mediante WhatsApp y hojas de cálculo de Excel. Esta forma de trabajo genera dificultades para mantener actualizada la información sobre disponibilidad, reservas y mantenimiento de los equipos.
-
-Uno de los principales problemas identificados es el cruce de fechas de alquiler, provocado por la falta de actualización o comunicación entre las personas encargadas. También menciona situaciones en las que se ofrece una máquina que posteriormente resulta estar en mantenimiento. Para Andrea, sería especialmente útil contar con una plataforma que centralice la información del negocio y permita consultar rápidamente el estado de cada equipo.
-
-La entrevistada considera indispensable disponer de un calendario de disponibilidad y valora que la plataforma pueda utilizarse fácilmente desde un teléfono móvil. Asimismo, destaca que una solución sencilla, clara y con pocos pasos facilitaría su adopción.
 
 ### 2.2.3 Análisis de entrevistas
 
@@ -591,7 +587,7 @@ Harold Angello representa al contratista responsable de pequeñas obras que nece
 ### 2.3.2 User Task Matrix
 
 
-| Tarea (Task) | José Ramírez — Frecuencia | José Ramírez — Importancia | Renzo Huamán — Frecuencia | Renzo Huamán — Importancia |
+| Tarea (Task) | Luis Herrera — Frecuencia | Luis Herrera — Importancia | Renzo Huamán — Frecuencia | Renzo Huamán — Importancia |
 | :--- | :---: | :---: | :---: | :---: |
 | Verificar disponibilidad real de una máquina | Alta | Alta | Alta | Alta |
 | Coordinar reservas con clientes/proveedores vía WhatsApp o llamada | Alta | Alta | Alta | Media |
