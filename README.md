@@ -477,6 +477,41 @@ Para validar las horas trabajadas, compara la información del horómetro de la 
 Sus principales prioridades son mantener las máquinas operativas, cumplir con los plazos acordados con los clientes y reducir los tiempos muertos. Sus mayores frustraciones están relacionadas con cambios de último momento, máquinas que dejan de estar disponibles pese a haber sido coordinadas previamente y problemas en el registro de los mantenimientos.
 
 Entre las herramientas digitales que utiliza con mayor frecuencia se encuentran WhatsApp, Excel, Gmail, Google Maps, páginas web de proveedores y Facebook Marketplace.
+Segmento 2: Contratistas independientes y responsables de obras de construcción
+Entrevista 1
+- Nombre y apellidos: Harold Angello
+- Edad: 41 años
+- Ocupación: Ingeniero civil y propietario de una pequeña constructora
+- Obras supervisadas: Entre 2 y 3 obras simultáneamente
+- Dispositivos y navegador: iPhone en obra; laptop con Google Chrome en oficina.
+  Resumen de la entrevista:
+  Harold Angello es ingeniero civil y dirige una pequeña constructora. Supervisa entre dos y tres obras de forma simultánea. En campo utiliza principalmente su iPhone, mientras que en la oficina revisa cotizaciones y correos desde una laptop con Google Chrome.
+  Para buscar maquinaria, primero contacta a proveedores de confianza. Cuando requiere equipos nuevos o especializados, realiza búsquedas en Google, revisa reseñas y solicita recomendaciones en grupos de WhatsApp de colegas ingenieros.
+  Su principal dificultad es la falta de disponibilidad real de las máquinas: algunos proveedores confirman equipos que luego ya fueron comprometidos con otras obras. Asimismo, las fallas mecánicas generan paradas de obra, costos por tiempos muertos y retrasos que afectan el cumplimiento de los plazos acordados con sus clientes.
+  Actualmente, los encargados de cada obra reportan las horas trabajadas por WhatsApp al finalizar el día. En una plataforma digital, Harold espera visualizar en un solo lugar el estado de las reservas y los equipos asignados a todas sus obras.
+  Sus principales prioridades son evitar que las obras se detengan por falta de maquinaria y cumplir los plazos comprometidos con sus clientes. Sus mayores frustraciones son las dobles reservas, las fallas mecánicas y la falta de visibilidad centralizada de sus equipos. Utiliza WhatsApp, Gmail, Google Calendar y Microsoft Excel como herramientas de trabajo.
+
+#### Segmento 2: Contratistas independientes y responsables de obras de construcción
+
+##### Entrevista 1
+
+- **Nombre y apellidos:** Harold Angello
+- **Edad:** 41 años
+- **Ocupación:** Ingeniero civil y propietario de una pequeña constructora
+- **Obras supervisadas:** Entre 2 y 3 obras simultáneamente
+- **Dispositivos y navegador:** iPhone en obra; laptop con Google Chrome en oficina.
+
+**Resumen de la entrevista:**
+
+Harold Angello es ingeniero civil y dirige una pequeña constructora. Supervisa entre dos y tres obras de forma simultánea. En campo utiliza principalmente su iPhone, mientras que en la oficina revisa cotizaciones y correos desde una laptop con Google Chrome.
+
+Para buscar maquinaria, primero contacta a proveedores de confianza. Cuando requiere equipos nuevos o especializados, realiza búsquedas en Google, revisa reseñas y solicita recomendaciones en grupos de WhatsApp de colegas ingenieros.
+
+Su principal dificultad es la falta de disponibilidad real de las máquinas: algunos proveedores confirman equipos que luego ya fueron comprometidos con otras obras. Asimismo, las fallas mecánicas generan paradas de obra, costos por tiempos muertos y retrasos que afectan el cumplimiento de los plazos acordados con sus clientes.
+
+Actualmente, los encargados de cada obra reportan las horas trabajadas por WhatsApp al finalizar el día. En una plataforma digital, Harold espera visualizar en un solo lugar el estado de las reservas y los equipos asignados a todas sus obras.
+
+Sus principales prioridades son evitar que las obras se detengan por falta de maquinaria y cumplir los plazos comprometidos con sus clientes. Sus mayores frustraciones son las dobles reservas, las fallas mecánicas y la falta de visibilidad centralizada de sus equipos. Utiliza WhatsApp, Gmail, Google Calendar y Microsoft Excel como herramientas de trabajo.
 
 ##### Entrevista 3
 
@@ -516,6 +551,13 @@ Pain points principales: información dispersa, actualizaciones manuales, errore
 
 Oportunidad para MaquiControl: reducir la dependencia de hojas de cálculo y conversaciones dispersas mediante una plataforma centralizada que permita administrar la flota, las reservas y el mantenimiento de forma más organizada.
 
+#### Análisis preliminar del Segmento 2
+
+La entrevista realizada evidencia que los contratistas y responsables de obra necesitan información confiable y centralizada para coordinar maquinaria en múltiples proyectos simultáneamente. La disponibilidad inexacta y las dobles reservas representan el principal riesgo operativo, ya que pueden detener una obra y afectar directamente los costos y plazos de entrega.
+
+También se identificó la necesidad de registrar y validar las horas trabajadas de cada equipo, actualmente reportadas de forma manual mediante WhatsApp. Por ello, una plataforma digital debe permitir consultar reservas, disponibilidad, estado de la maquinaria y horas trabajadas desde un único panel.
+
+
 ## 2.3 Needfinding
 
 En esta sección se presentan los principales artefactos obtenidos a partir del análisis de la información recolectada durante las entrevistas y el estudio de los segmentos objetivo. El proceso de Needfinding permite identificar las necesidades, comportamientos, objetivos y dificultades de los usuarios, sirviendo como base para la elaboración de los User Personas, User Task Matrix, User Journey Maps y Empathy Maps.
@@ -535,6 +577,16 @@ A partir de las entrevistas realizadas al primer segmento objetivo, se identific
 Luis Herrera representa al administrador de una pequeña empresa dedicada al alquiler de maquinaria. Su perfil refleja las principales características, necesidades, objetivos y frustraciones identificadas en las entrevistas realizadas al segmento.
 
 ![User Persona - Luis Herrera](assets/user-persona-luis-herrera.png)
+
+#### Segmento 2: Contratistas independientes y responsables de obras de construcción
+
+A partir de la entrevista realizada a Harold Angello, se identificaron necesidades relacionadas con la disponibilidad confiable de maquinaria, el control centralizado de reservas y la continuidad operativa de varias obras simultáneas.
+
+##### Harold Angello
+
+Harold Angello representa al contratista responsable de pequeñas obras que necesita asegurar maquinaria disponible y mantener el control operativo de sus proyectos.
+
+![User Persona - Harold Angello](https://drive.google.com/uc?export=view&id=1upOL-SUfHb9zqnYesjOgERQdI3wfDt0F)
 
 ### 2.3.2 User Task Matrix
 
@@ -559,6 +611,9 @@ El siguiente User Journey Map representa el proceso actual seguido por el User P
 
 ![User Journey Map - Luis Herrera](assets/user-journey-luis-herrera.png)
 
+El siguiente User Journey Map representa el proceso actual seguido por Harold Angello para buscar, reservar y supervisar maquinaria en sus obras.
+
+![User Journey Map - Harold Angello](https://drive.google.com/uc?export=view&id=1mEbEbfmUMl4W5BJVEFg18EAV93pycqXV)
 
 ### 2.3.4 Empathy Mapping
 
