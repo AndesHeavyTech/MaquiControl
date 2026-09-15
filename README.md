@@ -636,8 +636,7 @@ A continuación se presentan los Empathy Mapping de los segmentos objetivos de M
 
 #### Segmento 2: Contratistas independientes y responsables de obras de construcción
 
-![Empathy Map - Harold Angello](https://drive.google.com/file/d/1xUHDVfrey9nS7Pa2JBtn1eJHNfApmlNr/view?usp=sharing)
-
+![Empathy Map - Harold Angello](https://drive.google.com/uc?export=view&id=1xUHDVfrey9nS7Pa2JBtn1eJHNfApmlNr)
 | Cuadrante | Descripción y Hallazgos Clave |
 | :--- | :--- |
 | **¿Qué piensa y siente?** | Piensa en cómo coordinar la logística de sus 2 a 3 obras simultáneas sin paradas. Siente frustración por la doble reserva de equipos y ansiedad por no retrasar los plazos acordados con los clientes. |
