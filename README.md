@@ -428,11 +428,9 @@ En esta sección se presentan las entrevistas realizadas a representantes de los
 
 - **Nombre y apellidos:** José Ramírez
 - **Edad:** 52
-- **Distrito:**
+- **Distrito:** Comas
 - **Ocupacion:** Director de una pequeña empresa dedicada al alquiler de maquinaria
-- **Duración:**
 - **Timing en el video:**
-- **URL del video:**
 
 **Captura de la entrevista:**
 
@@ -457,10 +455,8 @@ Sus principales prioridades son garantizar la disponibilidad de la maquinaria, r
 - **Nombre y apellidos:** Stephano Mendoza
 - **Edad:** 34 años
 - **Ocupación:** Encargado de operaciones en un pequeño negocio de alquiler de maquinaria
-- **Distrito:**
-- **Duración:**
+- **Distrito:** San Juan de Lurigancho
 - **Timing en el video:**
-- **URL del video:**
 
 **Captura de la entrevista:**
 
@@ -482,25 +478,37 @@ Sus principales prioridades son mantener las máquinas operativas, cumplir con l
 
 Entre las herramientas digitales que utiliza con mayor frecuencia se encuentran WhatsApp, Excel, Gmail, Google Maps, páginas web de proveedores y Facebook Marketplace.
 
+##### Entrevista 3
+
+- **Nombre y apellidos:** Andrea Lopez
+- **Edad:** 40 años
+- **Ocupación:** Administradora de una empresa familiar de alquiler de maquinaria
+- **Distrito:** Surco
+- **Timing en el video:**
+
 ### 2.2.3 Análisis de entrevistas
 
 #### Análisis preliminar del Segmento 1
 
-A partir de las dos entrevistas realizadas hasta el momento a representantes del primer segmento objetivo, se identificaron algunas coincidencias relacionadas con sus hábitos de trabajo, principales dificultades y expectativas frente a una plataforma digital para la gestión y alquiler de maquinaria.
+El Segmento 1 está compuesto por propietarios y administradores de pequeñas empresas de alquiler de maquinaria, quienes tienen la responsabilidad de coordinar la disponibilidad de equipos, atender solicitudes de clientes, gestionar reservas y supervisar el mantenimiento.
 
-El 100% de los entrevistados utiliza WhatsApp como una de sus principales herramientas de comunicación y coordinación laboral. Asimismo, ambos utilizan Excel para llevar determinados registros y Google Chrome como navegador frecuente.
+El proceso actual suele depender de herramientas independientes como WhatsApp, llamadas telefónicas, hojas de cálculo y registros manuales. Esto provoca que la información se encuentre dispersa y que los responsables tengan que consultar varias fuentes antes de confirmar un alquiler.
 
-En relación con el proceso de alquiler, el 100% de los entrevistados manifestó haber experimentado dificultades relacionadas con la disponibilidad real de las máquinas. Ambos señalaron situaciones en las que un equipo aparentemente disponible finalmente no podía ser utilizado debido a una reserva previa o mantenimiento.
+Los principales problemas identificados en este segmento son el cruce de reservas, la dificultad para conocer la disponibilidad real de la maquinaria, la falta de información actualizada sobre mantenimiento y la pérdida de tiempo al buscar información entre diferentes medios. También existe el riesgo de comprometer un equipo que ya está reservado o fuera de servicio.
 
-También se identificaron problemas relacionados con la transparencia de los precios. El 100% de los entrevistados mencionó que los costos pueden no estar completamente claros desde el inicio, ya sea por conceptos adicionales como transporte o combustible, o por variaciones asociadas al tiempo de uso.
+A partir de estas necesidades, el segmento requiere principalmente una solución que permita centralizar la gestión de la flota. Las funcionalidades de mayor valor serían un calendario de disponibilidad, control de reservas, seguimiento del mantenimiento, registro del estado de los equipos y acceso rápido a la información de cada alquiler.
 
-Respecto a las fallas mecánicas, el 100% indicó haber enfrentado situaciones en las que una avería generó retrasos, pérdida de tiempo y costos adicionales.
+Otro aspecto relevante es la movilidad. Debido a que administradores y propietarios pueden atender el negocio fuera de una oficina, el acceso desde teléfonos móviles resulta importante. Por ello, MaquiControl debe ofrecer una interfaz responsive que permita consultar y actualizar información desde diferentes dispositivos.
 
-En cuanto a sus expectativas sobre una plataforma digital, ambos entrevistados consideran importante disponer de información actualizada sobre disponibilidad, precios, estado de la maquinaria y confirmación de las reservas.
+También se observa que la facilidad de uso puede ser determinante para la adopción. Estos usuarios no necesariamente buscan un sistema complejo, sino una herramienta que reduzca pasos, presente la información de manera clara y sustituya parte de la coordinación manual que actualmente realizan por WhatsApp y Excel.
 
-Finalmente, las principales prioridades identificadas están relacionadas con mantener la maquinaria operativa, cumplir con los tiempos acordados y reducir retrasos y costos innecesarios.
+En consecuencia, la principal oportunidad para MaquiControl dentro de este segmento consiste en ofrecer un punto único de control de la operación, permitiendo conocer rápidamente qué maquinaria está disponible, reservada o en mantenimiento y mantener un registro organizado de las operaciones.
 
-Este análisis es preliminar y deberá actualizarse cuando se incorporen las demás entrevistas del segmento.
+Principales necesidades detectadas: disponibilidad de maquinaria en tiempo real, prevención de conflictos entre reservas, control de mantenimiento, centralización de información, acceso desde dispositivos móviles y una interfaz sencilla.
+
+Pain points principales: información dispersa, actualizaciones manuales, errores de coordinación, demora al responder a clientes, riesgo de reservas duplicadas y dificultad para conocer el estado real de los equipos.
+
+Oportunidad para MaquiControl: reducir la dependencia de hojas de cálculo y conversaciones dispersas mediante una plataforma centralizada que permita administrar la flota, las reservas y el mantenimiento de forma más organizada.
 
 ## 2.3 Needfinding
 
