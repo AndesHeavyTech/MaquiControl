@@ -621,28 +621,31 @@ A continuación se presentan los Empathy Mapping de los segmentos objetivos de M
 
 #### Segmento 1: Propietarios y administradores de empresas de alquiler de maquinaria
 
-![Empathy Map - José Ramírez](./assets/empathy-map-segmento-1.png)
+![Empathy Map - José Ramírez](https://drive.google.com/uc?export=view&id=1pwAa0wCpq-W-01Uz8ZOW4G1VeRC9uvxH)
 
-* **¿Qué piensa y siente?:** Piensa en cómo optimizar la disponibilidad de su flota sin arriesgar clientes. Siente preocupación por perder reputación comercial ante errores de coordinación y tranquilidad cuando mantiene el control de sus equipos.
-* **¿Qué ve?:** Ve falta de información transparente sobre la disponibilidad real de máquinas, comprobantes emitidos de forma manual y revisiones constantes en cuadernos o archivos de Excel.
-* **¿Qué escucha?:** Escucha recomendaciones de colegas sobre herramientas digitales, alertas del gremio sobre impagos y quejas de clientes por retrasos en la entrega de maquinaria.
-* **¿Qué dice y hace?:** Expresa que "una máquina disponible no siempre significa que realmente lo esté". Revisa manualmente sus registros antes de confirmar una reserva y coordina detalles vía llamadas y WhatsApp.
-* **Ganancias:** Contar con disponibilidad garantizada en tiempo real, historial visible de mantenimientos y la emisión automática de comprobantes de reserva.
-* **Dolores:** Cruces involuntarios de reservas (doble reserva), fallas mecánicas inesperadas en obra y falta de transparencia frente a los clientes.
+| Cuadrante | Descripción y Hallazgos Clave |
+| :--- | :--- |
+| **¿Qué piensa y siente?** | Piensa en cómo optimizar la disponibilidad de su flota sin arriesgar clientes. Siente preocupación por perder reputación comercial ante errores de coordinación y tranquilidad cuando mantiene el control de sus equipos. |
+| **¿Qué ve?** | Ve falta de información transparente sobre la disponibilidad real de máquinas, comprobantes emitidos de forma manual y revisiones constantes en cuadernos o archivos de Excel. |
+| **¿Qué escucha?** | Escucha recomendaciones de colegas sobre herramientas digitales, alertas del gremio sobre impagos y quejas de clientes por retrasos en la entrega de maquinaria. |
+| **¿Qué dice y hace?** | Expresa que "una máquina disponible no siempre significa que realmente lo esté". Revisa manualmente sus registros antes de confirmar una reserva y coordina detalles vía llamadas y WhatsApp. |
+| **Ganancias (Gains)** | Contar con disponibilidad garantizada en tiempo real, historial visible de mantenimientos y la emisión automática de comprobantes de reserva. |
+| **Dolores (Pains)** | Cruces involuntarios de reservas (doble reserva), fallas mecánicas inesperadas en obra y falta de transparencia frente a los clientes. |
 
 ---
 
 #### Segmento 2: Contratistas independientes y responsables de obras de construcción
 
-![Empathy Map - Harold Angello](./assets/empathy-map-segmento-2.png)
+![Empathy Map - Harold Angello](https://drive.google.com/uc?export=view&id=1pwAa0wCpq-W-01Uz8ZOW4G1VeRC9uvxH)
 
-* **¿Qué piensa y siente?:** Piensa en cómo coordinar la logística de sus 2 a 3 obras simultáneas sin paradas. Siente frustración por la doble reserva de equipos y ansiedad por no retrasar los plazos acordados con los clientes.
-* **¿Qué ve?:** Ve paradas de obra por averías mecánicas imprevistas, falta de transparencia en las tarifas finales y reportes diarios de horas recibidos por WhatsApp.
-* **¿Qué escucha?:** Escucha recomendaciones de proveedores en grupos de WhatsApp de ingenieros, promesas incumplidas de stock por parte de alquiladores y reclamos por retrasos en obra.
-* **¿Qué dice y hace?:** Exige visibilidad de todos sus equipos en un solo lugar centralizado. Cotiza proveedores por Google o WhatsApp y transcribe reportes de horas a hojas de Excel en su laptop.
-* **Ganancias:** Disponibilidad garantizada en tiempo real, cumplimiento estricto de los plazos de entrega y supervisión centralizada multi-obra de alquileres y costos.
-* **Dolores:** Doble reserva de maquinaria por proveedores poco éticos, paradas de obra por fallas mecánicas y dispersión de datos entre múltiples chats de WhatsApp y hojas de cálculo.
-
+| Cuadrante | Descripción y Hallazgos Clave |
+| :--- | :--- |
+| **¿Qué piensa y siente?** | Piensa en cómo coordinar la logística de sus 2 a 3 obras simultáneas sin paradas. Siente frustración por la doble reserva de equipos y ansiedad por no retrasar los plazos acordados con los clientes. |
+| **¿Qué ve?** | Ve paradas de obra por averías mecánicas imprevistas, falta de transparencia en las tarifas finales y reportes diarios de horas recibidos por WhatsApp. |
+| **¿Qué escucha?** | Escucha recomendaciones de proveedores en grupos de WhatsApp de ingenieros, promesas incumplidas de stock por parte de alquiladores y reclamos por retrasos en obra. |
+| **¿Qué dice y hace?** | Exige visibilidad de todos sus equipos en un solo lugar centralizado. Cotiza proveedores por Google o WhatsApp y transcribe reportes de horas a hojas de Excel en su laptop. |
+| **Ganancias (Gains)** | Disponibilidad garantizada en tiempo real, cumplimiento estricto de los plazos de entrega y supervisión centralizada multi-obra de alquileres y costos. |
+| **Dolores (Pains)** | Doble reserva de maquinaria por proveedores poco éticos, paradas de obra por fallas mecánicas y dispersión de datos entre múltiples chats de WhatsApp y hojas de cálculo. |
 ## 2.4 Big Picture Event Storming
 
 ## 2.5 Ubiquitous Language
