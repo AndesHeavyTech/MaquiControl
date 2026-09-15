@@ -1,4 +1,4 @@
-# GRUPO-3
+# GRUPO-3 AndesHeavyTech
 
 <p align="center">
   <img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/2c3d0613-f51e-47d7-bd82-439b78384731" />
@@ -18,7 +18,8 @@
 # INFORME DE PROYECTO
 
 ## Nombre del proyecto
-### ****
+### MaquiControl
+
 
 <br>
 
@@ -37,7 +38,7 @@ Desarrollo de Aplicaciones Open Source
 | NICOLAS TANTALEAN GRANDA | U202410728 |
 | WILMER SEBASTIAN GUTIERREZ LIZARBE| U202412044 |
 | MATHIAS ALEJANDRO CASTILLO GUEVARA | U202410783 |
-| CARLOS GABRIEL CESPEDES LEZCANO | U22416147 |
+| CARLOS GABRIEL CESPEDES LEZCANO | U202416147 |
 
 <br>
 
@@ -182,18 +183,18 @@ Efrain Ricardo Bautista Ubillus
 # Capítulo I: Introducción
 
 ## 1.1 Startup Profile
-Esta sección presenta el perfil de HeavyMach, la startup responsable del desarrollo de MaquiControl. Se describe su propósito, enfoque de negocio y propuesta de valor dentro del sector de alquiler y gestión de maquinaria pesada, así como los perfiles de los integrantes que participan en el desarrollo del proyecto.
+Esta sección presenta el perfil de AndesHeavyTech, la startup responsable del desarrollo de MaquiControl. Se describe su propósito, enfoque de negocio y propuesta de valor dentro del sector de alquiler y gestión de maquinaria pesada, así como los perfiles de los integrantes que participan en el desarrollo del proyecto.
 
 ### 1.1.1 Descripción de la Startup
-HeavyMach tiene como objetivo transformar digitalmente la gestión, contratación y supervisión del alquiler de maquinaria pesada en las industrias de la construcción, minería e infraestructura, abarcando actividades desde la reserva de equipos y programación de mantenimientos hasta la emisión automatizada de comprobantes de pago. A través de su plataforma principal, HeavyMach permite a las empresas proveedoras y contratistas organizar de forma centralizada sus solicitudes de alquiler, asignar maquinaria y operadores de manera eficiente, y monitorear el estado operativo y financiero de sus flotas en tiempo real.
+AndesHeavyTech tiene como objetivo transformar digitalmente la gestión, contratación y supervisión del alquiler de maquinaria pesada en las industrias de la construcción, minería e infraestructura, abarcando actividades desde la reserva de equipos y programación de mantenimientos hasta la emisión automatizada de comprobantes de pago. A través de su plataforma principal, AndesHeavyTech permite a las empresas proveedoras y contratistas organizar de forma centralizada sus solicitudes de alquiler, asignar maquinaria y operadores de manera eficiente, y monitorear el estado operativo y financiero de sus flotas en tiempo real.
 
-La solución busca resolver la falta de trazabilidad, la informalidad en la disponibilidad de equipos y los retrasos en los procesos administrativos en entornos donde las operaciones de obra deben adaptarse a cronogramas exigentes. Para ello, HeavyMach integra funcionalidades de catálogo dinámico con disponibilidad en tiempo real, programación de mantenimientos preventivos y correctivos, alertas automáticas de estado de máquina y emisión instantánea de facturación electrónica integrada a los estándares tributarios de SUNAT.
+La solución busca resolver la falta de trazabilidad, la informalidad en la disponibilidad de equipos y los retrasos en los procesos administrativos en entornos donde las operaciones de obra deben adaptarse a cronogramas exigentes. Para ello, AndesHeavyTech integra funcionalidades de catálogo dinámico con disponibilidad en tiempo real, programación de mantenimientos preventivos y correctivos, alertas automáticas de estado de máquina y emisión instantánea de facturación electrónica integrada a los estándares tributarios de SUNAT.
 
 Una de las principales fortalezas del sistema es su capacidad para adaptarse a la realidad operativa del sector industrial: contempla la sincronización de datos entre personal de campo y administradores, la gestión transparente de valorizaciones por horas trabajadas, y dashboards especializados que reflejan el rendimiento de la flota y el cumplimiento de contratos en tiempo real. Esta solución aporta un valor diferencial tanto para los gestores de flota que planifican como para los contratistas que requieren equipos garantizados en obra.
 
 **Misión:** Optimizar la comercialización, gestión operativa y trazabilidad tributaria del alquiler de maquinaria pesada mediante una plataforma inteligente, eficiente y adaptable a las necesidades del sector construcción e infraestructura.
 
-**Visión:** HeavyMach aspira a convertirse en la plataforma tecnológica preferida por empresas de alquiler de maquinaria y contratistas en Latinoamérica, facilitando operaciones más eficientes, transparentes y formalizadas a través de la innovación digital aplicada al sector industrial.
+**Visión:** AndesHeavyTech aspira a convertirse en la plataforma tecnológica preferida por empresas de alquiler de maquinaria y contratistas en Latinoamérica, facilitando operaciones más eficientes, transparentes y formalizadas a través de la innovación digital aplicada al sector industrial.
 
 ### 1.1.2 Perfiles de integrantes del equipo
 * **Wilmer Sebastián Gutiérrez Lizarbe**
@@ -217,7 +218,7 @@ Una de las principales fortalezas del sistema es su capacidad para adaptarse a l
     * **Perfil:** Estudiante de Ingeniería de Software con conocimientos en desarrollo web, incluyendo HTML, CSS y JavaScript, tambien lenguajes de programación como  C++ y Python. Aportare al equipo conocimientos sobre tecnologias y desarrollo web.
 
 ### 1.2 Solution Profile
-Esta sección describe la problemática que MaquiControl busca resolver y la propuesta de solución planteada por HeavyMach. Se analizan las principales dificultades relacionadas con el alquiler, control y disponibilidad de maquinaria pesada, y se aplica el proceso Lean UX para definir las necesidades, supuestos e hipótesis que orientan el desarrollo del producto.
+Esta sección describe la problemática que MaquiControl busca resolver y la propuesta de solución planteada por AndesHeavyTech. Se analizan las principales dificultades relacionadas con el alquiler, control y disponibilidad de maquinaria pesada, y se aplica el proceso Lean UX para definir las necesidades, supuestos e hipótesis que orientan el desarrollo del producto.
 
 ### 1.2.1 Antecedentes y problemática
 En esta sección se presentan los antecedentes del sector de alquiler y gestión de maquinaria pesada, así como las principales dificultades que enfrentan los actores involucrados en este proceso. Se analizan problemas relacionados con la disponibilidad de equipos, la coordinación de alquileres, el seguimiento de mantenimientos, la comunicación entre proveedores y clientes, y la falta de información centralizada. A partir de estas limitaciones se establece la problemática que MaquiControl busca abordar mediante una solución digital orientada a mejorar la organización, trazabilidad y eficiencia de las operaciones.
@@ -363,7 +364,7 @@ En esta sección se identifican y describen los principales competidores de Maqu
 **¿Por qué llevar a cabo este análisis?**  
 *¿De qué manera MaquiControl puede diferenciarse de las soluciones de alquiler de maquinaria pesada locales e internacionales mediante una plataforma SaaS integral que unifique la gestión operativa de flota, la programación preventiva de mantenimientos y la facturación electrónica instantánea compatible con SUNAT?*
 
-| Sección | Criterio / Perfil | Su startup: **MaquiControl (HeavyMach)** | Competidor 1: **RentaFacil / Portales Locales** | Competidor 2: **EquipmentShare** | Competidor 3: **Gestión Manual / Excel** |
+| Sección | Criterio / Perfil | Su startup: **MaquiControl (AndesHeavyTech)** | Competidor 1: **RentaFacil / Portales Locales** | Competidor 2: **EquipmentShare** | Competidor 3: **Gestión Manual / Excel** |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | **Perfil** | **Overview** | Plataforma SaaS integral para la gestión, reserva, mantenimiento preventivo y facturación electrónica de maquinaria pesada. | Portales web de directorio, anuncios clasificados y empresas tradicionales de alquiler local. | Plataforma internacional avanzada de telemetría, rastreo GPS y gestión de flota para construcción. | Control interno informal ejecutado en hojas de cálculo, cuadernos y mensajería instantánea. |
 | **Perfil** | **Ventaja competitiva / ¿Qué valor ofrece a los clientes?** | Unificación en un solo flujo digital del alquiler, control técnico de mantenimiento y emisión automática de facturas SUNAT. Transparencia y eliminación de tiempos muertos. | Presencia local previa y red de contactos directos. Contacto rápido vía telefónica o WhatsApp para cotizaciones puntuales. | Telemetría IoT avanzada y alta escala internacional. Control preciso de activos mediante hardware especializado y sensores en tiempo real. | Cero costo directo de software e implementación inmediata. Flexibilidad absoluta en la anotación empírica de datos. |
@@ -395,7 +396,7 @@ A partir del análisis FODA cruzado, MaquiControl aplicará las siguientes estra
 En esta sección se desarrolla el proceso de recolección de información mediante entrevistas dirigidas a representantes de los segmentos objetivo definidos para MaquiControl. El propósito es conocer sus experiencias, necesidades, problemas y comportamientos relacionados con el alquiler y gestión de maquinaria, de modo que los hallazgos obtenidos sirvan como base para el análisis de requerimientos y la posterior construcción de los User Personas y demás artefactos de Needfinding.
 
 ### 2.2.1 Diseño de entrevistas
-Para la recolección de requerimientos se diseñaron guías de entrevista breves y estructuradas de 5 preguntas clave por segmento objetivo. Estas combinan datos demográficos/tecnológicos para el perfilamiento de arquetipos (*User Personas*) con preguntas profundas sobre la problemática operativa y de negocio.
+Para la recolección de requerimientos se diseñaron guías de entrevista breves y estructuradas de 8 preguntas clave por segmento objetivo. Estas combinan datos demográficos/tecnológicos para el perfilamiento de arquetipos (*User Personas*) con preguntas profundas sobre la problemática operativa y de negocio.
 
 ### Segmento 1: Propietarios y administradores de empresas de alquiler de maquinaria
 
@@ -598,7 +599,7 @@ Harold Angello representa al contratista responsable de pequeñas obras que nece
 | Emitir o recibir comprobantes/facturas del servicio | Media | Media | Baja | Media |
 | Buscar referencias o recomendaciones de proveedores | Baja | Media | Media | Alta |
 
-**Análisis:** la tarea con mayor frecuencia e importancia compartida por ambos User Persona es **verificar la disponibilidad real de la maquinaria**, lo cual confirma que la disponibilidad poco confiable es el dolor central identificado en ambos segmentos. José Ramírez, al administrar la flota, prioriza con mayor frecuencia e importancia el control del mantenimiento, tarea que para Renzo Huamán es secundaria, pues él consume el servicio en vez de administrarlo. En cambio, Renzo le da mayor peso a cotizar y comparar precios y a buscar recomendaciones, dado que su rol implica seleccionar proveedores para cada nueva obra. Ambos coinciden en la relevancia alta de gestionar imprevistos por fallas mecánicas, reflejando que este riesgo operativo afecta a toda la cadena, tanto a quien alquila como a quien administra la flota.
+**Análisis:** la tarea con mayor frecuencia e importancia compartida por ambos User Persona es **verificar la disponibilidad real de la maquinaria**, lo cual confirma que la disponibilidad poco confiable es el dolor central identificado en ambos segmentos Luis Herrera, al administrar la flota, prioriza con mayor frecuencia e importancia el control del mantenimiento, tarea que para Renzo Huamán es secundaria, pues él consume el servicio en vez de administrarlo. En cambio, Renzo le da mayor peso a cotizar y comparar precios y a buscar recomendaciones, dado que su rol implica seleccionar proveedores para cada nueva obra. Ambos coinciden en la relevancia alta de gestionar imprevistos por fallas mecánicas, reflejando que este riesgo operativo afecta a toda la cadena, tanto a quien alquila como a quien administra la flota.
 
 ### 2.3.3 User Journey Mapping
 
@@ -615,24 +616,16 @@ El siguiente User Journey Map representa el proceso actual seguido por Harold An
 
 A continuación se presentan los Empathy Mapping de los segmentos objetivos de MaquiControl.
 
-#### Segmento 1: Propietarios y administradores de empresas de alquiler de maquinaria
+### Segmento 1: Propietarios y administradores de pequeñas empresas de alquiler de maquinaria
 
-![Empathy Map - José Ramírez](https://drive.google.com/uc?export=view&id=1pwAa0wCpq-W-01Uz8ZOW4G1VeRC9uvxH)
+El siguiente Empathy Map representa a Luis Herrera, User Persona del Segmento 1. El artefacto sintetiza los principales comportamientos, necesidades, frustraciones, pensamientos y expectativas identificados a partir de las entrevistas realizadas a usuarios pertenecientes a este segmento.
 
-| Cuadrante | Descripción y Hallazgos Clave |
-| :--- | :--- |
-| **¿Qué piensa y siente?** | Piensa en cómo optimizar la disponibilidad de su flota sin arriesgar clientes. Siente preocupación por perder reputación comercial ante errores de coordinación y tranquilidad cuando mantiene el control de sus equipos. |
-| **¿Qué ve?** | Ve falta de información transparente sobre la disponibilidad real de máquinas, comprobantes emitidos de forma manual y revisiones constantes en cuadernos o archivos de Excel. |
-| **¿Qué escucha?** | Escucha recomendaciones de colegas sobre herramientas digitales, alertas del gremio sobre impagos y quejas de clientes por retrasos en la entrega de maquinaria. |
-| **¿Qué dice y hace?** | Expresa que "una máquina disponible no siempre significa que realmente lo esté". Revisa manualmente sus registros antes de confirmar una reserva y coordina detalles vía llamadas y WhatsApp. |
-| **Ganancias (Gains)** | Contar con disponibilidad garantizada en tiempo real, historial visible de mantenimientos y la emisión automática de comprobantes de reserva. |
-| **Dolores (Pains)** | Cruces involuntarios de reservas (doble reserva), fallas mecánicas inesperadas en obra y falta de transparencia frente a los clientes. |
-
----
+![Empathy Map - Luis Herrera](assets/empathy-map-luis-herrera.png)
 
 #### Segmento 2: Contratistas independientes y responsables de obras de construcción
 
 ![Empathy Map - Harold Angello](https://drive.google.com/uc?export=view&id=1xUHDVfrey9nS7Pa2JBtn1eJHNfApmlNr)
+
 | Cuadrante | Descripción y Hallazgos Clave |
 | :--- | :--- |
 | **¿Qué piensa y siente?** | Piensa en cómo coordinar la logística de sus 2 a 3 obras simultáneas sin paradas. Siente frustración por la doble reserva de equipos y ansiedad por no retrasar los plazos acordados con los clientes. |
@@ -643,7 +636,61 @@ A continuación se presentan los Empathy Mapping de los segmentos objetivos de M
 | **Dolores (Pains)** | Doble reserva de maquinaria por proveedores poco éticos, paradas de obra por fallas mecánicas y dispersión de datos entre múltiples chats de WhatsApp y hojas de cálculo. |
 ## 2.4 Big Picture Event Storming
 
+El Big Picture Event Storming de MaquiControl fue elaborado con el objetivo de representar de manera visual los principales procesos, eventos, actores, reglas de negocio y problemas identificados dentro del dominio de alquiler y gestión de maquinaria pesada. El análisis toma como base la problemática definida en el proyecto, las entrevistas realizadas, los User Personas, el User Task Matrix y los principales hallazgos del proceso de Needfinding.
+
+Durante la sesión se identificaron eventos relacionados con la búsqueda y disponibilidad de maquinaria, gestión de reservas, control de flota, mantenimiento, ejecución del servicio, validación de horas trabajadas, facturación electrónica, suscripciones, alertas operativas y visualización de información mediante dashboards.
+
+Asimismo, se identificaron hotspots relevantes como las reservas duplicadas, información de disponibilidad desactualizada, fallas mecánicas inesperadas, dispersión de información entre WhatsApp y Excel, discrepancias en el registro de horas trabajadas y retrasos en la facturación. Estos hallazgos permiten comprender el dominio de negocio a alto nivel y sirven como base para posteriores actividades de modelado mediante Domain-Driven Design.
+
+![Big Picture Event Storming 1 - MaquiControl](assets/big-picture-event-storming-1.jpg)
+![Big Picture Event Storming 2 - MaquiControl](assets/big-picture-event-storming-2.jpg)
+![Big Picture Event Storming 3 - MaquiControl](assets/big-picture-event-storming-3.jpg)
+![Big Picture Event Storming 4 - MaquiControl](assets/big-picture-event-storming-4.jpg)
+![Big Picture Event Storming 5 - MaquiControl](assets/big-picture-event-storming-5.jpg)
+![Big Picture Event Storming 6 - MaquiControl](assets/big-picture-event-storming-6.jpg)
+A partir del mapa se reconocen áreas de dominio candidatas como Discovery and Availability, Rental and Reservation Management, Fleet and Maintenance Management, Service Execution and Hour Control, Subscription Management, Billing and SUNAT Compliance, Operational Notifications y Dashboard and Analytics. Estas áreas todavía no representan Bounded Contexts definitivos, ya que su refinamiento se realizará posteriormente mediante Design-Level Event Storming.
+
 ## 2.5 Ubiquitous Language
+
+El Ubiquitous Language de MaquiControl reúne los principales términos utilizados dentro del dominio de alquiler y gestión de maquinaria. Su propósito es establecer un vocabulario común entre los miembros del equipo y los stakeholders, evitando ambigüedades durante el análisis, diseño y desarrollo de la solución.
+
+| Term | Definition |
+|------|------------|
+| **Machinery (Maquinaria)** | Equipo o máquina pesada utilizada para realizar trabajos de construcción, movimiento de tierra u otras actividades similares, y que puede ser ofrecida en alquiler. |
+| **Fleet (Flota)** | Conjunto de máquinas administradas por una empresa de alquiler de maquinaria. |
+| **Machinery Owner (Propietario de maquinaria)** | Persona o empresa responsable de una o más máquinas ofrecidas para alquiler. |
+| **Fleet Administrator (Administrador de flota)** | Persona encargada de supervisar la disponibilidad, reservas, estado operativo y mantenimiento de una flota de maquinaria. |
+| **Contractor (Contratista)** | Persona o empresa que requiere maquinaria para realizar trabajos o proyectos y que puede solicitar su alquiler. |
+| **Site Manager (Responsable de obra)** | Persona encargada de coordinar actividades en una obra y verificar los recursos necesarios, incluyendo maquinaria. |
+| **Machinery Catalog (Catálogo de maquinaria)** | Conjunto organizado de máquinas disponibles para consulta por parte de potenciales clientes. |
+| **Machinery Availability (Disponibilidad de maquinaria)** | Estado que indica si una máquina puede ser alquilada durante un periodo determinado. |
+| **Rental Request (Solicitud de alquiler)** | Solicitud realizada por un contratista para alquilar una maquinaria específica en determinadas fechas. |
+| **Quotation (Cotización)** | Propuesta que contiene las condiciones y el costo estimado de un alquiler de maquinaria. |
+| **Reservation (Reserva)** | Confirmación anticipada mediante la cual una maquinaria queda separada para un cliente y periodo determinados. |
+| **Rental (Alquiler)** | Acuerdo mediante el cual una maquinaria es utilizada por un cliente durante un periodo determinado a cambio de un pago. |
+| **Rental Period (Periodo de alquiler)** | Intervalo de tiempo durante el cual una maquinaria permanece asignada a un alquiler. |
+| **Rental Rate (Tarifa de alquiler)** | Precio establecido para el uso de una maquinaria durante un periodo o cantidad de horas determinada. |
+| **Machinery Assignment (Asignación de maquinaria)** | Asociación de una maquinaria específica con un servicio o alquiler confirmado. |
+| **Service Execution (Ejecución del servicio)** | Periodo durante el cual la maquinaria se encuentra trabajando para el contratista según las condiciones acordadas. |
+| **Worked Hours (Horas trabajadas)** | Cantidad de horas efectivas durante las cuales una maquinaria ha sido utilizada en un servicio. |
+| **Hour Validation (Validación de horas)** | Proceso mediante el cual se verifica que las horas registradas de uso de la maquinaria sean correctas antes del cierre del servicio. |
+| **Machinery Status (Estado de maquinaria)** | Condición actual de una máquina, por ejemplo disponible, reservada, alquilada o en mantenimiento. |
+| **Maintenance (Mantenimiento)** | Actividades preventivas o correctivas realizadas para conservar o recuperar el estado operativo de una maquinaria. |
+| **Maintenance Schedule (Programa de mantenimiento)** | Planificación de las fechas o periodos en los que una maquinaria debe recibir mantenimiento. |
+| **Mechanical Failure (Falla mecánica)** | Problema técnico que impide o limita el funcionamiento normal de una maquinaria. |
+| **Maintenance Record (Registro de mantenimiento)** | Historial de intervenciones, reparaciones y mantenimientos realizados a una maquinaria. |
+| **Machinery Return (Devolución de maquinaria)** | Proceso mediante el cual la maquinaria es entregada al propietario después de finalizar el alquiler. |
+| **Rental Closure (Cierre de alquiler)** | Finalización formal de un alquiler después de la devolución de la maquinaria, validación de horas y cálculo del monto correspondiente. |
+| **Rental Amount (Monto de alquiler)** | Importe económico calculado por el uso de una maquinaria durante el periodo contratado. |
+| **Electronic Invoice (Factura electrónica)** | Comprobante electrónico emitido como resultado de una operación de alquiler. |
+| **Subscription Plan (Plan de suscripción)** | Modalidad de pago mediante la cual una empresa accede a determinadas funcionalidades y capacidades de MaquiControl. |
+| **Essential Plan** | Plan de suscripción orientado a pequeños negocios que administran hasta 5 máquinas. |
+| **Pro Plan** | Plan de suscripción orientado a negocios en crecimiento que administran hasta 20 máquinas. |
+| **Subscription (Suscripción)** | Relación comercial mediante la cual un usuario mantiene acceso a MaquiControl de acuerdo con un plan contratado. |
+| **Service Commission (Comisión de servicio)** | Importe asociado a una operación de alquiler que puede formar parte del modelo de ingresos de MaquiControl. |
+| **Operational Alert (Alerta operativa)** | Aviso generado ante cambios relevantes como reservas, mantenimiento, disponibilidad o estado de una máquina. |
+| **Operational Dashboard (Panel operativo)** | Vista consolidada que permite conocer el estado de la flota, reservas, alquileres y principales indicadores operativos. |
+| **Double Booking (Reserva duplicada)** | Situación no deseada en la que una misma maquinaria es reservada para periodos que se superponen. |
 
 # Capítulo III: Requirements Specification
 
