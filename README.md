@@ -524,6 +524,22 @@ Actualmente, los encargados de cada obra reportan las horas trabajadas por Whats
 
 Sus principales prioridades son evitar que las obras se detengan por falta de maquinaria y cumplir los plazos comprometidos con sus clientes. Sus mayores frustraciones son las dobles reservas, las fallas mecánicas y la falta de visibilidad centralizada de sus equipos. Utiliza WhatsApp, Gmail, Google Calendar y Microsoft Excel como herramientas de trabajo.
 
+##### Entrevista 2
+
+- **Nombre y apellidos:** Renzo Huamán
+- **Edad:** 38 años
+- **Ocupación:** contratista independiente
+- **Obras supervisadas:** Entre 2 y 3 obras simultáneamente
+- **Dispositivos y navegador:** Celular y laptop con google en la oficina, ademas de exel.
+
+**Resumen de la entrevista:**
+
+Renzo Huamán es un contratista de 38 años con formación en construcción civil, habituado a operar con su teléfono en obra y una laptop en oficina. Para sus tareas diarias se apoya en WhatsApp, Facebook, Google Maps y Excel, gestionando sus proyectos con el objetivo principal de evitar tiempos muertos, controlar los costos y cumplir estrictamente los cronogramas pactados con sus clientes.
+
+Al buscar maquinaria, prioriza las recomendaciones de colegas sobre las búsquedas en internet, pero enfrenta constantes fricciones con los proveedores tradicionales. Sus mayores frustraciones radican en la falta de transparencia en las tarifas —con cargos imprevistos de flete u operador—, la falsa disponibilidad que deja la obra sin equipo, y las averías mecánicas que paralizan la jornada generando sobrecostos por mano de obra inactiva.
+
+Para solucionar estos problemas y reemplazar el control manual que lleva en su cuaderno de obra, Renzo adoptaría una plataforma digital siempre que ofrezca precios finales transparentes por hora, garantía de disponibilidad en tiempo real y un comprobante formal que respalde cada reserva.
+
 ### 2.2.3 Análisis de entrevistas
 
 #### Análisis preliminar del Segmento 1
@@ -554,6 +570,11 @@ La entrevista realizada evidencia que los contratistas y responsables de obra ne
 
 También se identificó la necesidad de registrar y validar las horas trabajadas de cada equipo, actualmente reportadas de forma manual mediante WhatsApp. Por ello, una plataforma digital debe permitir consultar reservas, disponibilidad, estado de la maquinaria y horas trabajadas desde un único panel.
 
+Principales necesidades detectadas: visibilidad centralizada de reservas y equipos en múltiples obras simultáneas, confirmación confiable de disponibilidad, registro digital de horas trabajadas y acceso desde dispositivos móviles.
+
+Pain points principales: dobles reservas por parte de proveedores, paradas de obra por fallas mecánicas imprevistas, y dispersión de la información de horas trabajadas entre distintos chats de WhatsApp.
+
+Oportunidad para MaquiControl: ofrecer un panel único donde el contratista pueda supervisar el estado de reservas, disponibilidad y avance de maquinaria en todas sus obras a la vez, reduciendo la dependencia de coordinación manual por WhatsApp.
 
 ## 2.3 Needfinding
 
@@ -584,6 +605,11 @@ A partir de la entrevista realizada a Harold Angello, se identificaron necesidad
 Harold Angello representa al contratista responsable de pequeñas obras que necesita asegurar maquinaria disponible y mantener el control operativo de sus proyectos.
 
 ![User Persona - Harold Angello](https://drive.google.com/uc?export=view&id=1upOL-SUfHb9zqnYesjOgERQdI3wfDt0F)
+
+##### Renzo Huaman
+Renzo Huamán representa al contratista independiente que supervisa varias obras y requiere información confiable sobre disponibilidad de maquinaria, tarifas transparentes y registro digital de horas trabajadas.
+
+![User Persona - Renzo Huamán](assets/user-persona-renzo-huaman.png)
 
 ### 2.3.2 User Task Matrix
 
