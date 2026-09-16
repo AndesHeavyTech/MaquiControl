@@ -35,6 +35,7 @@ Desarrollo de Aplicaciones Open Source
 
 | Integrante | Código |
 |---|---|
+| ANGIELA STEPHANY FUENTES ALVAREZ | U202520331 |
 | NICOLAS TANTALEAN GRANDA | U202410728 |
 | WILMER SEBASTIAN GUTIERREZ LIZARBE| U202412044 |
 | MATHIAS ALEJANDRO CASTILLO GUEVARA | U202410783 |
@@ -54,19 +55,32 @@ Efrain Ricardo Bautista Ubillus
 
 **Lima, Perú**  
 **2026**
+</div>
+
 ## Tabla de Contenidos
 
 <details>
 <summary><strong>Capítulo I: Introducción</strong></summary>
 
 - [1.1. Startup Profile](#11-startup-profile)
-    - [1.1.1. Descripción de la Startup](#111-descripción-de-la-startup)
-    - [1.1.2. Perfiles de integrantes del equipo](#112-perfiles-de-integrantes-del-equipo)
+  - [1.1.1. Descripción de la Startup](#111-descripción-de-la-startup)
+  - [1.1.2. Perfiles de integrantes del equipo](#112-perfiles-de-integrantes-del-equipo)
+
 - [1.2. Solution Profile](#12-solution-profile)
-    - [1.2.1. Antecedentes y problemática](#121-antecedentes-y-problemática)
-        - [What](#1211-what) · [Who](#1212-who) · [Where](#1213-where) · [When](#1214-when) · [Why](#1215-why) · [How](#1216-how) · [How Much](#1217-how-much)
-    - [1.2.2. Lean UX Process](#122-lean-ux-process)
-        - [Problem Statements](#1221-lean-ux-problem-statements) · [Assumptions](#1222-lean-ux-assumptions) · [Hypothesis Statements](#1223-lean-ux-hypothesis-statements) · [Lean UX Canvas](#1224-lean-ux-canvas)
+  - [1.2.1. Antecedentes y problemática](#121-antecedentes-y-problemática)
+    - [1.2.1.1. What](#1211-what)
+    - [1.2.1.2. Who](#1212-who)
+    - [1.2.1.3. Where](#1213-where)
+    - [1.2.1.4. When](#1214-when)
+    - [1.2.1.5. Why](#1215-why)
+    - [1.2.1.6. How](#1216-how)
+    - [1.2.1.7. How Much](#1217-how-much)
+
+  - [1.2.2. Lean UX Process](#122-lean-ux-process)
+  - [1.2.2.1. Lean UX Problem Statements](#1221-lean-ux-problem-statements)
+  - [1.2.2.2. Lean UX Assumptions](#1222-lean-ux-assumptions)
+  - [1.2.2.3. Lean UX Hypothesis Statements](#1223-lean-ux-hypothesis-statements)
+  - [1.2.2.4. Lean UX Canvas](#1224-lean-ux-canvas)
 - [1.3. Segmentos objetivo](#13-segmentos-objetivo)
 
 </details>
@@ -180,6 +194,18 @@ Efrain Ricardo Bautista Ubillus
 
 ## Student Outcome
 
+El curso contribuye al cumplimiento del Student Outcome ABET:
+**ABET – EAC - Student Outcome 3**
+
+**Criterio:** Capacidad de comunicarse efectivamente con un rango de audiencias.
+
+En el siguiente cuadro se describe las acciones realizadas y enunciados de conclusiones por parte del grupo, que permiten sustentar el haber alcanzado el logro del ABET – EAC - Student Outcome 3.
+
+| **Criterio específico** | **Acciones realizadas** | **Conclusiones** |
+| :--- | :--- | :--- |
+| **Comunica oralmente con efectividad a diferentes rangos de audiencia.** | **Fuentes Alvarez, Angiela Stephany**<br>**AV1**<br>[Avance AV1]<br><br>**Tantalean Granda, Nicolas**<br>**AV1**<br>[Avance AV1]<br><br>**Gutierrez Lizarbe, Wilmer Sebastian**<br>**AV1**<br>[Avance AV1]<br><br>**Castillo Guevara, Mathias Alejandro**<br>**AV1**<br>[Avance AV1]<br><br>**Cespedes Lezcano, Carlos Gabriel**<br>**AV1**<br>[Avance AV1] | **AV1:** [Conclusión AV1] |
+| **Comunica por escrito con efectividad a diferentes rangos de audiencia.** | **Fuentes Alvarez, Angiela Stephany**<br>**AV1**<br>[Avance AV1]<br><br>**Tantalean Granda, Nicolas**<br>**AV1**<br>[Avance AV1]<br><br>**Gutierrez Lizarbe, Wilmer Sebastian**<br>**AV1**<br>[Avance AV1]<br><br>**Castillo Guevara, Mathias Alejandro**<br>**AV1**<br>[Avance AV1]<br><br>**Cespedes Lezcano, Carlos Gabriel**<br>**AV1**<br>[Avance AV1] | **AV1:** [Conclusión AV1] |
+
 # Capítulo I: Introducción
 
 ## 1.1 Startup Profile
@@ -196,26 +222,15 @@ Una de las principales fortalezas del sistema es su capacidad para adaptarse a l
 
 **Visión:** AndesHeavyTech aspira a convertirse en la plataforma tecnológica preferida por empresas de alquiler de maquinaria y contratistas en Latinoamérica, facilitando operaciones más eficientes, transparentes y formalizadas a través de la innovación digital aplicada al sector industrial.
 
-### 1.1.2 Perfiles de integrantes del equipo
-* **Wilmer Sebastián Gutiérrez Lizarbe**
-    * **Código:** U202412044
-    * **Carrera:** Ingeniería de Software (5.º ciclo)
-    * **Perfil:** Estudiante de Ingeniería de Software con conocimientos en desarrollo web (HTML5, CSS3, JavaScript/TypeScript, Angular), arquitectura backend (Java, Spring Boot) y gestión de bases de datos relacionales y no relacionales. Aporta al equipo capacidad analítica para el diseño de arquitecturas distribuidas, integración de APIs RESTful y lógica de negocio orientada a procesos industriales.
+### 1.1.2. Perfiles de integrantes del equipo
 
-*  **Carlos Gabriel Cespedes Lezcano**
-    * **Codigo:** U202416147
-    * **Carrea:** Ingeniería de Software (6.º ciclo)
-    * **Perfil:** Estudiante de Ingeniería de Software con conocimientos en desarrollo web, incluyendo HTML, CSS y JavaScript, así como en los lenguajes de programación C++ y Python. Cuenta con nociones básicas sobre el consumo de APIs y el manejo de bases de datos, tanto relacionales como no relacionales.
-
-* **Nicolas Tantalean Granda**
-    * **Codigo:** U202410728
-    * **Carrea:** Ingeniería de Software (5.º ciclo)
-    * **Perfil:** Estudiante de Ingeniería de Software con conocimientos en desarrollo web, incluyendo HTML, CSS y JavaScript, así como en los lenguajes de programación C++ y Python. Aportare conocimientos al equipo sobre los lenguajes de programacion.
-
-* **Mathias Alejandro Castillo Guevara**
-    * **Codigo:** U202410783
-    * **Carrea:** Ingeniería de Software (5.º ciclo)
-    * **Perfil:** Estudiante de Ingeniería de Software con conocimientos en desarrollo web, incluyendo HTML, CSS y JavaScript, tambien lenguajes de programación como  C++ y Python. Aportare al equipo conocimientos sobre tecnologias y desarrollo web.
+| Foto | Apellido y Nombre |
+| --- | --- |
+| ![foto-angiela](assets/images/chapter-1/profiles/Angiela.jpeg) | **Fuentes Alvarez, Angiela Stephany**<br> **Código: U202520331** \| **Carrera: Ingeniería de Software**<br>*Resumen:* Estudiante de Ingeniería de Software con interés en el análisis de requerimientos, diseño de soluciones tecnológicas y experiencia de usuario. Cuenta con conocimientos en desarrollo de software y herramientas de colaboración para proyectos tecnológicos. Se caracteriza por ser una persona organizada, responsable y comprometida con el trabajo en equipo, con disposición para aprender nuevas tecnologías y adaptarse a diferentes herramientas y procesos de desarrollo. |
+| ![foto-wilmer](assets/images/chapter-1/profiles/Wilmer.png) | **Gutiérrez Lizarbe, Wilmer Sebastián**<br> **Código: U202412044** \| **Carrera: Ingeniería de Software**<br>*Resumen:* Estudiante de Ingeniería de Software con conocimientos en desarrollo web (HTML5, CSS3, JavaScript/TypeScript, Angular), arquitectura backend (Java, Spring Boot) y gestión de bases de datos relacionales y no relacionales. Aporta al equipo capacidad analítica para el diseño de arquitecturas distribuidas, integración de APIs RESTful y lógica de negocio orientada a procesos industriales. |
+| ![foto-carlos](assets/images/chapter-1/profiles/Carlos.png) | **Cespedes Lezcano, Carlos Gabriel**<br> **Código: U202416147** \| **Carrera: Ingeniería de Software**<br>*Resumen:* Estudiante de Ingeniería de Software con conocimientos en desarrollo web, incluyendo HTML, CSS y JavaScript, así como en los lenguajes de programación C++ y Python. Cuenta con nociones básicas sobre el consumo de APIs y el manejo de bases de datos relacionales y no relacionales. |
+| ![foto-nicolas](assets/images/chapter-1/profiles/Nicolas.png) | **Tantalean Granda, Nicolas**<br> **Código: U202410728** \| **Carrera: Ingeniería de Software**<br>*Resumen:* Estudiante de Ingeniería de Software con conocimientos en desarrollo web, incluyendo HTML, CSS y JavaScript, así como en los lenguajes de programación C++ y Python. Aporta al equipo conocimientos relacionados con lenguajes de programación y desarrollo de soluciones de software. |
+| ![foto-mathias](assets/images/chapter-1/profiles/Mathias.png) | **Castillo Guevara, Mathias Alejandro**<br> **Código: U202410783** \| **Carrera: Ingeniería de Software**<br>*Resumen:* Estudiante de Ingeniería de Software con conocimientos en desarrollo web, incluyendo HTML, CSS y JavaScript, además de lenguajes de programación como C++ y Python. Aporta al equipo conocimientos relacionados con tecnologías y desarrollo web, participando en el trabajo colaborativo orientado al desarrollo de la solución. |
 
 ### 1.2 Solution Profile
 Esta sección describe la problemática que MaquiControl busca resolver y la propuesta de solución planteada por AndesHeavyTech. Se analizan las principales dificultades relacionadas con el alquiler, control y disponibilidad de maquinaria pesada, y se aplica el proceso Lean UX para definir las necesidades, supuestos e hipótesis que orientan el desarrollo del producto.
