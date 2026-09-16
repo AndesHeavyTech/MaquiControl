@@ -454,7 +454,7 @@ Sus principales prioridades son garantizar la disponibilidad de la maquinaria, r
 
 ##### Entrevista 2
 
-- **Nombre y apellidos:** Stephano Mendoza
+- **Nombre y apellidos:** Carlos Stephano Mendoza
 - **Edad:** 52 años
 - **Ocupación:** Encargado de operaciones en un pequeño negocio de alquiler de maquinaria
 - **Distrito:** San Juan de Lurigancho
@@ -485,7 +485,7 @@ Entrevista 1
 ##### Entrevista 3
 
 - **Nombre y apellidos:** Andrea López
-- **Edad:** 40 años
+- **Edad:** 30 años
 - **Ocupación:** Administradora de una empresa familiar de alquiler de maquinaria
 - **Distrito:** Surco
 - **Timing en el video:**
