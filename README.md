@@ -638,7 +638,7 @@ El siguiente User Journey Map representa el proceso actual seguido por Harold An
 
 ![User Journey Map - Harold Angello](https://drive.google.com/uc?export=view&id=1mEbEbfmUMl4W5BJVEFg18EAV93pycqXV)
 
-### 2.3.4. Empathy Mapping
+### 2.3.4. Empathy Mapping.
 
 A continuación se presentan los Empathy Mapping de los segmentos objetivos de MaquiControl.
 
