@@ -860,100 +860,98 @@ El Ubiquitous Language de MaquiControl reúne los principales términos utilizad
 
 ### 4.1.1. General Style Guidelines
 
-#### Branding
+La identidad visual de MaquiControl busca transmitir una imagen profesional, tecnológica y orientada a la gestión de maquinaria.
 
-La identidad visual de MaquiControl busca representar una solución tecnológica orientada a la gestión y alquiler de maquinaria. La marca utiliza el nombre **MaquiControl** acompañado de un elemento gráfico basado en la letra **M**, presente en el encabezado y pie de página de la landing page.
+La interfaz utiliza principalmente una paleta oscura acompañada de elementos en color naranja para resaltar acciones importantes y componentes interactivos.
 
-**Logo de MaquiControl:**
+Los principales colores utilizados son:
 
-[Por agregar]
+#### Color Palette
+
+MaquiControl utiliza una paleta de colores de alto contraste que combina superficies oscuras con un color naranja de acento para destacar acciones importantes.
+
+| Uso | Vista | Código HEX |
+|---|---|---|
+| Background | ![#0F1115](https://img.shields.io/badge/Color-0F1115?style=flat&color=0F1115) | `#0F1115` |
+| Surface | ![#171A20](https://img.shields.io/badge/Color-171A20?style=flat&color=171A20) | `#171A20` |
+| Secondary Surface | ![#1F232B](https://img.shields.io/badge/Color-1F232B?style=flat&color=1F232B) | `#1F232B` |
+| Primary Text | ![#F5F5F5](https://img.shields.io/badge/Color-F5F5F5?style=flat&color=F5F5F5) | `#F5F5F5` |
+| Secondary Text | ![#A8ADB8](https://img.shields.io/badge/Color-A8ADB8?style=flat&color=A8ADB8) | `#A8ADB8` |
+| Primary Accent | ![#F59E0B](https://img.shields.io/badge/Color-F59E0B?style=flat&color=F59E0B) | `#F59E0B` |
+| Secondary Accent | ![#D97706](https://img.shields.io/badge/Color-D97706?style=flat&color=D97706) | `#D97706` |
+| Borders | ![#2A2F38](https://img.shields.io/badge/Color-2A2F38?style=flat&color=2A2F38) | `#2A2F38` |
 
 #### Typography
+La tipografía principal utilizada es `Inter`, con fuentes alternativas Arial, Helvetica y sans-serif.
 
-[Por agregar]
+La jerarquía visual se establece mediante diferentes tamaños y pesos tipográficos, utilizando títulos grandes para comunicar la propuesta de valor y textos secundarios con menor contraste para información complementaria.
 
-#### Colors
+También se mantienen criterios consistentes de diseño como:
 
-La interfaz utiliza una paleta basada principalmente en tonos oscuros, complementada con un color de énfasis para destacar elementos interactivos y acciones principales.
+| Elemento | Tipografía | Peso aproximado | Aplicación |
+|---|---|---|---|
+| Main Headings | Inter | Bold / 700 | Hero y títulos principales |
+| Section Headings | Inter | Bold / 700 | Títulos de secciones |
+| Card Titles | Inter | Semi Bold / 600 | Beneficios, perfiles y pasos |
+| Body Text | Inter | Regular / 400 | Descripciones y contenido |
+| Buttons | Inter | Semi Bold / 600 | Call to Action |
+| Navigation | Inter | Regular / 400-500 | Enlaces de navegación |
 
-| Elemento | Valor |
-| --- | --- |
-| Fondo principal | `#0f1115` |
-| Superficie | `#171a20` |
-| Superficie secundaria | `#1f232b` |
-| Texto principal | `#f5f5f5` |
-| Texto secundario | `#a8adb8` |
-| Color de énfasis | `#f59e0b` |
-| Color de énfasis oscuro | `#d97706` |
-| Color de borde | `#2a2f38` |
-
-Los colores se encuentran definidos mediante variables CSS, facilitando su reutilización y manteniendo consistencia visual en los diferentes componentes de la interfaz.
-
-#### Spacing
-
-La interfaz utiliza valores consistentes para mantener separación entre los diferentes elementos y componentes. Asimismo, se establece un ancho máximo de contenido de `1200px` y radios de borde de `18px` y `12px` para los componentes visuales.
-
-[Por agregar: evidencia visual o especificación detallada del sistema de espaciado utilizado]
-
-#### Tone of Voice
-
-La comunicación de MaquiControl utiliza un tono directo, claro y orientado a la acción. Los textos buscan presentar los beneficios de la solución de manera sencilla, utilizando mensajes como:
-
-- **“Gestiona tu maquinaria sin perder el control.”**
-- **“Menos coordinación. Más control.”**
-- **“Toma el control de tu negocio de maquinaria.”**
-
-La comunicación se orienta principalmente a propietarios y administradores de maquinaria, así como a contratistas y responsables de obra.
-
-#### Design Principles
-
-La landing page considera los siguientes principios de diseño:
-
-- **Jerarquía visual:** se diferencian títulos, descripciones y acciones mediante tamaños, pesos y componentes visuales.
-- **Consistencia:** se utilizan componentes reutilizables para beneficios, segmentos, pasos y planes.
-- **Claridad:** los contenidos y acciones utilizan etiquetas directas y descriptivas.
-- **Accesibilidad:** se incorporan atributos `aria-label` en elementos relevantes de navegación e interacción.
-- **Diseño responsive:** la interfaz contempla diferentes tamaños de pantalla.
+La jerarquía tipográfica se mantiene mediante variaciones de tamaño y peso, permitiendo distinguir claramente títulos, subtítulos, textos descriptivos y acciones.
 
 ### 4.1.2. Web Style Guidelines
 
-Las pautas visuales se aplican directamente en la landing page mediante componentes y clases reutilizables.
+La Landing Page de MaquiControl aplica un sistema visual consistente a sus principales componentes.
+
+#### Typography
+
+La interfaz utiliza la familia tipográfica:
+
+`Inter, Arial, Helvetica, sans-serif`
+
+Los títulos utilizan pesos elevados y tamaños responsivos mediante la función CSS `clamp()`, permitiendo adaptar su tamaño según el ancho de la pantalla.
 
 #### Buttons
 
-La interfaz utiliza diferentes estilos de botones para establecer una jerarquía entre las acciones:
+Los botones mantienen una altura y espaciado consistente y utilizan bordes redondeados.
 
-- `button-primary`: utilizado para acciones principales.
-- `button-secondary`: utilizado para acciones secundarias.
-- `button-outline`: utilizado para acciones complementarias.
+Se emplean principalmente los siguientes estilos:
 
-Entre las principales acciones se encuentran:
+- **Primary Button:** fondo naranja (`#f59e0b`) y texto oscuro.
+- **Secondary Button:** fondo transparente, texto claro y borde oscuro.
+- **Outline Button:** fondo transparente con borde visible.
 
-- **Gestionar mi flota**
-- **Buscar maquinaria**
-- **Abrir plataforma**
-- **Ver planes**
-- **Comenzar**
-- **Elegir Pro**
+Los botones incluyen estados `hover` que modifican ligeramente el color o la posición del componente.
 
 #### Cards
 
-La información se organiza mediante diferentes tipos de tarjetas:
+Las tarjetas se utilizan para organizar beneficios, segmentos, pasos del proceso y planes de suscripción.
 
-- `feature-card`: beneficios de la solución.
-- `segment-card`: segmentos objetivo.
-- `step-card`: pasos de funcionamiento.
-- `pricing-card`: planes de suscripción.
+Estas utilizan:
 
-Esta estructura permite mantener consistencia visual entre los diferentes bloques de información.
+- Fondo `#171a20`.
+- Bordes `#2a2f38`.
+- Bordes redondeados.
+- Espaciado interno amplio.
+- Texto principal claro y contenido secundario en tonos grises.
 
 #### Responsive Design
 
-La landing page incorpora reglas de diseño responsive para adaptar la interfaz a diferentes tamaños de pantalla, incluyendo dispositivos móviles y tabletas.
+La Landing Page adapta sus layouts mediante CSS responsive.
 
-[Por agregar: capturas de la landing en desktop, tablet y móvil]
+En pantallas grandes se utilizan estructuras de múltiples columnas para beneficios, segmentos, pasos y planes.
 
----
+En pantallas pequeñas estas estructuras se reorganizan verticalmente para facilitar la lectura y la interacción.
+
+#### Accessibility
+
+Los enlaces y botones incorporan estilos `focus-visible` para facilitar la navegación mediante teclado.
+
+Cuando un elemento recibe foco, se utiliza un contorno de color naranja:
+
+css
+`outline: 3px solid var(--accent);`
+`outline-offset: 4px;`
 
 ## 4.2. Information Architecture
 
@@ -961,183 +959,163 @@ La arquitectura de información de MaquiControl se encuentra orientada a organiz
 
 ### 4.2.1. Organization Systems
 
-En MaquiControl, se emplea principalmente una organización jerárquica para estructurar la información presentada en la Landing Page. La página inicia con el Hero, donde se comunica la propuesta principal de la solución, y posteriormente presenta los beneficios, los segmentos objetivo, el funcionamiento de la plataforma, la propuesta de valor, los planes de suscripción y finalmente los llamados a la acción. Esta jerarquía permite presentar primero la información general y posteriormente desarrollar aspectos específicos de la solución.
+La información de la Landing Page de MaquiControl se organiza mediante una estructura secuencial y jerárquica.
 
-Asimismo, se utiliza una organización secuencial para representar el funcionamiento general de MaquiControl. La sección "Cómo funciona" presenta tres pasos principales: registrar la maquinaria, gestionar la disponibilidad y coordinar los alquileres. Esta organización permite representar el flujo de uso de la solución de manera ordenada y facilita la comprensión de las actividades principales que realiza el usuario.
+El contenido se presenta desde información general hacia información más específica, permitiendo que el visitante comprenda progresivamente la propuesta de valor de la plataforma.
 
-En cuanto a los esquemas de categorización, se utiliza principalmente una organización temática para agrupar la información según las necesidades y características del proceso de alquiler de maquinaria. Los beneficios se clasifican en disponibilidad en tiempo real, control de reservas, seguimiento de mantenimiento e información centralizada. Asimismo, los usuarios se agrupan según su participación en el proceso, diferenciando entre propietarios y administradores de maquinaria, y contratistas y responsables de obra.
+La organización principal es la siguiente:
 
-No se evidencia actualmente el uso de una organización alfabética o cronológica como criterio principal dentro de la Landing Page. La estructura se encuentra orientada principalmente a la relación temática entre contenidos y al recorrido esperado del usuario.
+1. Header y navegación.
+2. Presentación principal de MaquiControl.
+3. Beneficios principales.
+4. Identificación de perfiles de usuario.
+5. Explicación del funcionamiento de la plataforma.
+6. Propuesta de valor y trazabilidad.
+7. Call to Action final.
+8. Footer.
 
-[Por agregar: Evidencia visual de los sistemas de organización]
+Además, la información relacionada se agrupa mediante tarjetas, especialmente en las secciones de beneficios, perfiles y pasos del proceso.
 
 ### 4.2.2. Labeling Systems
 
-En MaquiControl, el sistema de etiquetado está diseñado para representar la información y las acciones de la Landing Page mediante términos breves, claros y relacionados con las necesidades de los usuarios. Las etiquetas buscan facilitar la identificación de cada sección y reducir la carga cognitiva durante la navegación.
+El sistema de etiquetado utiliza textos breves y directos que permiten identificar claramente cada sección y acción de la Landing Page.
 
-En la navegación principal se utilizan etiquetas como "Inicio", "Beneficios", "Cómo funciona", "Planes" y "Nosotros". Estas denominaciones permiten identificar directamente el contenido asociado a cada sección y mantienen una estructura de navegación consistente.
+Entre las principales etiquetas utilizadas se encuentran:
 
-Para las principales acciones de la interfaz se utilizan etiquetas orientadas a la acción, como "Gestionar mi flota", "Buscar maquinaria", "Abrir plataforma", "Ver planes", "Comenzar" y "Elegir Pro". Estas etiquetas permiten comunicar de manera directa la acción que puede realizar el usuario.
+- Inicio
+- Beneficios
+- Cómo funciona
+- Nosotros
+- Gestionar mi flota
+- Buscar maquinaria
+- Soy propietario
+- Necesito maquinaria
+- Consulta
+- Coordina
+- Controla
+- Comenzar ahora
 
-Asimismo, las funcionalidades principales se presentan mediante etiquetas descriptivas como "Disponibilidad en tiempo real", "Control de reservas", "Seguimiento de mantenimiento" e "Información centralizada". Estas denominaciones permiten representar de manera directa los principales beneficios ofrecidos por MaquiControl.
-
-[Por agregar: Evidencia visual del sistema de etiquetado]
+Las etiquetas utilizan lenguaje relacionado directamente con las necesidades de los usuarios y con las principales acciones disponibles en MaquiControl.
 
 ### 4.2.3. SEO Tags and Meta Tags
 
-La Landing Page de MaquiControl incorpora elementos SEO y metadatos dentro de la sección <head> del documento HTML, con el objetivo de identificar la página y proporcionar información relacionada con el producto.
+La Landing Page de MaquiControl incorpora etiquetas HTML orientadas a mejorar la identificación del sitio por los motores de búsqueda y proporcionar información básica sobre el contenido de la página.
 
-El elemento title utilizado es "MaquiControl | Machinery Rental Management", el cual permite establecer el título principal de la página. Asimismo, se incorpora una meta description que describe a MaquiControl como una solución para gestionar flotas, reservas, disponibilidad y mantenimiento desde una única plataforma.
+En el elemento `<head>` se han implementado las siguientes etiquetas:
 
-También se incluyen palabras clave relacionadas con el dominio de la solución, entre ellas "machinery rental", "fleet management", "heavy machinery", "equipment rental", "maintenance" y "MaquiControl". Finalmente, el atributo author identifica a AndesHeavyTech como responsable de la página.
+- **Title:** `MaquiControl | Machinery Rental Management`
+- **Description:** describe a MaquiControl como una plataforma para la gestión de flotas, reservas, disponibilidad y mantenimiento de maquinaria.
+- **Keywords:** incluye términos relacionados con alquiler de maquinaria, gestión de flotas, maquinaria pesada, alquiler de equipos, mantenimiento y MaquiControl.
+- **Author:** identifica a `AndesHeavyTech` como autor del sitio.
 
-[Por agregar: Evidencia visual de la configuración SEO y Meta Tags]
+Además, se incluyen etiquetas técnicas necesarias para una correcta visualización:
+
+- `charset="UTF-8"` para la codificación de caracteres.
+- `viewport` para adaptar correctamente la página a dispositivos móviles.
+
+La configuración implementada en la Landing Page es la siguiente:
+
+
+`<meta charset="UTF-8">`
+
+`<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">`
+
+`<meta name="description"
+      content="MaquiControl helps machinery rental businesses manage fleets, reservations, availability and maintenance from one platform.">`
+
+`<meta name="keywords"
+      content="machinery rental, fleet management, heavy machinery, equipment rental, maintenance, MaquiControl">`
+
+`<meta name="author"
+      content="AndesHeavyTech">`
+
+`<title>MaquiControl | Machinery Rental Management</title>`
+
 
 ### 4.2.4. Searching Systems
 
-La Landing Page de MaquiControl contempla la acción "Buscar maquinaria", orientada principalmente a los usuarios que necesitan encontrar equipos disponibles para sus actividades.
+La Landing Page de MaquiControl no incorpora un sistema de búsqueda interno.
 
-Actualmente, esta acción se encuentra representada mediante botones dentro del Hero y de la sección correspondiente a los segmentos objetivo. Sin embargo, en los archivos revisados no se evidencia la implementación de un sistema de búsqueda funcional dentro de la Landing Page. El botón "Buscar maquinaria" se encuentra actualmente asociado a una sección interna de la página.
+El acceso a funciones de búsqueda de maquinaria se realiza mediante llamadas a la acción como "Buscar maquinaria" y "Necesito maquinaria", las cuales están orientadas a dirigir al usuario hacia la Web Application.
 
-Por este motivo, el sistema de búsqueda como funcionalidad de la aplicación web se encuentra pendiente de implementación o documentación.
-
-[Por agregar: Diseño o implementación del sistema de búsqueda de maquinaria]
+El sistema de búsqueda detallado forma parte de la funcionalidad de la Web Application y no de la Landing Page.
 
 ### 4.2.5. Navigation Systems
 
-MaquiControl utiliza principalmente un sistema de navegación global basado en enlaces internos mediante anclas HTML. Este sistema permite al usuario desplazarse entre las principales secciones de la Landing Page sin abandonar la página.
+La Landing Page utiliza una navegación principalmente lineal y mediante anclas internas.
 
-La navegación principal está compuesta por las opciones "Inicio", "Beneficios", "Cómo funciona", "Planes" y "Nosotros". Cada una de estas opciones se encuentra asociada a una sección específica mediante identificadores HTML como #home, #benefits, #how-it-works, #pricing y #about.
+En la versión Desktop, el header incluye accesos a:
 
-Además de la navegación principal, se incorporan acciones específicas que permiten orientar al usuario hacia diferentes partes del recorrido de la Landing Page. Entre ellas se encuentran "Gestionar mi flota", "Buscar maquinaria", "Abrir plataforma" y "Ver planes".
+- Inicio
+- Beneficios
+- Cómo funciona
+- Nosotros
 
-La navegación también se encuentra disponible en el footer mediante enlaces hacia diferentes secciones de la página. Asimismo, se emplean elementos semánticos <nav> junto con atributos aria-label para identificar la navegación principal y la navegación del footer, contribuyendo a una estructura más accesible.
+Además, se incluye el botón "Ir a la plataforma" como acceso principal hacia la aplicación.
+
+En la versión Mobile, la navegación se simplifica mediante un menú compacto, permitiendo mantener la interfaz limpia en pantallas pequeñas.
+
+La navegación también se complementa con diferentes Call to Action distribuidos a lo largo de la página, como:
+
+- Gestionar mi flota.
+- Buscar maquinaria.
+- Soy propietario.
+- Necesito maquinaria.
+- Comenzar ahora.
+
+Estas acciones permiten dirigir al usuario hacia la experiencia correspondiente según su perfil.
 
 [Por agregar: Mapa de navegación de MaquiControl]
 
-## 4.3. Landing Page UI Design
+### 4.3. Landing Page UI Design
 
-### 4.3.1. Header
+### 4.3.1. Landing Page Wireframes
 
-El encabezado presenta el logotipo de MaquiControl, la navegación principal, el selector de idioma y el acceso a la plataforma.
+En esta sección se presentan los wireframes de la Landing Page de MaquiControl.
+Estos diseños representan la estructura inicial de la interfaz, la distribución de los principales componentes y la jerarquía de información antes de aplicar los estilos visuales definitivos.
 
-El logotipo utiliza una marca visual representada por la letra **M**, acompañada del nombre MaquiControl.
+Los wireframes consideran las principales secciones de la Landing Page:
 
-### 4.3.2. Hero Section
+- Header y navegación principal.
+- Hero Section.
+- Beneficios de MaquiControl.
+- Segmentos objetivo.
+- Sección "Cómo funciona".
+- Propuesta de valor.
+- Planes de suscripción.
+- Call to Action final.
+- Footer.
 
-La sección Hero constituye el primer contacto del usuario con la solución.
+Asimismo, se consideran versiones adaptadas para diferentes tamaños de pantalla, principalmente Desktop y Mobile.
 
-Presenta:
+![wireframeDesktop](assets/Wireframe-Desktop1440.png)
 
-- Mensaje principal.
-- Descripción de la solución.
-- Acción para gestionar la flota.
-- Acción para buscar maquinaria.
-- Ilustración de maquinaria pesada.
-- Nota dirigida a pequeñas empresas de alquiler y contratistas independientes.
+![wiereframeMobile](assets/Wireframe-Mobile390.png)
 
-El mensaje principal utilizado es:
 
-> **“Gestiona tu maquinaria sin perder el control.”**
+### 4.3.2. Landing Page Mock-ups
 
-La sección busca comunicar inmediatamente el propósito de MaquiControl y dirigir al usuario hacia las principales acciones disponibles.
+En esta sección se presentan los mockups de alta fidelidad de la Landing Page de MaquiControl.
 
-### 4.3.3. Benefits Section
+Los mockups aplican la identidad visual definida previamente, incluyendo colores, tipografía, componentes, botones, tarjetas, iconografía y distribución responsive.
 
-La sección de beneficios presenta cuatro funcionalidades principales:
+La interfaz final está compuesta por las siguientes secciones:
 
-| Beneficio | Descripción |
-| --- | --- |
-| Disponibilidad en tiempo real | Identificar máquinas disponibles, reservadas o en mantenimiento. |
-| Control de reservas | Organizar fechas de alquiler y reducir conflictos. |
-| Seguimiento de mantenimiento | Conocer el estado operativo de los equipos. |
-| Información centralizada | Consultar información de maquinaria y alquileres desde un solo lugar. |
+- Header.
+- Hero Section.
+- Benefits Section.
+- Target Segments Section.
+- How It Works Section.
+- Value Proposition.
+- Pricing Section.
+- Final Call to Action.
+- Footer.
 
-Estos beneficios están implementados como tarjetas independientes dentro de la interfaz.
+Los diseños contemplan versiones Desktop y Mobile con el objetivo de mantener una experiencia consistente en diferentes dispositivos.
 
-### 4.3.4. Segments Section
-
-La interfaz diferencia dos grupos principales de usuarios:
-
-**Propietarios y administradores de maquinaria**
-
-Organizan la flota, reservas y mantenimiento, además de centralizar la información de clientes y equipos.
-
-**Contratistas y responsables de obra**
-
-Pueden explorar maquinaria, revisar información de los equipos, consultar disponibilidad y reducir el tiempo de coordinación.
-
-Cada segmento presenta una descripción, una lista de actividades y una acción relacionada con su flujo de trabajo.
-
-### 4.3.5. How It Works
-
-La sección **“Cómo funciona”** presenta el proceso general de uso de MaquiControl mediante tres pasos:
-
-1. **Registrar tu maquinaria.**
-2. **Gestionar la disponibilidad.**
-3. **Coordinar los alquileres.**
-
-La presentación secuencial busca facilitar la comprensión del funcionamiento general de la solución.
-
-### 4.3.6. Value Proposition
-
-La sección de propuesta de valor comunica el objetivo de centralizar la información relacionada con la maquinaria.
-
-MaquiControl busca ayudar a pequeños negocios de alquiler a reducir la coordinación manual y proporcionar a los contratistas una forma más clara de acceder a información relacionada con maquinaria.
-
-### 4.3.7. Pricing Section
-
-La landing incorpora una sección de planes de suscripción con dos alternativas:
-
-#### Plan Esencial
-
-Orientado a pequeños negocios de alquiler de maquinaria que comienzan a digitalizar su operación.
-
-Incluye:
-
-- Gestión de la flota de maquinaria.
-- Control de disponibilidad.
-- Gestión de reservas de alquiler.
-- Seguimiento de mantenimiento.
-- Información centralizada de los equipos.
-
-Capacidad: **hasta 5 máquinas**.
-
-#### Plan Pro
-
-Orientado a negocios de alquiler en crecimiento que administran una flota de maquinaria mayor.
-
-Incluye:
-
-- Todo lo incluido en el Plan Esencial.
-- Gestión ampliada de flota.
-- Información operativa avanzada.
-- Gestión de alquileres mejorada.
-- Herramientas para operaciones en crecimiento.
-
-Capacidad: **hasta 20 máquinas**.
-
-### 4.3.8. Final Call to Action
-
-La landing incorpora una llamada a la acción final orientada a continuar con la propuesta de MaquiControl.
-
-El mensaje utilizado es:
-
-> **“Toma el control de tu negocio de maquinaria.”**
-
-La sección incluye el botón **“Ver planes”**, que dirige al usuario hacia la sección de planes.
-
-### 4.3.9. Footer
-
-El pie de página presenta la identidad de MaquiControl, la relación con AndesHeavyTech, enlaces de navegación y una opción de contacto.
-
-### 4.3.10. Internationalization and Accessibility
-
-La landing page incorpora soporte para español e inglés mediante un sistema de traducción implementado en JavaScript.
-
-El sistema permite cambiar dinámicamente los textos de la interfaz y actualizar el atributo `lang` del documento según el idioma seleccionado.
-
-Asimismo, se utilizan atributos `aria-label` en diferentes elementos de la interfaz, como el logotipo, la navegación, la ilustración de maquinaria y el selector de idioma, contribuyendo a una experiencia más accesible.
+![Mockup-Desktop1440](assets/Mockup-Desktop1440.png)
+![Mockup-Mobile390](assets/Mockup-Mobile390.png)
 
 ## 4.4 Web Applications UX/UI Design
 
