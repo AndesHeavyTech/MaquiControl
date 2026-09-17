@@ -866,6 +866,10 @@ Los principales actores considerados son Luis Herrera, representante del segment
 
 ## 4.1. Style Guidelines
 
+En esta sección se presentan las principales decisiones visuales y de estilo utilizadas en MaquiControl con el objetivo de mantener una experiencia consistente entre la Landing Page y la Web Application.
+
+Se definen criterios relacionados con identidad visual, paleta de colores, tipografía, jerarquía visual, componentes, espaciado y comportamiento responsive. Estas decisiones permiten establecer una base común para el diseño y desarrollo de las interfaces del producto digital.
+
 ### 4.1.1. General Style Guidelines
 
 La identidad visual de MaquiControl busca transmitir una imagen profesional, tecnológica y orientada a la gestión de maquinaria.
@@ -1078,6 +1082,12 @@ Estas acciones permiten dirigir al usuario hacia la experiencia correspondiente 
 
 ### 4.3. Landing Page UI Design
 
+En esta sección se presenta el diseño de la Landing Page de MaquiControl, desarrollado a partir de los lineamientos visuales definidos previamente y de las necesidades de los segmentos objetivo.
+
+El diseño busca comunicar de forma clara la propuesta de valor de MaquiControl, presentar sus principales beneficios y orientar a los visitantes hacia las acciones correspondientes según su perfil.
+
+Para validar la estructura y apariencia de la interfaz, se elaboraron wireframes y mock-ups en versiones Desktop y Mobile, permitiendo representar tanto la organización inicial de los contenidos como la propuesta visual de alta fidelidad.
+
 ### 4.3.1. Landing Page Wireframes
 
 En esta sección se presentan los wireframes de la Landing Page de MaquiControl.
@@ -1125,7 +1135,64 @@ Los diseños contemplan versiones Desktop y Mobile con el objetivo de mantener u
 ![Mockup-Desktop1440](assets/Mockup-Desktop1440.png)
 ![Mockup-Mobile390](assets/Mockup-Mobile390.png)
 
-## 4.4 Web Applications UX/UI Design
+## 4.4. Web Applications UX/UI Design
+
+En esta sección se presenta el proceso de diseño UX/UI de la Web Application de MaquiControl.
+
+El diseño fue desarrollado tomando como referencia las necesidades identificadas durante la etapa de investigación, los User Personas, las User Stories y los principales procesos definidos para la plataforma.
+
+Para representar progresivamente la experiencia de usuario se elaboraron wireframes, wireflow diagrams, mock-ups y user flow diagrams. Estos artefactos permiten visualizar la estructura de las interfaces, la relación entre las diferentes vistas y los recorridos que realizan los usuarios para completar sus principales tareas dentro de MaquiControl.### 4.4.1. Web Applications Wireframes
+
+En esta sección se presentan los wireframes de la Web Application de MaquiControl. Estos diseños de baja fidelidad permiten representar la estructura, distribución y jerarquía de los principales elementos de la interfaz antes de aplicar los estilos visuales definitivos.
+
+Los wireframes muestran las principales vistas y funcionalidades de la aplicación, considerando las necesidades de los segmentos objetivo identificados durante la etapa de investigación. Asimismo, permiten validar la ubicación de componentes, navegación entre vistas y organización de la información antes de desarrollar los mock-ups de alta fidelidad.
+
+A continuación, se presentan los wireframes correspondientes a las principales vistas de la Web Application de MaquiControl.
+
+### 4.4.1. Web Applications Wireframes
+
+Los wireframes de MaquiControl representan la estructura inicial de las principales vistas de la Web Application antes de aplicar los estilos visuales definitivos.
+
+Estos diseños de baja fidelidad permiten establecer la distribución de los componentes, la jerarquía de la información y la ubicación de los principales elementos de interacción.
+
+Los wireframes fueron elaborados considerando los principales procesos de la plataforma, permitiendo validar la organización de las vistas antes de desarrollar los mock-ups de alta fidelidad.
+
+A continuación, se presentan los wireframes correspondientes a las principales interfaces de la Web Application de MaquiControl.
+![Web-Application-Wireframe](assets/web_applications_wireframes.png)
+
+
+### 4.4.2. Web Applications Wireflow Diagrams
+
+Los Wireflow Diagrams permiten representar la relación entre los wireframes y las acciones que conectan las diferentes vistas de la Web Application de MaquiControl.
+
+Estos diagramas muestran cómo el usuario puede desplazarse entre las interfaces para completar determinadas tareas, combinando la representación visual de las pantallas con las conexiones que describen el flujo de navegación.
+
+Los wireflows permiten validar la continuidad de la experiencia y detectar posibles problemas de navegación antes de la implementación de la aplicación.
+
+A continuación, se presentan los principales Wireflow Diagrams de MaquiControl.
+![Web-Application-Wireflow](assets/web_applications_wireflows.png)
+
+### 4.4.2. Web Applications Mock-ups
+
+Los mock-ups presentan la propuesta visual de alta fidelidad de la Web Application de MaquiControl.
+
+A diferencia de los wireframes, estas interfaces incorporan la identidad visual definida en las Style Guidelines, incluyendo colores, tipografía, iconografía, componentes, botones, tarjetas, estados visuales y jerarquías de información.
+
+Los mock-ups permiten representar de manera más cercana la apariencia final de la aplicación y sirven como referencia visual para la etapa de implementación.
+
+A continuación, se presentan los mock-ups correspondientes a las principales vistas de la Web Application de MaquiControl.
+![Web-Application-Mock-Ups](assets/webapplicationsmockups.png)
+
+### 4.4.3. Web Applications User Flow Diagrams
+
+Los User Flow Diagrams representan los recorridos que realizan los usuarios para completar las principales tareas dentro de la Web Application de MaquiControl.
+
+Estos diagramas muestran las acciones, decisiones y transiciones entre diferentes vistas, permitiendo comprender cómo cada tipo de usuario interactúa con la plataforma para alcanzar un objetivo determinado.
+
+Los flujos fueron definidos tomando como referencia las User Stories y las necesidades identificadas para los User Personas de MaquiControl.
+
+A continuación, se presentan los principales User Flow Diagrams de la aplicación.
+![Web-Application-UserFlowDiagrams](assets/web_applications_user_flows.png)
 
 ## 4.5 Web Applications Prototyping
 
