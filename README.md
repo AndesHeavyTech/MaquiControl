@@ -1195,8 +1195,25 @@ A continuación, se presentan los principales User Flow Diagrams de la aplicaci�
 ![Web-Application-UserFlowDiagrams](assets/web_applications_user_flows.png)
 
 ## 4.5 Web Applications Prototyping
+En esta sección se presenta el prototipo interactivo de la Web Application de MaquiControl, desarrollado a partir de los mock-ups y User Flow Diagrams definidos previamente.
 
-## 4.6 Domain-Driven Software Architecture
+El prototipo permite simular la navegación entre las principales vistas de la aplicación y validar la secuencia de interacción que siguen los usuarios para completar sus tareas principales. Las conexiones entre pantallas fueron definidas considerando los recorridos planteados en los User Flows y el sistema de navegación establecido para la aplicación.
+
+Se consideraron las principales funcionalidades de MaquiControl, como el acceso a la plataforma, visualización del dashboard, consulta y gestión de maquinaria, reservas, mantenimiento, disponibilidad y seguimiento de servicios.
+
+A continuación, se presenta una captura del prototipo en funcionamiento y el enlace al video de demostración, donde se muestran los principales flujos de navegación e interacción de la aplicación.
+![Web Application Prototype](assets/web-application-prototype.png)
+**Video:** [MaquiControl Web Application Prototype](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202416147_upc_edu_pe/IQDTToyT3z0WS4p91D9YPA8hAZ7EcCttmB3Q_ULdJAyTY0Q?e=SnpDhm&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
+
+## 4.6. Domain-Driven Software Architecture
+
+En esta sección se presenta la arquitectura de software de MaquiControl desde una perspectiva orientada al dominio.
+
+La propuesta arquitectónica toma como referencia los procesos de negocio identificados previamente, el Ubiquitous Language, el Big Picture Event Storming y los principales requerimientos funcionales de la plataforma.
+
+A partir de estos elementos se identifican los principales límites del dominio, las responsabilidades del sistema y las relaciones entre los diferentes componentes que conforman la solución.
+
+La arquitectura se documenta mediante Design-Level Event Storming y diagramas C4 a nivel de Context, Container y Component.
 
 ## 4.7 Software Object-Oriented Design
 
