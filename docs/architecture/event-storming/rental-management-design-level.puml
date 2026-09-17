@@ -1,0 +1,67 @@
+@startuml
+title MaquiControl - Rental Management Bounded Context\nDesign-Level Event Storming
+
+left to right direction
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+
+' =========================
+' Styles
+' =========================
+
+rectangle "COMMAND\nRequest Rental" as CMD_REQUEST #87CEFA
+rectangle "COMMAND\nConfirm Reservation" as CMD_CONFIRM #87CEFA
+rectangle "COMMAND\nCancel Reservation" as CMD_CANCEL #87CEFA
+rectangle "COMMAND\nUpdate Rental Dates" as CMD_UPDATE_DATES #87CEFA
+
+rectangle "AGGREGATE\nRental" as AGG_RENTAL #FFF59D
+
+rectangle "DOMAIN EVENT\nRental Requested" as EVT_REQUESTED #FFB74D
+rectangle "DOMAIN EVENT\nReservation Confirmed" as EVT_CONFIRMED #FFB74D
+rectangle "DOMAIN EVENT\nReservation Cancelled" as EVT_CANCELLED #FFB74D
+rectangle "DOMAIN EVENT\nRental Dates Updated" as EVT_DATES_UPDATED #FFB74D
+
+rectangle "QUERY\nView Rental Requests" as QUERY_REQUESTS #A5D6A7
+rectangle "READ MODEL\nRental Request List" as READ_REQUESTS #C8E6C9
+
+rectangle "QUERY\nView My Reservations" as QUERY_RESERVATIONS #A5D6A7
+rectangle "READ MODEL\nReservation List" as READ_RESERVATIONS #C8E6C9
+
+rectangle "QUERY\nCheck Reservation Details" as QUERY_DETAILS #A5D6A7
+rectangle "READ MODEL\nReservation Details" as READ_DETAILS #C8E6C9
+
+' =========================
+' Commands -> Aggregate -> Events
+' =========================
+
+CMD_REQUEST --> AGG_RENTAL
+AGG_RENTAL --> EVT_REQUESTED
+
+CMD_CONFIRM --> AGG_RENTAL
+AGG_RENTAL --> EVT_CONFIRMED
+
+CMD_CANCEL --> AGG_RENTAL
+AGG_RENTAL --> EVT_CANCELLED
+
+CMD_UPDATE_DATES --> AGG_RENTAL
+AGG_RENTAL --> EVT_DATES_UPDATED
+
+' =========================
+' Queries -> Read Models
+' =========================
+
+QUERY_REQUESTS --> READ_REQUESTS
+QUERY_RESERVATIONS --> READ_RESERVATIONS
+QUERY_DETAILS --> READ_DETAILS
+
+legend right
+|= Color |= Element |
+|<#87CEFA>| Command |
+|<#FFF59D>| Aggregate |
+|<#FFB74D>| Domain Event |
+|<#A5D6A7>| Query |
+|<#C8E6C9>| Read Model |
+endlegend
+
+@enduml

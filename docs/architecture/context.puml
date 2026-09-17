@@ -1,0 +1,16 @@
+@startuml
+!include <C4/C4_Context>
+
+title MaquiControl - Software Architecture Context Diagram
+
+Person(admin, "Fleet Administrator", "Manages machinery, reservations, maintenance and operational information.")
+
+Person(contractor, "Contractor / Site Manager", "Searches machinery, requests rentals and reviews service information.")
+
+System(maquicontrol, "MaquiControl", "Web platform for managing machinery rental operations, availability, reservations, maintenance and service execution.")
+
+Rel(admin, maquicontrol, "Manages fleet, reservations, maintenance and operations")
+
+Rel(contractor, maquicontrol, "Searches machinery, requests rentals and tracks services")
+
+@enduml

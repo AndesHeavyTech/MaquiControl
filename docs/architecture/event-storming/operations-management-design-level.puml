@@ -1,0 +1,67 @@
+@startuml
+title MaquiControl - Operations Management Bounded Context\nDesign-Level Event Storming
+
+left to right direction
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+
+' =========================
+' Styles
+' =========================
+
+rectangle "COMMAND\nStart Service" as CMD_START #87CEFA
+rectangle "COMMAND\nRecord Worked Hours" as CMD_RECORD_HOURS #87CEFA
+rectangle "COMMAND\nValidate Worked Hours" as CMD_VALIDATE_HOURS #87CEFA
+rectangle "COMMAND\nComplete Service" as CMD_COMPLETE #87CEFA
+
+rectangle "AGGREGATE\nService Operation" as AGG_OPERATION #FFF59D
+
+rectangle "DOMAIN EVENT\nService Started" as EVT_STARTED #FFB74D
+rectangle "DOMAIN EVENT\nWorked Hours Recorded" as EVT_HOURS_RECORDED #FFB74D
+rectangle "DOMAIN EVENT\nWorked Hours Validated" as EVT_HOURS_VALIDATED #FFB74D
+rectangle "DOMAIN EVENT\nService Completed" as EVT_COMPLETED #FFB74D
+
+rectangle "QUERY\nView Service Status" as QUERY_STATUS #A5D6A7
+rectangle "READ MODEL\nService Status" as READ_STATUS #C8E6C9
+
+rectangle "QUERY\nView Worked Hours" as QUERY_HOURS #A5D6A7
+rectangle "READ MODEL\nWorked Hours Summary" as READ_HOURS #C8E6C9
+
+rectangle "QUERY\nView Operation History" as QUERY_HISTORY #A5D6A7
+rectangle "READ MODEL\nOperation History" as READ_HISTORY #C8E6C9
+
+' =========================
+' Commands -> Aggregate -> Events
+' =========================
+
+CMD_START --> AGG_OPERATION
+AGG_OPERATION --> EVT_STARTED
+
+CMD_RECORD_HOURS --> AGG_OPERATION
+AGG_OPERATION --> EVT_HOURS_RECORDED
+
+CMD_VALIDATE_HOURS --> AGG_OPERATION
+AGG_OPERATION --> EVT_HOURS_VALIDATED
+
+CMD_COMPLETE --> AGG_OPERATION
+AGG_OPERATION --> EVT_COMPLETED
+
+' =========================
+' Queries -> Read Models
+' =========================
+
+QUERY_STATUS --> READ_STATUS
+QUERY_HOURS --> READ_HOURS
+QUERY_HISTORY --> READ_HISTORY
+
+legend right
+|= Color |= Element |
+|<#87CEFA>| Command |
+|<#FFF59D>| Aggregate |
+|<#FFB74D>| Domain Event |
+|<#A5D6A7>| Query |
+|<#C8E6C9>| Read Model |
+endlegend
+
+@enduml

@@ -1,0 +1,30 @@
+@startuml
+!include <C4/C4_Component>
+
+title MaquiControl - Rental Management Bounded Context Component Diagram
+
+Container(webapp, "Single Page Application", "Angular", "Provides the user interface through a web browser.")
+
+Container_Boundary(rental, "Rental Management Bounded Context") {
+
+    Component(interfaces, "Interfaces Layer", "Spring Web", "Exposes endpoints for rental requests and reservations.")
+
+    Component(application, "Application Layer", "Spring Boot", "Coordinates rental request, confirmation, cancellation and date update use cases.")
+
+    Component(domain, "Domain Layer", "Java", "Contains the Rental aggregate and rental business rules.")
+
+    Component(infrastructure, "Infrastructure Layer", "Spring Data JPA", "Provides persistence for rental and reservation information.")
+
+    Component(security, "Security Connector", "Spring Security", "Validates authenticated users and permissions.")
+}
+
+ContainerDb(database, "Database", "Relational Database", "Stores rental and reservation information.")
+
+Rel(webapp, interfaces, "Uses", "HTTPS / JSON")
+Rel(interfaces, application, "Invokes")
+Rel(application, domain, "Uses")
+Rel(application, infrastructure, "Uses")
+Rel(infrastructure, database, "Reads from and writes to")
+Rel(interfaces, security, "Validates access through")
+
+@enduml

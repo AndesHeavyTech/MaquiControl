@@ -1,0 +1,67 @@
+@startuml
+title MaquiControl - Maintenance Management Bounded Context\nDesign-Level Event Storming
+
+left to right direction
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+
+' =========================
+' Styles
+' =========================
+
+rectangle "COMMAND\nSchedule Maintenance" as CMD_SCHEDULE #87CEFA
+rectangle "COMMAND\nComplete Maintenance" as CMD_COMPLETE #87CEFA
+rectangle "COMMAND\nReport Breakdown" as CMD_BREAKDOWN #87CEFA
+rectangle "COMMAND\nUpdate Maintenance Status" as CMD_UPDATE_STATUS #87CEFA
+
+rectangle "AGGREGATE\nMaintenance" as AGG_MAINTENANCE #FFF59D
+
+rectangle "DOMAIN EVENT\nMaintenance Scheduled" as EVT_SCHEDULED #FFB74D
+rectangle "DOMAIN EVENT\nMaintenance Completed" as EVT_COMPLETED #FFB74D
+rectangle "DOMAIN EVENT\nBreakdown Reported" as EVT_BREAKDOWN #FFB74D
+rectangle "DOMAIN EVENT\nMaintenance Status Updated" as EVT_STATUS_UPDATED #FFB74D
+
+rectangle "QUERY\nView Maintenance History" as QUERY_HISTORY #A5D6A7
+rectangle "READ MODEL\nMaintenance History" as READ_HISTORY #C8E6C9
+
+rectangle "QUERY\nView Pending Maintenance" as QUERY_PENDING #A5D6A7
+rectangle "READ MODEL\nPending Maintenance List" as READ_PENDING #C8E6C9
+
+rectangle "QUERY\nCheck Maintenance Details" as QUERY_DETAILS #A5D6A7
+rectangle "READ MODEL\nMaintenance Details" as READ_DETAILS #C8E6C9
+
+' =========================
+' Commands -> Aggregate -> Events
+' =========================
+
+CMD_SCHEDULE --> AGG_MAINTENANCE
+AGG_MAINTENANCE --> EVT_SCHEDULED
+
+CMD_COMPLETE --> AGG_MAINTENANCE
+AGG_MAINTENANCE --> EVT_COMPLETED
+
+CMD_BREAKDOWN --> AGG_MAINTENANCE
+AGG_MAINTENANCE --> EVT_BREAKDOWN
+
+CMD_UPDATE_STATUS --> AGG_MAINTENANCE
+AGG_MAINTENANCE --> EVT_STATUS_UPDATED
+
+' =========================
+' Queries -> Read Models
+' =========================
+
+QUERY_HISTORY --> READ_HISTORY
+QUERY_PENDING --> READ_PENDING
+QUERY_DETAILS --> READ_DETAILS
+
+legend right
+|= Color |= Element |
+|<#87CEFA>| Command |
+|<#FFF59D>| Aggregate |
+|<#FFB74D>| Domain Event |
+|<#A5D6A7>| Query |
+|<#C8E6C9>| Read Model |
+endlegend
+
+@enduml

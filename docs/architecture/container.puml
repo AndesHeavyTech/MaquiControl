@@ -1,0 +1,25 @@
+@startuml
+!include <C4/C4_Container>
+
+title MaquiControl - Software Architecture Container Diagram
+
+Person(admin, "Fleet Administrator", "Manages machinery, reservations, maintenance and operational information.")
+Person(contractor, "Contractor / Site Manager", "Searches machinery, requests rentals and reviews service information.")
+
+System_Boundary(maquicontrol, "MaquiControl") {
+
+    Container(webapp, "Single Page Application", "Angular", "Provides the user interface for fleet administrators and contractors through a web browser.")
+
+    Container(api, "REST API", "Spring Boot / Java", "Provides business capabilities for machinery, rentals, maintenance, operations, profiles and identity management.")
+
+    ContainerDb(database, "Database", "Relational Database", "Stores machinery, rental, maintenance, operational, account and profile information.")
+}
+
+Rel(admin, webapp, "Uses", "HTTPS")
+Rel(contractor, webapp, "Uses", "HTTPS")
+
+Rel(webapp, api, "Uses", "HTTPS / JSON")
+
+Rel(api, database, "Reads from and writes to", "Spring Data JPA")
+
+@enduml

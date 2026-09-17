@@ -1214,6 +1214,134 @@ La propuesta arquitectónica toma como referencia los procesos de negocio identi
 A partir de estos elementos se identifican los principales límites del dominio, las responsabilidades del sistema y las relaciones entre los diferentes componentes que conforman la solución.
 
 La arquitectura se documenta mediante Design-Level Event Storming y diagramas C4 a nivel de Context, Container y Component.
+### 4.6.1. Design-Level Event Storming
+
+En esta sección se presenta el Design-Level Event Storming de MaquiControl, desarrollado a partir del Big Picture Event Storming realizado previamente.
+
+El objetivo de esta etapa es profundizar en el dominio del problema e identificar los principales Bounded Contexts, Aggregates, Commands, Domain Events, Queries y Read Models de la solución.
+
+A partir del análisis realizado se identificaron los siguientes Bounded Contexts principales: Fleet Management, Rental Management, Maintenance Management, Operations Management, Identity & Access Management y Profiles Management.
+
+#### Fleet Management Bounded Context
+
+Este Bounded Context concentra las responsabilidades relacionadas con la gestión de la maquinaria, incluyendo su registro, actualización de información, cambio de estado, consulta de inventario y disponibilidad.
+
+![Fleet Management Design-Level Event Storming](assets/design-level-event-storming-fleet-management.png)
+#### Rental Management Bounded Context
+
+Este Bounded Context gestiona las solicitudes y reservas de maquinaria, incluyendo la creación de solicitudes, confirmación, cancelación y actualización de las fechas asociadas al alquiler.
+
+![Rental Management Design-Level Event Storming](assets/design-level-event-storming-rental-management.png)
+
+#### Maintenance Management Bounded Context
+
+Este Bounded Context agrupa las responsabilidades relacionadas con el mantenimiento de la maquinaria. Incluye la programación y finalización de mantenimientos, el reporte de averías y la actualización del estado de mantenimiento. Su agregado principal es Maintenance y permite además consultar el historial, los mantenimientos pendientes y el detalle de cada intervención realizada.
+
+![Maintenance Management Design-Level Event Storming](assets/design-leve-event-storming-maintenance-management.png)
+
+#### Operations Management Bounded Context
+
+Este Bounded Context representa la ejecución operativa de los servicios realizados con la maquinaria. Incluye el inicio y finalización de un servicio, el registro de horas trabajadas y la validación de dichas horas. Su agregado principal es Service Operation y permite consultar el estado del servicio, el resumen de horas trabajadas y el historial de operaciones.
+
+![Operations Management Design-Level Event Storming](assets/design-level-event-storming-operations-management.png)
+
+#### Identity & Access Management Bounded Context
+
+Este Bounded Context se encarga de la gestión de identidad, autenticación y control de acceso de los usuarios de MaquiControl. Incluye el registro de cuentas, la autenticación, la asignación de roles y el cambio de contraseñas. Su agregado principal es User Account y permite consultar los datos de la cuenta, los roles asignados y el estado de autenticación.
+
+![Profiles Management Design-Level Event Storming](assets/design-level-event-storming-identity-management.png)
+
+#### Profiles Management Bounded Context
+
+Este Bounded Context gestiona la información asociada a los perfiles de los usuarios. Incluye la creación y actualización de perfiles, datos de contacto e información de la organización. Su agregado principal es Profile y permite consultar la información personal, de contacto y organizacional asociada a cada usuario.
+
+![Profiles Management Design-Level Event Storming](assets/design-level-event-storming-Profiles-management.png)
+
+### 4.6.2. Software Architecture Context Diagram
+
+El Software Architecture Context Diagram presenta a MaquiControl como el sistema principal y muestra su relación con los principales tipos de usuario identificados en el proyecto.
+
+El Fleet Administrator utiliza MaquiControl para gestionar la maquinaria, reservas, mantenimiento y operaciones asociadas al servicio. Por otro lado, el Contractor o Site Manager utiliza la plataforma para consultar maquinaria disponible, solicitar alquileres y realizar seguimiento de los servicios contratados.
+
+Este nivel del modelo C4 permite visualizar el alcance general de MaquiControl y las principales interacciones entre el sistema y sus usuarios.
+
+![MaquiControl Software Architecture Context Diagram](assets/c4-context-diagram.png)
+
+### 4.6.3. Software Architecture Container Diagram
+
+El Software Architecture Container Diagram muestra la estructura de alto nivel de MaquiControl y la distribución de responsabilidades entre los principales elementos de la solución.
+
+La aplicación está compuesta por una Single Page Application desarrollada con Angular, una REST API desarrollada con Spring Boot y Java, y una base de datos relacional encargada de la persistencia de la información.
+
+Los usuarios interactúan con la aplicación web mediante un navegador. La Single Page Application consume los servicios proporcionados por la REST API utilizando HTTPS y JSON. A su vez, la API gestiona el acceso a la información persistida mediante Spring Data JPA.
+
+Este nivel del modelo C4 permite visualizar las principales decisiones tecnológicas de la solución y la comunicación entre los containers que conforman MaquiControl.
+
+![MaquiControl Software Architecture Container Diagram](assets/c4-container-diagram.png)
+
+### 4.6.4. Software Architecture Components Diagrams
+
+En esta sección se presentan los Component Diagrams de MaquiControl, los cuales permiten visualizar la descomposición interna del container correspondiente a la REST API.
+
+En primer lugar, se muestra la organización general de los principales Bounded Contexts identificados durante el proceso de Domain-Driven Design. Posteriormente, se presenta el detalle interno de cada Bounded Context, mostrando sus principales capas y responsabilidades.
+
+La estructura interna sigue una separación entre Interfaces Layer, Application Layer, Domain Layer e Infrastructure Layer, permitiendo mantener separadas las responsabilidades del dominio y los aspectos técnicos de la implementación.
+
+#### API Application Component Diagram
+
+El siguiente diagrama muestra la organización general de la REST API de MaquiControl y los principales Bounded Contexts que forman parte de la solución: Identity & Access Management, Profiles Management, Fleet Management, Rental Management, Maintenance Management y Operations Management.
+
+También se representan las principales relaciones entre los contextos, la Single Page Application y la base de datos.
+
+![MaquiControl API Application Component Diagram](assets/c4-api-component-diagram.png)
+
+#### Fleet Management Bounded Context Component Diagram
+
+Este diagrama presenta la estructura interna del Fleet Management Bounded Context. La Interfaces Layer expone los servicios relacionados con la gestión de maquinaria, mientras que la Application Layer coordina los casos de uso definidos para este contexto.
+
+La Domain Layer contiene el aggregate Machinery y las reglas de negocio asociadas al inventario, estado y disponibilidad de la maquinaria. Finalmente, la Infrastructure Layer se encarga de la persistencia de la información.
+
+![Fleet Management Component Diagram](assets/c4-fleet-management-component-diagram.png)
+
+#### Rental Management Bounded Context Component Diagram
+
+Este diagrama representa la estructura interna del Rental Management Bounded Context. Este contexto gestiona las solicitudes de alquiler, reservas, confirmaciones, cancelaciones y actualización de fechas.
+
+La Domain Layer contiene el aggregate Rental, mientras que las demás capas permiten exponer, coordinar y persistir las operaciones asociadas al proceso de alquiler.
+
+![Rental Management Component Diagram](assets/c4-rental-management-component-diagram.png)
+
+#### Maintenance Management Bounded Context Component Diagram
+
+Este diagrama muestra la estructura interna del Maintenance Management Bounded Context, encargado de la programación de mantenimiento, reporte de averías, actualización de estados y mantenimiento del historial técnico de la maquinaria.
+
+La Domain Layer contiene el aggregate Maintenance y las reglas de negocio relacionadas con estos procesos.
+
+![Maintenance Management Component Diagram](assets/c4-maintenance-management-component-diagram.png)
+
+#### Operations Management Bounded Context Component Diagram
+
+Este diagrama presenta la estructura interna del Operations Management Bounded Context. Este contexto administra la ejecución de servicios, el registro y validación de horas trabajadas y el seguimiento operativo.
+
+La Domain Layer contiene el aggregate Service Operation, mientras que las demás capas coordinan la interacción entre la aplicación, el dominio y la persistencia.
+
+![Operations Management Component Diagram](assets/c4-operations-management-component-diagram.png)
+
+#### Identity & Access Management Bounded Context Component Diagram
+
+Este diagrama representa la estructura interna del Identity & Access Management Bounded Context. Este contexto se encarga de la autenticación, autorización, gestión de cuentas, roles y credenciales de los usuarios de MaquiControl.
+
+La Domain Layer contiene el aggregate User Account y las reglas asociadas al control de identidad y acceso.
+
+![Identity and Access Management Component Diagram](assets/c4-identity-access-management-component-diagram.png)
+
+#### Profiles Management Bounded Context Component Diagram
+
+Este diagrama muestra la estructura interna del Profiles Management Bounded Context, encargado de gestionar la información del perfil, datos de contacto e información de las organizaciones asociadas a los usuarios.
+
+La Domain Layer contiene el aggregate Profile y sus reglas de negocio correspondientes.
+
+![Profiles Management Component Diagram](assets/c4-profiles-management-component-diagram.png)
 
 ## 4.7 Software Object-Oriented Design
 

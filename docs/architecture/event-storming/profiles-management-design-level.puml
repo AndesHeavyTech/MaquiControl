@@ -1,0 +1,67 @@
+@startuml
+title MaquiControl - Profiles Management Bounded Context\nDesign-Level Event Storming
+
+left to right direction
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+
+' =========================
+' Styles
+' =========================
+
+rectangle "COMMAND\nCreate Profile" as CMD_CREATE_PROFILE #87CEFA
+rectangle "COMMAND\nUpdate Profile Information" as CMD_UPDATE_PROFILE #87CEFA
+rectangle "COMMAND\nUpdate Contact Information" as CMD_UPDATE_CONTACT #87CEFA
+rectangle "COMMAND\nUpdate Organization Information" as CMD_UPDATE_ORG #87CEFA
+
+rectangle "AGGREGATE\nProfile" as AGG_PROFILE #FFF59D
+
+rectangle "DOMAIN EVENT\nProfile Created" as EVT_PROFILE_CREATED #FFB74D
+rectangle "DOMAIN EVENT\nProfile Information Updated" as EVT_PROFILE_UPDATED #FFB74D
+rectangle "DOMAIN EVENT\nContact Information Updated" as EVT_CONTACT_UPDATED #FFB74D
+rectangle "DOMAIN EVENT\nOrganization Information Updated" as EVT_ORG_UPDATED #FFB74D
+
+rectangle "QUERY\nView Profile" as QUERY_PROFILE #A5D6A7
+rectangle "READ MODEL\nProfile Details" as READ_PROFILE #C8E6C9
+
+rectangle "QUERY\nView Contact Information" as QUERY_CONTACT #A5D6A7
+rectangle "READ MODEL\nContact Information" as READ_CONTACT #C8E6C9
+
+rectangle "QUERY\nView Organization Information" as QUERY_ORG #A5D6A7
+rectangle "READ MODEL\nOrganization Information" as READ_ORG #C8E6C9
+
+' =========================
+' Commands -> Aggregate -> Events
+' =========================
+
+CMD_CREATE_PROFILE --> AGG_PROFILE
+AGG_PROFILE --> EVT_PROFILE_CREATED
+
+CMD_UPDATE_PROFILE --> AGG_PROFILE
+AGG_PROFILE --> EVT_PROFILE_UPDATED
+
+CMD_UPDATE_CONTACT --> AGG_PROFILE
+AGG_PROFILE --> EVT_CONTACT_UPDATED
+
+CMD_UPDATE_ORG --> AGG_PROFILE
+AGG_PROFILE --> EVT_ORG_UPDATED
+
+' =========================
+' Queries -> Read Models
+' =========================
+
+QUERY_PROFILE --> READ_PROFILE
+QUERY_CONTACT --> READ_CONTACT
+QUERY_ORG --> READ_ORG
+
+legend right
+|= Color |= Element |
+|<#87CEFA>| Command |
+|<#FFF59D>| Aggregate |
+|<#FFB74D>| Domain Event |
+|<#A5D6A7>| Query |
+|<#C8E6C9>| Read Model |
+endlegend
+
+@enduml
