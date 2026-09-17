@@ -1,0 +1,67 @@
+@startuml
+title MaquiControl - Identity & Access Management Bounded Context\nDesign-Level Event Storming
+
+left to right direction
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+
+' =========================
+' Styles
+' =========================
+
+rectangle "COMMAND\nRegister User" as CMD_REGISTER #87CEFA
+rectangle "COMMAND\nAuthenticate User" as CMD_AUTHENTICATE #87CEFA
+rectangle "COMMAND\nAssign Role" as CMD_ASSIGN_ROLE #87CEFA
+rectangle "COMMAND\nChange Password" as CMD_CHANGE_PASSWORD #87CEFA
+
+rectangle "AGGREGATE\nUser Account" as AGG_ACCOUNT #FFF59D
+
+rectangle "DOMAIN EVENT\nUser Registered" as EVT_REGISTERED #FFB74D
+rectangle "DOMAIN EVENT\nUser Authenticated" as EVT_AUTHENTICATED #FFB74D
+rectangle "DOMAIN EVENT\nRole Assigned" as EVT_ROLE_ASSIGNED #FFB74D
+rectangle "DOMAIN EVENT\nPassword Changed" as EVT_PASSWORD_CHANGED #FFB74D
+
+rectangle "QUERY\nView Account Details" as QUERY_ACCOUNT #A5D6A7
+rectangle "READ MODEL\nAccount Details" as READ_ACCOUNT #C8E6C9
+
+rectangle "QUERY\nView User Roles" as QUERY_ROLES #A5D6A7
+rectangle "READ MODEL\nUser Role List" as READ_ROLES #C8E6C9
+
+rectangle "QUERY\nCheck Authentication Status" as QUERY_AUTH_STATUS #A5D6A7
+rectangle "READ MODEL\nAuthentication Status" as READ_AUTH_STATUS #C8E6C9
+
+' =========================
+' Commands -> Aggregate -> Events
+' =========================
+
+CMD_REGISTER --> AGG_ACCOUNT
+AGG_ACCOUNT --> EVT_REGISTERED
+
+CMD_AUTHENTICATE --> AGG_ACCOUNT
+AGG_ACCOUNT --> EVT_AUTHENTICATED
+
+CMD_ASSIGN_ROLE --> AGG_ACCOUNT
+AGG_ACCOUNT --> EVT_ROLE_ASSIGNED
+
+CMD_CHANGE_PASSWORD --> AGG_ACCOUNT
+AGG_ACCOUNT --> EVT_PASSWORD_CHANGED
+
+' =========================
+' Queries -> Read Models
+' =========================
+
+QUERY_ACCOUNT --> READ_ACCOUNT
+QUERY_ROLES --> READ_ROLES
+QUERY_AUTH_STATUS --> READ_AUTH_STATUS
+
+legend right
+|= Color |= Element |
+|<#87CEFA>| Command |
+|<#FFF59D>| Aggregate |
+|<#FFB74D>| Domain Event |
+|<#A5D6A7>| Query |
+|<#C8E6C9>| Read Model |
+endlegend
+
+@enduml

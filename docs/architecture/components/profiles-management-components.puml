@@ -1,0 +1,30 @@
+@startuml
+!include <C4/C4_Component>
+
+title MaquiControl - Profiles Management Bounded Context Component Diagram
+
+Container(webapp, "Single Page Application", "Angular", "Provides the user interface through a web browser.")
+
+Container_Boundary(profiles, "Profiles Management Bounded Context") {
+
+    Component(interfaces, "Interfaces Layer", "Spring Web", "Exposes endpoints for profile and organization information.")
+
+    Component(application, "Application Layer", "Spring Boot", "Coordinates profile creation and update use cases.")
+
+    Component(domain, "Domain Layer", "Java", "Contains the Profile aggregate and profile business rules.")
+
+    Component(infrastructure, "Infrastructure Layer", "Spring Data JPA", "Provides persistence for profile and organization information.")
+
+    Component(security, "Security Connector", "Spring Security", "Validates authenticated users and permissions.")
+}
+
+ContainerDb(database, "Database", "Relational Database", "Stores profile, contact and organization information.")
+
+Rel(webapp, interfaces, "Uses", "HTTPS / JSON")
+Rel(interfaces, application, "Invokes")
+Rel(application, domain, "Uses")
+Rel(application, infrastructure, "Uses")
+Rel(infrastructure, database, "Reads from and writes to")
+Rel(interfaces, security, "Validates access through")
+
+@enduml

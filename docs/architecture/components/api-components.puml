@@ -1,0 +1,52 @@
+@startuml
+!include <C4/C4_Component>
+
+title MaquiControl - API Application Component Diagram
+
+Container(webapp, "Single Page Application", "Angular", "Provides the user interface for fleet administrators and contractors through a web browser.")
+
+Container_Boundary(api, "REST API") {
+
+    Component(iam, "Identity & Access Management Bounded Context", "Spring Boot", "Handles authentication, authorization, user accounts and roles.")
+
+    Component(profiles, "Profiles Management Bounded Context", "Spring Boot", "Manages user profile, contact and organization information.")
+
+    Component(fleet, "Fleet Management Bounded Context", "Spring Boot", "Manages machinery inventory, status and availability.")
+
+    Component(rental, "Rental Management Bounded Context", "Spring Boot", "Manages rental requests, reservations, confirmations and cancellations.")
+
+    Component(maintenance, "Maintenance Management Bounded Context", "Spring Boot", "Manages maintenance scheduling, history and breakdown reports.")
+
+    Component(operations, "Operations Management Bounded Context", "Spring Boot", "Manages service execution, worked hours and operational tracking.")
+
+    Component(shared, "Shared Bounded Context", "Spring Boot", "Provides common domain and application elements shared across bounded contexts.")
+}
+
+ContainerDb(database, "Database", "Relational Database", "Stores information required by the MaquiControl platform.")
+
+Rel(webapp, iam, "Uses")
+Rel(webapp, profiles, "Uses")
+Rel(webapp, fleet, "Uses")
+Rel(webapp, rental, "Uses")
+Rel(webapp, maintenance, "Uses")
+Rel(webapp, operations, "Uses")
+
+Rel(iam, database, "Reads from and writes to")
+Rel(profiles, database, "Reads from and writes to")
+Rel(fleet, database, "Reads from and writes to")
+Rel(rental, database, "Reads from and writes to")
+Rel(maintenance, database, "Reads from and writes to")
+Rel(operations, database, "Reads from and writes to")
+
+Rel(rental, fleet, "Checks machinery availability")
+Rel(maintenance, fleet, "Updates machinery operational status")
+Rel(operations, rental, "Uses confirmed rental information")
+
+Rel(iam, shared, "Uses")
+Rel(profiles, shared, "Uses")
+Rel(fleet, shared, "Uses")
+Rel(rental, shared, "Uses")
+Rel(maintenance, shared, "Uses")
+Rel(operations, shared, "Uses")
+
+@enduml

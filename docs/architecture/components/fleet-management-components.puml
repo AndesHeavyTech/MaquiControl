@@ -1,0 +1,30 @@
+@startuml
+!include <C4/C4_Component>
+
+title MaquiControl - Fleet Management Bounded Context Component Diagram
+
+Container(webapp, "Single Page Application", "Angular", "Provides the user interface through a web browser.")
+
+Container_Boundary(fleet, "Fleet Management Bounded Context") {
+
+    Component(interfaces, "Interfaces Layer", "Spring Web", "Exposes endpoints related to machinery management.")
+
+    Component(application, "Application Layer", "Spring Boot", "Coordinates use cases for machinery registration, updates and availability.")
+
+    Component(domain, "Domain Layer", "Java", "Contains the Machinery aggregate and fleet business rules.")
+
+    Component(infrastructure, "Infrastructure Layer", "Spring Data JPA", "Provides persistence and external technical services.")
+
+    Component(security, "Security Connector", "Spring Security", "Validates authenticated users and access permissions.")
+}
+
+ContainerDb(database, "Database", "Relational Database", "Stores machinery and fleet information.")
+
+Rel(webapp, interfaces, "Uses", "HTTPS / JSON")
+Rel(interfaces, application, "Invokes")
+Rel(application, domain, "Uses")
+Rel(application, infrastructure, "Uses")
+Rel(infrastructure, database, "Reads from and writes to")
+Rel(interfaces, security, "Validates access through")
+
+@enduml

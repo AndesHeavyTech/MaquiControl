@@ -1,0 +1,30 @@
+@startuml
+!include <C4/C4_Component>
+
+title MaquiControl - Identity & Access Management Bounded Context Component Diagram
+
+Container(webapp, "Single Page Application", "Angular", "Provides the user interface through a web browser.")
+
+Container_Boundary(iam, "Identity & Access Management Bounded Context") {
+
+    Component(interfaces, "Interfaces Layer", "Spring Web", "Exposes endpoints for authentication and account management.")
+
+    Component(application, "Application Layer", "Spring Boot", "Coordinates registration, authentication, role assignment and password management use cases.")
+
+    Component(domain, "Domain Layer", "Java", "Contains the User Account aggregate and identity business rules.")
+
+    Component(infrastructure, "Infrastructure Layer", "Spring Data JPA", "Provides persistence for user accounts and roles.")
+
+    Component(security, "Security Connector", "Spring Security", "Provides authentication and authorization mechanisms.")
+}
+
+ContainerDb(database, "Database", "Relational Database", "Stores user account, credential and role information.")
+
+Rel(webapp, interfaces, "Uses", "HTTPS / JSON")
+Rel(interfaces, application, "Invokes")
+Rel(application, domain, "Uses")
+Rel(application, infrastructure, "Uses")
+Rel(infrastructure, database, "Reads from and writes to")
+Rel(interfaces, security, "Uses")
+
+@enduml
