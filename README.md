@@ -798,7 +798,15 @@ El Ubiquitous Language de MaquiControl reúne los principales términos utilizad
 | TS-006 | Technical Story | Registro masivo de horómetros | Como desarrollador, quiero procesar lotes de lecturas mediante `POST /api/horometers/batch`, para sincronización móvil offline. | **Given:** una lista de datos de horómetro capturada sin conexión.<br>**When:** el cliente envía la petición en lote.<br>**Then:** la API actualiza los datos y responde `200 OK`. | EP-10 |
 | TS-007 | Technical Story | Endpoint para facturación fiscal | Como desarrollador, quiero integrar la API con el WebService del PSE/SUNAT, para tramitar la emisión de facturas. | **Given:** la solicitud de facturación incluye RUC y datos válidos.<br>**When:** se ejecuta `POST /api/invoices/issue`.<br>**Then:** la API responde con código `200` y el CDR firmado. | EP-10 |
 | TS-008 | Technical Story | Webhooks de eventos de reserva | Como desarrollador, quiero notificar eventos vía Webhook, para mantener sincronizados sistemas externos. | **Given:** una reserva cambia de estado.<br>**When:** el evento ocurre en el sistema.<br>**Then:** la API realiza un callback HTTP POST a los endpoints suscritos. | EP-10 |
-## 3.2 Impact Mapping
+## 3.2. Impact Mapping
+
+El Impact Mapping de MaquiControl permite relacionar los objetivos de negocio con los comportamientos esperados de los User Personas, los entregables necesarios para provocar dichos impactos y las User Stories asociadas.
+
+Se definieron tres Business Goals orientados a reducir conflictos de reservas, mejorar la trazabilidad de los alquileres y mantener actualizado el estado de mantenimiento de la maquinaria.
+
+Los principales actores considerados son Luis Herrera, representante del segmento de propietarios y administradores de maquinaria, y Harold Angello, representante del segmento de contratistas y responsables de obra.
+
+![Impact Mapping - MaquiControl](assets/impact-mapping-maquicontrol.png)
 
 ## 3.3 Product Backlog
 | Orden | User Story ID | Título | Descripción | Story Points |
