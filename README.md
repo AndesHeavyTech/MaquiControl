@@ -188,7 +188,38 @@ Efrain Ricardo Bautista Ubillus
 
 ## Registro de Versiones del Informe
 
-## Project Report Collaboration Insights
+| Version | Fecha | Autor | Descripcion de Modificacion |
+| :--- | :--- | :--- | :--- |
+| 0.1 | 08/09/2026] | Carlos Gabriel Cespedes Lezcano | Estructuración inicial del informe y distribución de secciones correspondientes a la entrega AV1. |
+| 1.0 | 09/09/2026 | Todos | Elaboración y organización de las secciones iniciales del informe, incluyendo la Introducción, Startup Profile, Solution Profile, Lean UX, Segmentos objetivo, Collaboration Insights y Student Outcome. |
+| 1.0 | 09/09/2026 | Todos | Desarrollo de parte de la Introducción y del Capítulo II: Requirements Elicitation & Analysis. Asimismo, contribución al desarrollo de la Landing Page. |
+| 1.0 | 10/09/2026 | Nicolas Tantalean Granda | Desarrollo y documentación de entrevistas correspondientes a los segmentos objetivo y contribución al desarrollo del Capítulo II: Requirements Elicitation & Analysis. |
+| 1.0 | 11/09/2026 | Wilmer Sebastián Gutiérrez Lizarbe | Realización y documentación de una entrevista correspondiente al Segmento 2, contribuyendo al desarrollo del Capítulo II y avance del capítulo III  |
+| 1.0 | 14/09/2026 | Mathias Alejandro Castillo Guevara | Realización de entrevista y elaboración de User Personas, User Task Matrix, User Journey Mapping y Empathy Mapping como parte del proceso de Needfinding. |
+| 1.0 | 16/09/2026 | Angiela Stephany Fuentes Alvarez | Mejora y actualización de la Introducción y el Capítulo I. Desarrollo del Capítulo IV: Product Design, incluyendo Style Guidelines, Information Architecture y Landing Page UI Design. |
+| 1.0 | 17/09/2026 | Todos | Consolidación y actualización del informe para la entrega AV1, integrando los avances realizados por los integrantes del equipo. |
+
+
+## Project Report Collaboration 
+
+**Link del Repositorio de la Organización:** [Organización](https://github.com/AndesHeavyTech)  
+**Link del Repositorio del Reporte:** [Reporte](https://github.com/AndesHeavyTech/MaquiControl/tree/develop)
+
+### Reporte de Colaboración - Entrega AV1
+
+Durante esta primera entrega, el equipo estableció la estructura base del repositorio utilizando el flujo de trabajo GitFlow. Las tareas se distribuyeron entre los integrantes del equipo, permitiendo desarrollar diferentes secciones del informe y del producto mediante ramas independientes (`feature/...`) antes de integrarse a la rama `develop`.
+
+El equipo utilizó Pull Requests como mecanismo de integración y revisión de los cambios realizados. De esta manera, los avances desarrollados individualmente fueron revisados por otros integrantes antes de incorporarse a la rama `develop`, siguiendo un flujo de trabajo orientado a simular un entorno de desarrollo colaborativo.
+
+Asimismo, el repositorio permitió centralizar la documentación del proyecto MaquiControl y mantener un historial de los cambios realizados mediante commits, ramas y Pull Requests.
+
+#### Contributors
+
+[Por agregar: Captura de pantalla de GitHub Insights > Contributors del repositorio MaquiControl]
+
+#### Commits Over Time & Pulse
+
+[Por agregar: Captura de pantalla de GitHub Insights > Pulse / Commits del repositorio MaquiControl]
 
 ## Contenido
 
@@ -203,8 +234,8 @@ En el siguiente cuadro se describe las acciones realizadas y enunciados de concl
 
 | **Criterio específico** | **Acciones realizadas** | **Conclusiones** |
 | :--- | :--- | :--- |
-| **Comunica oralmente con efectividad a diferentes rangos de audiencia.** | **Fuentes Alvarez, Angiela Stephany**<br>**AV1**<br>[Avance AV1]<br><br>**Tantalean Granda, Nicolas**<br>**AV1**<br>[Avance AV1]<br><br>**Gutierrez Lizarbe, Wilmer Sebastian**<br>**AV1**<br>[Avance AV1]<br><br>**Castillo Guevara, Mathias Alejandro**<br>**AV1**<br>[Avance AV1]<br><br>**Cespedes Lezcano, Carlos Gabriel**<br>**AV1**<br>[Avance AV1] | **AV1:** [Conclusión AV1] |
-| **Comunica por escrito con efectividad a diferentes rangos de audiencia.** | **Fuentes Alvarez, Angiela Stephany**<br>**AV1**<br>[Avance AV1]<br><br>**Tantalean Granda, Nicolas**<br>**AV1**<br>[Avance AV1]<br><br>**Gutierrez Lizarbe, Wilmer Sebastian**<br>**AV1**<br>[Avance AV1]<br><br>**Castillo Guevara, Mathias Alejandro**<br>**AV1**<br>[Avance AV1]<br><br>**Cespedes Lezcano, Carlos Gabriel**<br>**AV1**<br>[Avance AV1] | **AV1:** [Conclusión AV1] |
+| **Comunica oralmente con efectividad a diferentes rangos de audiencia.** | **Fuentes Alvarez, Angiela Stephany**<br>**AV1**<br>Participará en la realización de una entrevista correspondiente a uno de los segmentos objetivo del proyecto, mediante la cual recopilará información directamente de un usuario y podrá identificar sus necesidades, experiencias y problemáticas relacionadas con la gestión y alquiler de maquinaria.<br><br>**Tantalean Granda, Nicolas**<br>**AV1**<br>Participó en la realización y seguimiento de entrevistas correspondientes a los segmentos objetivo, coordinando con el equipo la recopilación de información necesaria para completar el Capítulo II: Requirements Elicitation & Analysis.<br><br>**Gutierrez Lizarbe, Wilmer Sebastian**<br>**AV1**<br>Realizó una entrevista correspondiente al Segmento 2, estableciendo comunicación directa con un usuario para recopilar información relacionada con sus necesidades y experiencias.<br><br>**Castillo Guevara, Mathias Alejandro**<br>**AV1**<br>Realizó una entrevista a un usuario y utilizó la información obtenida para desarrollar los User Personas, User Task Matrix, User Journey Mapping y Empathy Mapping correspondientes a José Ramírez y Renzo Huamán.<br><br>**Cespedes Lezcano, Carlos Gabriel**<br>**AV1**<br>Realizó una entrevista correspondiente a uno de los segmentos objetivo, recopilando información directamente del entrevistado para contribuir al desarrollo del Capítulo II y al proceso de Needfinding. | **AV1:** La realización de entrevistas permitió al equipo establecer comunicación directa con usuarios pertenecientes a los segmentos objetivo, obteniendo información relevante sobre sus necesidades, experiencias y problemáticas. Estas actividades contribuyeron al desarrollo del proceso de Needfinding y permitieron fortalecer la capacidad del equipo para adaptar la comunicación de acuerdo con las características de los entrevistados.<br><br> |
+| **Comunica por escrito con efectividad a diferentes rangos de audiencia.** | **Fuentes Alvarez, Angiela Stephany**<br>**AV1**<br>Participó en la mejora y actualización de la Introducción y del Capítulo I del informe. Asimismo, desarrolló y documentó el Capítulo IV: Product Design, incluyendo Style Guidelines, Information Architecture y Landing Page UI Design.<br><br>**Tantalean Granda, Nicolas**<br>**AV1**<br>Participó en el desarrollo del Capítulo II mediante la realización y documentación de entrevistas, contribuyendo a la recopilación y organización de información correspondiente a los segmentos objetivo.<br><br>**Gutierrez Lizarbe, Wilmer Sebastian**<br>**AV1**<br>Contribuyó al desarrollo del Capítulo II mediante la documentación de una entrevista correspondiente al Segmento 2 y el registro de la información obtenida para el proceso de Requirements Elicitation & Analysis.<br><br>**Castillo Guevara, Mathias Alejandro**<br>**AV1**<br>Documentó los resultados de su entrevista mediante la elaboración de los User Personas, User Task Matrix, User Journey Mapping y Empathy Mapping de José Ramírez y Renzo Huamán, contribuyendo al desarrollo del Needfinding.<br><br>**Cespedes Lezcano, Carlos Gabriel**<br>**AV1**<br>Participó en la elaboración de parte de la Introducción y del Capítulo II. Asimismo, contribuyó al desarrollo de la Landing Page del producto y documentó los resultados obtenidos a partir de una entrevista realizada a un usuario del segmento objetivo. | **AV1:** El equipo desarrolló diferentes contenidos escritos para documentar los resultados de las entrevistas, el análisis de usuarios, el proceso de Needfinding y las decisiones de diseño del producto. La elaboración colaborativa de estos contenidos permitió organizar y comunicar información dirigida a los diferentes usuarios y participantes relacionados con MaquiControl.<br><br> |
 
 # Capítulo I: Introducción
 
@@ -226,11 +257,11 @@ Una de las principales fortalezas del sistema es su capacidad para adaptarse a l
 
 | Foto | Apellido y Nombre |
 | --- | --- |
-| ![foto-angiela](assets/images/chapter-1/profiles/Angiela.jpeg) | **Fuentes Alvarez, Angiela Stephany**<br> **Código: U202520331** \| **Carrera: Ingeniería de Software**<br>*Resumen:* Estudiante de Ingeniería de Software con interés en el análisis de requerimientos, diseño de soluciones tecnológicas y experiencia de usuario. Cuenta con conocimientos en desarrollo de software y herramientas de colaboración para proyectos tecnológicos. Se caracteriza por ser una persona organizada, responsable y comprometida con el trabajo en equipo, con disposición para aprender nuevas tecnologías y adaptarse a diferentes herramientas y procesos de desarrollo. |
-| ![foto-wilmer](assets/images/chapter-1/profiles/Wilmer.png) | **Gutiérrez Lizarbe, Wilmer Sebastián**<br> **Código: U202412044** \| **Carrera: Ingeniería de Software**<br>*Resumen:* Estudiante de Ingeniería de Software con conocimientos en desarrollo web (HTML5, CSS3, JavaScript/TypeScript, Angular), arquitectura backend (Java, Spring Boot) y gestión de bases de datos relacionales y no relacionales. Aporta al equipo capacidad analítica para el diseño de arquitecturas distribuidas, integración de APIs RESTful y lógica de negocio orientada a procesos industriales. |
-| ![foto-carlos](assets/images/chapter-1/profiles/Carlos.png) | **Cespedes Lezcano, Carlos Gabriel**<br> **Código: U202416147** \| **Carrera: Ingeniería de Software**<br>*Resumen:* Estudiante de Ingeniería de Software con conocimientos en desarrollo web, incluyendo HTML, CSS y JavaScript, así como en los lenguajes de programación C++ y Python. Cuenta con nociones básicas sobre el consumo de APIs y el manejo de bases de datos relacionales y no relacionales. |
-| ![foto-nicolas](assets/images/chapter-1/profiles/Nicolas.png) | **Tantalean Granda, Nicolas**<br> **Código: U202410728** \| **Carrera: Ingeniería de Software**<br>*Resumen:* Estudiante de Ingeniería de Software con conocimientos en desarrollo web, incluyendo HTML, CSS y JavaScript, así como en los lenguajes de programación C++ y Python. Aporta al equipo conocimientos relacionados con lenguajes de programación y desarrollo de soluciones de software. |
-| ![foto-mathias](assets/images/chapter-1/profiles/Mathias.png) | **Castillo Guevara, Mathias Alejandro**<br> **Código: U202410783** \| **Carrera: Ingeniería de Software**<br>*Resumen:* Estudiante de Ingeniería de Software con conocimientos en desarrollo web, incluyendo HTML, CSS y JavaScript, además de lenguajes de programación como C++ y Python. Aporta al equipo conocimientos relacionados con tecnologías y desarrollo web, participando en el trabajo colaborativo orientado al desarrollo de la solución. |
+| ![Foto Angiela](assets/Foto_AngielaFuentes.jpeg) | **Fuentes Alvarez, Angiela Stephany**<br> **Código: U202520331** \| **Carrera: Ingeniería de Software**<br>*Resumen:* Estudiante de Ingeniería de Software con interés en el análisis de requerimientos, diseño de soluciones tecnológicas y experiencia de usuario. Cuenta con conocimientos en desarrollo de software y herramientas de colaboración para proyectos tecnológicos. Se caracteriza por ser una persona organizada, responsable y comprometida con el trabajo en equipo, con disposición para aprender nuevas tecnologías y adaptarse a diferentes herramientas y procesos de desarrollo. |
+| ![Foto Sebastián](assets/Foto_SebastianGutierrez.jpeg) | **Gutiérrez Lizarbe, Wilmer Sebastián**<br> **Código: U202412044** \| **Carrera: Ingeniería de Software**<br>*Resumen:* Estudiante de Ingeniería de Software con conocimientos en desarrollo web (HTML5, CSS3, JavaScript/TypeScript, Angular), arquitectura backend (Java, Spring Boot) y gestión de bases de datos relacionales y no relacionales. Aporta al equipo capacidad analítica para el diseño de arquitecturas distribuidas, integración de APIs RESTful y lógica de negocio orientada a procesos industriales. |
+| ![Foto Carlos](assets/Foto_CarlosCespedes.jpeg) | **Cespedes Lezcano, Carlos Gabriel**<br> **Código: U202416147** \| **Carrera: Ingeniería de Software**<br>*Resumen:* Estudiante de Ingeniería de Software con conocimientos en desarrollo web, incluyendo HTML, CSS y JavaScript, así como en los lenguajes de programación C++ y Python. Cuenta con nociones básicas sobre el consumo de APIs y el manejo de bases de datos relacionales y no relacionales. |
+| ![Foto Nicolas](assets/Foto_NicolasTantalean.jpeg) | **Tantalean Granda, Nicolas**<br> **Código: U202410728** \| **Carrera: Ingeniería de Software**<br>*Resumen:* Estudiante de Ingeniería de Software con conocimientos en desarrollo web, incluyendo HTML, CSS y JavaScript, así como en los lenguajes de programación C++ y Python. Aporta al equipo conocimientos relacionados con lenguajes de programación y desarrollo de soluciones de software. |
+| ![Foto Mathias](assets/Foto_MathiasCastillo.jpeg) | **Castillo Guevara, Mathias Alejandro**<br> **Código: U202410783** \| **Carrera: Ingeniería de Software**<br>*Resumen:* Estudiante de Ingeniería de Software con conocimientos en desarrollo web, incluyendo HTML, CSS y JavaScript, además de lenguajes de programación como C++ y Python. Aporta al equipo conocimientos relacionados con tecnologías y desarrollo web, participando en el trabajo colaborativo orientado al desarrollo de la solución. |
 
 ### 1.2 Solution Profile
 Esta sección describe la problemática que MaquiControl busca resolver y la propuesta de solución planteada por AndesHeavyTech. Se analizan las principales dificultades relacionadas con el alquiler, control y disponibilidad de maquinaria pesada, y se aplica el proceso Lean UX para definir las necesidades, supuestos e hipótesis que orientan el desarrollo del producto.
@@ -435,125 +466,322 @@ Para la recolección de requerimientos se diseñaron guías de entrevista breves
 7. **¿Qué situaciones relacionadas con el alquiler o gestión de maquinaria le generan mayor frustración? (Complementaria)**
 8. **¿Qué aplicaciones, páginas web o herramientas digitales utiliza con mayor frecuencia para trabajar y comunicarse? (Complementaria)**
 
-### 2.2.2 Registro de entrevistas
+### 2.2.2. Registro de entrevistas
 
 En esta sección se presentan las entrevistas realizadas a representantes de los segmentos objetivo de MaquiControl. Cada entrevista permite recopilar información sobre sus experiencias, necesidades, problemas y hábitos relacionados con la gestión y alquiler de maquinaria. Los resultados obtenidos servirán como base para el análisis de entrevistas y la construcción de los artefactos de Needfinding.
 
-#### Segmento 1: Propietarios y administradores de pequeñas empresas de alquiler de maquinaria
+### Segmento 1: Propietarios y administradores de pequeñas empresas de alquiler de maquinaria
 
-##### Entrevista 1
+<table>
+<thead>
+  <tr>
+    <th colspan="2">Entrevista #1</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Nombre</td>
+    <td>José</td>
+  </tr>
+  <tr>
+    <td>Apellidos</td>
+    <td>Ramírez</td>
+  </tr>
+  <tr>
+    <td>Edad</td>
+    <td>27 años</td>
+  </tr>
+  <tr>
+    <td>Distrito</td>
+    <td>Comas</td>
+  </tr>
+  <tr>
+    <td>Ocupación</td>
+    <td>Director de una pequeña empresa dedicada al alquiler de maquinaria</td>
+  </tr>
+  <tr>
+    <td>Evidencia</td>
+    <td>[Por agregar]</td>
+  </tr>
+  <tr>
+    <td>Link</td>
+    <td>[Por agregar]</td>
+  </tr>
+  <tr>
+    <td>Duración</td>
+    <td>[Por agregar]</td>
+  </tr>
+  <tr>
+    <td>Resumen</td>
+    <td>José Ramírez dirige una pequeña empresa dedicada al alquiler de maquinaria y utiliza principalmente un teléfono Android y una laptop con navegador Chrome para realizar sus actividades laborales. Para coordinar con clientes y trabajadores utiliza principalmente WhatsApp y llamadas telefónicas, mientras que Excel le permite llevar algunos registros relacionados con el negocio.<br><br>Para encontrar proveedores de maquinaria, suele recurrir a recomendaciones de otros contratistas y contactos del sector. También utiliza WhatsApp, Google, Facebook y páginas web de empresas para comparar diferentes alternativas antes de tomar una decisión.<br><br>Uno de los principales problemas que identifica en el proceso de alquiler es la falta de transparencia en las tarifas, debido a que algunos precios pueden variar dependiendo del tiempo de uso o del costo del transporte. Asimismo, ha experimentado situaciones en las que una máquina supuestamente disponible finalmente se encontraba alquilada o en mantenimiento.<br><br>Respecto a las fallas mecánicas, indicó que en una ocasión una avería provocó aproximadamente un día de retraso en una obra. La espera por la llegada del técnico ocasionó que parte del personal permaneciera inactivo y que el cronograma se viera afectado, incrementando los costos de la operación.<br><br>El control de las horas trabajadas se realiza en coordinación con el operador y el encargado de la obra. En una futura plataforma digital, considera importante poder consultar claramente las horas registradas, el precio del alquiler, la disponibilidad y el estado de la maquinaria, además de recibir un comprobante de la reserva.<br><br>Sus principales prioridades son garantizar la disponibilidad de la maquinaria, reducir retrasos y mantener un adecuado control de costos. Entre sus principales frustraciones se encuentran la falta de información clara, las fallas inesperadas de los equipos y las demoras en las entregas.</td>
+  </tr>
+</tbody>
+</table>
 
-- **Nombre y apellidos:** José Ramírez
-- **Edad:** 27
-- **Distrito:** Comas
-- **Ocupacion:** Director de una pequeña empresa dedicada al alquiler de maquinaria
-- **Timing en el video:**
+<br>
 
-**Captura de la entrevista:**
+<table>
+<thead>
+  <tr>
+    <th colspan="2">Entrevista #2</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Nombre</td>
+    <td>Carlos Stephano</td>
+  </tr>
+  <tr>
+    <td>Apellidos</td>
+    <td>Mendoza</td>
+  </tr>
+  <tr>
+    <td>Edad</td>
+    <td>52 años</td>
+  </tr>
+  <tr>
+    <td>Distrito</td>
+    <td>San Juan de Lurigancho</td>
+  </tr>
+  <tr>
+    <td>Ocupación</td>
+    <td>Encargado de operaciones en un pequeño negocio de alquiler de maquinaria</td>
+  </tr>
+  <tr>
+    <td>Evidencia</td>
+    <td>[Por agregar]</td>
+  </tr>
+  <tr>
+    <td>Link</td>
+    <td>[Por agregar]</td>
+  </tr>
+  <tr>
+    <td>Duración</td>
+    <td>[Por agregar]</td>
+  </tr>
+  <tr>
+    <td>Resumen</td>
+    <td>Stephano Mendoza se desempeña como encargado de operaciones en un pequeño negocio dedicado al alquiler de maquinaria. Para realizar sus actividades utiliza principalmente un teléfono celular y una computadora de escritorio. Su navegador habitual es Google Chrome y emplea WhatsApp para coordinar con clientes y trabajadores.<br><br>Para seleccionar proveedores, generalmente recurre a empresas o personas con las que ya ha trabajado anteriormente o que han sido recomendadas por otros empresarios del sector. También realiza búsquedas mediante Google y consulta grupos de Facebook relacionados con construcción y maquinaria.<br><br>Entre los problemas que encuentra durante el proceso de alquiler destaca la falta de claridad en los precios, debido a que algunas cotizaciones no incluyen inicialmente costos adicionales como transporte o combustible. También ha experimentado situaciones en las que una máquina aparecía como disponible, pero ya había sido reservada por otro cliente.<br><br>Las fallas mecánicas representan otra dificultad frecuente. Cuando una máquina presenta una avería, debe esperar la llegada de un técnico y, en caso de que la reparación tome demasiado tiempo, buscar un equipo alternativo. Esto puede ocasionar pérdidas de tiempo, gastos adicionales de transporte y problemas en el cumplimiento de los compromisos asumidos con los clientes.<br><br>Para validar las horas trabajadas, compara la información del horómetro de la máquina con el reporte entregado por el operador. En una plataforma digital de alquiler considera importante poder consultar el historial de uso de la maquinaria, el precio por hora, las fechas disponibles y recibir una confirmación formal de la reserva.<br><br>Sus principales prioridades son mantener las máquinas operativas, cumplir con los plazos acordados con los clientes y reducir los tiempos muertos. Sus mayores frustraciones están relacionadas con cambios de último momento, máquinas que dejan de estar disponibles pese a haber sido coordinadas previamente y problemas en el registro de los mantenimientos.<br><br>Entre las herramientas digitales que utiliza con mayor frecuencia se encuentran WhatsApp, Excel, Gmail, Google Maps, páginas web de proveedores y Facebook Marketplace.</td>
+  </tr>
+</tbody>
+</table>
+
+<br>
+
+<table>
+<thead>
+  <tr>
+    <th colspan="2">Entrevista #3</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Nombre</td>
+    <td>Andrea</td>
+  </tr>
+  <tr>
+    <td>Apellidos</td>
+    <td>López</td>
+  </tr>
+  <tr>
+    <td>Edad</td>
+    <td>30 años</td>
+  </tr>
+  <tr>
+    <td>Distrito</td>
+    <td>Surco</td>
+  </tr>
+  <tr>
+    <td>Ocupación</td>
+    <td>Administradora de una empresa familiar de alquiler de maquinaria</td>
+  </tr>
+  <tr>
+    <td>Evidencia</td>
+    <td>[Por agregar]</td>
+  </tr>
+  <tr>
+    <td>Link</td>
+    <td>[Por agregar]</td>
+  </tr>
+  <tr>
+    <td>Duración</td>
+    <td>[Por agregar]</td>
+  </tr>
+  <tr>
+    <td>Resumen</td>
+    <td>Andrea López, administradora de 30 años de una pequeña empresa familiar dedicada al alquiler de maquinaria, señala que actualmente la gestión del negocio se realiza principalmente mediante WhatsApp y hojas de cálculo de Excel. Esta forma de trabajo genera dificultades para mantener actualizada la información sobre disponibilidad, reservas y mantenimiento de los equipos.<br><br>Uno de los principales problemas identificados es el cruce de fechas de alquiler, provocado por la falta de actualización o comunicación entre las personas encargadas. También menciona situaciones en las que se ofrece una máquina que posteriormente resulta estar en mantenimiento. Para Andrea, sería especialmente útil contar con una plataforma que centralice la información del negocio y permita consultar rápidamente el estado de cada equipo.<br><br>La entrevistada considera indispensable disponer de un calendario de disponibilidad y valora que la plataforma pueda utilizarse fácilmente desde un teléfono móvil. Asimismo, destaca que una solución sencilla, clara y con pocos pasos facilitaría su adopción.</td>
+  </tr>
+</tbody>
+</table>
 
 
+### Segmento 2: Contratistas independientes y responsables de obras de construcción
 
-**Resumen de la entrevista:**
+<table>
+<thead>
+  <tr>
+    <th colspan="2">Entrevista #1</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Nombre</td>
+    <td>Harold</td>
+  </tr>
+  <tr>
+    <td>Apellidos</td>
+    <td>Angello</td>
+  </tr>
+  <tr>
+    <td>Edad</td>
+    <td>41 años</td>
+  </tr>
+  <tr>
+    <td>Distrito</td>
+    <td>[Por agregar]</td>
+  </tr>
+  <tr>
+    <td>Ocupación</td>
+    <td>Ingeniero civil y propietario de una pequeña constructora</td>
+  </tr>
+  <tr>
+    <td>Obras supervisadas</td>
+    <td>Entre 2 y 3 obras simultáneamente</td>
+  </tr>
+  <tr>
+    <td>Dispositivos y navegador</td>
+    <td>iPhone en obra; laptop con Google Chrome en oficina</td>
+  </tr>
+  <tr>
+    <td>Evidencia</td>
+    <td>[Por agregar]</td>
+  </tr>
+  <tr>
+    <td>Link</td>
+    <td>[Por agregar]</td>
+  </tr>
+  <tr>
+    <td>Duración</td>
+    <td>[Por agregar]</td>
+  </tr>
+  <tr>
+    <td>Resumen</td>
+    <td>Harold Angello es ingeniero civil y dirige una pequeña constructora. Supervisa entre dos y tres obras de forma simultánea. En campo utiliza principalmente su iPhone, mientras que en la oficina revisa cotizaciones y correos desde una laptop con Google Chrome.<br><br>Para buscar maquinaria, primero contacta a proveedores de confianza. Cuando requiere equipos nuevos o especializados, realiza búsquedas en Google, revisa reseñas y solicita recomendaciones en grupos de WhatsApp de colegas ingenieros.<br><br>Su principal dificultad es la falta de disponibilidad real de las máquinas: algunos proveedores confirman equipos que luego ya fueron comprometidos con otras obras. Asimismo, las fallas mecánicas generan paradas de obra, costos por tiempos muertos y retrasos que afectan el cumplimiento de los plazos acordados con sus clientes.<br><br>Actualmente, los encargados de cada obra reportan las horas trabajadas por WhatsApp al finalizar el día. En una plataforma digital, Harold espera visualizar en un solo lugar el estado de las reservas y los equipos asignados a todas sus obras.<br><br>Sus principales prioridades son evitar que las obras se detengan por falta de maquinaria y cumplir los plazos comprometidos con sus clientes. Sus mayores frustraciones son las dobles reservas, las fallas mecánicas y la falta de visibilidad centralizada de sus equipos. Utiliza WhatsApp, Gmail, Google Calendar y Microsoft Excel como herramientas de trabajo.</td>
+  </tr>
+</tbody>
+</table>
 
-José Ramírez dirige una pequeña empresa dedicada al alquiler de maquinaria y utiliza principalmente un teléfono Android y una laptop con navegador Chrome para realizar sus actividades laborales. Para coordinar con clientes y trabajadores utiliza principalmente WhatsApp y llamadas telefónicas, mientras que Excel le permite llevar algunos registros relacionados con el negocio.
+<br>
 
-Para encontrar proveedores de maquinaria, suele recurrir a recomendaciones de otros contratistas y contactos del sector. También utiliza WhatsApp, Google, Facebook y páginas web de empresas para comparar diferentes alternativas antes de tomar una decisión.
+<table>
+<thead>
+  <tr>
+    <th colspan="2">Entrevista #2</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Nombre</td>
+    <td>Renzo</td>
+  </tr>
+  <tr>
+    <td>Apellidos</td>
+    <td>Huamán</td>
+  </tr>
+  <tr>
+    <td>Edad</td>
+    <td>38 años</td>
+  </tr>
+  <tr>
+    <td>Distrito</td>
+    <td>[Por agregar]</td>
+  </tr>
+  <tr>
+    <td>Ocupación</td>
+    <td>Contratista independiente</td>
+  </tr>
+  <tr>
+    <td>Obras supervisadas</td>
+    <td>Entre 2 y 3 obras simultáneamente</td>
+  </tr>
+  <tr>
+    <td>Dispositivos y navegador</td>
+    <td>Celular y laptop con Google Chrome en la oficina; Excel</td>
+  </tr>
+  <tr>
+    <td>Evidencia</td>
+    <td>[Por agregar]</td>
+  </tr>
+  <tr>
+    <td>Link</td>
+    <td>[Por agregar]</td>
+  </tr>
+  <tr>
+    <td>Duración</td>
+    <td>[Por agregar]</td>
+  </tr>
+  <tr>
+    <td>Resumen</td>
+    <td>Renzo Huamán es un contratista de 38 años con formación en construcción civil, habituado a operar con su teléfono en obra y una laptop en oficina. Para sus tareas diarias se apoya en WhatsApp, Facebook, Google Maps y Excel, gestionando sus proyectos con el objetivo principal de evitar tiempos muertos, controlar los costos y cumplir estrictamente los cronogramas pactados con sus clientes.<br><br>Al buscar maquinaria, prioriza las recomendaciones de colegas sobre las búsquedas en internet, pero enfrenta constantes dificultades con los proveedores tradicionales. Sus mayores frustraciones radican en la falta de transparencia en las tarifas, con cargos imprevistos de flete u operador, la falsa disponibilidad que deja la obra sin equipo y las averías mecánicas que paralizan la jornada, generando sobrecostos por mano de obra inactiva.<br><br>Para solucionar estos problemas y reemplazar el control manual que lleva en su cuaderno de obra, Renzo adoptaría una plataforma digital siempre que ofrezca precios finales transparentes por hora, garantía de disponibilidad en tiempo real y un comprobante formal que respalde cada reserva.</td>
+  </tr>
+</tbody>
+</table>
 
-Uno de los principales problemas que identifica en el proceso de alquiler es la falta de transparencia en las tarifas, debido a que algunos precios pueden variar dependiendo del tiempo de uso o del costo del transporte. Asimismo, ha experimentado situaciones en las que una máquina supuestamente disponible finalmente se encontraba alquilada o en mantenimiento.
+<br>
 
-Respecto a las fallas mecánicas, indicó que en una ocasión una avería provocó aproximadamente un día de retraso en una obra. La espera por la llegada del técnico ocasionó que parte del personal permaneciera inactivo y que el cronograma se viera afectado, incrementando los costos de la operación.
-
-El control de las horas trabajadas se realiza en coordinación con el operador y el encargado de la obra. En una futura plataforma digital, considera importante poder consultar claramente las horas registradas, el precio del alquiler, la disponibilidad y el estado de la maquinaria, además de recibir un comprobante de la reserva.
-
-Sus principales prioridades son garantizar la disponibilidad de la maquinaria, reducir retrasos y mantener un adecuado control de costos. Entre sus principales frustraciones se encuentran la falta de información clara, las fallas inesperadas de los equipos y las demoras en las entregas.
-
-##### Entrevista 2
-
-- **Nombre y apellidos:** Carlos Stephano Mendoza
-- **Edad:** 52 años
-- **Ocupación:** Encargado de operaciones en un pequeño negocio de alquiler de maquinaria
-- **Distrito:** San Juan de Lurigancho
-- **Timing en el video:**
-
-**Captura de la entrevista:**
-
-
-
-**Resumen de la entrevista:**
-
-Stephano Mendoza se desempeña como encargado de operaciones en un pequeño negocio dedicado al alquiler de maquinaria. Para realizar sus actividades utiliza principalmente un teléfono celular y una computadora de escritorio. Su navegador habitual es Google Chrome y emplea WhatsApp para coordinar con clientes y trabajadores.
-
-Para seleccionar proveedores, generalmente recurre a empresas o personas con las que ya ha trabajado anteriormente o que han sido recomendadas por otros empresarios del sector. También realiza búsquedas mediante Google y consulta grupos de Facebook relacionados con construcción y maquinaria.
-
-Entre los problemas que encuentra durante el proceso de alquiler destaca la falta de claridad en los precios, debido a que algunas cotizaciones no incluyen inicialmente costos adicionales como transporte o combustible. También ha experimentado situaciones en las que una máquina aparecía como disponible, pero ya había sido reservada por otro cliente.
-
-Las fallas mecánicas representan otra dificultad frecuente. Cuando una máquina presenta una avería, debe esperar la llegada de un técnico y, en caso de que la reparación tome demasiado tiempo, buscar un equipo alternativo. Esto puede ocasionar pérdidas de tiempo, gastos adicionales de transporte y problemas en el cumplimiento de los compromisos asumidos con los clientes.
-
-Para validar las horas trabajadas, compara la información del horómetro de la máquina con el reporte entregado por el operador. En una plataforma digital de alquiler considera importante poder consultar el historial de uso de la maquinaria, el precio por hora, las fechas disponibles y recibir una confirmación formal de la reserva.
-
-Sus principales prioridades son mantener las máquinas operativas, cumplir con los plazos acordados con los clientes y reducir los tiempos muertos. Sus mayores frustraciones están relacionadas con cambios de último momento, máquinas que dejan de estar disponibles pese a haber sido coordinadas previamente y problemas en el registro de los mantenimientos.
-
-Entre las herramientas digitales que utiliza con mayor frecuencia se encuentran WhatsApp, Excel, Gmail, Google Maps, páginas web de proveedores y Facebook Marketplace.
-Segmento 2: Contratistas independientes y responsables de obras de construcción
-Entrevista 1
-
-##### Entrevista 3
-
-- **Nombre y apellidos:** Andrea López
-- **Edad:** 30 años
-- **Ocupación:** Administradora de una empresa familiar de alquiler de maquinaria
-- **Distrito:** Surco
-- **Timing en el video:**
-
-**Captura de la entrevista:**
-
-
-
-**Resumen de la entrevista:**
-
-Andrea López, administradora de 30 años de una pequeña empresa familiar dedicada al alquiler de maquinaria, señala que actualmente la gestión del negocio se realiza principalmente mediante WhatsApp y hojas de cálculo de Excel. Esta forma de trabajo genera dificultades para mantener actualizada la información sobre disponibilidad, reservas y mantenimiento de los equipos.
-
-Uno de los principales problemas identificados es el cruce de fechas de alquiler, provocado por la falta de actualización o comunicación entre las personas encargadas. También menciona situaciones en las que se ofrece una máquina que posteriormente resulta estar en mantenimiento. Para Andrea, sería especialmente útil contar con una plataforma que centralice la información del negocio y permita consultar rápidamente el estado de cada equipo.
-
-La entrevistada considera indispensable disponer de un calendario de disponibilidad y valora que la plataforma pueda utilizarse fácilmente desde un teléfono móvil. Asimismo, destaca que una solución sencilla, clara y con pocos pasos facilitaría su adopción.
-
-#### Segmento 2: Contratistas independientes y responsables de obras de construcción
-
-##### Entrevista 1
-
-- **Nombre y apellidos:** Harold Angello
-- **Edad:** 41 años
-- **Ocupación:** Ingeniero civil y propietario de una pequeña constructora
-- **Obras supervisadas:** Entre 2 y 3 obras simultáneamente
-- **Dispositivos y navegador:** iPhone en obra; laptop con Google Chrome en oficina.
-
-**Resumen de la entrevista:**
-
-Harold Angello es ingeniero civil y dirige una pequeña constructora. Supervisa entre dos y tres obras de forma simultánea. En campo utiliza principalmente su iPhone, mientras que en la oficina revisa cotizaciones y correos desde una laptop con Google Chrome.
-
-Para buscar maquinaria, primero contacta a proveedores de confianza. Cuando requiere equipos nuevos o especializados, realiza búsquedas en Google, revisa reseñas y solicita recomendaciones en grupos de WhatsApp de colegas ingenieros.
-
-Su principal dificultad es la falta de disponibilidad real de las máquinas: algunos proveedores confirman equipos que luego ya fueron comprometidos con otras obras. Asimismo, las fallas mecánicas generan paradas de obra, costos por tiempos muertos y retrasos que afectan el cumplimiento de los plazos acordados con sus clientes.
-
-Actualmente, los encargados de cada obra reportan las horas trabajadas por WhatsApp al finalizar el día. En una plataforma digital, Harold espera visualizar en un solo lugar el estado de las reservas y los equipos asignados a todas sus obras.
-
-Sus principales prioridades son evitar que las obras se detengan por falta de maquinaria y cumplir los plazos comprometidos con sus clientes. Sus mayores frustraciones son las dobles reservas, las fallas mecánicas y la falta de visibilidad centralizada de sus equipos. Utiliza WhatsApp, Gmail, Google Calendar y Microsoft Excel como herramientas de trabajo.
-
-##### Entrevista 2
-
-- **Nombre y apellidos:** Renzo Huamán
-- **Edad:** 38 años
-- **Ocupación:** contratista independiente
-- **Obras supervisadas:** Entre 2 y 3 obras simultáneamente
-- **Dispositivos y navegador:** Celular y laptop con google en la oficina, ademas de exel.
-
-**Resumen de la entrevista:**
-
-Renzo Huamán es un contratista de 38 años con formación en construcción civil, habituado a operar con su teléfono en obra y una laptop en oficina. Para sus tareas diarias se apoya en WhatsApp, Facebook, Google Maps y Excel, gestionando sus proyectos con el objetivo principal de evitar tiempos muertos, controlar los costos y cumplir estrictamente los cronogramas pactados con sus clientes.
-
-Al buscar maquinaria, prioriza las recomendaciones de colegas sobre las búsquedas en internet, pero enfrenta constantes fricciones con los proveedores tradicionales. Sus mayores frustraciones radican en la falta de transparencia en las tarifas —con cargos imprevistos de flete u operador—, la falsa disponibilidad que deja la obra sin equipo, y las averías mecánicas que paralizan la jornada generando sobrecostos por mano de obra inactiva.
-
-Para solucionar estos problemas y reemplazar el control manual que lleva en su cuaderno de obra, Renzo adoptaría una plataforma digital siempre que ofrezca precios finales transparentes por hora, garantía de disponibilidad en tiempo real y un comprobante formal que respalde cada reserva.
+<table>
+<thead>
+  <tr>
+    <th colspan="2">Entrevista #3</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Nombre</td>
+    <td>[Por agregar]</td>
+  </tr>
+  <tr>
+    <td>Apellidos</td>
+    <td>[Por agregar]</td>
+  </tr>
+  <tr>
+    <td>Edad</td>
+    <td>[Por agregar]</td>
+  </tr>
+  <tr>
+    <td>Distrito</td>
+    <td>[Por agregar]</td>
+  </tr>
+  <tr>
+    <td>Ocupación</td>
+    <td>[Por agregar]</td>
+  </tr>
+  <tr>
+    <td>Obras supervisadas</td>
+    <td>[Por agregar]</td>
+  </tr>
+  <tr>
+    <td>Dispositivos y navegador</td>
+    <td>[Por agregar]</td>
+  </tr>
+  <tr>
+    <td>Evidencia</td>
+    <td>[Por agregar]</td>
+  </tr>
+  <tr>
+    <td>Link</td>
+    <td>[Por agregar]</td>
+  </tr>
+  <tr>
+    <td>Duración</td>
+    <td>[Por agregar]</td>
+  </tr>
+  <tr>
+    <td>Resumen</td>
+    <td>[Por agregar]</td>
+  </tr>
+</tbody>
+</table>
 
 ### 2.2.3 Análisis de entrevistas
 
