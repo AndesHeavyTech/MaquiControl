@@ -198,25 +198,39 @@ Efrain Ricardo Bautista Ubillus
 | 0.6 | 16/09/2026 | Angiela Stephany Fuentes Alvarez y Carlos Gabriel Cespedes Lezcano | Desarrollo de Student Outcome y del Capítulo IV: Product Design, incluyendo Style Guidelines, Information Architecture, Landing Page UI Design, Impact Mapping, Web Application UX/UI Design y arquitectura de software basada en DDD. |
 | 0.7 | 17/09/2026 | Carlos Gabriel Cespedes Lezcano | Integración del registro de versiones, Project Report Collaboration Insights, Student Outcome y fotografías de los integrantes, conservando los avances existentes en la rama `develop`. |
 
-## Project Report Collaboration 
+## Project Report Collaboration Insights
 
-**Link del Repositorio de la Organización:** [Organización](https://github.com/AndesHeavyTech)  
-**Link del Repositorio del Reporte:** [Reporte](https://github.com/AndesHeavyTech/MaquiControl/tree/develop)
+**Repositorio de la organización:** [AndesHeavyTech](https://github.com/AndesHeavyTech)  
+**Repositorio del informe:** [MaquiControl - develop](https://github.com/AndesHeavyTech/MaquiControl/tree/develop)
 
-### Reporte de Colaboración - Entrega AV1
+### Reporte de colaboración - Avance de la entrega AV1
 
-Durante esta primera entrega, el equipo estableció la estructura base del repositorio utilizando el flujo de trabajo GitFlow. Las tareas se distribuyeron entre los integrantes del equipo, permitiendo desarrollar diferentes secciones del informe y del producto mediante ramas independientes (`feature/...`) antes de integrarse a la rama `develop`.
+Durante el desarrollo de la entrega AV1, el equipo viene utilizando un flujo de trabajo basado en GitFlow. Las actividades realizadas hasta esta etapa fueron distribuidas entre los integrantes y desarrolladas en ramas independientes de tipo `feature`, creadas desde `develop`.
 
-El equipo utilizó Git Flow Helper para publicar y finalizar las ramas de tipo `feature`. Al completar cada tarea, los cambios fueron integrados directamente en la rama `develop` mediante la opción Feature Finish, manteniendo un flujo de trabajo colaborativo y organizado.
+Cada integrante registró sus aportes mediante commits relacionados con las secciones asignadas. Las ramas fueron publicadas y posteriormente integradas en `develop` mediante Git Flow Helper, conservando el historial de cambios y los merge commits correspondientes.
 
-Asimismo, el repositorio permitió centralizar la documentación del proyecto MaquiControl y mantener un historial de los cambios realizados mediante commits, ramas de trabajo y merges en `develop`.
-#### Contributors
+Estas evidencias reflejan la participación registrada hasta el corte temporal indicado. La sección será actualizada antes de la entrega de AV1 para incorporar los commits y evidencias correspondientes a las secciones pendientes de los capítulos IV y V.
 
-[Por agregar: Captura de pantalla de GitHub Insights > Contributors del repositorio MaquiControl]
+#### Evidencias de commits en `develop`
 
-#### Commits Over Time & Pulse
+![Historial de commits de develop - Parte 1](assets/project-report-collaboration-av1-commits.png)
 
-[Por agregar: Captura de pantalla de GitHub Insights > Pulse / Commits del repositorio MaquiControl]
+![Historial de commits de develop - Parte 2](assets/project-report-collaboration-av1-commits-2.png)
+
+#### Resumen de contribuciones
+
+con corte temporal en el commit `69f392a`, previo a esta actualización
+
+| Integrante | Commits sin merges |
+| :--- | :---: |
+| Carlos Gabriel Cespedes Lezcano | 23 |
+| Nicolas Tantalean Granda | 5 |
+| Mathias Alejandro Castillo Guevara | 5 |
+| Wilmer Sebastián Gutiérrez Lizarbe | 5 |
+| Angiela Stephany Fuentes Alvarez | 2 |
+| **Total** | **40** |
+
+Estas evidencias reflejan la participación de todos los integrantes en la elaboración del informe y mantienen coherencia con las modificaciones documentadas en el Registro de Versiones del Informe.
 
 ## Contenido
 
