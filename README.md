@@ -1465,6 +1465,139 @@ Para asegurar que cualquier miembro del equipo de AndesHeavyTech pueda clonar, c
   - Configurar el SDK del proyecto en Java 21 y sincronizar las dependencias declaradas en el archivo `pom.xml` a través de Maven.
   - Configurar el soporte de Spring Boot para la inspección y ejecución de configuraciones en `application.properties` o `application.yml`.
 
+### 5.1.2. Source Code Management
+
+El código fuente de todos los artefactos de software producidos para MaquiControl se administra de manera centralizada en la organización pública de GitHub de AndesHeavyTech:
+
+- **Organización en GitHub:** [https://github.com/AndesHeavyTech](https://github.com/AndesHeavyTech)
+
+Dentro de dicha organización se han estructurado repositorios dedicados e independientes para cada producto de la solución, garantizando un ciclo de vida desacoplado y una trazabilidad estricta:
+
+1. **Repositorio del Landing Page:**
+- **URL:** [https://github.com/AndesHeavyTech/maquicontrol-landing-page](https://github.com/AndesHeavyTech/maquicontrol-landing-page)
+- **Descripción:** Alberga el código fuente del sitio web público y estático de difusión comercial de MaquiControl (HTML5 semántico, CSS3 adaptable y JavaScript modular), optimizado para SEO, accesibilidad e interfaces responsivas en escritorio y móviles.
+
+2. **Repositorio de Web Services (Backend RESTful API):**
+- **URL:** [https://github.com/AndesHeavyTech/maquicontrol-backend](https://github.com/AndesHeavyTech/maquicontrol-backend)
+- **Descripción:** Contiene el proyecto de backend empresarial desarrollado con Java 21 y Spring Boot 3. Incluye la implementación de los Bounded Contexts según principios de Domain-Driven Design (DDD), los controladores REST, la capa de persistencia con Spring Data JPA y la suite completa de pruebas unitarias (con JUnit 5 y Mockito) y pruebas de integración/aceptación.
+
+3. **Repositorio de Frontend Web Application:**
+- **URL:** [https://github.com/AndesHeavyTech/maquicontrol-frontend](https://github.com/AndesHeavyTech/maquicontrol-frontend)
+- **Descripción:** Aloja el código de la Single Page Application (SPA) desarrollada con el framework Angular y TypeScript. Implementa la arquitectura basada en componentes, servicios HTTP para el consumo de la RESTful API, guards de protección de rutas y estilos CSS basados en el Design System del producto.
+
+4. **Repositorio del Informe y Gestión del Proyecto (Project Report):**
+- **URL:** [https://github.com/AndesHeavyTech/MaquiControl](https://github.com/AndesHeavyTech/MaquiControl)
+- **Descripción:** Repositorio central que contiene el informe técnico colaborativo en formato Markdown, las minutas de Sprint Planning, el registro de versiones y los artefactos de análisis y diseño.
+
+#### Estrategia de Ramificación: GitFlow Workflow
+
+El equipo de desarrollo de AndesHeavyTech adopta de manera estricta el modelo de ramificación **GitFlow** (propuesto originalmente por Vincent Driessen en *"A successful Git branching model"*). Este flujo proporciona un marco de trabajo robusto para aislar el trabajo en curso, ordenar las entregas iterativas y gestionar versiones estables de producción.
+
+A continuación, se ilustra la interacción entre las ramas mediante un diagrama de flujo Git:
+
+```mermaid
+gitGraph
+   commit id: "Initial commit"
+   branch develop
+   checkout develop
+   commit id: "Setup develop environment"
+   branch feature/US01-machinery-catalog
+   checkout feature/US01-machinery-catalog
+   commit id: "feat: add machinery entity"
+   commit id: "feat: implement catalog endpoint"
+   checkout develop
+   merge feature/US01-machinery-catalog id: "Merge feature into develop"
+   branch release/v1.0.0
+   checkout release/v1.0.0
+   commit id: "chore: bump version to 1.0.0"
+   commit id: "fix: correct pagination response"
+   checkout main
+   merge release/v1.0.0 tag: "v1.0.0" id: "Deploy v1.0.0 to prod"
+   checkout develop
+   merge release/v1.0.0 id: "Sync release fixes to develop"
+   checkout main
+   branch hotfix/v1.0.1
+   checkout hotfix/v1.0.1
+   commit id: "fix: resolve CORS policy header"
+   checkout main
+   merge hotfix/v1.0.1 tag: "v1.0.1" id: "Deploy hotfix v1.0.1"
+   checkout develop
+   merge hotfix/v1.0.1 id: "Sync hotfix to develop"
+```
+
+Las ramas y sus políticas de operación se definen a continuación:
+
+Las ramas y sus políticas de operación se definen a continuación:
+
+- **Ramas de larga duración (*Long-lived branches*):**
+  - `main`: Representa el estado de producción oficial del software. Solo contiene código probado, auditado y listo para despliegue. Está estrictamente prohibido realizar confirmaciones directas (*direct push*); las integraciones se efectúan exclusivamente mediante fusiones (*merges*) provenientes de ramas `release/*` o `hotfix/*`. Cada integración en `main` se etiqueta formalmente con un Git Tag siguiendo la especificación de Versionado Semántico.
+  - `develop`: Constituye la rama principal de integración continua para el desarrollo activo. Refleja las últimas características completadas que formarán parte de la siguiente versión. Es la rama base desde la cual se originan todas las ramas de tipo `feature/*` y hacia la cual estas se fusionan una vez validadas.
+
+- **Ramas de soporte y corta duración (*Short-lived branches*):**
+  - **Feature Branches (`feature/<identificador>-<descripcion-corta>`):**
+    - *Propósito:* Desarrollar nuevas funcionalidades o historias de usuario específicas de forma aislada.
+    - *Origen:* Se ramifican siempre desde `develop`.
+    - *Destino:* Se fusionan de regreso en `develop` tras la aprobación de un Pull Request con revisión de pares (*Code Review*) y validación de pruebas unitarias.
+    - *Nomenclatura:* `feature/US<numero>-<descripcion>` o `feature/<issue-id>-<slug>`.  
+      *Ejemplos:* `feature/US01-machinery-catalog`, `feature/US08-rental-reservation`, `feature/US15-maintenance-alert`.
+    - *Limpieza:* La rama se elimina de GitHub inmediatamente después de completarse la fusión para evitar acumulación de ramas obsoletas.
+  - **Release Branches (`release/v<MAJOR>.<MINOR>.<PATCH>`):**
+    - *Propósito:* Preparar una nueva versión para su puesta en producción. Permite congelar el alcance funcional (*feature freeze*), ejecutar pruebas de integración y aceptación del Sprint, y realizar correcciones menores de configuración o documentación sin detener el desarrollo de nuevas características en `develop`.
+    - *Origen:* Se ramifican desde `develop` cuando se han integrado todos los features comprometidos en el Sprint.
+    - *Destino:* Se fusionan tanto en `main` (generando el tag de versión) como de regreso en `develop` (para propagar los ajustes realizados durante la estabilización).
+    - *Nomenclatura:* `release/vX.Y.Z` (ej. `release/v1.0.0`, `release/v1.1.0`).
+  - **Hotfix Branches (`hotfix/v<MAJOR>.<MINOR>.<PATCH>`):**
+    - *Propósito:* Resolver incidencias o defectos críticos descubiertos directamente en el entorno de producción que no pueden esperar al ciclo regular de Sprint.
+    - *Origen:* Se ramifican directamente desde `main` a partir del tag de la versión afectada.
+    - *Destino:* Se fusionan inmediatamente en `main` (generando un nuevo tag con incremento de parche) y simultáneamente en `develop` (o en la rama `release` activa si existiera).
+    - *Nomenclatura:* `hotfix/vX.Y.Z` (ej. `hotfix/v1.0.1`, `hotfix/v1.0.2`).
+
+
+#### Especificación de Versionado Semántico: Semantic Versioning 2.0.0 (SemVer)
+
+Para la asignación unívoca y transparente de versiones a los productos de software de MaquiControl, el equipo aplica la especificación oficial **Semantic Versioning 2.0.0** (`MAJOR.MINOR.PATCH`):
+
+$$ \text{Versión} = \text{MAJOR}.\text{MINOR}.\text{PATCH} $$
+
+- **MAJOR (Versión Mayor):** Se incrementa ante cambios estructurales que introducen incompatibilidades hacia atrás en las interfaces públicas, tales como reestructuración de contratos en la API RESTful (rompimiento de endpoints JSON existentes), cambios profundos en el modelo relacional o reemplazo de la arquitectura base (ejemplo: de `v1.4.2` a `v2.0.0`).
+- **MINOR (Versión Menor):** Se incrementa ante la adición de nuevas funcionalidades compatibles con las versiones existentes, correspondiente habitualmente al cierre de hitos de evaluación académica o Sprints de desarrollo (por ejemplo, incorporación de un nuevo Bounded Context como *Maintenance Management* o nueva vista en la SPA; de `v1.0.0` a `v1.1.0`).
+- **PATCH (Parche):** Se incrementa ante correcciones de errores, optimizaciones de rendimiento internas o ajustes de configuración menores que no alteran la interfaz pública ni agregan funcionalidad (ejemplo: resolución de un error de CORS o validación de campos vacíos; de `v1.1.0` a `v1.1.1`).
+
+#### Convención de Confirmaciones: Conventional Commits 1.0.0
+
+Para garantizar un historial de control de versiones legible, estructurado y apto para la generación automatizada de bitácoras de cambios (*changelogs*), todos los mensajes de confirmación (*commits*) en los repositorios de AndesHeavyTech deben respetar el estándar **Conventional Commits 1.0.0**.
+
+La estructura formal obligatoria es:
+
+```text
+<tipo>[ámbito opcional]: <descripción concisa>
+
+[cuerpo explicativo opcional]
+
+[pie de página opcional: referencias a issues o breaking changes]
+```
+
+**Reglas de estilo para los mensajes de confirmación:**
+1. **Idioma:** Redacción obligatoria en **idioma inglés**.
+2. **Tiempo verbal:** Verbo en imperativo presente (ej. *"add"*, *"fix"*, *"refactor"*, nunca *"added"*, *"fixing"* ni *"agregó"*).
+3. **Puntuación:** La primera línea no debe superar los 72 caracteres y no debe terminar con punto final.
+4. **Trazabilidad:** Cuando corresponda a una historia de usuario o issue registrado en GitHub, debe citarse el identificador en el pie del commit (ej. `Closes #12`).
+
+
+A continuación, se presentan los tipos admitidos y ejemplos reales aplicados a MaquiControl:
+
+| Tipo | Propósito | Ejemplo Aplicado en MaquiControl |
+| :--- | :--- | :--- |
+| `feat` | Incorporación de una nueva funcionalidad visible para el usuario o nuevo endpoint en la API. | `feat(catalog): add machinery search filter by location and category` |
+| `fix` | Corrección de un defecto o fallo detectado en el código fuente. | `fix(rental): prevent double booking for overlapping reservation dates` |
+| `docs` | Modificaciones o adiciones en documentación técnica, comentarios de API o archivos Markdown. | `docs(readme): add chapter 5.1 software configuration management` |
+| `style` | Cambios que no afectan la lógica del código (formateo, espacios en blanco, comas, nombres CSS BEM). | `style(landing): format hero section buttons according to design system` |
+| `refactor` | Reestructuración de código que no corrige errores ni agrega nuevas funcionalidades. | `refactor(auth): extract jwt token generation to independent helper service` |
+| `perf` | Modificación de código orientada específicamente a optimizar el rendimiento y tiempo de respuesta. | `perf(database): add composite index to machinery availability query` |
+| `test` | Incorporación o corrección de pruebas unitarias, de integración o suites de pruebas de aceptación. | `test(maintenance): add unit tests for maintenance schedule calculation` |
+| `build` | Cambios que afectan el sistema de construcción, dependencias externas o empaquetado (Maven, npm). | `build(maven): upgrade spring-boot-starter-parent to version 3.3.3` |
+| `ci` | Modificaciones en los archivos y scripts de configuración de integración y despliegue continuo. | `ci(github-actions): add automated maven test execution workflow` |
+| `chore` | Tareas rutinarias de mantenimiento de repositorio que no modifican código de producción ni pruebas. | `chore(git): update gitignore to exclude ide and local temporary files` |
 
 ## 5.3 Validation Interviews
 
