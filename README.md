@@ -1816,12 +1816,24 @@ flowchart LR
 - **Verificación del despliegue:**
   - Acceder a la URL pública de producción: `https://maquicontrol-app.vercel.app`.
   - Validar la carga de activos estáticos, la navegación entre rutas públicas y protegidas mediante Angular Router, y el consumo exitoso de datos desde la RESTful API con protocolo seguro HTTPS.
-## 5.3 Validation Interviews
+## 5.2. Landing Page, Services & Applications Implementation
 
-## 5.4 Video About-the-Product
+## 5.3. Validation Interviews
+
+## 5.4. Video About-the-Product
 
 # Conclusiones
 
 # Bibliografía
+- Angular Team. (2024). *Angular coding style guide*. https://angular.dev/style-guide
+- Conventional Commits. (2020). *Conventional Commits 1.0.0: A specification for adding human and machine readable meaning to commit messages*. https://www.conventionalcommits.org/
+- Driessen, V. (2010). *A successful Git branching model*. https://nvie.com/posts/a-successful-git-branching-model/
+- Google. (2023). *Google HTML/CSS Style Guide*. https://google.github.io/styleguide/htmlcssguide.html
+- Google. (2023). *Google Java Style Guide*. https://google.github.io/styleguide/javaguide.html
+- Google. (2023). *Google TypeScript Style Guide*. https://google.github.io/styleguide/tsguide.html
+- Preston-Werner, T. (2013). *Semantic Versioning 2.0.0*. https://semver.org/
+- SmartBear. (2023). *Gherkin Conventions for Readable Specifications*. https://specflow.org/gherkin/gherkin-conventions-for-readable-specifications/
+- VMware Tanzu. (2024). *Spring Boot Features*. https://docs.spring.io/spring-boot/docs/current/reference/html/features.html
+- W3Schools. (2024). *HTML Style Guide and Coding Conventions*. https://www.w3schools.com/html/html5_syntax.asp
 
 # Anexos
