@@ -1822,7 +1822,19 @@ flowchart LR
 
 ## 5.4. Video About-the-Product
 
-# Conclusiones
+## Conclusiones
+
+- El análisis realizado permitió identificar que la gestión y alquiler de maquinaria pesada presenta dificultades relacionadas con la disponibilidad de equipos, coordinación de reservas, seguimiento de mantenimientos y procesos administrativos, debido principalmente al uso de herramientas manuales y a la falta de información centralizada.
+
+- MaquiControl plantea una solución digital orientada a centralizar la gestión de maquinaria pesada, permitiendo organizar las reservas, disponibilidad, mantenimiento, asignación de equipos y procesos de facturación desde una misma plataforma.
+
+- La identificación de los principales actores involucrados, como proveedores, gestores de flota, contratistas, jefes de obra, técnicos de mantenimiento y personal administrativo, permitió establecer las necesidades de los diferentes usuarios que interactúan con el proceso de alquiler y gestión de maquinaria.
+
+- La aplicación del enfoque Lean UX permitió estructurar la problemática mediante las preguntas What, Who, Where, When, Why, How y How Much, facilitando la identificación del problema, sus causas, los usuarios involucrados y el contexto en el que se presenta.
+
+- La propuesta de valor de AndesHeavyTech busca mejorar la trazabilidad y eficiencia de las operaciones mediante una plataforma accesible desde entornos web y móviles, incorporando funcionalidades como catálogo de maquinaria, consulta de disponibilidad, reservas, alertas de mantenimiento y facturación electrónica.
+
+- Finalmente, MaquiControl busca contribuir a la transformación digital del sector de alquiler de maquinaria pesada, proporcionando una herramienta que permita mejorar la coordinación entre proveedores y contratistas, reducir problemas derivados de la falta de información y facilitar una gestión más organizada de las operaciones.
 
 # Bibliografía
 - Angular Team. (2024). *Angular coding style guide*. https://angular.dev/style-guide
