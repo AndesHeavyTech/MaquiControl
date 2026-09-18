@@ -151,10 +151,10 @@ Efrain Ricardo Bautista Ubillus
 <summary><strong>Capítulo V: Product Implementation, Validation & Deployment</strong></summary>
 
 - [5.1. Software Configuration Management](#51-software-configuration-management)
-    - [5.1.1. Development Environment Configuration](#511-software-development-environment-configuration)
+  - [5.1.1. Software Development Environment Configuration](#511-software-development-environment-configuration)
     - [5.1.2. Source Code Management](#512-source-code-management)
-    - [5.1.3. Style Guide & Conventions](#513-source-code-style-guide-conventions)
-    - [5.1.4. Deployment Configuration](#514-software-deployment-configuration)
+    - [5.1.3. Source Code Style Guide & Conventions](#513-source-code-style-guide--conventions)
+    - [5.1.4. Software Deployment Configuration](#514-software-deployment-configuration)
 - [5.2. Landing Page, Services & Applications Implementation](#52-landing-page-services-applications-implementation)
     - [5.2.1. Sprint 1](#521-sprint-1)
         - [Sprint Planning 1](#5211-sprint-planning-1)
@@ -188,16 +188,16 @@ Efrain Ricardo Bautista Ubillus
 
 ## Registro de Versiones del Informe
 
-| Versión | Fecha | Autor(es) | Descripción de modificación |
-| :---: | :---: | :--- | :--- |
-| 0.1 | 08/09/2026 | Carlos Gabriel Cespedes Lezcano | Creación de la estructura inicial del informe y desarrollo del Capítulo I: Introducción, incluyendo Startup Profile, Solution Profile, Lean UX Process y segmentos objetivo. |
-| 0.2 | 10/09/2026 | Carlos Gabriel Cespedes Lezcano y Nicolas Tantalean Granda | Desarrollo del análisis competitivo, estrategias frente a competidores, diseño y registro de entrevistas, así como el análisis preliminar de los segmentos objetivo. |
-| 0.3 | 11/09/2026 | Carlos Gabriel Cespedes Lezcano y Mathias Alejandro Castillo Guevara | Desarrollo de artefactos de Needfinding, incluyendo User Personas, User Task Matrix y User Journey Mapping, además de la incorporación de perfiles de integrantes. |
-| 0.4 | 14/09/2026 | Carlos Gabriel Cespedes Lezcano y Wilmer Sebastián Gutiérrez Lizarbe | Ampliación del análisis de entrevistas y desarrollo de User Personas, User Journey Mapping y Empathy Mapping para los segmentos objetivo. |
-| 0.5 | 15/09/2026 | Carlos Gabriel Cespedes Lezcano, Nicolas Tantalean Granda y Mathias Alejandro Castillo Guevara | Corrección de información de entrevistas; incorporación de Big Picture Event Storming, Ubiquitous Language, User Stories, Product Backlog y nuevos artefactos de Needfinding. |
+| Versión | Fecha | Autor(es) | Descripción de modificación                                                                                                                                                                                                            |
+| :---: | :---: | :--- |:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 0.1 | 08/09/2026 | Carlos Gabriel Cespedes Lezcano | Creación de la estructura inicial del informe y desarrollo del Capítulo I: Introducción, incluyendo Startup Profile, Solution Profile, Lean UX Process y segmentos objetivo.                                                           |
+| 0.2 | 10/09/2026 | Carlos Gabriel Cespedes Lezcano y Nicolas Tantalean Granda | Desarrollo del análisis competitivo, estrategias frente a competidores, diseño y registro de entrevistas, así como el análisis preliminar de los segmentos objetivo.                                                                   |
+| 0.3 | 11/09/2026 | Carlos Gabriel Cespedes Lezcano y Mathias Alejandro Castillo Guevara | Desarrollo de artefactos de Needfinding, incluyendo User Personas, User Task Matrix y User Journey Mapping, además de la incorporación de perfiles de integrantes.                                                                     |
+| 0.4 | 14/09/2026 | Carlos Gabriel Cespedes Lezcano y Wilmer Sebastián Gutiérrez Lizarbe | Ampliación del análisis de entrevistas y desarrollo de User Personas, User Journey Mapping y Empathy Mapping para los segmentos objetivo.                                                                                              |
+| 0.5 | 15/09/2026 | Carlos Gabriel Cespedes Lezcano, Nicolas Tantalean Granda y Mathias Alejandro Castillo Guevara | Corrección de información de entrevistas; incorporación de Big Picture Event Storming, Ubiquitous Language, User Stories, Product Backlog y nuevos artefactos de Needfinding.                                                          |
 | 0.6 | 16/09/2026 | Angiela Stephany Fuentes Alvarez y Carlos Gabriel Cespedes Lezcano | Desarrollo de Student Outcome y del Capítulo IV: Product Design, incluyendo Style Guidelines, Information Architecture, Landing Page UI Design, Impact Mapping, Web Application UX/UI Design y arquitectura de software basada en DDD. |
-| 0.7 | 17/09/2026 | Carlos Gabriel Cespedes Lezcano | Integración del registro de versiones, Project Report Collaboration Insights, Student Outcome y fotografías de los integrantes, conservando los avances existentes en la rama `develop`. |
-
+| 0.7 | 17/09/2026 | Carlos Gabriel Cespedes Lezcano | Integración del registro de versiones, Project Report Collaboration Insights, Student Outcome y fotografías de los integrantes, conservando los avances existentes en la rama `develop`.                                               |
+| 0.8 | 18/09/2026 | Mathias Alejandro Castillo Guevara y Carlos Gabriel Cespedes Lezcano | Desarrollo completo del punto 5.1. Software Configuration Management y actualización de referencias bibliográficas técnicas.                                                                                                                                              |
 ## Project Report Collaboration Insights
 
 **Repositorio de la organización:** [AndesHeavyTech](https://github.com/AndesHeavyTech)  
@@ -1388,9 +1388,15 @@ La Domain Layer contiene el aggregate Profile y sus reglas de negocio correspond
 
 # Capítulo V: Product Implementation, Validation & Deployment
 
-## 5.1 Software Configuration Management
+El presente capítulo describe y evidencia el proceso de implementación, comprobación, despliegue y validación de la solución integral de software MaquiControl, desarrollada por la startup AndesHeavyTech. El producto digital está diseñado para transformar la gestión, contratación y monitoreo operativo del alquiler de maquinaria pesada, proporcionando una plataforma centralizada y trazable para empresas proveedoras (Fleet Administrators) y contratistas o jefes de obra (Contractors / Site Managers).
 
-## 5.2 Landing Page, Services & Applications Implementation
+La solución se compone de tres productos digitales interconectados que aplican prácticas de desarrollo web adaptativo (*Responsive Web Design*):
+1. **Landing Page:** Sitio web estático de alta conversión y presentación institucional del modelo de negocio de AndesHeavyTech, con puntos de contacto (*call-to-action*) diferenciados por segmento objetivo.
+2. **RESTful Web Services (Backend API):** Servicio backend desarrollado en Java con Spring Boot 3, fundamentado en una arquitectura hexagonal guiada por el dominio (*Domain-Driven Design* - DDD), que expone recursos mediante endpoints RESTful seguros y gestiona la persistencia transaccional con una base de datos relacional.
+3. **Frontend Web Application:** Aplicación web de página única (*Single Page Application* - SPA) construida con Angular, que consume los servicios de la RESTful API y proporciona una interfaz enriquecida, accesible y adaptable a dispositivos de escritorio y móviles.
+
+A continuación, se establecen las decisiones, políticas y directrices de Gestión de Configuración de Software (SCM) que garantizan la consistencia, integridad, reproducibilidad y calidad en todo el ciclo de desarrollo.
+
 
 ## 5.3 Validation Interviews
 
