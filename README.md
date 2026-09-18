@@ -1685,7 +1685,137 @@ Feature: Machinery Rental Reservation
     And send a notification email to the Fleet Administrator
 ```
 
+### 5.1.4. Software Deployment Configuration
 
+La estrategia de despliegue de MaquiControl está diseñada para garantizar disponibilidad, reproducibilidad automatizada y aislamiento entre los distintos entornos de operación. Se configuran tres entornos independientes:
+- **Development (Local):** Entorno de trabajo local en las estaciones de los desarrolladores (puertos locales: Frontend `http://localhost:4200`, Backend `http://localhost:8080`, BD `localhost:5432`).
+- **Staging / QA (Pruebas de Integración):** Entorno en la nube vinculado a la rama `develop` para la verificación continua de funcionalidades integradas.
+- **Production (Producción):** Entorno de operación final desplegado en infraestructuras Cloud de alta confiabilidad, vinculado a la rama `main` y etiquetado mediante versiones semánticas.
+
+A continuación, se detalla la configuración paso a paso para el despliegue exitoso de cada uno de los productos que componen la solución:
+
+```mermaid
+flowchart LR
+    subgraph GitHub ["GitHub Platform"]
+        RepoLanding["Repo: maquicontrol-landing-page\n(branch: main)"]
+        RepoBackend["Repo: maquicontrol-backend\n(branch: main)"]
+        RepoFrontend["Repo: maquicontrol-frontend\n(branch: main)"]
+    end
+
+    subgraph CI_CD ["GitHub Actions / Cloud CI"]
+        ActionsBackend["Maven Build & Unit Tests\n(Java 21)"]
+        BuildFrontend["Angular Build Production\n(ng build --configuration production)"]
+    end
+
+    subgraph CloudHosting ["Entorno de Producción Cloud"]
+        VercelLanding["Landing Page Hosting\n(Vercel Edge Network)"]
+        RenderAPI["RESTful API Service\n(Render Cloud PaaS)"]
+        NeonDB[("PostgreSQL Serverless\n(Neon Cloud DB)")]
+        VercelSPA["Web Application SPA\n(Vercel CDN)"]
+    end
+
+    RepoLanding -->|Automated Git Hook| VercelLanding
+    RepoBackend --> ActionsBackend
+    ActionsBackend -->|Deploy Trigger| RenderAPI
+    RenderAPI <-->|JDBC SSL| NeonDB
+    RepoFrontend --> BuildFrontend
+    BuildFrontend -->|Static Distribution| VercelSPA
+    VercelSPA -->|HTTPS REST / JSON| RenderAPI
+```
+
+#### 1. Despliegue del Landing Page
+- **Plataforma seleccionada:** Vercel / GitHub Pages.
+- **Tipo de producto:** Sitio web estático (HTML5, CSS3, JavaScript modular y activos multimedia).
+- **Procedimiento de despliegue:**
+  1. Conectar la organización de GitHub `AndesHeavyTech` con la cuenta de hosting en Vercel.
+  2. Importar el repositorio `maquicontrol-landing-page` y seleccionar la rama `main` como rama de producción (*Production Branch*).
+  3. Configurar el directorio raíz (*Root Directory*) en `./`.
+  4. La plataforma detecta automáticamente los archivos estáticos y publica el sitio en la red de distribución de contenidos (*Edge Network*).
+  5. Cada confirmación de cambios (*push*) o fusión hacia la rama `main` dispara automáticamente una nueva versión en producción sin tiempo de inactividad (*zero-downtime deployment*).
+- **URL pública de despliegue:** `https://maquicontrol-landing.vercel.app`
+
+#### 2. Despliegue de los Web Services (RESTful API - Spring Boot)
+- **Plataforma de cómputo seleccionada:** Render Cloud Platform (Web Service con entorno nativo Java 21 / Docker).
+- **Plataforma de persistencia seleccionada:** Neon Serverless PostgreSQL.
+- **Variables de entorno de producción requeridas:**  
+  La configuración sensible se desacopla del código fuente y se inyecta de forma segura a través del panel de control de Render:
+  - `SPRING_DATASOURCE_URL`: `jdbc:postgresql://ep-maquicontrol-db.aws.neon.tech/maquicontrol?sslmode=require`
+  - `SPRING_DATASOURCE_USERNAME`: `maquicontrol_admin`
+  - `SPRING_DATASOURCE_PASSWORD`: `<SECRET_PRODUCTION_PASSWORD>`
+  - `SPRING_JPA_HIBERNATE_DDL_AUTO`: `update`
+  - `SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT`: `org.hibernate.dialect.PostgreSQLDialect`
+  - `SERVER_PORT`: `8080`
+  - `JWT_SECRET`: `<SECRET_BASE64_ENCODED_256_BIT_KEY>`
+  - `JWT_EXPIRATION`: `86400000` (24 horas en milisegundos)
+  - `CORS_ALLOWED_ORIGINS`: `https://maquicontrol-app.vercel.app,https://maquicontrol-landing.vercel.app`
+- **Flujo de Integración y Despliegue Continuo (CI/CD) con GitHub Actions:**
+
+  En el repositorio `maquicontrol-backend`, se establece un pipeline de automatización en `.github/workflows/deploy.yml`:
+  ```yaml
+  name: Backend CI/CD Pipeline
+
+  on:
+    push:
+      branches: [ main ]
+
+  jobs:
+    build-and-test:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout Source Code
+          uses: actions/checkout@v4
+
+        - name: Set up JDK 21
+          uses: actions/setup-java@v4
+          with:
+            java-version: '21'
+            distribution: 'temurin'
+            cache: maven
+
+        - name: Run Unit Tests with Maven
+          run: mvn clean test
+
+        - name: Package JAR Application
+          run: mvn package -DskipTests
+
+        - name: Trigger Render Deploy Hook
+          if: success()
+          run: curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"
+  ```
+  - **Verificación del despliegue y monitoreo de salud:**
+  - Endpoint de comprobación de salud (*Health Check*): `GET https://maquicontrol-api.onrender.com/actuator/health` (debe responder `{"status":"UP"}`).
+  - Documentación interactiva de la API: `https://maquicontrol-api.onrender.com/swagger-ui/index.html`.
+
+#### 3. Despliegue de la Frontend Web Application (Angular SPA)
+- **Plataforma seleccionada:** Vercel.
+- **Configuración de entorno de producción (`src/environments/environment.prod.ts`):**
+  ```typescript
+  export const environment = {
+    production: true,
+    apiUrl: 'https://maquicontrol-api.onrender.com/api/v1'
+  };
+  ```
+- **Configuración de enrutamiento para Single Page Application (`vercel.json`):**  
+  Dado que Angular gestiona las rutas del lado del cliente (*HTML5 PushState*), se define un archivo de configuración en la raíz del proyecto para reenviar todas las solicitudes hacia `index.html` y evitar errores 404 ante recargas del navegador:
+  ```json
+  {
+    "rewrites": [
+      {
+        "source": "/(.*)",
+        "destination": "/index.html"
+      }
+    ]
+  }
+  ```
+- **Procedimiento de despliegue:**
+  1. Conectar el repositorio `maquicontrol-frontend` en la plataforma Vercel.
+  2. Seleccionar el framework predeterminado como **Angular**.
+  3. Establecer el comando de compilación (*Build Command*): `ng build --configuration production`.
+  4. Establecer el directorio de salida (*Output Directory*): `dist/maquicontrol-frontend/browser` (o `dist/maquicontrol-frontend`).
+  5. Configurar el despliegue automático ante confirmaciones en la rama `main`.
+- **Verificación del despliegue:**
+  - Acceder a la URL pública de producción: `https://maquicontrol-app.vercel.app`.
+  - Validar la carga de activos estáticos, la navegación entre rutas públicas y protegidas mediante Angular Router, y el consumo exitoso de datos desde la RESTful API con protocolo seguro HTTPS.
 ## 5.3 Validation Interviews
 
 ## 5.4 Video About-the-Product
