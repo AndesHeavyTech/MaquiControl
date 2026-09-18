@@ -1599,6 +1599,93 @@ A continuación, se presentan los tipos admitidos y ejemplos reales aplicados a 
 | `ci` | Modificaciones en los archivos y scripts de configuración de integración y despliegue continuo. | `ci(github-actions): add automated maven test execution workflow` |
 | `chore` | Tareas rutinarias de mantenimiento de repositorio que no modifican código de producción ni pruebas. | `chore(git): update gitignore to exclude ide and local temporary files` |
 
+
+### 5.1.3. Source Code Style Guide & Conventions
+
+La uniformidad estilística y la adhesión a buenas prácticas de programación son indispensables para garantizar la legibilidad, facilitar la colaboración técnica en equipo y asegurar la mantenibilidad a largo plazo de MaquiControl.
+
+**Directriz transversal obligatoria:**  
+Todo el código fuente —incluyendo nombres de clases, interfaces, métodos, variables, atributos, constantes, tablas de base de datos, nombres de archivos, comentarios técnicos y especificaciones de pruebas— debe redactarse rigurosamente en **idioma inglés**.
+
+A continuación, se describen los estándares y guías oficiales adoptadas para cada tecnología del proyecto:
+
+#### 1. HTML y CSS (Landing Page y Plantillas Angular)
+Se adoptan las directrices de la **Google HTML/CSS Style Guide** y los estándares de sintaxis de la **W3C**:
+
+- **Semántica HTML5:** Utilizar elementos semánticos de estructura (`<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<aside>`, `<footer>`) en lugar de contenedores genéricos `<div>` redundantes.
+- **Minúsculas y comillas:** Todas las etiquetas, atributos y valores de atributos deben escribirse en minúsculas. Los valores de atributos deben delimitarse estrictamente con comillas dobles (`class="btn-primary"`).
+- **Nomenclatura CSS:** Se aplica la convención **BEM (*Block Element Modifier*)** en formato `kebab-case` para la definición de clases, garantizando modularidad y evitando colisiones de especificidad (ejemplo: `.machinery-card`, `.machinery-card__title`, `.machinery-card__button--disabled`).
+- **Indentación:** Dos (2) espacios de indentación; no se admiten caracteres de tabulación.
+- **Variables de diseño:** Definir colores primarios, secundarios, tipografías y espaciados mediante variables nativas CSS (*Custom Properties*) alineadas con el Design System de MaquiControl (ejemplo: `--color-primary-amber: #D97706;`).
+- **Accesibilidad (a11y):** Obligatoriedad de incorporar atributos `alt` descriptivos en imágenes y etiquetas `aria-label` o `for` en elementos interactivos y formularios.
+
+#### 2. JavaScript y TypeScript (Frontend Angular)
+Se adoptan la **Google TypeScript Style Guide** y la guía oficial **Angular Coding Style Guide**:
+
+- **Nomenclatura de identificadores:**
+  - `PascalCase`: Nombres de clases, interfaces, tipos (*type aliases*), enumeraciones (*enums*) y decoradores (ejemplo: `MachineryService`, `RentalOrder`, `MachineryStatus`).
+  - `camelCase`: Nombres de variables, propiedades de objetos, funciones, métodos e instancias (ejemplo: `calculateDailyRate()`, `contractorProfile`, `isAvailable`).
+  - `UPPER_SNAKE_CASE`: Constantes verdaderas e inmutables a nivel de módulo (ejemplo: `DEFAULT_PAGE_SIZE`, `API_TIMEOUT_MS`).
+- **Interfaces:** No utilizar el prefijo `I` en nombres de interfaces (usar `Contractor` en lugar de `IContractor`), siguiendo las recomendaciones del equipo de TypeScript.
+- **Tipado estricto:** Prohibido el uso indiscriminado del tipo `any`. Se exige tipado estricto en parámetros y firmas de retorno de funciones (`strict: true` en `tsconfig.json`).
+- **Estructura y sufijos de archivos en Angular:** Cada archivo debe reflejar su responsabilidad mediante sufijos normalizados:
+  - Componentes: `machinery-list.component.ts` (plantilla: `machinery-list.component.html`, estilos: `machinery-list.component.css`).
+  - Servicios: `machinery.service.ts`.
+  - Modelos / Interfaces: `machinery.model.ts`.
+  - Guards de ruta: `auth.guard.ts`.
+- **Inyección de dependencias:** Preferir el uso de la función idiomática `inject()` o la inyección por constructor declarando dependencias como `private readonly` (ejemplo: `private readonly machineryService = inject(MachineryService);`).
+
+#### 3. Java y Spring Boot (Backend RESTful API)
+Se adoptan la **Google Java Style Guide** y las convenciones oficiales de **Spring Boot Reference Documentation**:
+
+- **Nomenclatura de identificadores:**
+  - `PascalCase`: Nombres de clases, interfaces, registros (*records*) y enumeraciones (ejemplo: `MachineryController`, `RentalOrderRepository`, `MachineryState`).
+  - `camelCase`: Nombres de métodos y variables locales (ejemplo: `findAvailableMachinery()`, `rentalDurationInDays`).
+  - `UPPER_SNAKE_CASE`: Constantes estáticas e inmutables (`static final`) (ejemplo: `MAX_RENTAL_HOURS_PER_DAY`).
+- **Arquitectura de paquetes orientada a Domain-Driven Design (DDD):** Organización por Bounded Contexts y separación en capas según el modelo:
+  ```text
+  com.andesheavytech.maquicontrol
+  ├── fleetmanagement
+  │   ├── interfaces.rest            # Controladores REST y DTOs de solicitud/respuesta
+  │   ├── application.services       # Servicios de aplicación y casos de uso
+  │   ├── domain.model               # Entidades, Aggregates, Value Objects y eventos de dominio
+  │   ├── domain.repositories        # Interfaces de repositorios del dominio
+  │   └── infrastructure.persistence # Implementaciones JPA de repositorios y adaptadores
+  ├── rentalmanagement
+  └── identityandaccess
+  ```
+- **Inyección de dependencias:** Inyección obligatoria mediante constructor utilizando la anotación `@RequiredArgsConstructor` de Project Lombok sobre campos declarados como `private final`. Se prohíbe la inyección directa de campos con `@Autowired`.
+- **Diseño de APIs RESTful:**
+  - Endpoints en minúsculas y plural utilizando sustantivos (ejemplo: `/api/v1/machineries`, `/api/v1/rentals/{id}/confirmations`).
+  - Uso riguroso de métodos HTTP: `GET` (lectura idempotente), `POST` (creación de recursos), `PUT` (reemplazo completo), `PATCH` (actualización parcial) y `DELETE` (eliminación o baja lógica).
+  - Códigos de estado HTTP conformes al estándar: `200 OK`, `201 Created`, `204 No Content`, `400 Bad Request`, `401 Unauthorized`, `403 Forbidden`, `404 Not Found`, `409 Conflict`.
+- **Manejo centralizado de excepciones:** Utilizar un controlador global `@RestControllerAdvice` para capturar excepciones del dominio y de validación, retornando respuestas estructuradas en conformidad con la especificación **RFC 7807 (Problem Details for HTTP APIs)**.
+- **Validación declarativa:** Emplear anotaciones de `jakarta.validation` (`@NotNull`, `@NotBlank`, `@Size`, `@Positive`) en los DTOs de entrada, auditadas con `@Valid` en los métodos controladores.
+
+#### 4. Gherkin (Especificaciones BDD de Aceptación)
+Se adoptan las **Gherkin Conventions for Readable Specifications** para documentar los criterios de aceptación en los escenarios de pruebas:
+
+- **Estructura semántica:** Utilizar las palabras clave estándar `Feature`, `Scenario`, `Given` (contexto inicial), `When` (evento o acción disparadora), `Then` (resultado esperado verificable) y `And` (condición complementaria).
+- **Estilo declarativo vs. imperativo:** Los escenarios deben describir el comportamiento y valor de negocio del sistema, evitando detallar clics específicos de la interfaz de usuario o llamadas técnicas a APIs.
+- **Uso de Ubiquitous Language:** Todos los sustantivos y verbos empleados en los escenarios deben corresponder exactamente a los términos formalizados en el lenguaje ubicuo de MaquiControl (ejemplo: `Fleet Administrator`, `Contractor`, `Machinery`, `Rental Order`, `Check-in`).
+
+*Ejemplo de especificación BDD para MaquiControl:*
+```gherkin
+Feature: Machinery Rental Reservation
+  As a Contractor
+  I want to reserve a specific backhoe for my construction project
+  So that I guarantee its availability on the required start date
+
+  Scenario: Successful rental reservation for available machinery
+    Given that the backhoe with ID "CAT-420F" is in "AVAILABLE" status
+    And the Contractor "Harold Angello" has an active verified account
+    When the Contractor submits a rental request from "2026-10-01" to "2026-10-15"
+    Then the system should change the machinery status to "RESERVED"
+    And generate a Rental Order with status "PENDING_CONFIRMATION"
+    And send a notification email to the Fleet Administrator
+```
+
+
 ## 5.3 Validation Interviews
 
 ## 5.4 Video About-the-Product
