@@ -188,17 +188,15 @@ Efrain Ricardo Bautista Ubillus
 
 ## Registro de Versiones del Informe
 
-| Version | Fecha | Autor | Descripcion de Modificacion |
-| :--- | :--- | :--- | :--- |
-| 0.1 | 08/09/2026 | Carlos Gabriel Cespedes Lezcano | Estructuración inicial del informe y distribución de secciones correspondientes a la entrega AV1. |
-| 1.0 | 09/09/2026 | Todos | Elaboración y organización de las secciones iniciales del informe, incluyendo la Introducción, Startup Profile, Solution Profile, Lean UX, Segmentos objetivo, Collaboration Insights y Student Outcome. |
-| 1.0 | 09/09/2026 | Todos | Desarrollo de parte de la Introducción y del Capítulo II: Requirements Elicitation & Analysis. Asimismo, contribución al desarrollo de la Landing Page. |
-| 1.0 | 10/09/2026 | Nicolas Tantalean Granda | Desarrollo y documentación de entrevistas correspondientes a los segmentos objetivo y contribución al desarrollo del Capítulo II: Requirements Elicitation & Analysis. |
-| 1.0 | 11/09/2026 | Wilmer Sebastián Gutiérrez Lizarbe | Realización y documentación de una entrevista correspondiente al Segmento 2, contribuyendo al desarrollo del Capítulo II y avance del capítulo III  |
-| 1.0 | 14/09/2026 | Mathias Alejandro Castillo Guevara | Realización de entrevista y elaboración de User Personas, User Task Matrix, User Journey Mapping y Empathy Mapping como parte del proceso de Needfinding. |
-| 1.0 | 16/09/2026 | Angiela Stephany Fuentes Alvarez | Mejora y actualización de la Introducción y el Capítulo I. Desarrollo del Capítulo IV: Product Design, incluyendo Style Guidelines, Information Architecture y Landing Page UI Design. |
-| 1.0 | 17/09/2026 | Todos | Consolidación y actualización del informe para la entrega AV1, integrando los avances realizados por los integrantes del equipo. |
-
+| Versión | Fecha | Autor(es) | Descripción de modificación |
+| :---: | :---: | :--- | :--- |
+| 0.1 | 08/09/2026 | Carlos Gabriel Cespedes Lezcano | Creación de la estructura inicial del informe y desarrollo del Capítulo I: Introducción, incluyendo Startup Profile, Solution Profile, Lean UX Process y segmentos objetivo. |
+| 0.2 | 10/09/2026 | Carlos Gabriel Cespedes Lezcano y Nicolas Tantalean Granda | Desarrollo del análisis competitivo, estrategias frente a competidores, diseño y registro de entrevistas, así como el análisis preliminar de los segmentos objetivo. |
+| 0.3 | 11/09/2026 | Carlos Gabriel Cespedes Lezcano y Mathias Alejandro Castillo Guevara | Desarrollo de artefactos de Needfinding, incluyendo User Personas, User Task Matrix y User Journey Mapping, además de la incorporación de perfiles de integrantes. |
+| 0.4 | 14/09/2026 | Carlos Gabriel Cespedes Lezcano y Wilmer Sebastián Gutiérrez Lizarbe | Ampliación del análisis de entrevistas y desarrollo de User Personas, User Journey Mapping y Empathy Mapping para los segmentos objetivo. |
+| 0.5 | 15/09/2026 | Carlos Gabriel Cespedes Lezcano, Nicolas Tantalean Granda y Mathias Alejandro Castillo Guevara | Corrección de información de entrevistas; incorporación de Big Picture Event Storming, Ubiquitous Language, User Stories, Product Backlog y nuevos artefactos de Needfinding. |
+| 0.6 | 16/09/2026 | Angiela Stephany Fuentes Alvarez y Carlos Gabriel Cespedes Lezcano | Desarrollo de Student Outcome y del Capítulo IV: Product Design, incluyendo Style Guidelines, Information Architecture, Landing Page UI Design, Impact Mapping, Web Application UX/UI Design y arquitectura de software basada en DDD. |
+| 0.7 | 17/09/2026 | Carlos Gabriel Cespedes Lezcano | Integración del registro de versiones, Project Report Collaboration Insights, Student Outcome y fotografías de los integrantes, conservando los avances existentes en la rama `develop`. |
 
 ## Project Report Collaboration 
 
