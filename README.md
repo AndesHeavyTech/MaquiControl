@@ -1397,6 +1397,74 @@ La solución se compone de tres productos digitales interconectados que aplican 
 
 A continuación, se establecen las decisiones, políticas y directrices de Gestión de Configuración de Software (SCM) que garantizan la consistencia, integridad, reproducibilidad y calidad en todo el ciclo de desarrollo.
 
+## 5.1. Software Configuration Management
+
+La Gestión de Configuración de Software (*Software Configuration Management* - SCM) establece el marco normativo, los procesos operacionales y las herramientas requeridas para controlar la evolución de los artefactos de software producidos durante el ciclo de vida de MaquiControl. El propósito fundamental de la SCM en AndesHeavyTech es asegurar la consistencia, integridad, trazabilidad bidireccional y reproducibilidad de cada versión del software frente a cambios dinámicos en los requisitos, evitando divergencias en los entornos de trabajo y posibilitando una colaboración distribuida ordenada entre los miembros del equipo.
+
+En el marco del proyecto MaquiControl, el alcance de la SCM comprende:
+- **Control de versiones del código fuente y documentación:** Administración centralizada de repositorios Git alojados en la plataforma GitHub, estructurados conforme al flujo de trabajo GitFlow y documentados mediante Markdown.
+- **Gestión de entornos de desarrollo:** Estandarización de herramientas, SDKs, compiladores y utilitarios para asegurar paridad estricta entre los entornos de desarrollo locales y los entornos de ejecución en la nube.
+- **Gobernanza de estilos y estándares de codificación:** Adopción obligatoria de guías de estilo internacionales en idioma inglés para garantizar legibilidad, mantenibilidad y reducción de deuda técnica.
+- **Configuración y automatización del despliegue:** Definición de pipelines de Integración Continua y Despliegue Continuo (CI/CD) para publicar de forma confiable, auditable e independiente los tres productos digitales de la solución.
+
+### 5.1.1. Software Development Environment Configuration
+
+Para garantizar la homogeneidad en los entornos de trabajo de los integrantes del equipo y mitigar incidentes de incompatibilidad técnica, se han definido y estandarizado las herramientas requeridas para cada actividad del ciclo de vida del software.
+
+A continuación, se detallan los productos de software seleccionados, organizados según el tipo de actividad, indicando su propósito dentro del proyecto MaquiControl, el modelo de distribución (SaaS o local), la versión mínima recomendada y las rutas oficiales de acceso o descarga:
+
+| Actividad / Categoría | Nombre del Producto | Modelo | Versión | Propósito en el Proyecto MaquiControl | Ruta de Referencia o Descarga |
+| :--- | :--- | :---: | :---: | :--- | :--- |
+| **Project Management** | GitHub Projects | SaaS | Cloud | Planificación iterativa ágil, gestión del Product Backlog, tableros Kanban de Sprints y asignación de tareas (*work-items*) a los integrantes. | [GitHub Projects](https://github.com/features/issues) |
+| **Project Management** | Discord | SaaS | Desktop / Web | Comunicación síncrona, coordinación de Daily Standups, sesiones de Pair Programming y reuniones de retrospectiva de Sprint. | [Discord Download](https://discord.com/download) |
+| **Requirements Management** | GitHub Issues & Milestones | SaaS | Cloud | Registro, categorización y seguimiento granular de historias de usuario, requisitos funcionales, tareas técnicas y defectos (*bugs*). | [GitHub Issues](https://github.com/features/issues) |
+| **Requirements Management** | Miro | SaaS | Cloud | Dinámicas colaborativas visuales de Event Storming (Big Picture y Design-Level), definición de Bounded Contexts y mapeo de historias de usuario. | [Miro Platform](https://miro.com/) |
+| **Product UX/UI Design** | Figma | SaaS / Local | v124+ | Diseño del Design System, wireframes de baja fidelidad, mockups de alta fidelidad, flujos de interacción (*user flows*) y prototipos navegables web y móvil. | [Figma Downloads](https://www.figma.com/downloads/) |
+| **Product UX/UI Design** | UXPressia | SaaS | Cloud | Elaboración y documentación de artefactos de diseño centrado en el usuario: User Personas, User Journey Maps, Empathy Maps e Impact Mapping. | [UXPressia](https://uxpressia.com/) |
+| **Software Development (SDK & Runtime)** | Eclipse Temurin OpenJDK (Java SE) | Local | 21.0.x LTS | Kit de desarrollo oficial de Java para compilar y ejecutar la lógica de negocio, servicios RESTful y algoritmos transaccionales del backend. | [Adoptium Temurin 21](https://adoptium.net/temurin/releases/?version=21) |
+| **Software Development (Build Tool)** | Apache Maven | Local | 3.9.x | Herramienta de gestión de dependencias, automatización de construcción, compilación y empaquetado del backend en archivos ejecutables JAR. | [Apache Maven](https://maven.apache.org/download.cgi) |
+| **Software Development (Framework)** | Spring Boot | Framework | 3.3.x | Framework de desarrollo de backend Java para la creación rápida de servicios RESTful empresariales con Spring Data JPA y Spring Security. | [Spring Initializr](https://start.spring.io/) |
+| **Software Development (Runtime)** | Node.js & npm | Local | v20.x LTS (npm v10.x) | Entorno de ejecución de JavaScript y gestor de paquetes para la compilación, dependencias y ejecución de la aplicación cliente frontend. | [Node.js Downloads](https://nodejs.org/en/download) |
+| **Software Development (Framework/CLI)** | Angular CLI | Framework / CLI | 18.x / 19.x | Interfaz de línea de comandos para la generación de componentes, servicios, módulos y compilación optimizada de la Single Page Application. | [Angular Docs](https://angular.dev/tools/cli) |
+| **Software Development (IDE Backend)** | IntelliJ IDEA (Ultimate / Community) | Local | 2024.x | Entorno de desarrollo integrado especializado en Java y Spring Boot, con refactorización avanzada, navegación de código e integración con Maven. | [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) |
+| **Software Development (IDE Frontend)** | Visual Studio Code | Local | 1.90+ | Editor de código fuente ligero y extensible utilizado para el desarrollo del Landing Page, la aplicación frontend en Angular y la documentación Markdown. | [VS Code Download](https://code.visualstudio.com/Download) |
+| **Software Development (VCS Client)** | Git | Local | 2.45+ | Sistema de control de versiones distribuido para la gestión de ramas, confirmaciones locales y sincronización con GitHub. | [Git SCM](https://git-scm.com/downloads) |
+| **Software Development (Database)** | PostgreSQL | Local / Server | 16.x | Sistema de gestión de bases de datos relacional para pruebas y desarrollo local de esquemas, tablas, restricciones e índices. | [PostgreSQL Downloads](https://www.postgresql.org/download/) |
+| **Software Development (DB Tool)** | DBeaver Community | Local | 24.x | Cliente universal de administración y consulta de bases de datos relacionales para validación de estructuras y datos en desarrollo. | [DBeaver Download](https://dbeaver.io/download/) |
+| **Software Deployment (Cloud Hosting)** | Render | SaaS | Cloud | Plataforma Cloud PaaS para el aprovisionamiento, compilación y despliegue del ejecutable JAR de la RESTful API (backend). | [Render Dashboard](https://render.com/) |
+| **Software Deployment (Cloud Database)** | Neon Serverless PostgreSQL | SaaS | Cloud | Servicio de base de datos PostgreSQL Serverless alojado en la nube para el almacenamiento de datos en entornos de producción y pruebas. | [Neon Console](https://neon.tech/) |
+| **Software Deployment (Frontend Hosting)** | Vercel | SaaS | Cloud | Plataforma de alojamiento en la nube con soporte nativo de redes de entrega de contenidos (CDN) y despliegue continuo para el Landing Page y la SPA Angular. | [Vercel Platform](https://vercel.com/) |
+| **Software Deployment (CI/CD)** | GitHub Actions | SaaS | Cloud | Motor de automatización de flujos de trabajo para ejecutar pruebas unitarias, verificación de sintaxis y disparar el despliegue automático ante confirmaciones. | [GitHub Actions](https://github.com/features/actions) |
+| **Software Documentation (API Specs)** | SpringDoc OpenAPI & Swagger UI | Biblioteca / SaaS | 2.5.x | Generación automática y visualización interactiva de especificaciones OpenAPI 3.0 para la documentación y pruebas de los endpoints de la API REST. | [SpringDoc OpenAPI](https://springdoc.org/) |
+| **Software Documentation (API Client)** | Postman | SaaS / Local | v11.x | Plataforma colaborativa para el diseño, depuración, ejecución y pruebas de integración de solicitudes HTTP hacia los endpoints de la RESTful API. | [Postman Download](https://www.postman.com/downloads/) |
+| **Software Documentation (Diagrams)** | Mermaid.js / PlantUML | SaaS / Local | - | Herramientas de diagramación basada en texto (*Diagrams as Code*) integradas en Markdown para generar diagramas C4, UML y flujos de arquitectura. | [Mermaid Live](https://mermaid.live/) |
+
+#### Procedimiento de aprovisionamiento del entorno de desarrollo local
+
+Para asegurar que cualquier miembro del equipo de AndesHeavyTech pueda clonar, compilar y ejecutar los proyectos de software de forma inmediata, se establece el siguiente protocolo estándar de aprovisionamiento:
+
+1. **Instalación de herramientas base:**
+  - Instalar Git 2.45+ y configurar la identidad del desarrollador con el comando:
+    ```bash
+    git config --global user.name "Nombre Apellido"
+    git config --global user.email "codigo@upc.edu.pe"
+    git config --global core.autocrlf input
+    ```
+  - Instalar JDK 21 LTS y verificar la variable de entorno `JAVA_HOME` (`java -version`).
+  - Instalar Node.js v20 LTS y validar su correcto funcionamiento (`node -v` y `npm -v`).
+  - Instalar globalmente Angular CLI mediante el comando `npm install -g @angular/cli`.
+
+2. **Configuración de extensiones en Visual Studio Code:**
+  - *Angular Language Service*: soporte de sintaxis, autocompletado y validación de plantillas Angular.
+  - *ESLint*: verificación de cumplimiento de reglas de estilo y buenas prácticas en TypeScript y JavaScript.
+  - *Prettier - Code Formatter*: formateo consistente del código en cada guardado.
+  - *Markdown All in One*: soporte integral para la edición, formateo y navegación de documentación Markdown.
+
+3. **Configuración de IntelliJ IDEA para el Backend:**
+  - Habilitar el procesamiento de anotaciones (*Enable Annotation Processing*) para permitir la generación de código en tiempo de compilación por parte de Project Lombok.
+  - Configurar el SDK del proyecto en Java 21 y sincronizar las dependencias declaradas en el archivo `pom.xml` a través de Maven.
+  - Configurar el soporte de Spring Boot para la inspección y ejecución de configuraciones en `application.properties` o `application.yml`.
+
 
 ## 5.3 Validation Interviews
 
