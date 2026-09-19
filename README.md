@@ -200,6 +200,7 @@ Efrain Ricardo Bautista Ubillus
 | 0.8 | 18/09/2026 | Mathias Alejandro Castillo Guevara y Carlos Gabriel Cespedes Lezcano | Desarrollo completo del punto 5.1. Software Configuration Management y actualización de referencias bibliográficas técnicas.                                                                                                                                              |
 | 0.9 | 19/09/2026 | Carlos Gabriel Cespedes Lezcano | Corrección de inconsistencias del informe AV1: actualización de Student Outcome, consolidación estadística del análisis de entrevistas, corrección de Needfinding, alineación entre User Stories y Product Backlog, y mejora de la estructura y navegación del Capítulo IV. |
 | 0.10 | 19/09/2026 | Carlos Gabriel Cespedes Lezcano | Desarrollo del punto 4.7 Software Object-Oriented Design y del punto 4.8 Database Design, incorporando diagramas de clases y de base de datos para los seis Bounded Contexts de MaquiControl. |
+| 0.11 | 19/09/2026 | Carlos Gabriel Cespedes Lezcano | Desarrollo del punto 5.2.1 Sprint 1, incorporando Sprint Planning, matriz de líderes y colaboradores, Sprint Backlog, evidencias de desarrollo, ejecución y despliegue de la Landing Page, y análisis de colaboración del equipo. |
 
 ## Project Report Collaboration Insights
 
@@ -1914,10 +1915,131 @@ flowchart LR
   3. Establecer el comando de compilación (*Build Command*): `ng build --configuration production`.
   4. Establecer el directorio de salida (*Output Directory*): `dist/maquicontrol-frontend/browser` (o `dist/maquicontrol-frontend`).
   5. Configurar el despliegue automático ante confirmaciones en la rama `main`.
-- **Verificación del despliegue:**
-  - Acceder a la URL pública de producción: `https://maquicontrol-app.vercel.app`.
-  - Validar la carga de activos estáticos, la navegación entre rutas públicas y protegidas mediante Angular Router, y el consumo exitoso de datos desde la RESTful API con protocolo seguro HTTPS.
+- **Verificación del despliegue de la Landing Page:**
+  - Acceder a la URL pública: [https://andesheavytech.github.io/MaquiControl-LandingPage/](https://andesheavytech.github.io/MaquiControl-LandingPage/).
+  - Validar la carga de los recursos HTML, CSS, JavaScript e imágenes, la navegación interna entre secciones y el cambio de idioma.
+  - La RESTful API y la SPA Angular se desplegarán en los siguientes Sprints, una vez implementados sus respectivos productos.
+
 ## 5.2. Landing Page, Services & Applications Implementation
+
+Durante el Sprint 1 se desarrolló el primer incremento funcional de MaquiControl, enfocado en la implementación y despliegue de la Landing Page. El producto fue construido con HTML5, CSS3 y JavaScript, incorporando diseño responsive, contenido dirigido a los dos segmentos objetivo, planes comerciales e internacionalización en español e inglés.
+
+Los servicios RESTful y la Single Page Application se mantienen planificados para los siguientes Sprints. Por ello, las evidencias de este Sprint corresponden a la Landing Page y al trabajo de documentación, diseño y arquitectura necesario para preparar su implementación posterior.
+
+### 5.2.1. Sprint 1
+
+#### 5.2.1.1. Sprint Planning 1
+
+El Sprint 1 comprendió el periodo del 8 al 19 de septiembre de 2026. Su objetivo principal fue implementar y publicar una primera versión funcional de la Landing Page de MaquiControl, además de consolidar los requisitos, artefactos UX/UI y decisiones de arquitectura requeridos para los siguientes incrementos del producto.
+
+| Campo | Detalle |
+|---|---|
+| Sprint | Sprint 1 |
+| Fecha de inicio | 08/09/2026 |
+| Fecha de finalización | 19/09/2026 |
+| Duración | 12 días |
+| Objetivo | Implementar y desplegar una Landing Page responsive y bilingüe que comunique la propuesta de valor de MaquiControl a los dos segmentos objetivo. |
+| User Stories consideradas | US-013 Mostrar propuesta de valor y US-014 Mostrar información por segmento. |
+| Productos incluidos | Landing Page e informe técnico del proyecto. |
+| Productos planificados para siguientes Sprints | RESTful API y Single Page Application. |
+
+#### 5.2.1.2. Aspect Leaders and Collaborators
+
+La siguiente matriz identifica a los líderes y colaboradores de los principales aspectos trabajados durante el Sprint. Se utiliza `L` para líder y `C` para colaborador.
+
+| Team Member | GitHub Username / Git Author | Landing Page | UX/UI Design | Requirements & Report | Architecture & Database | SCM & Deployment |
+|---|---|:---:|:---:|:---:|:---:|:---:|
+| Cespedes Lezcano, Carlos Gabriel | `Leikop` | L | C | L | L | C |
+| Fuentes Alvarez, Angiela Stephany | `angielafuentes` | C | L | C | C |  |
+| Tantalean Granda, Nicolas | `NicolasTantalean` |  | C | L |  | C |
+| Castillo Guevara, Mathias Alejandro | `mathias9939` |  | C | C | C | L |
+| Gutiérrez Lizarbe, Wilmer Sebastián | `WILMER SEBASTIAN` |  | C | C |  |  |
+
+#### 5.2.1.3. Sprint Backlog 1
+
+El Sprint Backlog se reconstruyó a partir de las User Stories seleccionadas y del historial verificable de commits. Las horas mostradas corresponden a una estimación retrospectiva basada en la complejidad de cada tarea, debido a que durante este Sprint no se mantuvo un tablero público con estimaciones formales.
+
+| Sprint | Story ID | Story Title | Task ID | Task Title | Task Description | Estimation (Hours) | Assigned To | Status |
+|---|---|---|---|---|---|---:|---|---|
+| Sprint 1 | US-013 | Mostrar propuesta de valor | S1-T01 | Crear estructura de la Landing Page | Implementar la estructura semántica inicial y las secciones principales mediante HTML5. | 3 | Carlos Cespedes | Done |
+| Sprint 1 | US-013 | Mostrar propuesta de valor | S1-T02 | Implementar estilos responsive | Desarrollar los estilos base, navegación, hero, beneficios y adaptación a diferentes tamaños de pantalla. | 4 | Carlos Cespedes | Done |
+| Sprint 1 | US-013 | Mostrar propuesta de valor | S1-T03 | Aplicar diseño visual final | Implementar los estilos derivados del mock-up e incorporar la ilustración principal de maquinaria. | 4 | Carlos Cespedes | Done |
+| Sprint 1 | US-014 | Mostrar información por segmento | S1-T04 | Implementar contenido por segmento | Incorporar contenido diferenciado para propietarios, administradores, contratistas y jefes de obra. | 3 | Carlos Cespedes | Done |
+| Sprint 1 | US-014 | Mostrar información por segmento | S1-T05 | Incorporar internacionalización | Implementar textos en inglés y español con cambio dinámico de idioma mediante JavaScript. | 3 | Carlos Cespedes | Done |
+| Sprint 1 | US-013 | Mostrar propuesta de valor | S1-T06 | Incorporar planes comerciales | Agregar los planes Essential y Pro, beneficios, precios y llamados a la acción. | 3 | Carlos Cespedes | Done |
+| Sprint 1 | — | Documentación técnica | S1-T07 | Consolidar documentación AV1 | Completar investigación, requisitos, UX/UI, arquitectura, diseño orientado a objetos y diseño de base de datos. | 12 | Equipo AndesHeavyTech | Done |
+
+Durante el Sprint 1 no se configuró un tablero público de GitHub Projects. La trazabilidad se mantuvo mediante ramas feature, commits y merges registrados en los repositorios públicos. Como mejora de proceso, los siguientes Sprints deberán contar con un tablero público desde el inicio.
+
+- [Repositorio del informe](https://github.com/AndesHeavyTech/MaquiControl)
+- [Repositorio de la Landing Page](https://github.com/AndesHeavyTech/MaquiControl-LandingPage)
+
+#### 5.2.1.4. Development Evidence for Sprint Review
+
+La siguiente tabla presenta los principales commits asociados con la implementación de la Landing Page. Los identificadores y mensajes provienen del historial del repositorio público.
+
+| Repository | Branch | Commit ID | Commit Message | Commit Message Body | Committed on |
+|---|---|---|---|---|---|
+| AndesHeavyTech/MaquiControl-LandingPage | `develop` | `788fc8e` | `feat(landing): add landing page wireframe structure.` | No se registró body adicional. | 14/09/2026 |
+| AndesHeavyTech/MaquiControl-LandingPage | `develop` | `345111b` | `feat(landing): add basic wireframe layout styles.` | No se registró body adicional. | 14/09/2026 |
+| AndesHeavyTech/MaquiControl-LandingPage | `develop` | `fe49312` | `feat(landing): implement final mockup styles.` | No se registró body adicional. | 14/09/2026 |
+| AndesHeavyTech/MaquiControl-LandingPage | `develop` | `1f8759e` | `feat(i18n): add English and Spanish landing page translations.` | No se registró body adicional. | 14/09/2026 |
+| AndesHeavyTech/MaquiControl-LandingPage | `develop` | `dde212a` | `feat(landing): add machinery hero illustration.` | No se registró body adicional. | 14/09/2026 |
+| AndesHeavyTech/MaquiControl-LandingPage | `develop` | `b81271d` | `feat(landing): add pricing plans and finalize landing page.` | No se registró body adicional. | 15/09/2026 |
+
+#### 5.2.1.5. Execution Evidence for Sprint Review
+
+La Landing Page se encuentra disponible públicamente y permite comprobar el incremento funcional desarrollado. La página presenta navegación interna, diseño responsive, beneficios, contenido por segmento, explicación del funcionamiento, planes comerciales, llamados a la acción y selección de idioma.
+
+- **URL de ejecución:** [MaquiControl Landing Page](https://andesheavytech.github.io/MaquiControl-LandingPage/)
+- **Tecnologías:** HTML5, CSS3 y JavaScript.
+- **Resultado de verificación:** La URL pública respondió correctamente y mostró el contenido desplegado.
+
+![Sprint 1 Landing Page Execution Evidence](assets/sprint-1-landing-page-execution.png)
+
+#### 5.2.1.6. Services Documentation Evidence for Sprint Review
+
+Durante el Sprint 1 no se implementaron servicios RESTful ni se generó documentación OpenAPI/Swagger. El alcance funcional se concentró en la Landing Page y en la definición de requisitos, arquitectura, clases y modelos de base de datos que servirán como base para la implementación del backend.
+
+La documentación de servicios será incorporada en un Sprint posterior cuando se encuentre disponible el repositorio de la RESTful API y se implementen sus primeros endpoints. Por lo tanto, esta evidencia no aplica al incremento desarrollado durante el Sprint 1.
+
+#### 5.2.1.7. Software Deployment Evidence for Sprint Review
+
+La Landing Page fue desplegada mediante GitHub Pages desde el repositorio público de AndesHeavyTech. El despliegue permite acceder al producto mediante HTTPS sin requerir instalación local.
+
+| Elemento | Detalle |
+|---|---|
+| Producto desplegado | MaquiControl Landing Page |
+| Plataforma | GitHub Pages |
+| Repositorio | [MaquiControl-LandingPage](https://github.com/AndesHeavyTech/MaquiControl-LandingPage) |
+| URL pública | [https://andesheavytech.github.io/MaquiControl-LandingPage/](https://andesheavytech.github.io/MaquiControl-LandingPage/) |
+| Protocolo | HTTPS |
+| Estado verificado | Disponible - HTTP 200 |
+| Última versión identificada | `1.1.0` |
+
+La captura de ejecución presentada en la sección anterior evidencia que el artefacto desplegado es accesible públicamente y carga correctamente sus recursos HTML, CSS, JavaScript e imágenes.
+
+![Sprint 1 Landing Page Deployment Evidence](assets/sprint-1-landing-page-execution.png)
+
+#### 5.2.1.8. Team Collaboration Insights during Sprint
+
+Durante el Sprint 1, el equipo utilizó Git y GitHub aplicando ramas de tipo `feature`, Conventional Commits e integración sobre la rama `develop`. Las contribuciones se distribuyeron entre investigación, requisitos, UX/UI, documentación, arquitectura, configuración y desarrollo de la Landing Page.
+
+Para el conteo se excluyeron commits de merge y se normalizaron las identidades `Carlos` y `Leikop`, debido a que corresponden al mismo integrante.
+
+| Integrante / Identidad Git | Commits en el informe | Commits en la Landing Page | Total identificado |
+|---|---:|---:|---:|
+| Carlos Cespedes (`Carlos` / `Leikop`) | 29 | 7 | 36 |
+| Mathias Castillo (`mathias9939`) | 13 | 0 | 13 |
+| Nicolas Tantalean (`NicolasTantalean`) | 6 | 0 | 6 |
+| Wilmer Gutiérrez (`WILMER SEBASTIAN`) | 5 | 0 | 5 |
+| Angiela Fuentes (`Angiela Fuentes`) | 2 | 0 | 2 |
+
+Las cantidades representan actividad registrada en los repositorios y no constituyen por sí solas una medición completa de la calidad o complejidad de las contribuciones. También deben considerarse las entrevistas, coordinación, elaboración de artefactos visuales, revisión de contenidos y demás actividades realizadas fuera del repositorio.
+
+![Project Report Collaboration Commits](assets/project-report-collaboration-av1-commits.png)
+
+![Project Report Collaboration Additional Commits](assets/project-report-collaboration-av1-commits-2.png)
 
 ## 5.3. Validation Interviews
 
