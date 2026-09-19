@@ -692,6 +692,9 @@ El siguiente User Journey Map representa el proceso actual seguido por Harold An
 
 ![User Journey Map - Harold Angello](https://drive.google.com/uc?export=view&id=1mEbEbfmUMl4W5BJVEFg18EAV93pycqXV)
 
+El siguiente User Journey Map fue elaborado en la plataforma UXPressia para el User Persona Renzo Huamán. El recorrido documenta la experiencia completa en el escenario actual (*As-Is*) cuando Renzo necesita contratar una retroexcavadora para una obra de zanjado y habilitación urbana, enfrentando la falta de transparencia en costos, la informalidad en las reservas y las averías no previstas.
+
+![User Journey Map - Renzo Huamán](assets/user-journey-renzo-huaman.png)
 ### 2.3.4. Empathy Mapping
 
 A continuación se presentan los Empathy Mapping de los segmentos objetivos de MaquiControl.
@@ -701,6 +704,7 @@ A continuación se presentan los Empathy Mapping de los segmentos objetivos de M
 El siguiente Empathy Map representa a Luis Herrera, User Persona del Segmento 1. El artefacto sintetiza los principales comportamientos, necesidades, frustraciones, pensamientos y expectativas identificados a partir de las entrevistas realizadas a usuarios pertenecientes a este segmento.
 
 ![Empathy Map - Luis Herrera](assets/empathy-map-luis-herrera.png)
+
 
 #### Segmento 2: Contratistas independientes y responsables de obras de construcción
 
