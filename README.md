@@ -199,6 +199,8 @@ Efrain Ricardo Bautista Ubillus
 | 0.7 | 17/09/2026 | Carlos Gabriel Cespedes Lezcano | Integración del registro de versiones, Project Report Collaboration Insights, Student Outcome y fotografías de los integrantes, conservando los avances existentes en la rama `develop`.                                               |
 | 0.8 | 18/09/2026 | Mathias Alejandro Castillo Guevara y Carlos Gabriel Cespedes Lezcano | Desarrollo completo del punto 5.1. Software Configuration Management y actualización de referencias bibliográficas técnicas.                                                                                                                                              |
 | 0.9 | 19/09/2026 | Carlos Gabriel Cespedes Lezcano | Corrección de inconsistencias del informe AV1: actualización de Student Outcome, consolidación estadística del análisis de entrevistas, corrección de Needfinding, alineación entre User Stories y Product Backlog, y mejora de la estructura y navegación del Capítulo IV. |
+| 0.10 | 19/09/2026 | Carlos Gabriel Cespedes Lezcano | Desarrollo del punto 4.7 Software Object-Oriented Design y del punto 4.8 Database Design, incorporando diagramas de clases y de base de datos para los seis Bounded Contexts de MaquiControl. |
+
 ## Project Report Collaboration Insights
 
 **Repositorio de la organización:** [AndesHeavyTech](https://github.com/AndesHeavyTech)  
@@ -1401,7 +1403,89 @@ La Domain Layer contiene el aggregate Profile y sus reglas de negocio correspond
 
 ## 4.7 Software Object-Oriented Design
 
+El diseño orientado a objetos de MaquiControl representa las principales clases, interfaces, enumeraciones, atributos, operaciones y relaciones que conforman cada Bounded Context. Los modelos mantienen los límites definidos mediante Domain-Driven Design y utilizan identificadores para referenciar agregados pertenecientes a otros contextos, evitando el acoplamiento directo entre ellos.
+
+### 4.7.1 Class Diagrams
+
+#### Fleet Management Bounded Context Class Diagram
+
+El diagrama de Fleet Management representa el agregado `Machinery`, responsable del registro, actualización, clasificación, ubicación, estado y disponibilidad de la maquinaria. También incluye el objeto de valor `MachineryLocation`, las enumeraciones correspondientes y los servicios e interfaces necesarios para coordinar y persistir las operaciones del contexto.
+
+![Fleet Management Class Diagram](assets/fleet-management-class-diagram.png)
+
+#### Rental Management Bounded Context Class Diagram
+
+El diagrama de Rental Management representa el agregado `Rental` y el objeto de valor `RentalPeriod`. Este modelo administra las solicitudes de alquiler, confirmaciones, cancelaciones, fechas de reserva y estados del proceso, además de validar la existencia de reservas superpuestas para una maquinaria.
+
+![Rental Management Class Diagram](assets/rental-management-class-diagram.png)
+
+#### Maintenance Management Bounded Context Class Diagram
+
+El diagrama de Maintenance Management representa el agregado `Maintenance` y las entidades asociadas a los reportes de averías. Permite programar, iniciar y completar mantenimientos, actualizar sus estados y conservar el historial técnico de cada maquinaria.
+
+![Maintenance Management Class Diagram](assets/maintenance-management-class-diagram.png)
+
+#### Operations Management Bounded Context Class Diagram
+
+El diagrama de Operations Management representa el agregado `ServiceOperation` y los registros de horas trabajadas. El modelo permite iniciar y finalizar servicios, registrar horas de operación, validar los registros realizados y consultar el historial operativo de una maquinaria.
+
+![Operations Management Class Diagram](assets/operations-management-class-diagram.png)
+
+#### Identity & Access Management Bounded Context Class Diagram
+
+El diagrama de Identity & Access Management representa el agregado `UserAccount`, sus credenciales y los roles asignados. El modelo concentra las operaciones de registro, autenticación, cambio de contraseña, asignación de roles y control del estado de las cuentas.
+
+![Identity and Access Management Class Diagram](assets/identity-access-management-class-diagram.png)
+
+#### Profiles Management Bounded Context Class Diagram
+
+El diagrama de Profiles Management representa el agregado `Profile`, la información de contacto y la organización asociada al usuario. Este modelo permite administrar los datos personales, de contacto y organizacionales sin acoplar el contexto de perfiles con la gestión de credenciales.
+
+![Profiles Management Class Diagram](assets/profiles-management-class-diagram.png)
+
 ## 4.8 Database Design
+
+El diseño de base de datos de MaquiControl se organiza según los límites definidos para cada Bounded Context. Cada modelo especifica las tablas, columnas, tipos de datos, claves primarias, claves foráneas, restricciones y cardinalidades necesarias para persistir la información de sus agregados y entidades.
+
+Para conservar la independencia entre Bounded Contexts, las asociaciones internas utilizan claves foráneas, mientras que las relaciones con agregados pertenecientes a otros contextos se representan mediante identificadores externos. De esta manera se evita el acoplamiento directo entre los modelos de persistencia y se mantiene una responsabilidad claramente definida sobre los datos.
+
+### 4.8.1 Database Diagrams
+
+#### Fleet Management Bounded Context Database Diagram
+
+El modelo de Fleet Management almacena la información principal de cada maquinaria y su ubicación. La tabla `machinery` conserva los datos técnicos, la tarifa, el tipo y el estado operativo, mientras que `machinery_locations` representa la ubicación asociada mediante una relación uno a uno. El propietario se referencia mediante un identificador externo perteneciente a Profiles Management.
+
+![Fleet Management Database Diagram](assets/fleet-management-database-diagram.png)
+
+#### Rental Management Bounded Context Database Diagram
+
+El modelo de Rental Management almacena las solicitudes y reservas de maquinaria. La tabla `rentals` conserva el estado, importe y fechas de seguimiento del alquiler, mientras que `rental_periods` define el intervalo reservado. La maquinaria y el perfil del contratista se mantienen como referencias externas para respetar los límites entre contextos.
+
+![Rental Management Database Diagram](assets/rental-management-database-diagram.png)
+
+#### Maintenance Management Bounded Context Database Diagram
+
+El modelo de Maintenance Management almacena los mantenimientos programados y los reportes de averías relacionados. Una maquinaria puede contar con múltiples registros de mantenimiento y cada mantenimiento puede contener cero o varios reportes. Las restricciones controlan los estados, tipos, severidad, costos y finalización de las intervenciones.
+
+![Maintenance Management Database Diagram](assets/maintenance-management-database-diagram.png)
+
+#### Operations Management Bounded Context Database Diagram
+
+El modelo de Operations Management conserva la ejecución de los servicios y los registros de horas trabajadas. Cada operación puede incluir múltiples registros de horas, los cuales contienen fecha, hora de inicio, hora de fin, duración, observaciones y estado de validación. Las reservas, maquinarias y perfiles de operadores se identifican mediante referencias externas.
+
+![Operations Management Database Diagram](assets/operations-management-database-diagram.png)
+
+#### Identity & Access Management Bounded Context Database Diagram
+
+El modelo de Identity & Access Management almacena cuentas, credenciales y roles. Las credenciales mantienen una relación uno a uno con cada cuenta, mientras que la relación muchos a muchos entre cuentas y roles se resuelve mediante la tabla intermedia `user_account_roles`. Las restricciones garantizan correos únicos, estados válidos y una asignación no duplicada de roles.
+
+![Identity and Access Management Database Diagram](assets/identity-access-management-database-diagram.png)
+
+#### Profiles Management Bounded Context Database Diagram
+
+El modelo de Profiles Management almacena perfiles, información de contacto y organizaciones. Cada perfil posee un único registro de contacto y puede pertenecer opcionalmente a una organización. El identificador de la cuenta de usuario se conserva como una referencia externa a Identity & Access Management.
+
+![Profiles Management Database Diagram](assets/profiles-management-database-diagram.png)
 
 # Capítulo V: Product Implementation, Validation & Deployment
 

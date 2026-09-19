@@ -1,0 +1,100 @@
+@startuml
+title MaquiControl - Maintenance Management Bounded Context\nClass Diagram
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam linetype ortho
+hide empty members
+
+package "Maintenance Management" {
+
+  class Maintenance <<Aggregate Root>> {
+    - id: UUID
+    - machineryId: UUID
+    - type: MaintenanceType
+    - status: MaintenanceStatus
+    - description: String
+    - scheduledDate: LocalDateTime
+    - startedAt: LocalDateTime
+    - completedAt: LocalDateTime
+    - technicianName: String
+    - cost: BigDecimal
+    - breakdownReports: List<BreakdownReport>
+    + schedule(): void
+    + start(): void
+    + complete(cost: BigDecimal): void
+    + updateStatus(status: MaintenanceStatus): void
+    + reportBreakdown(report: BreakdownReport): void
+    + isPending(): Boolean
+  }
+
+  class BreakdownReport <<Entity>> {
+    - id: UUID
+    - description: String
+    - severity: BreakdownSeverity
+    - reportedAt: LocalDateTime
+    - resolvedAt: LocalDateTime
+    - resolved: Boolean
+    + resolve(): void
+    + isCritical(): Boolean
+  }
+
+  enum MaintenanceType {
+    PREVENTIVE
+    CORRECTIVE
+    INSPECTION
+  }
+
+  enum MaintenanceStatus {
+    SCHEDULED
+    IN_PROGRESS
+    COMPLETED
+    CANCELLED
+  }
+
+  enum BreakdownSeverity {
+    LOW
+    MEDIUM
+    HIGH
+    CRITICAL
+  }
+
+  interface MaintenanceRepository {
+    + save(maintenance: Maintenance): Maintenance
+    + findById(id: UUID): Optional<Maintenance>
+    + findByMachineryId(machineryId: UUID): List<Maintenance>
+    + findByStatus(status: MaintenanceStatus): List<Maintenance>
+    + findCompletedByMachineryId(machineryId: UUID): List<Maintenance>
+  }
+
+  class MaintenanceManagementService <<Application Service>> {
+    - maintenanceRepository: MaintenanceRepository
+    + scheduleMaintenance(maintenance: Maintenance): Maintenance
+    + completeMaintenance(id: UUID, cost: BigDecimal): Maintenance
+    + reportBreakdown(id: UUID, report: BreakdownReport): Maintenance
+    + updateMaintenanceStatus(id: UUID, status: MaintenanceStatus): Maintenance
+    + viewMaintenanceHistory(machineryId: UUID): List<Maintenance>
+    + viewPendingMaintenance(): List<Maintenance>
+    + checkMaintenanceDetails(id: UUID): Maintenance
+  }
+}
+
+Maintenance "1" *-- "0..*" BreakdownReport : contains >
+Maintenance --> MaintenanceType : classified as >
+Maintenance --> MaintenanceStatus : has >
+BreakdownReport --> BreakdownSeverity : has >
+MaintenanceManagementService "1" --> "1" MaintenanceRepository : uses >
+MaintenanceRepository ..> Maintenance : persists >
+
+legend right
+  |= Symbol |= Meaning |
+  | + | Public |
+  | - | Private |
+  | *-- | Composition |
+  | --> | Association |
+  | ..> | Dependency |
+endlegend
+
+@enduml

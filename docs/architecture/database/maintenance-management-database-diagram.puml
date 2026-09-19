@@ -1,0 +1,81 @@
+@startuml
+title MaquiControl - Maintenance Management Bounded Context\nDatabase Diagram
+
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam linetype ortho
+hide circle
+
+entity "maintenances" as maintenances {
+  * id : UUID <<PK>>
+  --
+  * machinery_id : UUID <<EXTERNAL REF>>
+  * maintenance_type : VARCHAR(30) <<NOT NULL>>
+  * status : VARCHAR(30) <<NOT NULL>>
+  * description : VARCHAR(500) <<NOT NULL>>
+  * scheduled_date : TIMESTAMP <<NOT NULL>>
+  started_at : TIMESTAMP
+  completed_at : TIMESTAMP
+  technician_name : VARCHAR(150)
+  cost : DECIMAL(12,2)
+  * created_at : TIMESTAMP <<NOT NULL>>
+  * updated_at : TIMESTAMP <<NOT NULL>>
+  * version : BIGINT <<NOT NULL, DEFAULT 0>>
+}
+
+entity "breakdown_reports" as breakdown_reports {
+  * id : UUID <<PK>>
+  --
+  * maintenance_id : UUID <<FK, NOT NULL>>
+  * description : VARCHAR(500) <<NOT NULL>>
+  * severity : VARCHAR(20) <<NOT NULL>>
+  * reported_at : TIMESTAMP <<NOT NULL>>
+  resolved_at : TIMESTAMP
+  * resolved : BOOLEAN <<NOT NULL, DEFAULT FALSE>>
+}
+
+maintenances ||--o{ breakdown_reports : contains
+
+note right of maintenances
+  Constraints:
+  PK (id)
+  CHECK (maintenance_type IN
+    PREVENTIVE, CORRECTIVE, INSPECTION)
+  CHECK (status IN
+    SCHEDULED, IN_PROGRESS,
+    COMPLETED, CANCELLED)
+  CHECK (cost IS NULL OR cost >= 0)
+  CHECK (
+    status <> 'COMPLETED'
+    OR completed_at IS NOT NULL
+  )
+
+  machinery_id references Machinery
+  in Fleet Management.
+  No cross-context database FK is created.
+end note
+
+note right of breakdown_reports
+  Constraints:
+  PK (id)
+  FK (maintenance_id)
+    REFERENCES maintenances(id)
+    ON DELETE CASCADE
+  CHECK (severity IN
+    LOW, MEDIUM, HIGH, CRITICAL)
+  CHECK (
+    resolved = FALSE
+    OR resolved_at IS NOT NULL
+  )
+end note
+
+legend right
+  |= Mark |= Meaning |
+  | PK | Primary Key |
+  | FK | Foreign Key |
+  | EXTERNAL REF | Identifier owned by another bounded context |
+  | NOT NULL | Mandatory column |
+endlegend
+
+@enduml

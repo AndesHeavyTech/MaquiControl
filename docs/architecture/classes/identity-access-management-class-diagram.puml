@@ -1,0 +1,96 @@
+@startuml
+title MaquiControl - Identity & Access Management Bounded Context\nClass Diagram
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam linetype ortho
+hide empty members
+
+package "Identity & Access Management" {
+
+  class UserAccount <<Aggregate Root>> {
+    - id: UUID
+    - email: String
+    - credential: Credential
+    - status: AccountStatus
+    - roles: Set<Role>
+    - createdAt: LocalDateTime
+    - lastLoginAt: LocalDateTime
+    + register(): void
+    + authenticate(rawPassword: String): Boolean
+    + assignRole(role: Role): void
+    + removeRole(role: Role): void
+    + changePassword(passwordHash: String): void
+    + activate(): void
+    + suspend(): void
+    + hasRole(roleName: RoleName): Boolean
+  }
+
+  class Credential <<Value Object>> {
+    - passwordHash: String
+    - changedAt: LocalDateTime
+    + matches(rawPassword: String): Boolean
+    + update(passwordHash: String): Credential
+  }
+
+  class Role <<Entity>> {
+    - id: UUID
+    - name: RoleName
+    - description: String
+    + isAdministrative(): Boolean
+  }
+
+  enum AccountStatus {
+    PENDING
+    ACTIVE
+    SUSPENDED
+    DISABLED
+  }
+
+  enum RoleName {
+    CONTRACTOR
+    FLEET_OWNER
+    FLEET_ADMINISTRATOR
+    OPERATOR
+    SYSTEM_ADMINISTRATOR
+  }
+
+  interface UserAccountRepository {
+    + save(account: UserAccount): UserAccount
+    + findById(id: UUID): Optional<UserAccount>
+    + findByEmail(email: String): Optional<UserAccount>
+    + existsByEmail(email: String): Boolean
+  }
+
+  class IdentityAccessService <<Application Service>> {
+    - accountRepository: UserAccountRepository
+    + registerUser(account: UserAccount): UserAccount
+    + authenticateUser(email: String, password: String): UserAccount
+    + assignRole(accountId: UUID, role: Role): UserAccount
+    + changePassword(accountId: UUID, passwordHash: String): UserAccount
+    + viewAccountDetails(accountId: UUID): UserAccount
+    + viewUserRoles(accountId: UUID): Set<Role>
+    + checkAuthenticationStatus(accountId: UUID): AccountStatus
+  }
+}
+
+UserAccount "1" *-- "1" Credential : owns >
+UserAccount "1" o-- "1..*" Role : has >
+UserAccount --> AccountStatus : has >
+Role --> RoleName : identified by >
+IdentityAccessService "1" --> "1" UserAccountRepository : uses >
+UserAccountRepository ..> UserAccount : persists >
+
+legend right
+  |= Symbol |= Meaning |
+  | + | Public |
+  | - | Private |
+  | *-- | Composition |
+  | o-- | Aggregation |
+  | --> | Association |
+  | ..> | Dependency |
+endlegend
+
+@enduml

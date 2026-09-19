@@ -1,0 +1,87 @@
+@startuml
+title MaquiControl - Operations Management Bounded Context\nDatabase Diagram
+
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam linetype ortho
+hide circle
+
+entity "service_operations" as service_operations {
+  * id : UUID <<PK>>
+  --
+  * rental_id : UUID <<EXTERNAL REF, UNIQUE>>
+  * machinery_id : UUID <<EXTERNAL REF>>
+  * operator_profile_id : UUID <<EXTERNAL REF>>
+  * status : VARCHAR(30) <<NOT NULL>>
+  started_at : TIMESTAMP
+  completed_at : TIMESTAMP
+  * created_at : TIMESTAMP <<NOT NULL>>
+  * updated_at : TIMESTAMP <<NOT NULL>>
+  * version : BIGINT <<NOT NULL, DEFAULT 0>>
+}
+
+entity "worked_hour_records" as worked_hour_records {
+  * id : UUID <<PK>>
+  --
+  * service_operation_id : UUID <<FK, NOT NULL>>
+  * work_date : DATE <<NOT NULL>>
+  * start_time : TIME <<NOT NULL>>
+  * end_time : TIME <<NOT NULL>>
+  * total_hours : DECIMAL(6,2) <<NOT NULL>>
+  * status : VARCHAR(20) <<NOT NULL>>
+  observations : VARCHAR(500)
+  validated_at : TIMESTAMP
+  validated_by_profile_id : UUID <<EXTERNAL REF>>
+  * created_at : TIMESTAMP <<NOT NULL>>
+}
+
+service_operations ||--o{ worked_hour_records : records
+
+note right of service_operations
+  Constraints:
+  PK (id)
+  UNIQUE (rental_id)
+  CHECK (status IN
+    SCHEDULED, IN_PROGRESS,
+    COMPLETED, CANCELLED)
+  CHECK (
+    status <> 'COMPLETED'
+    OR completed_at IS NOT NULL
+  )
+
+  rental_id, machinery_id and
+  operator_profile_id reference aggregates
+  from other bounded contexts.
+  No cross-context database FKs are created.
+end note
+
+note right of worked_hour_records
+  Constraints:
+  PK (id)
+  FK (service_operation_id)
+    REFERENCES service_operations(id)
+    ON DELETE CASCADE
+  CHECK (end_time > start_time)
+  CHECK (total_hours > 0)
+  CHECK (status IN
+    PENDING, VALIDATED, REJECTED)
+  CHECK (
+    status <> 'VALIDATED'
+    OR validated_at IS NOT NULL
+  )
+
+  validated_by_profile_id is an external
+  reference to Profiles Management.
+end note
+
+legend right
+  |= Mark |= Meaning |
+  | PK | Primary Key |
+  | FK | Foreign Key |
+  | EXTERNAL REF | Identifier owned by another bounded context |
+  | NOT NULL | Mandatory column |
+  | UNIQUE | Value cannot be repeated |
+endlegend
+
+@enduml
