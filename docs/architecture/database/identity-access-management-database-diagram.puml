@@ -1,0 +1,94 @@
+@startuml
+title MaquiControl - Identity & Access Management Bounded Context\nDatabase Diagram
+
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam linetype ortho
+hide circle
+
+entity "user_accounts" as user_accounts {
+  * id : UUID <<PK>>
+  --
+  * email : VARCHAR(254) <<NOT NULL, UNIQUE>>
+  * status : VARCHAR(20) <<NOT NULL>>
+  * created_at : TIMESTAMP <<NOT NULL>>
+  last_login_at : TIMESTAMP
+  * updated_at : TIMESTAMP <<NOT NULL>>
+  * version : BIGINT <<NOT NULL, DEFAULT 0>>
+}
+
+entity "credentials" as credentials {
+  * user_account_id : UUID <<PK, FK>>
+  --
+  * password_hash : VARCHAR(255) <<NOT NULL>>
+  * changed_at : TIMESTAMP <<NOT NULL>>
+}
+
+entity "roles" as roles {
+  * id : UUID <<PK>>
+  --
+  * role_name : VARCHAR(40) <<NOT NULL, UNIQUE>>
+  * description : VARCHAR(250) <<NOT NULL>>
+}
+
+entity "user_account_roles" as user_account_roles {
+  * user_account_id : UUID <<PK, FK>>
+  * role_id : UUID <<PK, FK>>
+  --
+  * assigned_at : TIMESTAMP <<NOT NULL>>
+}
+
+user_accounts ||--|| credentials : owns
+user_accounts ||--o{ user_account_roles : receives
+roles ||--o{ user_account_roles : assigns
+
+note right of user_accounts
+  Constraints:
+  PK (id)
+  UNIQUE (email)
+  CHECK (status IN
+    PENDING, ACTIVE,
+    SUSPENDED, DISABLED)
+  CHECK (email <> '')
+end note
+
+note right of credentials
+  Constraints:
+  PK (user_account_id)
+  FK (user_account_id)
+    REFERENCES user_accounts(id)
+    ON DELETE CASCADE
+  CHECK (password_hash <> '')
+end note
+
+note right of roles
+  Constraints:
+  PK (id)
+  UNIQUE (role_name)
+  CHECK (role_name IN
+    CONTRACTOR, FLEET_OWNER,
+    FLEET_ADMINISTRATOR, OPERATOR,
+    SYSTEM_ADMINISTRATOR)
+end note
+
+note right of user_account_roles
+  Constraints:
+  PK (user_account_id, role_id)
+  FK (user_account_id)
+    REFERENCES user_accounts(id)
+    ON DELETE CASCADE
+  FK (role_id)
+    REFERENCES roles(id)
+    ON DELETE RESTRICT
+end note
+
+legend right
+  |= Mark |= Meaning |
+  | PK | Primary Key |
+  | FK | Foreign Key |
+  | NOT NULL | Mandatory column |
+  | UNIQUE | Value cannot be repeated |
+endlegend
+
+@enduml

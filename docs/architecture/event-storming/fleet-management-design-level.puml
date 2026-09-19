@@ -1,0 +1,58 @@
+@startuml
+title MaquiControl - Fleet Management Bounded Context - Design-Level Event Storming
+
+left to right direction
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+
+' =========================
+' Styles
+' =========================
+
+rectangle "COMMAND\nRegister Machinery" as CMD_REGISTER #87CEFA
+rectangle "AGGREGATE\nMachinery" as AGG_MACHINERY #FFF59D
+rectangle "DOMAIN EVENT\nMachinery Registered" as EVT_REGISTERED #FFB74D
+
+rectangle "COMMAND\nUpdate Machinery Information" as CMD_UPDATE_INFO #87CEFA
+rectangle "DOMAIN EVENT\nMachinery Information Updated" as EVT_INFO_UPDATED #FFB74D
+
+rectangle "COMMAND\nUpdate Machinery Status" as CMD_UPDATE_STATUS #87CEFA
+rectangle "DOMAIN EVENT\nMachinery Status Updated" as EVT_STATUS_UPDATED #FFB74D
+
+rectangle "QUERY\nView Machinery Inventory" as QUERY_INVENTORY #A5D6A7
+rectangle "READ MODEL\nMachinery Inventory" as READ_INVENTORY #C8E6C9
+
+rectangle "QUERY\nCheck Machinery Availability" as QUERY_AVAILABILITY #A5D6A7
+rectangle "READ MODEL\nMachinery Availability" as READ_AVAILABILITY #C8E6C9
+
+' =========================
+' Commands -> Aggregate -> Events
+' =========================
+
+CMD_REGISTER --> AGG_MACHINERY
+AGG_MACHINERY --> EVT_REGISTERED
+
+CMD_UPDATE_INFO --> AGG_MACHINERY
+AGG_MACHINERY --> EVT_INFO_UPDATED
+
+CMD_UPDATE_STATUS --> AGG_MACHINERY
+AGG_MACHINERY --> EVT_STATUS_UPDATED
+
+' =========================
+' Queries -> Read Models
+' =========================
+
+QUERY_INVENTORY --> READ_INVENTORY
+QUERY_AVAILABILITY --> READ_AVAILABILITY
+
+legend right
+|= Color |= Element |
+|<#87CEFA>| Command |
+|<#FFF59D>| Aggregate |
+|<#FFB74D>| Domain Event |
+|<#A5D6A7>| Query |
+|<#C8E6C9>| Read Model |
+endlegend
+
+@enduml

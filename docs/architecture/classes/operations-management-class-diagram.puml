@@ -1,0 +1,92 @@
+@startuml
+title MaquiControl - Operations Management Bounded Context\nClass Diagram
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam linetype ortho
+hide empty members
+
+package "Operations Management" {
+
+  class ServiceOperation <<Aggregate Root>> {
+    - id: UUID
+    - rentalId: UUID
+    - machineryId: UUID
+    - operatorProfileId: UUID
+    - status: OperationStatus
+    - startedAt: LocalDateTime
+    - completedAt: LocalDateTime
+    - workedHours: List<WorkedHours>
+    + start(): void
+    + recordWorkedHours(record: WorkedHours): void
+    + validateWorkedHours(recordId: UUID): void
+    + complete(): void
+    + calculateTotalHours(): BigDecimal
+    + isInProgress(): Boolean
+  }
+
+  class WorkedHours <<Entity>> {
+    - id: UUID
+    - workDate: LocalDate
+    - startTime: LocalTime
+    - endTime: LocalTime
+    - totalHours: BigDecimal
+    - status: WorkedHoursStatus
+    - observations: String
+    + calculateHours(): BigDecimal
+    + validate(): void
+    + reject(): void
+    + isValidated(): Boolean
+  }
+
+  enum OperationStatus {
+    SCHEDULED
+    IN_PROGRESS
+    COMPLETED
+    CANCELLED
+  }
+
+  enum WorkedHoursStatus {
+    PENDING
+    VALIDATED
+    REJECTED
+  }
+
+  interface ServiceOperationRepository {
+    + save(operation: ServiceOperation): ServiceOperation
+    + findById(id: UUID): Optional<ServiceOperation>
+    + findByRentalId(rentalId: UUID): Optional<ServiceOperation>
+    + findByMachineryId(machineryId: UUID): List<ServiceOperation>
+    + findByStatus(status: OperationStatus): List<ServiceOperation>
+  }
+
+  class OperationsManagementService <<Application Service>> {
+    - operationRepository: ServiceOperationRepository
+    + startService(operation: ServiceOperation): ServiceOperation
+    + recordWorkedHours(operationId: UUID, record: WorkedHours): ServiceOperation
+    + validateWorkedHours(operationId: UUID, recordId: UUID): ServiceOperation
+    + completeService(id: UUID): ServiceOperation
+    + viewServiceStatus(id: UUID): OperationStatus
+    + viewWorkedHours(id: UUID): List<WorkedHours>
+    + viewOperationHistory(machineryId: UUID): List<ServiceOperation>
+  }
+}
+
+ServiceOperation "1" *-- "0..*" WorkedHours : records >
+ServiceOperation --> OperationStatus : has >
+WorkedHours --> WorkedHoursStatus : has >
+OperationsManagementService "1" --> "1" ServiceOperationRepository : uses >
+ServiceOperationRepository ..> ServiceOperation : persists >
+
+legend right
+  |= Symbol |= Meaning |
+  | + | Public |
+  | - | Private |
+  | *-- | Composition |
+  | --> | Association |
+  | ..> | Dependency |
+endlegend
+
+@enduml

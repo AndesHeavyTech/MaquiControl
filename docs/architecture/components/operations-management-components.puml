@@ -1,0 +1,30 @@
+@startuml
+!include <C4/C4_Component>
+
+title MaquiControl - Operations Management Bounded Context Component Diagram
+
+Container(webapp, "Single Page Application", "Angular", "Provides the user interface through a web browser.")
+
+Container_Boundary(operations, "Operations Management Bounded Context") {
+
+    Component(interfaces, "Interfaces Layer", "Spring Web", "Exposes endpoints for service execution and worked hours.")
+
+    Component(application, "Application Layer", "Spring Boot", "Coordinates service execution, worked hour registration and validation use cases.")
+
+    Component(domain, "Domain Layer", "Java", "Contains the Service Operation aggregate and operational business rules.")
+
+    Component(infrastructure, "Infrastructure Layer", "Spring Data JPA", "Provides persistence for operational and worked-hour information.")
+
+    Component(security, "Security Connector", "Spring Security", "Validates authenticated users and permissions.")
+}
+
+ContainerDb(database, "Database", "Relational Database", "Stores service operation and worked-hour information.")
+
+Rel(webapp, interfaces, "Uses", "HTTPS / JSON")
+Rel(interfaces, application, "Invokes")
+Rel(application, domain, "Uses")
+Rel(application, infrastructure, "Uses")
+Rel(infrastructure, database, "Reads from and writes to")
+Rel(interfaces, security, "Validates access through")
+
+@enduml

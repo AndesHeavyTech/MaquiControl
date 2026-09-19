@@ -1,0 +1,75 @@
+@startuml
+title MaquiControl - Fleet Management Bounded Context\nDatabase Diagram
+
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam linetype ortho
+hide circle
+
+entity "machinery" as machinery {
+  * id : UUID <<PK>>
+  --
+  * owner_profile_id : UUID <<EXTERNAL REF>>
+  * name : VARCHAR(120) <<NOT NULL>>
+  description : VARCHAR(500)
+  * machinery_type : VARCHAR(30) <<NOT NULL>>
+  * brand : VARCHAR(80) <<NOT NULL>>
+  * model : VARCHAR(80) <<NOT NULL>>
+  * manufacture_year : SMALLINT <<NOT NULL>>
+  * hourly_rate : DECIMAL(10,2) <<NOT NULL>>
+  * status : VARCHAR(30) <<NOT NULL>>
+  * created_at : TIMESTAMP <<NOT NULL>>
+  * updated_at : TIMESTAMP <<NOT NULL>>
+  * version : BIGINT <<NOT NULL, DEFAULT 0>>
+}
+
+entity "machinery_locations" as machinery_locations {
+  * machinery_id : UUID <<PK, FK>>
+  --
+  * department : VARCHAR(80) <<NOT NULL>>
+  * province : VARCHAR(80) <<NOT NULL>>
+  * district : VARCHAR(80) <<NOT NULL>>
+  * address : VARCHAR(200) <<NOT NULL>>
+  latitude : DECIMAL(9,6)
+  longitude : DECIMAL(9,6)
+}
+
+machinery ||--|| machinery_locations : owns
+
+note right of machinery
+  Constraints:
+  PK (id)
+  CHECK (manufacture_year >= 1950)
+  CHECK (hourly_rate >= 0)
+  CHECK (machinery_type IN
+    EXCAVATOR, BACKHOE_LOADER,
+    LOADER, CRANE, BULLDOZER, OTHER)
+  CHECK (status IN
+    AVAILABLE, RESERVED, RENTED,
+    IN_MAINTENANCE, OUT_OF_SERVICE)
+
+  owner_profile_id references a Profile
+  in another bounded context.
+  No cross-context database FK is created.
+end note
+
+note right of machinery_locations
+  Constraints:
+  PK (machinery_id)
+  FK (machinery_id)
+    REFERENCES machinery(id)
+    ON DELETE CASCADE
+  CHECK (latitude BETWEEN -90 AND 90)
+  CHECK (longitude BETWEEN -180 AND 180)
+end note
+
+legend right
+  |= Mark |= Meaning |
+  | PK | Primary Key |
+  | FK | Foreign Key |
+  | EXTERNAL REF | Identifier owned by another bounded context |
+  | NOT NULL | Mandatory column |
+endlegend
+
+@enduml
