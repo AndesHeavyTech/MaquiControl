@@ -127,8 +127,8 @@ Efrain Ricardo Bautista Ubillus
     - [4.2.4. Searching Systems](#424-searching-systems)
     - [4.2.5. Navigation Systems](#425-navigation-systems)
 - [4.3. Landing Page UI Design](#43-landing-page-ui-design)
-    - [4.3.1. Landing Page Wireframe](#431-landing-page-wireframe)
-    - [4.3.2. Landing Page Mock-up](#432-landing-page-mock-up)
+- [4.3.1. Landing Page Wireframes](#431-landing-page-wireframes)
+- [4.3.2. Landing Page Mock-up](#432-landing-page-mock-up)
 - [4.4. Web Applications UX/UI Design](#44-web-applications-uxui-design)
     - [4.4.1. Wireframes](#441-web-applications-wireframes)
     - [4.4.2. Wireflow Diagrams](#442-web-applications-wireflow-diagrams)
@@ -137,9 +137,9 @@ Efrain Ricardo Bautista Ubillus
 - [4.5. Web Applications Prototyping](#45-web-applications-prototyping)
 - [4.6. Domain-Driven Software Architecture](#46-domain-driven-software-architecture)
     - [4.6.1. Design-Level Event Storming](#461-design-level-event-storming)
-    - [4.6.2. Context Level Diagram](#462-software-architecture-context-level-diagram)
-    - [4.6.3. Container Level Diagram](#463-software-architecture-container-level-diagram)
-    - [4.6.4. Component Level Diagrams](#464-software-architecture-component-level-diagrams)
+- [4.6.2. Software Architecture Context Diagram](#462-software-architecture-context-diagram)
+- [4.6.3. Software Architecture Container Diagram](#463-software-architecture-container-diagram)
+- [4.6.4. Software Architecture Components Diagrams](#464-software-architecture-components-diagrams)
 - [4.7. Software Object-Oriented Design](#47-software-object-oriented-design)
     - [4.7.1. Class Diagrams](#471-class-diagrams)
 - [4.8. Database Design](#48-database-design)
@@ -198,6 +198,7 @@ Efrain Ricardo Bautista Ubillus
 | 0.6 | 16/09/2026 | Angiela Stephany Fuentes Alvarez y Carlos Gabriel Cespedes Lezcano | Desarrollo de Student Outcome y del Capítulo IV: Product Design, incluyendo Style Guidelines, Information Architecture, Landing Page UI Design, Impact Mapping, Web Application UX/UI Design y arquitectura de software basada en DDD. |
 | 0.7 | 17/09/2026 | Carlos Gabriel Cespedes Lezcano | Integración del registro de versiones, Project Report Collaboration Insights, Student Outcome y fotografías de los integrantes, conservando los avances existentes en la rama `develop`.                                               |
 | 0.8 | 18/09/2026 | Mathias Alejandro Castillo Guevara y Carlos Gabriel Cespedes Lezcano | Desarrollo completo del punto 5.1. Software Configuration Management y actualización de referencias bibliográficas técnicas.                                                                                                                                              |
+| 0.9 | 19/09/2026 | Carlos Gabriel Cespedes Lezcano | Corrección de inconsistencias del informe AV1: actualización de Student Outcome, consolidación estadística del análisis de entrevistas, corrección de Needfinding, alineación entre User Stories y Product Backlog, y mejora de la estructura y navegación del Capítulo IV. |
 ## Project Report Collaboration Insights
 
 **Repositorio de la organización:** [AndesHeavyTech](https://github.com/AndesHeavyTech)  
@@ -238,11 +239,11 @@ Estas evidencias reflejan la participación de todos los integrantes en la elabo
 
 El curso contribuye al cumplimiento del **ABET - EAC - Student Outcome 3: Capacidad de comunicarse efectivamente con un rango de audiencias**.
 
-El siguiente cuadro presenta las acciones verificables realizadas por los integrantes hasta el avance actual de AV1. Las evidencias pendientes serán incorporadas antes del cierre de la entrega.
+El siguiente cuadro presenta las acciones verificables realizadas por los integrantes durante la entrega AV1 y su relación con las dimensiones de comunicación oral y escrita del Student Outcome 3.
 
 | **Criterio específico** | **Acciones realizadas** | **Conclusiones** |
 | :--- | :--- | :--- |
-| **Comunica oralmente con efectividad a diferentes rangos de audiencia.** | **Fuentes Alvarez, Angiela Stephany**<br>**AV1:** Realizó una entrevista a Piero, representante de uno de los segmentos objetivo del proyecto. El registro de la entrevista, los datos completos del participante y la evidencia audiovisual están pendientes de incorporación al informe.<br><br>**Tantalean Granda, Nicolas**<br>**AV1:** Evidencia oral pendiente. Sustentará los resultados del análisis competitivo, la investigación de usuarios y la especificación de requerimientos antes del cierre de la entrega.<br><br>**Gutiérrez Lizarbe, Wilmer Sebastián**<br>**AV1:** Realizó la entrevista a Harold Angello, representante del segmento de contratistas y responsables de obra. Adaptó las preguntas al contexto del entrevistado para recopilar información sobre sus necesidades, experiencias y problemas relacionados con el alquiler de maquinaria.<br><br>**Castillo Guevara, Mathias Alejandro**<br>**AV1:** Realizó la entrevista a Renzo Huamán, representante del segmento de contratistas independientes. La información obtenida fue empleada posteriormente en la elaboración de artefactos de Needfinding.<br><br>**Cespedes Lezcano, Carlos Gabriel**<br>**AV1:** Realizó las entrevistas a José Ramírez, Carlos Stephano Mendoza y Andrea López, representantes relacionados con la administración y el alquiler de maquinaria. Recopiló información sobre disponibilidad, tarifas, mantenimiento, coordinación y control operativo. |**Avance AV1:** Las entrevistas permitieron establecer comunicación directa con representantes de los segmentos objetivo y adaptar las preguntas al contexto de cada participante. Carlos, Mathias, Wilmer y Angiela realizaron entrevistas; el registro y la evidencia de la entrevista realizada por Angiela todavía deben incorporarse al informe. Nicolas incorporará su evidencia de comunicación oral durante la sustentación de AV1. |
+| **Comunica oralmente con efectividad a diferentes rangos de audiencia.** | **Fuentes Alvarez, Angiela Stephany**<br>**AV1:** Realizó la entrevista a Piero Reaño, representante del segmento de contratistas independientes y responsables de obra. Adaptó las preguntas al contexto del entrevistado para recopilar información sobre disponibilidad, costos, mantenimiento y gestión de maquinaria. El registro, resumen, captura y evidencia audiovisual de la entrevista fueron incorporados en la sección 2.2.2.<br><br>**Tantalean Granda, Nicolas**<br>**AV1:** Evidencia oral pendiente. Sustentará los resultados del análisis competitivo, la investigación de usuarios y la especificación de requerimientos antes del cierre de la entrega.<br><br>**Gutiérrez Lizarbe, Wilmer Sebastián**<br>**AV1:** Realizó la entrevista a Harold Angello, representante del segmento de contratistas y responsables de obra. Adaptó las preguntas al contexto del entrevistado para recopilar información sobre sus necesidades, experiencias y problemas relacionados con el alquiler de maquinaria.<br><br>**Castillo Guevara, Mathias Alejandro**<br>**AV1:** Realizó la entrevista a Renzo Huamán, representante del segmento de contratistas independientes. La información obtenida fue empleada posteriormente en la elaboración de artefactos de Needfinding.<br><br>**Cespedes Lezcano, Carlos Gabriel**<br>**AV1:** Realizó las entrevistas a José Ramírez, Carlos Stephano Mendoza y Andrea López, representantes relacionados con la administración y el alquiler de maquinaria. Recopiló información sobre disponibilidad, tarifas, mantenimiento, coordinación y control operativo. |**Avance AV1:** Las entrevistas permitieron establecer comunicación directa con representantes de ambos segmentos objetivo y adaptar las preguntas al contexto de cada participante. Carlos, Mathias, Wilmer y Angiela realizaron entrevistas y documentaron sus resultados en el informe. Nicolas incorporará su evidencia de comunicación oral mediante la exposición de los resultados del análisis competitivo, la investigación de usuarios y la especificación de requerimientos durante la sustentación de AV1.|
 | **Comunica por escrito con efectividad a diferentes rangos de audiencia.** | **Fuentes Alvarez, Angiela Stephany**<br>**AV1:** Documentó Student Outcome y desarrolló contenido del Capítulo IV: Product Design, incluyendo Style Guidelines, Information Architecture y Landing Page UI Design.<br><br>**Tantalean Granda, Nicolas**<br>**AV1:** Documentó el análisis competitivo, el diseño de entrevistas, User Stories y Product Backlog, organizando los requerimientos identificados para los segmentos objetivo.<br><br>**Gutiérrez Lizarbe, Wilmer Sebastián**<br>**AV1:** Documentó los resultados de la entrevista a Harold Angello y desarrolló artefactos de Needfinding, incluyendo User Persona, User Journey Mapping y Empathy Mapping.<br><br>**Castillo Guevara, Mathias Alejandro**<br>**AV1:** Documentó la entrevista a Renzo Huamán y elaboró artefactos de Needfinding relacionados con User Personas, User Task Matrix, User Journey Mapping y Empathy Mapping.<br><br>**Cespedes Lezcano, Carlos Gabriel**<br>**AV1:** Participó en la estructuración y corrección del informe; documentó entrevistas, Needfinding, Big Picture Event Storming, Ubiquitous Language, Impact Mapping, Web Application UX/UI Design y la arquitectura de software basada en DDD. | **Avance AV1:** Los integrantes han documentado los resultados de investigación, requisitos, decisiones de diseño y arquitectura mediante contenido escrito y artefactos visuales. El uso de una estructura común, lenguaje técnico y control de versiones permite comunicar el avance del proyecto de forma organizada y trazable. |
 
 # Capítulo I: Introducción
@@ -531,8 +532,6 @@ Para validar las horas trabajadas, compara la información del horómetro de la 
 Sus principales prioridades son mantener las máquinas operativas, cumplir con los plazos acordados con los clientes y reducir los tiempos muertos. Sus mayores frustraciones están relacionadas con cambios de último momento, máquinas que dejan de estar disponibles pese a haber sido coordinadas previamente y problemas en el registro de los mantenimientos.
 
 Entre las herramientas digitales que utiliza con mayor frecuencia se encuentran WhatsApp, Excel, Gmail, Google Maps, páginas web de proveedores y Facebook Marketplace.
-Segmento 2: Contratistas independientes y responsables de obras de construcción
-Entrevista 1
 
 ##### Entrevista 3
 
@@ -618,41 +617,35 @@ El entrevistado considera útil una plataforma que centralice la disponibilidad,
 
 
 **Video consolidado de las entrevistas:** [Ver entrevistas completas](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202416147_upc_edu_pe/IQCtDKm3Mx7YSICszqpbHVACAZ5fOdZ3xGF08nsq6eXrey4?e=WBrQyq&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
+
 ### 2.2.3 Análisis de entrevistas
 
 A partir de las seis entrevistas realizadas, tres por cada segmento objetivo, se identificaron necesidades, problemas y expectativas relacionadas con la gestión y el alquiler de maquinaria. Los resultados permitieron comprender tanto la perspectiva de quienes administran la oferta de equipos como la de quienes necesitan utilizarlos en proyectos de construcción.
 
 #### Análisis del Segmento 1: Propietarios y administradores de pequeñas empresas de alquiler de maquinaria
 
-Las entrevistas realizadas a José Ramírez, Carlos Stephano Mendoza y Andrea López evidencian que la gestión de las pequeñas empresas de alquiler de maquinaria depende principalmente de WhatsApp, llamadas telefónicas, hojas de cálculo y registros manuales. Aunque estas herramientas permiten atender las operaciones básicas, la información queda distribuida entre diferentes medios y no siempre se actualiza oportunamente.
+De las tres entrevistas realizadas, se obtuvieron los siguientes resultados representativos:
 
-Uno de los principales problemas identificados es la dificultad para conocer la disponibilidad real de cada máquina. La falta de un registro centralizado puede ocasionar cruces de fechas, reservas duplicadas o el ofrecimiento de equipos que se encuentran alquilados o en mantenimiento. Estas situaciones afectan la atención al cliente y pueden generar pérdidas económicas y problemas de coordinación.
-
-También se identificaron dificultades para registrar los mantenimientos, controlar las horas trabajadas y comunicar claramente los costos del alquiler. Algunos precios pueden variar por conceptos adicionales, como transporte, combustible u operador, por lo que los entrevistados valoran disponer de información transparente antes de confirmar una operación.
-
-Los integrantes de este segmento necesitan una plataforma sencilla que les permita administrar su flota desde un único lugar. Entre las funcionalidades más importantes se encuentran el calendario de disponibilidad, la gestión de reservas, el registro de mantenimientos, la consulta del estado de las máquinas, el historial de uso y la generación de una confirmación formal del alquiler.
-
-El acceso desde dispositivos móviles también resulta fundamental, debido a que los propietarios y administradores no siempre realizan sus actividades desde una oficina. Por ello, la solución debe ofrecer una interfaz clara, responsive y con pocos pasos para consultar o actualizar información.
-
-- **Necesidades principales:** disponibilidad actualizada, control de reservas, seguimiento del mantenimiento, historial de uso, transparencia de costos y acceso desde dispositivos móviles.
-- **Pain points:** información dispersa, actualizaciones manuales, reservas duplicadas, maquinaria ofrecida mientras está en mantenimiento y dificultad para encontrar rápidamente los registros.
-- **Oportunidad para MaquiControl:** centralizar la administración de la flota, las reservas y los mantenimientos para mejorar la coordinación y reducir los errores operativos.
-
+| Hallazgo común | Frecuencia | Porcentaje |
+| :--- | :---: | :---: |
+| Utilizan WhatsApp para coordinar actividades del negocio. | 3 de 3 | 100 % |
+| Utilizan hojas de cálculo o registros manuales para organizar información. | 3 de 3 | 100 % |
+| Han experimentado problemas relacionados con la disponibilidad de maquinaria. | 3 de 3 | 100 % |
+| Consideran importante controlar el mantenimiento y estado de los equipos. | 3 de 3 | 100 % |
+| Valoran el acceso a la información desde dispositivos móviles. | 3 de 3 | 100 % |
+| Identifican problemas de transparencia o variación en los costos. | 2 de 3 | 66,7 % |
 #### Análisis del Segmento 2: Contratistas independientes y responsables de obras de construcción
 
-Las entrevistas realizadas a Harold Angello, Renzo Huamán y Piero Reaño muestran que los contratistas necesitan información confiable para seleccionar y coordinar maquinaria en una o varias obras. Actualmente recurren a proveedores conocidos, recomendaciones de colegas, búsquedas en Google, Facebook y grupos de WhatsApp para encontrar equipos disponibles.
+De las tres entrevistas realizadas, se obtuvieron los siguientes resultados representativos:
 
-El problema más recurrente es la falta de disponibilidad actualizada. Los entrevistados mencionaron situaciones en las que una máquina inicialmente confirmada ya estaba reservada, se encontraba asignada a otra obra o no podía utilizarse debido a una falla mecánica. Esto puede detener las actividades, generar tiempos muertos y afectar los costos y plazos comprometidos.
-
-También se identificó una falta de transparencia en las tarifas. Algunos costos adicionales, como el transporte, el combustible o el operador, no siempre se comunican desde el inicio. Por esta razón, los usuarios necesitan conocer el precio final y las condiciones del servicio antes de confirmar una reserva.
-
-El seguimiento de las horas trabajadas constituye otra necesidad importante. Actualmente esta información se comunica mediante llamadas, mensajes de WhatsApp, reportes del operador o archivos de Excel. Una plataforma digital permitiría registrar y consultar las horas trabajadas, la maquinaria asignada, su ubicación, su estado y las reservas asociadas a cada obra.
-
-Los entrevistados manifestaron disposición para utilizar una solución digital siempre que sea sencilla, funcione adecuadamente desde el celular y proporcione información actualizada. También consideran importante recibir una confirmación formal que respalde cada reserva.
-
-- **Necesidades principales:** disponibilidad en tiempo real, precios finales transparentes, confirmación de reservas, registro de horas trabajadas, información del mantenimiento y seguimiento de los equipos asignados.
-- **Pain points:** falsa disponibilidad, costos adicionales no informados, fallas mecánicas, paralización de obras y coordinación dispersa mediante llamadas, WhatsApp y Excel.
-- **Oportunidad para MaquiControl:** ofrecer un espacio centralizado donde los contratistas puedan localizar maquinaria, comparar información, confirmar reservas y supervisar los equipos utilizados en sus obras.
+| Hallazgo común | Frecuencia | Porcentaje |
+| :--- | :---: | :---: |
+| Utilizan WhatsApp como medio de búsqueda, comunicación o coordinación. | 3 de 3 | 100 % |
+| Han experimentado problemas relacionados con la disponibilidad de maquinaria. | 3 de 3 | 100 % |
+| Consideran que las fallas mecánicas pueden afectar los plazos y costos de una obra. | 3 de 3 | 100 % |
+| Necesitan registrar o consultar las horas trabajadas por la maquinaria. | 3 de 3 | 100 % |
+| Valoran una plataforma accesible desde dispositivos móviles. | 3 de 3 | 100 % |
+| Identifican costos adicionales que no siempre se informan inicialmente. | 2 de 3 | 66,7 % |
 
 #### Conclusiones del análisis de entrevistas
 
@@ -663,8 +656,6 @@ MaquiControl puede conectar ambas necesidades mediante una plataforma centraliza
 ## 2.3 Needfinding
 
 En esta sección se presentan los principales artefactos obtenidos a partir del análisis de la información recolectada durante las entrevistas y el estudio de los segmentos objetivo. El proceso de Needfinding permite identificar las necesidades, comportamientos, objetivos y dificultades de los usuarios, sirviendo como base para la elaboración de los User Personas, User Task Matrix, User Journey Maps y Empathy Maps.
-
-En esta sección se presentan los artefactos resultantes del proceso de análisis de la información recolectada durante las entrevistas y el análisis competitivo. A partir de las características objetivas y subjetivas identificadas en los segmentos objetivo, se construyeron los User Personas, el User Task Matrix, los User Journey Maps (versión As-Is) y los Empathy Maps correspondientes a cada arquetipo, utilizando la herramienta UXPressia.
 
 ### 2.3.1 User Personas
 
@@ -682,15 +673,10 @@ Luis Herrera representa al administrador de una pequeña empresa dedicada al alq
 
 #### Segmento 2: Contratistas independientes y responsables de obras de construcción
 
-A partir de la entrevista realizada a Harold Angello, se identificaron necesidades relacionadas con la disponibilidad confiable de maquinaria, el control centralizado de reservas y la continuidad operativa de varias obras simultáneas.
+A partir de las entrevistas realizadas a Harold Angello, Renzo Huamán y Piero Reaño, se identificaron patrones relacionados con la disponibilidad confiable de maquinaria, la transparencia de las tarifas, el control de las horas trabajadas y la continuidad operativa de las obras. Estos hallazgos fueron sintetizados en el siguiente User Persona.
 
-##### Harold Angello
+##### Renzo Huamán
 
-Harold Angello representa al contratista responsable de pequeñas obras que necesita asegurar maquinaria disponible y mantener el control operativo de sus proyectos.
-
-![User Persona - Harold Angello](https://drive.google.com/uc?export=view&id=1upOL-SUfHb9zqnYesjOgERQdI3wfDt0F)
-
-##### Renzo Huaman
 Renzo Huamán representa al contratista independiente que supervisa varias obras y requiere información confiable sobre disponibilidad de maquinaria, tarifas transparentes y registro digital de horas trabajadas.
 
 ![User Persona - Renzo Huamán](assets/user-persona-renzo-huaman.png)
@@ -709,7 +695,7 @@ Renzo Huamán representa al contratista independiente que supervisa varias obras
 | Emitir o recibir comprobantes/facturas del servicio | Media | Media | Baja | Media |
 | Buscar referencias o recomendaciones de proveedores | Baja | Media | Media | Alta |
 
-**Análisis:** la tarea con mayor frecuencia e importancia compartida por ambos User Persona es **verificar la disponibilidad real de la maquinaria**, lo cual confirma que la disponibilidad poco confiable es el dolor central identificado en ambos segmentos Luis Herrera, al administrar la flota, prioriza con mayor frecuencia e importancia el control del mantenimiento, tarea que para Renzo Huamán es secundaria, pues él consume el servicio en vez de administrarlo. En cambio, Renzo le da mayor peso a cotizar y comparar precios y a buscar recomendaciones, dado que su rol implica seleccionar proveedores para cada nueva obra. Ambos coinciden en la relevancia alta de gestionar imprevistos por fallas mecánicas, reflejando que este riesgo operativo afecta a toda la cadena, tanto a quien alquila como a quien administra la flota.
+**Análisis:** la tarea con mayor frecuencia e importancia compartida por ambos User Persona es **verificar la disponibilidad real de la maquinaria**, lo cual confirma que la disponibilidad poco confiable es el dolor central identificado en ambos segmentos. Luis Herrera, al administrar la flota, prioriza con mayor frecuencia e importancia el control del mantenimiento, tarea que para Renzo Huamán es secundaria, pues él consume el servicio en vez de administrarlo. En cambio, Renzo le da mayor peso a cotizar y comparar precios y a buscar recomendaciones, dado que su rol implica seleccionar proveedores para cada nueva obra. Ambos coinciden en la relevancia alta de gestionar imprevistos por fallas mecánicas, reflejando que este riesgo operativo afecta a toda la cadena, tanto a quien alquila como a quien administra la flota.
 
 ### 2.3.3 User Journey Mapping
 
@@ -729,7 +715,7 @@ El siguiente User Journey Map fue elaborado en la plataforma UXPressia para el U
 
 A continuación se presentan los Empathy Mapping de los segmentos objetivos de MaquiControl.
 
-### Segmento 1: Propietarios y administradores de pequeñas empresas de alquiler de maquinaria
+#### Segmento 1: Propietarios y administradores de pequeñas empresas de alquiler de maquinaria
 
 El siguiente Empathy Map representa a Luis Herrera, User Persona del Segmento 1. El artefacto sintetiza los principales comportamientos, necesidades, frustraciones, pensamientos y expectativas identificados a partir de las entrevistas realizadas a usuarios pertenecientes a este segmento.
 
@@ -814,7 +800,6 @@ El Ubiquitous Language de MaquiControl reúne los principales términos utilizad
 # Capítulo III: Requirements Specification
 
 ## 3.1 User Stories
-# User Histories - MaquiControl
 
 | Epic / Story ID | Tipo | Título | User Story | Criterios de aceptación | Relacionado con |
 |---|---|---|---|---|---|
@@ -876,70 +861,72 @@ El Ubiquitous Language de MaquiControl reúne los principales términos utilizad
 | TS-006 | Technical Story | Registro masivo de horómetros | Como desarrollador, quiero procesar lotes de lecturas mediante `POST /api/horometers/batch`, para sincronización móvil offline. | **Given:** una lista de datos de horómetro capturada sin conexión.<br>**When:** el cliente envía la petición en lote.<br>**Then:** la API actualiza los datos y responde `200 OK`. | EP-10 |
 | TS-007 | Technical Story | Endpoint para facturación fiscal | Como desarrollador, quiero integrar la API con el WebService del PSE/SUNAT, para tramitar la emisión de facturas. | **Given:** la solicitud de facturación incluye RUC y datos válidos.<br>**When:** se ejecuta `POST /api/invoices/issue`.<br>**Then:** la API responde con código `200` y el CDR firmado. | EP-10 |
 | TS-008 | Technical Story | Webhooks de eventos de reserva | Como desarrollador, quiero notificar eventos vía Webhook, para mantener sincronizados sistemas externos. | **Given:** una reserva cambia de estado.<br>**When:** el evento ocurre en el sistema.<br>**Then:** la API realiza un callback HTTP POST a los endpoints suscritos. | EP-10 |
-## 3.2. Impact Mapping
+
+## 3.2 Impact Mapping
 
 El Impact Mapping de MaquiControl permite relacionar los objetivos de negocio con los comportamientos esperados de los User Personas, los entregables necesarios para provocar dichos impactos y las User Stories asociadas.
 
 Se definieron tres Business Goals orientados a reducir conflictos de reservas, mejorar la trazabilidad de los alquileres y mantener actualizado el estado de mantenimiento de la maquinaria.
 
-Los principales actores considerados son Luis Herrera, representante del segmento de propietarios y administradores de maquinaria, y Harold Angello, representante del segmento de contratistas y responsables de obra.
+Los principales actores considerados son Luis Herrera, representante del segmento de propietarios y administradores de maquinaria, y Renzo Huamán, representante del segmento de contratistas y responsables de obra.
 
 ![Impact Mapping - MaquiControl](assets/impact-mapping-maquicontrol.png)
 
 ## 3.3 Product Backlog
+## 3.3 Product Backlog
+
+El Product Backlog reúne y prioriza las 40 User Stories y las 8 Technical Stories definidas en la sección 3.1. Los identificadores, títulos y descripciones mantienen trazabilidad directa con las historias y sus criterios de aceptación.
+
 | Orden | User Story ID | Título | Descripción | Story Points |
 | :---: | :---: | :--- | :--- | :---: |
-| 1 | **US01** | Registrar maquinaria | Como propietario de una empresa de alquiler, deseo registrar una maquinaria con sus características para mantener actualizado el inventario. | 2 |
-| 2 | **US02** | Consultar disponibilidad | Como administrador, deseo consultar la disponibilidad de una maquinaria por fecha para evitar reservas duplicadas. | 2 |
-| 3 | **US03** | Gestionar mantenimiento | Como propietario, deseo actualizar el estado de mantenimiento de una maquinaria para evitar que sea reservada cuando no está operativa. | 3 |
-| 4 | **US04** | Crear reserva | Como contratista, deseo reservar una maquinaria disponible para utilizarla en mi obra durante el periodo requerido. | 3 |
-| 5 | **US05** | Evitar reservas duplicadas | Como administrador, deseo evitar reservas que se superpongan para garantizar una correcta gestión de la disponibilidad. | 3 |
-| 6 | **US06** | Cancelar reserva | Como administrador, deseo cancelar una reserva para liberar la maquinaria cuando ya no sea necesaria. | 2 |
-| 7 | **US07** | Consultar catálogo | Como contratista, deseo consultar el catálogo de maquinarias para elegir el equipo adecuado para mi obra. | 1 |
-| 8 | **US08** | Consultar tarifas | Como contratista, deseo consultar las tarifas de alquiler para calcular el presupuesto de mi obra. | 1 |
-| 9 | **US09** | Consultar reservas por obra | Como contratista, deseo consultar las reservas asociadas a mi obra para organizar el uso de las maquinarias contratadas. | 2 |
-| 10 | **US10** | Registrar horas trabajadas | Como administrador, deseo registrar las horas trabajadas por cada maquinaria para calcular correctamente el costo del servicio. | 3 |
-| 11 | **US11** | Validar horas trabajadas | Como propietario, deseo validar las horas registradas para asegurar que los cobros se basen en información correcta. | 3 |
-| 12 | **US12** | Generar resumen de facturación | Como propietario, deseo obtener un resumen de facturación para controlar los ingresos generados por los alquileres. | 3 |
-| 13 | **US13** | Mostrar propuesta de valor | Como visitante, deseo conocer la propuesta de valor de MaquiControl para identificar cómo puede ayudar a mi empresa. | 1 |
-| 14 | **US14** | Mostrar información por segmento | Como visitante, deseo consultar información relacionada con mi tipo de negocio para determinar si MaquiControl se adapta a mis necesidades. | 1 |
-| 15 | **US15** | Solicitar contacto o demostración | Como visitante, deseo enviar una solicitud de contacto para obtener más información sobre MaquiControl. | 1 |
-| 16 | **US16** | Registrar nuevos usuarios | Como administrador del sistema, deseo registrar nuevos usuarios asignando roles específicos para controlar los accesos a la plataforma. | 2 |
-| 17 | **US17** | Iniciar sesión | Como usuario registrado, deseo autenticarme en el sistema para acceder a las funciones asignadas a mi rol. | 2 |
-| 18 | **US18** | Recuperar contraseña | Como usuario, deseo restablecer mi contraseña mediante correo electrónico para recuperar el acceso a mi cuenta. | 2 |
-| 19 | **US19** | Actualizar perfil de usuario | Como usuario, deseo modificar mis datos personales y de contacto para mantener mi información actualizada. | 1 |
-| 20 | **US20** | Filtrar maquinaria por categoría | Como contratista, deseo filtrar los equipos por categoría (excavadoras, grúas, etc.) para encontrar más rápido lo que necesito. | 1 |
-| 21 | **US21** | Buscar maquinaria por ubicación | Como contratista, deseo buscar equipos según su ubicación geográfica para reducir costos de transporte. | 2 |
-| 22 | **US22** | Editar datos de maquinaria | Como propietario, deseo modificar las especificaciones técnicas o precio de una máquina registrada para reflejar cambios reales. | 2 |
-| 23 | **US23** | Dar de baja maquinaria | Como propietario, deseo desactivar una maquinaria fuera de servicio para retirarla del catálogo activo. | 1 |
-| 24 | **US24** | Cargar fotos de maquinaria | Como propietario, deseo subir imágenes de cada equipo para mostrar su estado visual a los clientes. | 2 |
-| 25 | **US25** | Programar mantenimiento preventivo | Como propietario, deseo agendar alertas de mantenimiento periódico por horas de uso para prevenir averías. | 3 |
-| 26 | **US26** | Registrar ficha técnica de reparación | Como mecánico, deseo ingresar el detalle de repuestos y reparaciones efectuadas a un equipo para guardar el historial. | 2 |
-| 27 | **US27** | Consultar historial de mantenimiento | Como propietario, deseo revisar el historial mecánico de una máquina para evaluar su rentabilidad y desgaste. | 2 |
-| 28 | **US28** | Modificar fechas de reserva | Como contratista, deseo solicitar la extensión de una reserva activa para continuar con los trabajos en obra. | 3 |
-| 29 | **US29** | Aprobar o rechazar reservas | Como administrador, deseo revisar y aprobar solicitudes de alquiler pendientes para confirmar el contrato. | 2 |
-| 30 | **US30** | Generar contrato de alquiler | Como administrador, deseo generar automáticamente el documento de contrato en PDF para formalizar el alquiler. | 3 |
-| 31 | **US31** | Asignar operador a maquinaria | Como administrador, deseo vincular un operador certificado a una maquinaria reservada para asegurar su correcta manipulación. | 2 |
-| 32 | **US32** | Registrar check-in de maquinaria | Como operador, deseo registrar la entrega física del equipo en obra anotando el estado inicial del horómetro. | 2 |
-| 33 | **US33** | Registrar check-out de maquinaria | Como operador, deseo registrar la devolución del equipo adjuntando fotos y lectura final del horómetro. | 2 |
-| 34 | **US34** | Reportar avería en obra | Como contratista, deseo notificar una falla mecánica urgente desde la aplicación para solicitar soporte técnico. | 2 |
-| 35 | **US35** | Reasignar maquinaria por avería | Como administrador, deseo reemplazar una máquina fallada por otra disponible para no paralizar la obra del cliente. | 3 |
-| 36 | **US36** | Notificar alertas de pago | Como sistema, deseo enviar recordatorios automáticos de cobro al contratista para evitar retrasos en los pagos. | 2 |
-| 37 | **US37** | Emitir comprobante electrónico SUNAT | Como propietario, deseo generar facturas/boletas electrónicas vinculadas al servicio para cumplir con la normativa fiscal. | 3 |
-| 38 | **US38** | Aplicar penalizaciones por mora | Como propietario, deseo calcular recargos automáticos en caso de devolución tardía de la maquinaria. | 2 |
-| 39 | **US39** | Descargar reportes en Excel/PDF | Como administrador, deseo exportar las listas de reservas y facturación para análisis financiero externo. | 2 |
-| 40 | **US40** | Calificar servicio y maquinaria | Como contratista, deseo dejar una valoración e inquietudes del equipo utilizado para alimentar la reputación del catálogo. | 1 |
-| 41 | **US41** | Calculadora de ROI en Landing Page | Como visitante, deseo ingresar la cantidad de máquinas de mi flota para calcular el ahorro de tiempo estimado con MaquiControl. | 2 |
-| 42 | **US42** | Chat de soporte en vivo | Como visitante o usuario, deseo comunicarme mediante un chat en línea para resolver dudas comerciales o técnicas. | 2 |
-| 43 | **TS01** | Consultar maquinaria mediante API | Como desarrollador, deseo consultar las maquinarias mediante un endpoint REST para integrar el inventario con otros sistemas. | 2 |
-| 44 | **TS02** | Registrar reservas mediante API | Como desarrollador, deseo registrar reservas mediante un endpoint REST para permitir que otros sistemas creen reservas. | 3 |
-| 45 | **TS03** | Validar conflictos mediante API | Como desarrollador, deseo validar los conflictos de fechas en la API para mantener la consistencia de la disponibilidad. | 3 |
-| 46 | **TS04** | Validar datos de la API | Como desarrollador, deseo validar los datos recibidos por la API para evitar registros incompletos o incorrectos. | 2 |
-| 47 | **TS05** | Autenticación con Tokens JWT | Como desarrollador, deseo implementar la seguridad basada en Tokens JWT para proteger las rutas privadas de la API. | 3 |
-| 48 | **TS06** | Registro masivo de horómetros vía API | Como desarrollador, deseo implementar un endpoint batch para sincronizar múltiples lecturas de horómetro desde apps móviles. | 3 |
-| 49 | **TS07** | Endpoint para Facturación SUNAT | Como desarrollador, deseo crear la integración WebService con el Proveedor de Servicios Electrónicos (PSE) para emitir facturas. | 3 |
-| 50 | **TS08** | Configuración de Webhooks de Eventos | Como desarrollador, deseo configurar webhooks para notificar cambios de estado en las reservas a sistemas externos. | 3 |
-
+| 1 | **US-001** | Registrar maquinaria | Como propietario de una empresa de alquiler, quiero registrar una maquinaria con sus características, para mantener actualizado el inventario. | 2 |
+| 2 | **US-002** | Consultar disponibilidad | Como administrador, quiero consultar la disponibilidad de una maquinaria por fecha, para evitar reservas duplicadas. | 2 |
+| 3 | **US-003** | Gestionar mantenimiento | Como propietario, quiero actualizar el estado de mantenimiento de una maquinaria, para evitar que sea reservada cuando no está operativa. | 3 |
+| 4 | **US-004** | Crear una reserva | Como contratista, quiero reservar una maquinaria disponible, para utilizarla en mi obra durante el periodo requerido. | 3 |
+| 5 | **US-005** | Evitar reservas duplicadas | Como administrador, quiero evitar reservas que se superpongan, para garantizar la disponibilidad correcta de la maquinaria. | 3 |
+| 6 | **US-006** | Cancelar una reserva | Como administrador, quiero cancelar una reserva, para liberar la maquinaria cuando ya no sea necesaria. | 2 |
+| 7 | **US-007** | Consultar catálogo de maquinaria | Como contratista, quiero consultar el catálogo de maquinarias, para elegir el equipo adecuado para mi obra. | 1 |
+| 8 | **US-008** | Consultar tarifas | Como contratista, quiero consultar las tarifas de alquiler, para calcular el presupuesto de mi obra. | 1 |
+| 9 | **US-009** | Consultar reservas por obra | Como contratista, quiero consultar las reservas asociadas a mi obra, para organizar el uso de las maquinarias contratadas. | 2 |
+| 10 | **US-010** | Registrar horas trabajadas | Como administrador, quiero registrar las horas trabajadas por cada maquinaria, para calcular correctamente el costo del servicio. | 3 |
+| 11 | **US-011** | Validar horas trabajadas | Como propietario, quiero validar las horas registradas, para asegurar que los cobros se basen en información correcta. | 3 |
+| 12 | **US-012** | Generar resumen de facturación | Como propietario, quiero obtener un resumen de facturación, para controlar los ingresos generados por los alquileres. | 3 |
+| 13 | **US-013** | Mostrar propuesta de valor | Como visitante, quiero conocer la propuesta de valor de MaquiControl, para identificar cómo puede ayudar a mi empresa. | 1 |
+| 14 | **US-014** | Mostrar información por segmento | Como visitante, quiero consultar información relacionada con mi tipo de negocio, para determinar si MaquiControl se adapta a mis necesidades. | 1 |
+| 15 | **US-015** | Solicitar contacto o demostración | Como visitante, quiero enviar una solicitud de contacto, para obtener más información sobre MaquiControl. | 1 |
+| 16 | **US-016** | Editar datos de maquinaria | Como propietario, quiero modificar los datos técnicos de un equipo, para mantener la información actualizada. | 2 |
+| 17 | **US-017** | Dar de baja maquinaria | Como propietario, quiero desactivar una maquinaria fuera de servicio, para retirarla del inventario activo. | 1 |
+| 18 | **US-018** | Modificar fechas de reserva | Como contratista, quiero solicitar la extensión de una reserva activa, para continuar mis trabajos en obra. | 3 |
+| 19 | **US-019** | Aprobar o rechazar reservas | Como administrador, quiero revisar las solicitudes pendientes de alquiler, para confirmar o rechazar contratos. | 2 |
+| 20 | **US-020** | Filtrar maquinaria por categoría | Como contratista, quiero filtrar equipos por tipo de máquina, para agilizar la búsqueda de equipos específicos. | 1 |
+| 21 | **US-021** | Buscar maquinaria por ubicación | Como contratista, quiero buscar equipos según su ubicación, para reducir costos de flete. | 2 |
+| 22 | **US-022** | Emitir comprobante de pago | Como propietario, quiero generar comprobantes electrónicos, para cumplir con los requerimientos fiscales. | 3 |
+| 23 | **US-023** | Aplicar penalizaciones por mora | Como propietario, quiero aplicar cargos por entrega tardía, para compensar retrasos no acordados. | 2 |
+| 24 | **US-024** | Calculadora de ahorro / ROI | Como visitante, quiero simular mi ahorro operativo según el tamaño de mi flota, para evaluar la compra del SaaS. | 2 |
+| 25 | **US-025** | Chat de soporte comercial | Como visitante, quiero enviar preguntas directas en la Landing Page, para resolver dudas antes de registrarme. | 2 |
+| 26 | **US-026** | Registrar cuenta de usuario | Como usuario nuevo, quiero crear una cuenta en el sistema, para acceder a las funciones del software. | 2 |
+| 27 | **US-027** | Iniciar sesión | Como usuario registrado, quiero autenticarme en el sistema, para acceder a mi panel personalizado. | 2 |
+| 28 | **US-028** | Recuperar contraseña | Como usuario, quiero solicitar el restablecimiento de clave, para recuperar el acceso en caso de olvido. | 2 |
+| 29 | **US-029** | Gestionar roles de usuario | Como administrador, quiero asignar roles de propietario, contratista u operador, para restringir los accesos correspondientes. | 2 |
+| 30 | **US-030** | Actualizar perfil | Como usuario, quiero modificar mis datos personales, para mantener actualizada mi información. | 1 |
+| 31 | **US-031** | Programar mantenimientos preventivos | Como propietario, quiero agendar alertas periódicas por horas de uso, para prevenir fallas mayores. | 3 |
+| 32 | **US-032** | Registrar orden de reparación | Como técnico, quiero ingresar los detalles de las reparaciones efectuadas, para mantener la ficha técnica del equipo. | 2 |
+| 33 | **US-033** | Consultar historial mecánico | Como contratista, quiero consultar el registro de mantenimientos de un equipo, para validar su estado antes de alquilarlo. | 2 |
+| 34 | **US-034** | Reportar avería en obra | Como contratista, quiero reportar una falla mecánica durante el uso, para solicitar soporte urgente. | 2 |
+| 35 | **US-035** | Registrar check-in de entrega | Como operador, quiero registrar el estado inicial del equipo al entregarlo en obra, para evitar disputas por daños. | 2 |
+| 36 | **US-036** | Registrar check-out de devolución | Como operador, quiero registrar el estado del equipo al ser devuelto, para verificar su condición final. | 2 |
+| 37 | **US-037** | Reasignar equipo por falla | Como administrador, quiero asignar una máquina de reemplazo, para evitar detener los trabajos del cliente. | 3 |
+| 38 | **US-038** | Consultar reporte de utilización | Como propietario, quiero visualizar el porcentaje de uso de mi flota, para identificar los equipos más rentables. | 2 |
+| 39 | **US-039** | Exportar reportes en Excel/PDF | Como administrador, quiero descargar la lista de reservas y facturas, para realizar auditorías externas. | 2 |
+| 40 | **US-040** | Calificar servicio y maquinaria | Como contratista, quiero puntuar el desempeño del equipo alquilado, para retroalimentar la calidad del servicio. | 1 |
+| 41 | **TS-001** | Consultar maquinarias mediante API | Como desarrollador, quiero consultar las maquinarias mediante `GET /api/machinery`, para integrar el inventario con otros sistemas. | 2 |
+| 42 | **TS-002** | Registrar reservas mediante API | Como desarrollador, quiero registrar reservas mediante `POST /api/reservations`, para permitir que otros sistemas creen reservas. | 3 |
+| 43 | **TS-003** | Validar conflictos de reservas en la API | Como desarrollador, quiero validar los conflictos de fechas en la API, para mantener la consistencia de la disponibilidad. | 3 |
+| 44 | **TS-004** | Validar datos incorrectos en la API | Como desarrollador, quiero validar los datos recibidos por la API, para evitar registros incompletos o incorrectos. | 2 |
+| 45 | **TS-005** | Autenticación basada en JWT | Como desarrollador, quiero asegurar los endpoints con JWT, para proteger las rutas privadas de la API. | 3 |
+| 46 | **TS-006** | Registro masivo de horómetros | Como desarrollador, quiero procesar lotes de lecturas mediante `POST /api/horometers/batch`, para permitir la sincronización móvil. | 3 |
+| 47 | **TS-007** | Endpoint para facturación fiscal | Como desarrollador, quiero integrar la API con el servicio del PSE/SUNAT, para tramitar la emisión de facturas. | 3 |
+| 48 | **TS-008** | Webhooks de eventos de reserva | Como desarrollador, quiero notificar eventos mediante webhooks, para mantener sincronizados los sistemas externos. | 3 |
 # Capítulo IV: Product Design
 
 ## 4.1. Style Guidelines
@@ -1156,8 +1143,6 @@ La navegación también se complementa con diferentes Call to Action distribuido
 
 Estas acciones permiten dirigir al usuario hacia la experiencia correspondiente según su perfil.
 
-[Por agregar: Mapa de navegación de MaquiControl]
-
 ### 4.3. Landing Page UI Design
 
 En esta sección se presenta el diseño de la Landing Page de MaquiControl, desarrollado a partir de los lineamientos visuales definidos previamente y de las necesidades de los segmentos objetivo.
@@ -1219,7 +1204,9 @@ En esta sección se presenta el proceso de diseño UX/UI de la Web Application d
 
 El diseño fue desarrollado tomando como referencia las necesidades identificadas durante la etapa de investigación, los User Personas, las User Stories y los principales procesos definidos para la plataforma.
 
-Para representar progresivamente la experiencia de usuario se elaboraron wireframes, wireflow diagrams, mock-ups y user flow diagrams. Estos artefactos permiten visualizar la estructura de las interfaces, la relación entre las diferentes vistas y los recorridos que realizan los usuarios para completar sus principales tareas dentro de MaquiControl.### 4.4.1. Web Applications Wireframes
+Para representar progresivamente la experiencia de usuario se elaboraron wireframes, wireflow diagrams, mock-ups y user flow diagrams. Estos artefactos permiten visualizar la estructura de las interfaces, la relación entre las diferentes vistas y los recorridos que realizan los usuarios para completar sus principales tareas dentro de MaquiControl.
+
+### 4.4.1. Web Applications Wireframes
 
 En esta sección se presentan los wireframes de la Web Application de MaquiControl. Estos diseños de baja fidelidad permiten representar la estructura, distribución y jerarquía de los principales elementos de la interfaz antes de aplicar los estilos visuales definitivos.
 
@@ -1227,15 +1214,6 @@ Los wireframes muestran las principales vistas y funcionalidades de la aplicaci�
 
 A continuación, se presentan los wireframes correspondientes a las principales vistas de la Web Application de MaquiControl.
 
-### 4.4.1. Web Applications Wireframes
-
-Los wireframes de MaquiControl representan la estructura inicial de las principales vistas de la Web Application antes de aplicar los estilos visuales definitivos.
-
-Estos diseños de baja fidelidad permiten establecer la distribución de los componentes, la jerarquía de la información y la ubicación de los principales elementos de interacción.
-
-Los wireframes fueron elaborados considerando los principales procesos de la plataforma, permitiendo validar la organización de las vistas antes de desarrollar los mock-ups de alta fidelidad.
-
-A continuación, se presentan los wireframes correspondientes a las principales interfaces de la Web Application de MaquiControl.
 ![Web-Application-Wireframe](assets/web_applications_wireframes.png)
 
 
@@ -1250,7 +1228,7 @@ Los wireflows permiten validar la continuidad de la experiencia y detectar posib
 A continuación, se presentan los principales Wireflow Diagrams de MaquiControl.
 ![Web-Application-Wireflow](assets/web_applications_wireflows.png)
 
-### 4.4.2. Web Applications Mock-ups
+### 4.4.3. Web Applications Mock-ups
 
 Los mock-ups presentan la propuesta visual de alta fidelidad de la Web Application de MaquiControl.
 
@@ -1261,7 +1239,7 @@ Los mock-ups permiten representar de manera más cercana la apariencia final de 
 A continuación, se presentan los mock-ups correspondientes a las principales vistas de la Web Application de MaquiControl.
 ![Web-Application-Mock-Ups](assets/webapplicationsmockups.png)
 
-### 4.4.3. Web Applications User Flow Diagrams
+### 4.4.4. Web Applications User Flow Diagrams
 
 Los User Flow Diagrams representan los recorridos que realizan los usuarios para completar las principales tareas dentro de la Web Application de MaquiControl.
 
