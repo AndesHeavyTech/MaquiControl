@@ -483,14 +483,13 @@ En esta sección se presentan las entrevistas realizadas a representantes de los
 ##### Entrevista 1
 
 - **Nombre y apellidos:** José Ramírez
-- **Edad:** 27
+- **Edad:** 27 años
+- **Ocupación:** Director de una pequeña empresa dedicada al alquiler de maquinaria
 - **Distrito:** Comas
-- **Ocupacion:** Director de una pequeña empresa dedicada al alquiler de maquinaria
-- **Timing en el video:**
+- **Timing en el video:** 0:00-3:14
 
-**Captura de la entrevista:**
-
-
+  **Captura de la entrevista:**
+![Captura de la entrevista a Jose Ramirez](assets/interview-jose-ramirez.png)
 
 **Resumen de la entrevista:**
 
@@ -512,11 +511,10 @@ Sus principales prioridades son garantizar la disponibilidad de la maquinaria, r
 - **Edad:** 52 años
 - **Ocupación:** Encargado de operaciones en un pequeño negocio de alquiler de maquinaria
 - **Distrito:** San Juan de Lurigancho
-- **Timing en el video:**
+- **Timing en el video:** 3:14-7:37
 
 **Captura de la entrevista:**
-
-
+![Captura de la entrevista a Carlos Mendoza](assets/interview-carlos-stephano-mendoza.png)
 
 **Resumen de la entrevista:**
 
@@ -542,11 +540,10 @@ Entrevista 1
 - **Edad:** 30 años
 - **Ocupación:** Administradora de una empresa familiar de alquiler de maquinaria
 - **Distrito:** Surco
-- **Timing en el video:**
+- **Timing en el video:** 7:37-10:05
 
 **Captura de la entrevista:**
-
-
+![Captura de la entrevista a Andrea Lopez](assets/interview-andrea-lopez.png)
 
 **Resumen de la entrevista:**
 
@@ -563,8 +560,11 @@ La entrevistada considera indispensable disponer de un calendario de disponibili
 - **Nombre y apellidos:** Harold Angello
 - **Edad:** 41 años
 - **Ocupación:** Ingeniero civil y propietario de una pequeña constructora
-- **Obras supervisadas:** Entre 2 y 3 obras simultáneamente
-- **Dispositivos y navegador:** iPhone en obra; laptop con Google Chrome en oficina.
+- **Distrito:** Surco
+- **Timing en el video:** 10:05-16:58
+
+**Captura de la entrevista:**
+![Captura de la entrevista a Harold Angello](assets/interview-harold-angello.png)
 
 **Resumen de la entrevista:**
 
@@ -583,8 +583,11 @@ Sus principales prioridades son evitar que las obras se detengan por falta de ma
 - **Nombre y apellidos:** Renzo Huamán
 - **Edad:** 38 años
 - **Ocupación:** contratista independiente
-- **Obras supervisadas:** Entre 2 y 3 obras simultáneamente
-- **Dispositivos y navegador:** Celular y laptop con google en la oficina, ademas de exel.
+- **Distrito:** Surco
+- **Timing en el video:** 16:58–20:01
+
+**Captura de la entrevista:**
+![Captura de la entrevista a Renzo Huaman](assets/interview-renzo-huaman.png)
 
 **Resumen de la entrevista:**
 
@@ -594,41 +597,68 @@ Al buscar maquinaria, prioriza las recomendaciones de colegas sobre las búsqued
 
 Para solucionar estos problemas y reemplazar el control manual que lleva en su cuaderno de obra, Renzo adoptaría una plataforma digital siempre que ofrezca precios finales transparentes por hora, garantía de disponibilidad en tiempo real y un comprobante formal que respalde cada reserva.
 
+##### Entrevista 3
+
+- **Nombre y apellidos:** Piero Reaño
+- **Edad:** 25 años
+- **Ocupación:** Contratista independiente
+- **Distrito:** Surquillo
+- **Timing en el video:** 20:01-25:42
+
+**Captura de la entrevista:**
+![Captura de la entrevista a Piero Reaño](assets/interview-piero-reano.png)
+
+**Resumen de la entrevista:**
+
+Piero Reaño, contratista independiente de 25 años, trabaja en proyectos de construcción y remodelación, donde utiliza principalmente excavadoras, retroexcavadoras y cargadores. Actualmente busca maquinaria mediante proveedores conocidos, recomendaciones, Google, Facebook y grupos de WhatsApp.
+
+Entre sus principales dificultades identifica la falta de disponibilidad actualizada, los costos adicionales no informados y las fallas mecánicas que pueden generar retrasos en las obras. Además, gestiona las horas trabajadas y la asignación de maquinaria mediante WhatsApp, llamadas y Excel.
+
+El entrevistado considera útil una plataforma que centralice la disponibilidad, reservas, costos, horas trabajadas, mantenimiento y ubicación de las máquinas. También destaca la importancia de contar con información actualizada, precios transparentes y una experiencia sencilla desde el celular.
+
+
+**Video consolidado de las entrevistas:** [Ver entrevistas completas](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202416147_upc_edu_pe/IQCtDKm3Mx7YSICszqpbHVACAZ5fOdZ3xGF08nsq6eXrey4?e=WBrQyq&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
 ### 2.2.3 Análisis de entrevistas
 
-#### Análisis preliminar del Segmento 1
+A partir de las seis entrevistas realizadas, tres por cada segmento objetivo, se identificaron necesidades, problemas y expectativas relacionadas con la gestión y el alquiler de maquinaria. Los resultados permitieron comprender tanto la perspectiva de quienes administran la oferta de equipos como la de quienes necesitan utilizarlos en proyectos de construcción.
 
-El Segmento 1 está compuesto por propietarios y administradores de pequeñas empresas de alquiler de maquinaria, quienes tienen la responsabilidad de coordinar la disponibilidad de equipos, atender solicitudes de clientes, gestionar reservas y supervisar el mantenimiento.
+#### Análisis del Segmento 1: Propietarios y administradores de pequeñas empresas de alquiler de maquinaria
 
-El proceso actual suele depender de herramientas independientes como WhatsApp, llamadas telefónicas, hojas de cálculo y registros manuales. Esto provoca que la información se encuentre dispersa y que los responsables tengan que consultar varias fuentes antes de confirmar un alquiler.
+Las entrevistas realizadas a José Ramírez, Carlos Stephano Mendoza y Andrea López evidencian que la gestión de las pequeñas empresas de alquiler de maquinaria depende principalmente de WhatsApp, llamadas telefónicas, hojas de cálculo y registros manuales. Aunque estas herramientas permiten atender las operaciones básicas, la información queda distribuida entre diferentes medios y no siempre se actualiza oportunamente.
 
-Los principales problemas identificados en este segmento son el cruce de reservas, la dificultad para conocer la disponibilidad real de la maquinaria, la falta de información actualizada sobre mantenimiento y la pérdida de tiempo al buscar información entre diferentes medios. También existe el riesgo de comprometer un equipo que ya está reservado o fuera de servicio.
+Uno de los principales problemas identificados es la dificultad para conocer la disponibilidad real de cada máquina. La falta de un registro centralizado puede ocasionar cruces de fechas, reservas duplicadas o el ofrecimiento de equipos que se encuentran alquilados o en mantenimiento. Estas situaciones afectan la atención al cliente y pueden generar pérdidas económicas y problemas de coordinación.
 
-A partir de estas necesidades, el segmento requiere principalmente una solución que permita centralizar la gestión de la flota. Las funcionalidades de mayor valor serían un calendario de disponibilidad, control de reservas, seguimiento del mantenimiento, registro del estado de los equipos y acceso rápido a la información de cada alquiler.
+También se identificaron dificultades para registrar los mantenimientos, controlar las horas trabajadas y comunicar claramente los costos del alquiler. Algunos precios pueden variar por conceptos adicionales, como transporte, combustible u operador, por lo que los entrevistados valoran disponer de información transparente antes de confirmar una operación.
 
-Otro aspecto relevante es la movilidad. Debido a que administradores y propietarios pueden atender el negocio fuera de una oficina, el acceso desde teléfonos móviles resulta importante. Por ello, MaquiControl debe ofrecer una interfaz responsive que permita consultar y actualizar información desde diferentes dispositivos.
+Los integrantes de este segmento necesitan una plataforma sencilla que les permita administrar su flota desde un único lugar. Entre las funcionalidades más importantes se encuentran el calendario de disponibilidad, la gestión de reservas, el registro de mantenimientos, la consulta del estado de las máquinas, el historial de uso y la generación de una confirmación formal del alquiler.
 
-También se observa que la facilidad de uso puede ser determinante para la adopción. Estos usuarios no necesariamente buscan un sistema complejo, sino una herramienta que reduzca pasos, presente la información de manera clara y sustituya parte de la coordinación manual que actualmente realizan por WhatsApp y Excel.
+El acceso desde dispositivos móviles también resulta fundamental, debido a que los propietarios y administradores no siempre realizan sus actividades desde una oficina. Por ello, la solución debe ofrecer una interfaz clara, responsive y con pocos pasos para consultar o actualizar información.
 
-En consecuencia, la principal oportunidad para MaquiControl dentro de este segmento consiste en ofrecer un punto único de control de la operación, permitiendo conocer rápidamente qué maquinaria está disponible, reservada o en mantenimiento y mantener un registro organizado de las operaciones.
+- **Necesidades principales:** disponibilidad actualizada, control de reservas, seguimiento del mantenimiento, historial de uso, transparencia de costos y acceso desde dispositivos móviles.
+- **Pain points:** información dispersa, actualizaciones manuales, reservas duplicadas, maquinaria ofrecida mientras está en mantenimiento y dificultad para encontrar rápidamente los registros.
+- **Oportunidad para MaquiControl:** centralizar la administración de la flota, las reservas y los mantenimientos para mejorar la coordinación y reducir los errores operativos.
 
-Principales necesidades detectadas: disponibilidad de maquinaria en tiempo real, prevención de conflictos entre reservas, control de mantenimiento, centralización de información, acceso desde dispositivos móviles y una interfaz sencilla.
+#### Análisis del Segmento 2: Contratistas independientes y responsables de obras de construcción
 
-Pain points principales: información dispersa, actualizaciones manuales, errores de coordinación, demora al responder a clientes, riesgo de reservas duplicadas y dificultad para conocer el estado real de los equipos.
+Las entrevistas realizadas a Harold Angello, Renzo Huamán y Piero Reaño muestran que los contratistas necesitan información confiable para seleccionar y coordinar maquinaria en una o varias obras. Actualmente recurren a proveedores conocidos, recomendaciones de colegas, búsquedas en Google, Facebook y grupos de WhatsApp para encontrar equipos disponibles.
 
-Oportunidad para MaquiControl: reducir la dependencia de hojas de cálculo y conversaciones dispersas mediante una plataforma centralizada que permita administrar la flota, las reservas y el mantenimiento de forma más organizada.
+El problema más recurrente es la falta de disponibilidad actualizada. Los entrevistados mencionaron situaciones en las que una máquina inicialmente confirmada ya estaba reservada, se encontraba asignada a otra obra o no podía utilizarse debido a una falla mecánica. Esto puede detener las actividades, generar tiempos muertos y afectar los costos y plazos comprometidos.
 
-#### Análisis preliminar del Segmento 2
+También se identificó una falta de transparencia en las tarifas. Algunos costos adicionales, como el transporte, el combustible o el operador, no siempre se comunican desde el inicio. Por esta razón, los usuarios necesitan conocer el precio final y las condiciones del servicio antes de confirmar una reserva.
 
-La entrevista realizada evidencia que los contratistas y responsables de obra necesitan información confiable y centralizada para coordinar maquinaria en múltiples proyectos simultáneamente. La disponibilidad inexacta y las dobles reservas representan el principal riesgo operativo, ya que pueden detener una obra y afectar directamente los costos y plazos de entrega.
+El seguimiento de las horas trabajadas constituye otra necesidad importante. Actualmente esta información se comunica mediante llamadas, mensajes de WhatsApp, reportes del operador o archivos de Excel. Una plataforma digital permitiría registrar y consultar las horas trabajadas, la maquinaria asignada, su ubicación, su estado y las reservas asociadas a cada obra.
 
-También se identificó la necesidad de registrar y validar las horas trabajadas de cada equipo, actualmente reportadas de forma manual mediante WhatsApp. Por ello, una plataforma digital debe permitir consultar reservas, disponibilidad, estado de la maquinaria y horas trabajadas desde un único panel.
+Los entrevistados manifestaron disposición para utilizar una solución digital siempre que sea sencilla, funcione adecuadamente desde el celular y proporcione información actualizada. También consideran importante recibir una confirmación formal que respalde cada reserva.
 
-Principales necesidades detectadas: visibilidad centralizada de reservas y equipos en múltiples obras simultáneas, confirmación confiable de disponibilidad, registro digital de horas trabajadas y acceso desde dispositivos móviles.
+- **Necesidades principales:** disponibilidad en tiempo real, precios finales transparentes, confirmación de reservas, registro de horas trabajadas, información del mantenimiento y seguimiento de los equipos asignados.
+- **Pain points:** falsa disponibilidad, costos adicionales no informados, fallas mecánicas, paralización de obras y coordinación dispersa mediante llamadas, WhatsApp y Excel.
+- **Oportunidad para MaquiControl:** ofrecer un espacio centralizado donde los contratistas puedan localizar maquinaria, comparar información, confirmar reservas y supervisar los equipos utilizados en sus obras.
 
-Pain points principales: dobles reservas por parte de proveedores, paradas de obra por fallas mecánicas imprevistas, y dispersión de la información de horas trabajadas entre distintos chats de WhatsApp.
+#### Conclusiones del análisis de entrevistas
 
-Oportunidad para MaquiControl: ofrecer un panel único donde el contratista pueda supervisar el estado de reservas, disponibilidad y avance de maquinaria en todas sus obras a la vez, reduciendo la dependencia de coordinación manual por WhatsApp.
+Los dos segmentos presentan problemas relacionados con la fragmentación y desactualización de la información, aunque desde perspectivas diferentes. Los propietarios y administradores necesitan controlar eficientemente la oferta y el estado de su flota, mientras que los contratistas requieren consultar disponibilidad confiable y coordinar la maquinaria utilizada en sus obras.
+
+MaquiControl puede conectar ambas necesidades mediante una plataforma centralizada que permita gestionar la disponibilidad, las reservas, los costos, los mantenimientos y las horas trabajadas. La solución debe priorizar la facilidad de uso, el acceso desde dispositivos móviles, la transparencia de la información y la confirmación formal de las operaciones.
 
 ## 2.3 Needfinding
 
