@@ -1,0 +1,94 @@
+@startuml
+title MaquiControl - Profiles Management Bounded Context\nDatabase Diagram
+
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam linetype ortho
+hide circle
+
+entity "organizations" as organizations {
+  * id : UUID <<PK>>
+  --
+  * legal_name : VARCHAR(180) <<NOT NULL>>
+  trade_name : VARCHAR(180)
+  * tax_id : VARCHAR(20) <<NOT NULL, UNIQUE>>
+  * organization_type : VARCHAR(40) <<NOT NULL>>
+  * address : VARCHAR(200) <<NOT NULL>>
+  * created_at : TIMESTAMP <<NOT NULL>>
+  * updated_at : TIMESTAMP <<NOT NULL>>
+}
+
+entity "profiles" as profiles {
+  * id : UUID <<PK>>
+  --
+  * user_account_id : UUID <<EXTERNAL REF, UNIQUE>>
+  organization_id : UUID <<FK>>
+  * first_name : VARCHAR(100) <<NOT NULL>>
+  * last_name : VARCHAR(100) <<NOT NULL>>
+  * document_number : VARCHAR(20) <<NOT NULL, UNIQUE>>
+  * created_at : TIMESTAMP <<NOT NULL>>
+  * updated_at : TIMESTAMP <<NOT NULL>>
+  * version : BIGINT <<NOT NULL, DEFAULT 0>>
+}
+
+entity "contact_information" as contact_information {
+  * profile_id : UUID <<PK, FK>>
+  --
+  * phone_number : VARCHAR(25) <<NOT NULL>>
+  secondary_email : VARCHAR(254)
+  * address : VARCHAR(200) <<NOT NULL>>
+  * district : VARCHAR(100) <<NOT NULL>>
+  * city : VARCHAR(100) <<NOT NULL>>
+}
+
+organizations |o--o{ profiles : groups
+profiles ||--|| contact_information : owns
+
+note left of organizations
+  Constraints:
+  PK (id)
+  UNIQUE (tax_id)
+  CHECK (tax_id <> '')
+  CHECK (organization_type IN
+    INDEPENDENT_CONTRACTOR,
+    RENTAL_COMPANY,
+    CONSTRUCTION_COMPANY,
+    OTHER)
+end note
+
+note right of profiles
+  Constraints:
+  PK (id)
+  UNIQUE (user_account_id)
+  UNIQUE (document_number)
+  FK (organization_id)
+    REFERENCES organizations(id)
+    ON DELETE SET NULL
+  CHECK (first_name <> '')
+  CHECK (last_name <> '')
+
+  user_account_id references UserAccount
+  in Identity & Access Management.
+  No cross-context database FK is created.
+end note
+
+note right of contact_information
+  Constraints:
+  PK (profile_id)
+  FK (profile_id)
+    REFERENCES profiles(id)
+    ON DELETE CASCADE
+  CHECK (phone_number <> '')
+end note
+
+legend right
+  |= Mark |= Meaning |
+  | PK | Primary Key |
+  | FK | Foreign Key |
+  | EXTERNAL REF | Identifier owned by another bounded context |
+  | NOT NULL | Mandatory column |
+  | UNIQUE | Value cannot be repeated |
+endlegend
+
+@enduml

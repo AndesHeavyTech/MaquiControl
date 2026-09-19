@@ -1,0 +1,74 @@
+@startuml
+title MaquiControl - Rental Management Bounded Context\nDatabase Diagram
+
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam linetype ortho
+hide circle
+
+entity "rentals" as rentals {
+  * id : UUID <<PK>>
+  --
+  * machinery_id : UUID <<EXTERNAL REF>>
+  * contractor_profile_id : UUID <<EXTERNAL REF>>
+  * status : VARCHAR(30) <<NOT NULL>>
+  * total_amount : DECIMAL(12,2) <<NOT NULL, DEFAULT 0>>
+  cancellation_reason : VARCHAR(300)
+  * requested_at : TIMESTAMP <<NOT NULL>>
+  confirmed_at : TIMESTAMP
+  cancelled_at : TIMESTAMP
+  * created_at : TIMESTAMP <<NOT NULL>>
+  * updated_at : TIMESTAMP <<NOT NULL>>
+  * version : BIGINT <<NOT NULL, DEFAULT 0>>
+}
+
+entity "rental_periods" as rental_periods {
+  * rental_id : UUID <<PK, FK>>
+  --
+  * start_date : DATE <<NOT NULL>>
+  * end_date : DATE <<NOT NULL>>
+}
+
+rentals ||--|| rental_periods : defines
+
+note right of rentals
+  Constraints:
+  PK (id)
+  CHECK (total_amount >= 0)
+  CHECK (status IN
+    REQUESTED, CONFIRMED, IN_PROGRESS,
+    COMPLETED, CANCELLED)
+  CHECK (
+    status <> 'CANCELLED'
+    OR cancelled_at IS NOT NULL
+  )
+
+  machinery_id references Machinery.
+  contractor_profile_id references Profile.
+  They belong to other bounded contexts,
+  so cross-context database FKs are avoided.
+end note
+
+note right of rental_periods
+  Constraints:
+  PK (rental_id)
+  FK (rental_id)
+    REFERENCES rentals(id)
+    ON DELETE CASCADE
+  CHECK (end_date >= start_date)
+
+  A unique exclusion rule or application-level
+  validation prevents overlapping active rentals
+  for the same machinery and period.
+end note
+
+legend right
+  |= Mark |= Meaning |
+  | PK | Primary Key |
+  | FK | Foreign Key |
+  | EXTERNAL REF | Identifier owned by another bounded context |
+  | NOT NULL | Mandatory column |
+endlegend
+
+@enduml
