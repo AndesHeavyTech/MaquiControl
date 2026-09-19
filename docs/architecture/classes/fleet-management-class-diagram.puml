@@ -1,0 +1,95 @@
+@startuml
+title MaquiControl - Fleet Management Bounded Context\nClass Diagram
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam linetype ortho
+hide empty members
+
+package "Fleet Management" {
+
+  class Machinery <<Aggregate Root>> {
+    - id: UUID
+    - ownerProfileId: UUID
+    - name: String
+    - description: String
+    - type: MachineryType
+    - brand: String
+    - model: String
+    - year: Integer
+    - hourlyRate: BigDecimal
+    - status: MachineryStatus
+    - location: MachineryLocation
+    - createdAt: LocalDateTime
+    - updatedAt: LocalDateTime
+    + register(): void
+    + updateInformation(name: String, description: String, hourlyRate: BigDecimal): void
+    + changeStatus(status: MachineryStatus): void
+    + updateLocation(location: MachineryLocation): void
+    + isAvailable(): Boolean
+  }
+
+  class MachineryLocation <<Value Object>> {
+    - department: String
+    - province: String
+    - district: String
+    - address: String
+    - latitude: Double
+    - longitude: Double
+    + fullAddress(): String
+    + isValid(): Boolean
+  }
+
+  enum MachineryType {
+    EXCAVATOR
+    BACKHOE_LOADER
+    LOADER
+    CRANE
+    BULLDOZER
+    OTHER
+  }
+
+  enum MachineryStatus {
+    AVAILABLE
+    RESERVED
+    RENTED
+    IN_MAINTENANCE
+    OUT_OF_SERVICE
+  }
+
+  interface MachineryRepository {
+    + save(machinery: Machinery): Machinery
+    + findById(id: UUID): Optional<Machinery>
+    + findAll(): List<Machinery>
+    + findAvailable(): List<Machinery>
+    + existsById(id: UUID): Boolean
+  }
+
+  class FleetManagementService <<Application Service>> {
+    - machineryRepository: MachineryRepository
+    + registerMachinery(machinery: Machinery): Machinery
+    + updateMachineryInformation(id: UUID, name: String, description: String, hourlyRate: BigDecimal): Machinery
+    + updateMachineryStatus(id: UUID, status: MachineryStatus): Machinery
+    + viewMachineryInventory(): List<Machinery>
+    + checkMachineryAvailability(id: UUID): Boolean
+  }
+}
+
+Machinery "1" *-- "1" MachineryLocation : contains >
+Machinery --> MachineryType : classified as >
+Machinery --> MachineryStatus : has >
+FleetManagementService "1" --> "1" MachineryRepository : uses >
+MachineryRepository ..> Machinery : persists >
+
+legend right
+  |= Symbol |= Meaning |
+  | + | Public |
+  | - | Private |
+  | *-- | Composition |
+  | --> | Association |
+  | ..> | Dependency |
+endlegend
+
+@enduml

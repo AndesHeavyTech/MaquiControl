@@ -1,0 +1,82 @@
+@startuml
+title MaquiControl - Rental Management Bounded Context\nClass Diagram
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam linetype ortho
+hide empty members
+
+package "Rental Management" {
+
+  class Rental <<Aggregate Root>> {
+    - id: UUID
+    - machineryId: UUID
+    - contractorProfileId: UUID
+    - period: RentalPeriod
+    - status: RentalStatus
+    - totalAmount: BigDecimal
+    - requestedAt: LocalDateTime
+    - confirmedAt: LocalDateTime
+    - cancelledAt: LocalDateTime
+    + request(): void
+    + confirm(): void
+    + cancel(reason: String): void
+    + updateDates(period: RentalPeriod): void
+    + calculateTotal(hourlyRate: BigDecimal): BigDecimal
+    + isActive(): Boolean
+  }
+
+  class RentalPeriod <<Value Object>> {
+    - startDate: LocalDate
+    - endDate: LocalDate
+    + durationInDays(): Long
+    + overlaps(other: RentalPeriod): Boolean
+    + isValid(): Boolean
+  }
+
+  enum RentalStatus {
+    REQUESTED
+    CONFIRMED
+    IN_PROGRESS
+    COMPLETED
+    CANCELLED
+  }
+
+  interface RentalRepository {
+    + save(rental: Rental): Rental
+    + findById(id: UUID): Optional<Rental>
+    + findByContractorProfileId(profileId: UUID): List<Rental>
+    + findByMachineryId(machineryId: UUID): List<Rental>
+    + findByStatus(status: RentalStatus): List<Rental>
+    + existsOverlappingRental(machineryId: UUID, period: RentalPeriod): Boolean
+  }
+
+  class RentalManagementService <<Application Service>> {
+    - rentalRepository: RentalRepository
+    + requestRental(rental: Rental): Rental
+    + confirmReservation(id: UUID): Rental
+    + cancelReservation(id: UUID, reason: String): Rental
+    + updateRentalDates(id: UUID, period: RentalPeriod): Rental
+    + viewRentalRequests(): List<Rental>
+    + viewMyReservations(profileId: UUID): List<Rental>
+    + checkReservationDetails(id: UUID): Rental
+  }
+}
+
+Rental "1" *-- "1" RentalPeriod : contains >
+Rental --> RentalStatus : has >
+RentalManagementService "1" --> "1" RentalRepository : uses >
+RentalRepository ..> Rental : persists >
+
+legend right
+  |= Symbol |= Meaning |
+  | + | Public |
+  | - | Private |
+  | *-- | Composition |
+  | --> | Association |
+  | ..> | Dependency |
+endlegend
+
+@enduml
