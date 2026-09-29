@@ -1,0 +1,32 @@
+@startuml
+!include <C4/C4_Component>
+
+title MaquiControl - Identity & Access Frontend Component Diagram (DDD Layers)
+
+Container_Boundary(iam, "Identity & Access Bounded Context [Angular]") {
+    Boundary(presentation, "Presentation") {
+        Component(loginPage, "Login Page", "Angular component", "Captures credentials and presents authentication results.")
+        Component(registerPage, "Registration Page", "Angular component", "Captures the information required to create an account.")
+    }
+    Boundary(application, "Application") {
+        Component(authStore, "Auth Store", "Angular signals", "Coordinates sign-in, registration, sign-out and session state.")
+    }
+    Boundary(domain, "Domain") {
+        Component(accountModel, "Account Model", "TypeScript", "User account, credentials, role and authentication state.")
+    }
+    Boundary(infrastructure, "Infrastructure") {
+        Component(authApi, "Auth API Client", "Angular HttpClient", "Calls authentication and account endpoints.")
+        Component(authInterceptor, "Authentication Interceptor", "Angular HTTP interceptor", "Adds the access token and handles unauthorized responses.")
+    }
+}
+
+Container(api, "REST API", "Spring Boot / Java", "Identity and access endpoints.")
+
+Rel(loginPage, authStore, "Submits credentials")
+Rel(registerPage, authStore, "Submits registration")
+Rel(authStore, accountModel, "Holds")
+Rel(authStore, authApi, "Invokes")
+Rel(authApi, authInterceptor, "Uses")
+Rel(authInterceptor, api, "Calls", "HTTPS / JSON")
+
+@enduml

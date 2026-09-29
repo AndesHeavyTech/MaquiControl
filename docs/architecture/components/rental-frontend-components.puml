@@ -1,0 +1,30 @@
+@startuml
+!include <C4/C4_Component>
+
+title MaquiControl - Rental Management Frontend Component Diagram (DDD Layers)
+
+Container_Boundary(rental, "Rental Management Bounded Context [Angular]") {
+    Boundary(presentation, "Presentation") {
+        Component(requestPage, "Rental Request Page", "Angular component", "Captures machinery, period and contractor rental data.")
+        Component(reservationList, "Reservation List", "Angular component", "Displays and manages current reservations.")
+    }
+    Boundary(application, "Application") {
+        Component(rentalStore, "Rental Store", "Angular signals", "Coordinates rental requests, confirmation and cancellation.")
+    }
+    Boundary(domain, "Domain") {
+        Component(rentalModel, "Rental Model", "TypeScript", "Rental, rental period, rental status and monetary totals.")
+    }
+    Boundary(infrastructure, "Infrastructure") {
+        Component(rentalApi, "Rental API Client", "Angular HttpClient", "Calls rental and reservation endpoints.")
+    }
+}
+
+Container(api, "REST API", "Spring Boot / Java", "Rental management endpoints.")
+
+Rel(requestPage, rentalStore, "Submits rental request")
+Rel(reservationList, rentalStore, "Confirms or cancels reservation")
+Rel(rentalStore, rentalModel, "Builds and holds")
+Rel(rentalStore, rentalApi, "Invokes")
+Rel(rentalApi, api, "Calls", "HTTPS / JSON")
+
+@enduml

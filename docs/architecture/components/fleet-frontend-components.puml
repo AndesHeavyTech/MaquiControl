@@ -1,0 +1,30 @@
+@startuml
+!include <C4/C4_Component>
+
+title MaquiControl - Fleet Management Frontend Component Diagram (DDD Layers)
+
+Container_Boundary(fleet, "Fleet Management Bounded Context [Angular]") {
+    Boundary(presentation, "Presentation") {
+        Component(catalogPage, "Machinery Catalog", "Angular component", "Lists and filters available machinery.")
+        Component(machineryForm, "Machinery Form", "Angular component", "Registers and updates machinery information.")
+    }
+    Boundary(application, "Application") {
+        Component(fleetStore, "Fleet Store", "Angular signals", "Coordinates inventory, availability and machinery management use cases.")
+    }
+    Boundary(domain, "Domain") {
+        Component(fleetModel, "Fleet Model", "TypeScript", "Machinery, machinery status and machinery location.")
+    }
+    Boundary(infrastructure, "Infrastructure") {
+        Component(fleetApi, "Fleet API Client", "Angular HttpClient", "Calls machinery inventory and availability endpoints.")
+    }
+}
+
+Container(api, "REST API", "Spring Boot / Java", "Fleet management endpoints.")
+
+Rel(catalogPage, fleetStore, "Loads and filters inventory")
+Rel(machineryForm, fleetStore, "Registers and updates machinery")
+Rel(fleetStore, fleetModel, "Builds and holds")
+Rel(fleetStore, fleetApi, "Invokes")
+Rel(fleetApi, api, "Calls", "HTTPS / JSON")
+
+@enduml

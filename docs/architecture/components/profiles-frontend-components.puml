@@ -1,0 +1,30 @@
+@startuml
+!include <C4/C4_Component>
+
+title MaquiControl - Profiles Management Frontend Component Diagram (DDD Layers)
+
+Container_Boundary(profiles, "Profiles Management Bounded Context [Angular]") {
+    Boundary(presentation, "Presentation") {
+        Component(profilePage, "Profile Page", "Angular component", "Displays and edits personal and contact information.")
+        Component(organizationForm, "Organization Form", "Angular component", "Captures organization information.")
+    }
+    Boundary(application, "Application") {
+        Component(profileStore, "Profile Store", "Angular signals", "Coordinates profile loading and update use cases.")
+    }
+    Boundary(domain, "Domain") {
+        Component(profileModel, "Profile Model", "TypeScript", "Profile, contact information and organization value objects.")
+    }
+    Boundary(infrastructure, "Infrastructure") {
+        Component(profileApi, "Profiles API Client", "Angular HttpClient", "Calls profile and organization endpoints.")
+    }
+}
+
+Container(api, "REST API", "Spring Boot / Java", "Profiles management endpoints.")
+
+Rel(profilePage, profileStore, "Loads and updates profile")
+Rel(organizationForm, profileStore, "Updates organization")
+Rel(profileStore, profileModel, "Builds and holds")
+Rel(profileStore, profileApi, "Invokes")
+Rel(profileApi, api, "Calls", "HTTPS / JSON")
+
+@enduml

@@ -1,0 +1,33 @@
+@startuml
+!include <C4/C4_Component>
+
+title MaquiControl - Shared Frontend Component Diagram (DDD Layers)
+
+Container_Boundary(shared, "Shared Kernel [Angular]") {
+    Boundary(presentation, "Presentation") {
+        Component(layout, "Application Layout", "Angular component", "Hosts the navigation, router outlet and footer.")
+        Component(navigation, "Navigation Bar", "Angular component", "Provides role-aware navigation.")
+        Component(feedback, "Feedback Components", "Angular components", "Displays loading, validation and error feedback.")
+    }
+    Boundary(application, "Application") {
+        Component(sessionStore, "Session Store", "Angular signals", "Holds the current user, role and session state.")
+    }
+    Boundary(domain, "Domain") {
+        Component(sharedModel, "Shared Domain Model", "TypeScript", "Money, date range, pagination and common identifiers.")
+    }
+    Boundary(infrastructure, "Infrastructure") {
+        Component(apiClient, "API Client", "Angular HttpClient", "Provides the configured HTTP communication base.")
+        Component(authInterceptor, "Authentication Interceptor", "Angular HTTP interceptor", "Adds access tokens and normalizes HTTP errors.")
+    }
+}
+
+Container(api, "REST API", "Spring Boot / Java", "MaquiControl API.")
+
+Rel(layout, navigation, "Renders")
+Rel(layout, feedback, "Renders")
+Rel(navigation, sessionStore, "Reads role and session")
+Rel(sessionStore, sharedModel, "Uses")
+Rel(apiClient, authInterceptor, "Uses")
+Rel(authInterceptor, api, "Calls", "HTTPS / JSON")
+
+@enduml

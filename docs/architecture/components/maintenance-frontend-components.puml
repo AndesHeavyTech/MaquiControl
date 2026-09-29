@@ -1,0 +1,30 @@
+@startuml
+!include <C4/C4_Component>
+
+title MaquiControl - Maintenance Management Frontend Component Diagram (DDD Layers)
+
+Container_Boundary(maintenance, "Maintenance Management Bounded Context [Angular]") {
+    Boundary(presentation, "Presentation") {
+        Component(schedulePage, "Maintenance Schedule", "Angular component", "Displays pending and scheduled maintenance.")
+        Component(breakdownForm, "Breakdown Report Form", "Angular component", "Captures machinery breakdown information.")
+    }
+    Boundary(application, "Application") {
+        Component(maintenanceStore, "Maintenance Store", "Angular signals", "Coordinates scheduling, completion and breakdown reporting.")
+    }
+    Boundary(domain, "Domain") {
+        Component(maintenanceModel, "Maintenance Model", "TypeScript", "Maintenance, maintenance status and maintenance type.")
+    }
+    Boundary(infrastructure, "Infrastructure") {
+        Component(maintenanceApi, "Maintenance API Client", "Angular HttpClient", "Calls maintenance and breakdown endpoints.")
+    }
+}
+
+Container(api, "REST API", "Spring Boot / Java", "Maintenance management endpoints.")
+
+Rel(schedulePage, maintenanceStore, "Loads and updates schedule")
+Rel(breakdownForm, maintenanceStore, "Reports breakdown")
+Rel(maintenanceStore, maintenanceModel, "Builds and holds")
+Rel(maintenanceStore, maintenanceApi, "Invokes")
+Rel(maintenanceApi, api, "Calls", "HTTPS / JSON")
+
+@enduml

@@ -1313,31 +1313,81 @@ Este Bounded Context gestiona la información asociada a los perfiles de los usu
 
 ### 4.6.2. Software Architecture Context Diagram
 
-El Software Architecture Context Diagram presenta a MaquiControl como el sistema principal y muestra su relación con los principales tipos de usuario identificados en el proyecto.
+El Software Architecture Context Diagram presenta a MaquiControl como el sistema principal y muestra su relación con los principales tipos de usuario y sistemas externos identificados en el proyecto.
 
 El Fleet Administrator utiliza MaquiControl para gestionar la maquinaria, reservas, mantenimiento y operaciones asociadas al servicio. Por otro lado, el Contractor o Site Manager utiliza la plataforma para consultar maquinaria disponible, solicitar alquileres y realizar seguimiento de los servicios contratados.
 
-Este nivel del modelo C4 permite visualizar el alcance general de MaquiControl y las principales interacciones entre el sistema y sus usuarios.
+Además, MaquiControl se comunica con SUNAT para validar información tributaria y con un proveedor de pagos para procesar las transacciones asociadas a los alquileres. Este nivel del modelo C4 permite visualizar el alcance general de la solución y sus dependencias externas sin mostrar detalles internos de implementación.
 
-![MaquiControl Software Architecture Context Diagram](assets/c4-context-diagram.png)
+![MaquiControl Software Architecture Context Diagram](assets/context.png)
 
 ### 4.6.3. Software Architecture Container Diagram
 
 El Software Architecture Container Diagram muestra la estructura de alto nivel de MaquiControl y la distribución de responsabilidades entre los principales elementos de la solución.
 
-La aplicación está compuesta por una Single Page Application desarrollada con Angular, una REST API desarrollada con Spring Boot y Java, y una base de datos relacional encargada de la persistencia de la información.
+La aplicación está compuesta por un Web Application Server implementado con Nginx, una Single Page Application desarrollada con Angular, una REST API desarrollada con Spring Boot y Java, y una base de datos relacional encargada de la persistencia de la información. El Web Application Server y la Single Page Application se representan como containers distintos porque el primero publica los archivos compilados y el segundo ejecuta la experiencia de usuario en el navegador.
 
-Los usuarios interactúan con la aplicación web mediante un navegador. La Single Page Application consume los servicios proporcionados por la REST API utilizando HTTPS y JSON. A su vez, la API gestiona el acceso a la información persistida mediante Spring Data JPA.
+Los usuarios acceden al Web Application Server mediante HTTPS; este entrega la Single Page Application al navegador. La Single Page Application consume los servicios proporcionados por la REST API utilizando HTTPS y JSON. A su vez, la API gestiona el acceso a la información persistida mediante Spring Data JPA y se integra con SUNAT y el proveedor de pagos.
 
 Este nivel del modelo C4 permite visualizar las principales decisiones tecnológicas de la solución y la comunicación entre los containers que conforman MaquiControl.
 
-![MaquiControl Software Architecture Container Diagram](assets/c4-container-diagram.png)
+![MaquiControl Software Architecture Container Diagram](assets/container.png)
 
 ### 4.6.4. Software Architecture Components Diagrams
 
-En esta sección se presentan los Component Diagrams de MaquiControl, los cuales permiten visualizar la descomposición interna del container correspondiente a la REST API.
+En esta sección se presentan los Component Diagrams de MaquiControl, los cuales permiten visualizar por separado la descomposición interna de la Single Page Application y de la REST API.
 
-En primer lugar, se muestra la organización general de los principales Bounded Contexts identificados durante el proceso de Domain-Driven Design. Posteriormente, se presenta el detalle interno de cada Bounded Context, mostrando sus principales capas y responsabilidades.
+#### Single Page Application Component Diagram
+
+El siguiente diagrama presenta la organización general del frontend de MaquiControl. La Single Page Application contiene componentes correspondientes a Identity & Access, Profiles, Fleet, Rental, Maintenance y Operations, además de un Shared Kernel con elementos reutilizables. Todos los contextos consumen la REST API mediante HTTPS y JSON.
+
+![MaquiControl Single Page Application Component Diagram](assets/spa-components.png)
+
+#### Identity & Access Frontend Component Diagram
+
+Este diagrama organiza los componentes frontend de autenticación y control de acceso en las capas Presentation, Application, Domain e Infrastructure.
+
+![Identity and Access Frontend Component Diagram](assets/identity-access-frontend-components.png)
+
+#### Profiles Frontend Component Diagram
+
+Este diagrama presenta los componentes frontend para consultar y actualizar la información personal, de contacto y de organización del usuario.
+
+![Profiles Frontend Component Diagram](assets/profiles-frontend-components.png)
+
+#### Fleet Frontend Component Diagram
+
+Este diagrama muestra los componentes frontend destinados al inventario, registro, detalle, actualización y disponibilidad de maquinaria.
+
+![Fleet Frontend Component Diagram](assets/fleet-frontend-components.png)
+
+#### Rental Frontend Component Diagram
+
+Este diagrama muestra los componentes frontend que permiten buscar maquinaria, solicitar alquileres y consultar o gestionar las reservas.
+
+![Rental Frontend Component Diagram](assets/rental-frontend-components.png)
+
+#### Maintenance Frontend Component Diagram
+
+Este diagrama presenta los componentes frontend utilizados para reportar averías, programar mantenimientos y consultar el historial técnico.
+
+![Maintenance Frontend Component Diagram](assets/maintenance-frontend-components.png)
+
+#### Operations Frontend Component Diagram
+
+Este diagrama presenta los componentes frontend para iniciar servicios, registrar horas trabajadas y realizar el seguimiento operativo.
+
+![Operations Frontend Component Diagram](assets/operations-frontend-components.png)
+
+#### Shared Frontend Component Diagram
+
+Este diagrama presenta los componentes compartidos de presentación, estado de sesión, modelo común y comunicación HTTP utilizados por los demás Bounded Contexts del frontend.
+
+![Shared Frontend Component Diagram](assets/shared-frontend-components.png)
+
+#### REST API Component Diagrams
+
+Los siguientes diagramas muestran la organización general de los principales Bounded Contexts de la REST API identificados durante el proceso de Domain-Driven Design y el detalle interno de cada uno.
 
 La estructura interna sigue una separación entre Interfaces Layer, Application Layer, Domain Layer e Infrastructure Layer, permitiendo mantener separadas las responsabilidades del dominio y los aspectos técnicos de la implementación.
 
