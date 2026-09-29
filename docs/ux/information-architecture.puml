@@ -1,0 +1,57 @@
+@startmindmap
+title MaquiControl - Web Information Architecture
+
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam mindmapDiagram {
+  BackgroundColor #FFFFFF
+  LineColor #64748B
+  NodeBorderColor #334155
+  RootBackgroundColor #0F172A
+  RootFontColor #FFFFFF
+  BoxBackgroundColor #FFF7ED
+}
+
+* MaquiControl
+** Experiencia pública
+*** Landing Page
+**** Beneficios
+**** Perfiles objetivo
+**** Cómo funciona
+*** Acceso
+**** Iniciar sesión
+**** Crear cuenta
+**** Recuperar contraseña
+** Propietario / Administrador
+*** Dashboard operativo
+*** Inventario de maquinaria
+**** Detalle e historial
+**** Registro y edición
+**** Calendario de disponibilidad
+*** Solicitudes de alquiler
+**** Revisar solicitud
+**** Aprobar, rechazar o proponer alternativa
+*** Mantenimiento
+**** Programar intervención
+**** Reportar avería
+**** Historial técnico
+*** Operaciones
+**** Registrar y validar horas
+**** Liquidar servicio
+** Contratista / Responsable de obra
+*** Catálogo y filtros
+**** Detalle de maquinaria
+**** Disponibilidad
+*** Solicitud de reserva
+**** Confirmar fechas y obra
+**** Consultar estado
+*** Mis reservas
+**** Seguimiento del servicio
+**** Reportar incidencia
+** Elementos compartidos
+*** Perfil y organización
+*** Notificaciones
+*** Ayuda y estados de error
+*** Cerrar sesión
+
+@endmindmap
