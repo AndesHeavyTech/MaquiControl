@@ -22,6 +22,8 @@ rectangle "DOMAIN EVENT\nUser Authenticated" as EVT_AUTHENTICATED #FFB74D
 rectangle "DOMAIN EVENT\nRole Assigned" as EVT_ROLE_ASSIGNED #FFB74D
 rectangle "DOMAIN EVENT\nPassword Changed" as EVT_PASSWORD_CHANGED #FFB74D
 
+rectangle "POLICY\nWhen a user is registered,\nassign the default CONTRACTOR role" as POL_DEFAULT_ROLE #B39DDB
+
 rectangle "QUERY\nView Account Details" as QUERY_ACCOUNT #A5D6A7
 rectangle "READ MODEL\nAccount Details" as READ_ACCOUNT #C8E6C9
 
@@ -47,6 +49,9 @@ AGG_ACCOUNT --> EVT_ROLE_ASSIGNED
 CMD_CHANGE_PASSWORD --> AGG_ACCOUNT
 AGG_ACCOUNT --> EVT_PASSWORD_CHANGED
 
+EVT_REGISTERED --> POL_DEFAULT_ROLE
+POL_DEFAULT_ROLE --> CMD_ASSIGN_ROLE
+
 ' =========================
 ' Queries -> Read Models
 ' =========================
@@ -60,6 +65,7 @@ legend right
 |<#87CEFA>| Command |
 |<#FFF59D>| Aggregate |
 |<#FFB74D>| Domain Event |
+|<#B39DDB>| Policy |
 |<#A5D6A7>| Query |
 |<#C8E6C9>| Read Model |
 endlegend

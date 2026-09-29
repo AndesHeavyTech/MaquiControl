@@ -22,6 +22,9 @@ rectangle "DOMAIN EVENT\nWorked Hours Recorded" as EVT_HOURS_RECORDED #FFB74D
 rectangle "DOMAIN EVENT\nWorked Hours Validated" as EVT_HOURS_VALIDATED #FFB74D
 rectangle "DOMAIN EVENT\nService Completed" as EVT_COMPLETED #FFB74D
 
+rectangle "POLICY\nWhen worked hours are recorded,\nrequire validation before completion" as POL_VALIDATE_RECORDED_HOURS #B39DDB
+rectangle "POLICY\nWhen worked hours are validated,\nallow service completion" as POL_COMPLETE_VALIDATED_SERVICE #B39DDB
+
 rectangle "QUERY\nView Service Status" as QUERY_STATUS #A5D6A7
 rectangle "READ MODEL\nService Status" as READ_STATUS #C8E6C9
 
@@ -47,6 +50,12 @@ AGG_OPERATION --> EVT_HOURS_VALIDATED
 CMD_COMPLETE --> AGG_OPERATION
 AGG_OPERATION --> EVT_COMPLETED
 
+EVT_HOURS_RECORDED --> POL_VALIDATE_RECORDED_HOURS
+POL_VALIDATE_RECORDED_HOURS --> CMD_VALIDATE_HOURS
+
+EVT_HOURS_VALIDATED --> POL_COMPLETE_VALIDATED_SERVICE
+POL_COMPLETE_VALIDATED_SERVICE --> CMD_COMPLETE
+
 ' =========================
 ' Queries -> Read Models
 ' =========================
@@ -60,6 +69,7 @@ legend right
 |<#87CEFA>| Command |
 |<#FFF59D>| Aggregate |
 |<#FFB74D>| Domain Event |
+|<#B39DDB>| Policy |
 |<#A5D6A7>| Query |
 |<#C8E6C9>| Read Model |
 endlegend

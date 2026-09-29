@@ -20,6 +20,8 @@ rectangle "DOMAIN EVENT\nMachinery Information Updated" as EVT_INFO_UPDATED #FFB
 rectangle "COMMAND\nUpdate Machinery Status" as CMD_UPDATE_STATUS #87CEFA
 rectangle "DOMAIN EVENT\nMachinery Status Updated" as EVT_STATUS_UPDATED #FFB74D
 
+rectangle "POLICY\nWhen machinery is registered,\ninitialize its status as AVAILABLE" as POL_INITIAL_STATUS #B39DDB
+
 rectangle "QUERY\nView Machinery Inventory" as QUERY_INVENTORY #A5D6A7
 rectangle "READ MODEL\nMachinery Inventory" as READ_INVENTORY #C8E6C9
 
@@ -39,6 +41,9 @@ AGG_MACHINERY --> EVT_INFO_UPDATED
 CMD_UPDATE_STATUS --> AGG_MACHINERY
 AGG_MACHINERY --> EVT_STATUS_UPDATED
 
+EVT_REGISTERED --> POL_INITIAL_STATUS
+POL_INITIAL_STATUS --> CMD_UPDATE_STATUS
+
 ' =========================
 ' Queries -> Read Models
 ' =========================
@@ -51,6 +56,7 @@ legend right
 |<#87CEFA>| Command |
 |<#FFF59D>| Aggregate |
 |<#FFB74D>| Domain Event |
+|<#B39DDB>| Policy |
 |<#A5D6A7>| Query |
 |<#C8E6C9>| Read Model |
 endlegend
