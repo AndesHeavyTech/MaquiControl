@@ -1,0 +1,55 @@
+@startuml
+title UF-05 - Buscar y reservar maquinaria
+
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam activity {
+  BackgroundColor #F8FAFC
+  BorderColor #334155
+  DiamondBackgroundColor #FFF7ED
+  DiamondBorderColor #F59E0B
+  StartColor #F59E0B
+  EndColor #0F172A
+}
+
+start
+:Definir tipo, ubicación y fechas;
+:Buscar maquinaria;
+if (¿Hay resultados?) then (Sí)
+  :Comparar opciones y abrir detalle;
+else (No)
+  :Mostrar estado vacío y filtros sugeridos;
+  if (¿Ajustar búsqueda?) then (Sí)
+    :Modificar filtros o fechas;
+    :Buscar nuevamente;
+  else (Salir)
+    stop
+  endif
+endif
+:Seleccionar maquinaria y confirmar fechas;
+if (¿Continúa disponible?) then (Sí)
+  if (¿Usuario autenticado?) then (Sí)
+    :Completar datos de la obra;
+  else (No)
+    :Iniciar sesión o crear cuenta;
+    if (¿Autenticación exitosa?) then (Sí)
+      :Completar datos de la obra;
+    else (No)
+      :Conservar selección temporal y salir;
+      stop
+    endif
+  endif
+  :Enviar solicitud de reserva;
+  if (¿Solicitud registrada?) then (Sí)
+    :Mostrar código y estado pendiente;
+  else (No)
+    :Conservar formulario y permitir reintento;
+  endif
+else (No)
+  :Informar conflicto de fechas;
+  :Mostrar alternativas disponibles;
+endif
+stop
+
+@enduml
