@@ -11,7 +11,7 @@ hide empty members
 package "Identity & Access Management" {
 
   class UserAccount <<Aggregate Root>> {
-    - id: UUID
+    - id: Long
     - email: String
     - credential: Credential
     - status: AccountStatus
@@ -36,7 +36,7 @@ package "Identity & Access Management" {
   }
 
   class Role <<Entity>> {
-    - id: UUID
+    - id: Long
     - name: RoleName
     - description: String
     + isAdministrative(): Boolean
@@ -59,7 +59,7 @@ package "Identity & Access Management" {
 
   interface UserAccountRepository {
     + save(account: UserAccount): UserAccount
-    + findById(id: UUID): Optional<UserAccount>
+    + findById(id: Long): Optional<UserAccount>
     + findByEmail(email: String): Optional<UserAccount>
     + existsByEmail(email: String): Boolean
   }
@@ -68,11 +68,11 @@ package "Identity & Access Management" {
     - accountRepository: UserAccountRepository
     + registerUser(account: UserAccount): UserAccount
     + authenticateUser(email: String, password: String): UserAccount
-    + assignRole(accountId: UUID, role: Role): UserAccount
-    + changePassword(accountId: UUID, passwordHash: String): UserAccount
-    + viewAccountDetails(accountId: UUID): UserAccount
-    + viewUserRoles(accountId: UUID): Set<Role>
-    + checkAuthenticationStatus(accountId: UUID): AccountStatus
+    + assignRole(accountId: Long, role: Role): UserAccount
+    + changePassword(accountId: Long, passwordHash: String): UserAccount
+    + viewAccountDetails(accountId: Long): UserAccount
+    + viewUserRoles(accountId: Long): Set<Role>
+    + checkAuthenticationStatus(accountId: Long): AccountStatus
   }
 }
 

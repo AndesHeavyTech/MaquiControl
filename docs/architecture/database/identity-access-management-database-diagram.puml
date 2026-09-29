@@ -8,7 +8,7 @@ skinparam linetype ortho
 hide circle
 
 entity "user_accounts" as user_accounts {
-  * id : UUID <<PK>>
+  * id : BIGINT <<PK, IDENTITY>>
   --
   * email : VARCHAR(254) <<NOT NULL, UNIQUE>>
   * status : VARCHAR(20) <<NOT NULL>>
@@ -19,22 +19,22 @@ entity "user_accounts" as user_accounts {
 }
 
 entity "credentials" as credentials {
-  * user_account_id : UUID <<PK, FK>>
+  * user_account_id : BIGINT <<PK, FK>>
   --
   * password_hash : VARCHAR(255) <<NOT NULL>>
   * changed_at : TIMESTAMP <<NOT NULL>>
 }
 
 entity "roles" as roles {
-  * id : UUID <<PK>>
+  * id : BIGINT <<PK, IDENTITY>>
   --
   * role_name : VARCHAR(40) <<NOT NULL, UNIQUE>>
   * description : VARCHAR(250) <<NOT NULL>>
 }
 
 entity "user_account_roles" as user_account_roles {
-  * user_account_id : UUID <<PK, FK>>
-  * role_id : UUID <<PK, FK>>
+  * user_account_id : BIGINT <<PK, FK>>
+  * role_id : BIGINT <<PK, FK>>
   --
   * assigned_at : TIMESTAMP <<NOT NULL>>
 }
@@ -86,6 +86,7 @@ end note
 legend right
   |= Mark |= Meaning |
   | PK | Primary Key |
+  | IDENTITY | Database-generated numeric identifier |
   | FK | Foreign Key |
   | NOT NULL | Mandatory column |
   | UNIQUE | Value cannot be repeated |

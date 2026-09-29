@@ -11,8 +11,8 @@ hide empty members
 package "Profiles Management" {
 
   class Profile <<Aggregate Root>> {
-    - id: UUID
-    - userAccountId: UUID
+    - id: Long
+    - userAccountId: Long
     - firstName: String
     - lastName: String
     - documentNumber: String
@@ -38,7 +38,7 @@ package "Profiles Management" {
   }
 
   class Organization <<Entity>> {
-    - id: UUID
+    - id: Long
     - legalName: String
     - tradeName: String
     - taxId: String
@@ -57,8 +57,8 @@ package "Profiles Management" {
 
   interface ProfileRepository {
     + save(profile: Profile): Profile
-    + findById(id: UUID): Optional<Profile>
-    + findByUserAccountId(userAccountId: UUID): Optional<Profile>
+    + findById(id: Long): Optional<Profile>
+    + findByUserAccountId(userAccountId: Long): Optional<Profile>
     + findByDocumentNumber(documentNumber: String): Optional<Profile>
     + existsByDocumentNumber(documentNumber: String): Boolean
   }
@@ -66,12 +66,12 @@ package "Profiles Management" {
   class ProfilesManagementService <<Application Service>> {
     - profileRepository: ProfileRepository
     + createProfile(profile: Profile): Profile
-    + updateProfileInformation(id: UUID, firstName: String, lastName: String, documentNumber: String): Profile
-    + updateContactInformation(id: UUID, contact: ContactInformation): Profile
-    + updateOrganizationInformation(id: UUID, organization: Organization): Profile
-    + viewProfile(id: UUID): Profile
-    + viewContactInformation(id: UUID): ContactInformation
-    + viewOrganizationInformation(id: UUID): Organization
+    + updateProfileInformation(id: Long, firstName: String, lastName: String, documentNumber: String): Profile
+    + updateContactInformation(id: Long, contact: ContactInformation): Profile
+    + updateOrganizationInformation(id: Long, organization: Organization): Profile
+    + viewProfile(id: Long): Profile
+    + viewContactInformation(id: Long): ContactInformation
+    + viewOrganizationInformation(id: Long): Organization
   }
 }
 

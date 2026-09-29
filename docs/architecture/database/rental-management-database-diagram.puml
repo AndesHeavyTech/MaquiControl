@@ -8,12 +8,13 @@ skinparam linetype ortho
 hide circle
 
 entity "rentals" as rentals {
-  * id : UUID <<PK>>
+  * id : BIGINT <<PK, IDENTITY>>
   --
-  * machinery_id : UUID <<EXTERNAL REF>>
-  * contractor_profile_id : UUID <<EXTERNAL REF>>
+  * machinery_id : BIGINT <<EXTERNAL REF>>
+  * contractor_profile_id : BIGINT <<EXTERNAL REF>>
   * status : VARCHAR(30) <<NOT NULL>>
   * total_amount : DECIMAL(12,2) <<NOT NULL, DEFAULT 0>>
+  * total_currency : CHAR(3) <<NOT NULL, DEFAULT PEN>>
   cancellation_reason : VARCHAR(300)
   * requested_at : TIMESTAMP <<NOT NULL>>
   confirmed_at : TIMESTAMP
@@ -24,7 +25,7 @@ entity "rentals" as rentals {
 }
 
 entity "rental_periods" as rental_periods {
-  * rental_id : UUID <<PK, FK>>
+  * rental_id : BIGINT <<PK, FK>>
   --
   * start_date : DATE <<NOT NULL>>
   * end_date : DATE <<NOT NULL>>
@@ -36,6 +37,7 @@ note right of rentals
   Constraints:
   PK (id)
   CHECK (total_amount >= 0)
+  CHECK (total_currency IN ('PEN', 'USD'))
   CHECK (status IN
     REQUESTED, CONFIRMED, IN_PROGRESS,
     COMPLETED, CANCELLED)
@@ -66,6 +68,7 @@ end note
 legend right
   |= Mark |= Meaning |
   | PK | Primary Key |
+  | IDENTITY | Database-generated numeric identifier |
   | FK | Foreign Key |
   | EXTERNAL REF | Identifier owned by another bounded context |
   | NOT NULL | Mandatory column |

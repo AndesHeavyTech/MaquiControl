@@ -8,9 +8,9 @@ skinparam linetype ortho
 hide circle
 
 entity "maintenances" as maintenances {
-  * id : UUID <<PK>>
+  * id : BIGINT <<PK, IDENTITY>>
   --
-  * machinery_id : UUID <<EXTERNAL REF>>
+  * machinery_id : BIGINT <<EXTERNAL REF>>
   * maintenance_type : VARCHAR(30) <<NOT NULL>>
   * status : VARCHAR(30) <<NOT NULL>>
   * description : VARCHAR(500) <<NOT NULL>>
@@ -18,16 +18,17 @@ entity "maintenances" as maintenances {
   started_at : TIMESTAMP
   completed_at : TIMESTAMP
   technician_name : VARCHAR(150)
-  cost : DECIMAL(12,2)
+  cost_amount : DECIMAL(12,2)
+  cost_currency : CHAR(3)
   * created_at : TIMESTAMP <<NOT NULL>>
   * updated_at : TIMESTAMP <<NOT NULL>>
   * version : BIGINT <<NOT NULL, DEFAULT 0>>
 }
 
 entity "breakdown_reports" as breakdown_reports {
-  * id : UUID <<PK>>
+  * id : BIGINT <<PK, IDENTITY>>
   --
-  * maintenance_id : UUID <<FK, NOT NULL>>
+  * maintenance_id : BIGINT <<FK, NOT NULL>>
   * description : VARCHAR(500) <<NOT NULL>>
   * severity : VARCHAR(20) <<NOT NULL>>
   * reported_at : TIMESTAMP <<NOT NULL>>
@@ -45,7 +46,12 @@ note right of maintenances
   CHECK (status IN
     SCHEDULED, IN_PROGRESS,
     COMPLETED, CANCELLED)
-  CHECK (cost IS NULL OR cost >= 0)
+  CHECK (cost_amount IS NULL OR cost_amount >= 0)
+  CHECK (
+    (cost_amount IS NULL AND cost_currency IS NULL)
+    OR (cost_amount IS NOT NULL AND
+        cost_currency IN ('PEN', 'USD'))
+  )
   CHECK (
     status <> 'COMPLETED'
     OR completed_at IS NOT NULL
@@ -73,6 +79,7 @@ end note
 legend right
   |= Mark |= Meaning |
   | PK | Primary Key |
+  | IDENTITY | Database-generated numeric identifier |
   | FK | Foreign Key |
   | EXTERNAL REF | Identifier owned by another bounded context |
   | NOT NULL | Mandatory column |
