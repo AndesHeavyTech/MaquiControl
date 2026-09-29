@@ -1239,14 +1239,42 @@ A continuación, se presentan los mock-ups correspondientes a las principales vi
 
 ### 4.4.4. Web Applications User Flow Diagrams
 
-Los User Flow Diagrams representan los recorridos que realizan los usuarios para completar las principales tareas dentro de la Web Application de MaquiControl.
+Los User Flow Diagrams representan los recorridos que realizan los usuarios para completar las principales tareas dentro de la Web Application de MaquiControl. Fueron definidos tomando como referencia las User Stories y las necesidades identificadas para los User Personas.
 
-Estos diagramas muestran las acciones, decisiones y transiciones entre diferentes vistas, permitiendo comprender cómo cada tipo de usuario interactúa con la plataforma para alcanzar un objetivo determinado.
+Cada flujo documenta el camino exitoso y también las decisiones, validaciones, estados vacíos, conflictos, cancelaciones y mecanismos de recuperación relevantes. De esta manera, la navegación no se limita al *happy path* y permite anticipar la respuesta de la interfaz ante datos inválidos, indisponibilidad o errores de persistencia.
 
-Los flujos fueron definidos tomando como referencia las User Stories y las necesidades identificadas para los User Personas de MaquiControl.
+| Flujo | Objetivo principal | Alternativas y errores cubiertos |
+| :--- | :--- | :--- |
+| UF-01 | Acceder a la plataforma | Campos inválidos, credenciales incorrectas, cuenta inactiva, recuperación y reintento. |
+| UF-02 | Registrar maquinaria | Datos incompletos, equipo duplicado, cancelación y error de guardado. |
+| UF-03 | Programar mantenimiento | Datos inválidos, conflicto con reserva, cambio de fecha y fallo de persistencia. |
+| UF-04 | Revisar solicitud de alquiler | Rechazo, indisponibilidad, alternativa y conflicto concurrente. |
+| UF-05 | Buscar y reservar maquinaria | Sin resultados, modificación de filtros, conflicto de fechas, autenticación y fallo de registro. |
+| UF-06 | Liquidar servicio | Lecturas inválidas, borrador, rechazo de horas y discrepancia del importe. |
 
-A continuación, se presentan los principales User Flow Diagrams de la aplicación.
-![Web-Application-UserFlowDiagrams](assets/web_applications_user_flows.png)
+#### UF-01: Acceder a la plataforma
+
+![User Flow para acceder a la plataforma](assets/uf-01-access-platform.png)
+
+#### UF-02: Registrar maquinaria
+
+![User Flow para registrar maquinaria](assets/uf-02-register-machinery.png)
+
+#### UF-03: Programar mantenimiento
+
+![User Flow para programar mantenimiento](assets/uf-03-schedule-maintenance.png)
+
+#### UF-04: Revisar solicitud de alquiler
+
+![User Flow para revisar una solicitud de alquiler](assets/uf-04-review-rental-request.png)
+
+#### UF-05: Buscar y reservar maquinaria
+
+![User Flow para buscar y reservar maquinaria](assets/uf-05-search-and-book.png)
+
+#### UF-06: Liquidar servicio
+
+![User Flow para liquidar un servicio](assets/uf-06-settle-service.png)
 
 ## 4.5 Web Applications Prototyping
 En esta sección se presenta el prototipo interactivo de la Web Application de MaquiControl, desarrollado a partir de los mock-ups y User Flow Diagrams definidos previamente.

@@ -1,0 +1,49 @@
+@startuml
+title UF-03 - Programar mantenimiento
+
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam activity {
+  BackgroundColor #F8FAFC
+  BorderColor #334155
+  DiamondBackgroundColor #FFF7ED
+  DiamondBorderColor #F59E0B
+  StartColor #F59E0B
+  EndColor #0F172A
+}
+
+start
+:Seleccionar una maquinaria;
+:Abrir mantenimiento e historial;
+:Ingresar tipo, fecha y descripción;
+if (¿Datos válidos?) then (Sí)
+  :Consultar disponibilidad del periodo;
+else (No)
+  :Mostrar errores y conservar datos;
+  if (¿Corregir?) then (Sí)
+    :Editar intervención;
+    :Consultar disponibilidad del periodo;
+  else (Cancelar)
+    stop
+  endif
+endif
+if (¿Existe reserva o servicio en conflicto?) then (Sí)
+  :Mostrar conflicto y periodos alternativos;
+  if (¿Seleccionar otra fecha?) then (Sí)
+    :Actualizar fecha propuesta;
+    :Volver a validar disponibilidad;
+  else (Cancelar)
+    stop
+  endif
+else (No)
+  :Bloquear maquinaria durante el mantenimiento;
+endif
+if (¿Persistencia exitosa?) then (Sí)
+  :Crear alerta y notificar responsables;
+else (No)
+  :Liberar bloqueo y ofrecer reintento;
+endif
+stop
+
+@enduml
