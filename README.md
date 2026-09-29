@@ -1204,6 +1204,12 @@ El diseño fue desarrollado tomando como referencia las necesidades identificada
 
 Para representar progresivamente la experiencia de usuario se elaboraron wireframes, wireflow diagrams, mock-ups y user flow diagrams. Estos artefactos permiten visualizar la estructura de las interfaces, la relación entre las diferentes vistas y los recorridos que realizan los usuarios para completar sus principales tareas dentro de MaquiControl.
 
+#### Web Application Information Architecture
+
+La arquitectura de información organiza la experiencia en cuatro áreas: acceso público, herramientas para propietarios o administradores, herramientas para contratistas o responsables de obra y elementos compartidos. Esta separación prioriza las tareas de cada segmento y evita presentar funciones administrativas a usuarios que solo necesitan buscar, reservar y hacer seguimiento a una maquinaria.
+
+![MaquiControl Web Application Information Architecture](assets/information-architecture.png)
+
 ### 4.4.1. Web Applications Wireframes
 
 En esta sección se presentan los wireframes de la Web Application de MaquiControl. Estos diseños de baja fidelidad permiten representar la estructura, distribución y jerarquía de los principales elementos de la interfaz antes de aplicar los estilos visuales definitivos.
@@ -1236,6 +1242,22 @@ Los mock-ups permiten representar de manera más cercana la apariencia final de 
 
 A continuación, se presentan los mock-ups correspondientes a las principales vistas de la Web Application de MaquiControl.
 ![Web-Application-Mock-Ups](assets/webapplicationsmockups.png)
+
+#### Responsive Web Application Evidence
+
+La adaptación responsive se verificó sobre una misma vista de dashboard operativo para conservar la jerarquía, el contenido y las acciones principales en todos los dispositivos. Los cambios responden al espacio disponible y no eliminan información necesaria para completar las tareas.
+
+| Tamaño | Estructura y navegación | Adaptación principal |
+| :--- | :--- | :--- |
+| Desktop, desde 1025 px | Barra lateral completa, cuatro indicadores por fila y contenido en dos columnas. | Aprovecha el ancho para visualizar inventario, calendario y alertas simultáneamente. |
+| Tablet, entre 768 y 1024 px | Barra lateral compacta, indicadores en dos columnas y contenido principal apilado. | Conserva acceso permanente a los módulos reduciendo la densidad horizontal. |
+| Mobile, hasta 600 px | Navegación inferior, contenido en una columna y acción principal a ancho completo. | Prioriza interacción táctil, lectura vertical y estados visibles sin depender de *hover*. |
+
+![Dashboard responsive en Desktop](assets/responsive-web-app-desktop.png)
+
+![Dashboard responsive en Tablet](assets/responsive-web-app-tablet.png)
+
+![Dashboard responsive en Mobile](assets/responsive-web-app-mobile.png)
 
 ### 4.4.4. Web Applications User Flow Diagrams
 
