@@ -1,61 +1,67 @@
-# GRUPO-3 AndesHeavyTech
-
 <p align="center">
-  <img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/2c3d0613-f51e-47d7-bd82-439b78384731" />
+  <img width="180" alt="Universidad Peruana de Ciencias Aplicadas" src="assets/upc-logo.png" />
 </p>
-
-
 
 <div align="center">
 
-# UNIVERSIDAD PERUANA DE CIENCIAS APLICADAS
+# Universidad Peruana de Ciencias Aplicadas
 
-### FACULTAD DE INGENIERIA
-### CARRERA DE INGENIERÍA DE SOFTWARE
-
-<br>
-
-# INFORME DE PROYECTO
-
-## Nombre del proyecto
-### MaquiControl
-
+## Carrera de Ingeniería de Software
 
 <br>
 
-**Curso:**  
-Desarrollo de Aplicaciones Open Source
+### 1ASI0729
+### Desarrollo de Aplicaciones Open Source
 
-**Sección:**  
-7750
+<br>
+
+### NRC
+## 7750
+
+<br>
+
+## Informe del Trabajo Final
+
+<br>
+
+### Docente
+**Bautista Ubillús, Efraín Ricardo**
+
+<br>
+
+### Equipo
+**AndesHeavyTech**
+
+### Proyecto
+**MaquiControl**
 
 <br>
 
 ### Integrantes
 
-| Integrante | Código |
-|---|---|
-| ANGIELA STEPHANY FUENTES ALVAREZ | U202520331 |
-| NICOLAS TANTALEAN GRANDA | U202410728 |
-| WILMER SEBASTIAN GUTIERREZ LIZARBE| U202412044 |
-| MATHIAS ALEJANDRO CASTILLO GUEVARA | U202410783 |
-| CARLOS GABRIEL CESPEDES LEZCANO | U202416147 |
-
-<br>
-
-**Docente:**  
-Efrain Ricardo Bautista Ubillus
-
-<br>
-
-**Ciclo:**  
-[2026-2]
-
-<br>
-
-**Lima, Perú**  
-**2026**
 </div>
+
+| Código | Apellidos y Nombres |
+|---|---|
+| U202520331 | Fuentes Alvarez, Angiela Stephany |
+| U202410728 | Tantalean Granda, Nicolas |
+| U202412044 | Gutiérrez Lizarbe, Wilmer Sebastián |
+| U202410783 | Castillo Guevara, Mathias Alejandro |
+| U202416147 | Cespedes Lezcano, Carlos Gabriel |
+
+<div align="center">
+
+<br>
+
+### Período 202620
+
+<br>
+
+### Septiembre 2026
+
+</div>
+
+<div style="page-break-after: always;"></div>
 
 ## Tabla de Contenidos
 
