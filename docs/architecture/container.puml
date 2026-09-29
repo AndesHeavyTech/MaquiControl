@@ -8,18 +8,29 @@ Person(contractor, "Contractor / Site Manager", "Searches machinery, requests re
 
 System_Boundary(maquicontrol, "MaquiControl") {
 
-    Container(webapp, "Single Page Application", "Angular", "Provides the user interface for fleet administrators and contractors through a web browser.")
+    Container(webServer, "Web Application", "Nginx", "Serves the compiled Angular application and its static assets to users' browsers.")
+
+    Container(spa, "Single Page Application", "Angular", "Runs in the browser and provides the interactive user experience for administrators and contractors.")
 
     Container(api, "REST API", "Spring Boot / Java", "Provides business capabilities for machinery, rentals, maintenance, operations, profiles and identity management.")
 
     ContainerDb(database, "Database", "Relational Database", "Stores machinery, rental, maintenance, operational, account and profile information.")
 }
 
-Rel(admin, webapp, "Uses", "HTTPS")
-Rel(contractor, webapp, "Uses", "HTTPS")
+System_Ext(sunat, "SUNAT", "Validates and receives electronic invoices.")
+System_Ext(paymentProvider, "Payment Provider", "Processes subscription payments and renewals.")
 
-Rel(webapp, api, "Uses", "HTTPS / JSON")
+Rel(admin, webServer, "Accesses", "HTTPS")
+Rel(contractor, webServer, "Accesses", "HTTPS")
+
+Rel(webServer, spa, "Serves compiled application", "HTTPS")
+
+Rel(spa, api, "Uses", "HTTPS / JSON")
 
 Rel(api, database, "Reads from and writes to", "Spring Data JPA")
+
+Rel(api, sunat, "Issues electronic invoices", "HTTPS / JSON")
+
+Rel(api, paymentProvider, "Processes subscription payments", "HTTPS / JSON")
 
 @enduml

@@ -1,0 +1,30 @@
+@startuml
+!include <C4/C4_Component>
+
+title MaquiControl - Operations Management Frontend Component Diagram (DDD Layers)
+
+Container_Boundary(operations, "Operations Management Bounded Context [Angular]") {
+    Boundary(presentation, "Presentation") {
+        Component(operationPage, "Service Operation Page", "Angular component", "Displays service status and operational history.")
+        Component(hoursForm, "Worked Hours Form", "Angular component", "Records and validates worked hours.")
+    }
+    Boundary(application, "Application") {
+        Component(operationStore, "Operations Store", "Angular signals", "Coordinates service execution and hour-validation use cases.")
+    }
+    Boundary(domain, "Domain") {
+        Component(operationModel, "Operations Model", "TypeScript", "Service operation, worked hours and operation status.")
+    }
+    Boundary(infrastructure, "Infrastructure") {
+        Component(operationApi, "Operations API Client", "Angular HttpClient", "Calls service execution and worked-hour endpoints.")
+    }
+}
+
+Container(api, "REST API", "Spring Boot / Java", "Operations management endpoints.")
+
+Rel(operationPage, operationStore, "Loads service state")
+Rel(hoursForm, operationStore, "Records and validates hours")
+Rel(operationStore, operationModel, "Builds and holds")
+Rel(operationStore, operationApi, "Invokes")
+Rel(operationApi, api, "Calls", "HTTPS / JSON")
+
+@enduml

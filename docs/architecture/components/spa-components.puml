@@ -1,0 +1,35 @@
+@startuml
+!include <C4/C4_Component>
+
+title MaquiControl - Single Page Application Component Diagram (Bounded Contexts)
+
+Container(webServer, "Web Application", "Nginx", "Serves the compiled SPA to the browser.")
+
+Container_Boundary(spa, "Single Page Application [Angular]") {
+    Component(iam, "Identity & Access", "Angular feature", "Authentication, authorization and account access.")
+    Component(profiles, "Profiles Management", "Angular feature", "Personal, contact and organization information.")
+    Component(fleet, "Fleet Management", "Angular feature", "Machinery catalog, inventory, status and availability.")
+    Component(rental, "Rental Management", "Angular feature", "Rental requests, reservations and rental periods.")
+    Component(maintenance, "Maintenance Management", "Angular feature", "Maintenance scheduling, history and breakdown reports.")
+    Component(operations, "Operations Management", "Angular feature", "Service execution and worked-hour validation.")
+    Component(shared, "Shared", "Angular shared kernel", "Layout, navigation, session, HTTP communication and common value objects.")
+}
+
+Container(api, "REST API", "Spring Boot / Java", "Provides the MaquiControl business capabilities.")
+
+Rel(webServer, shared, "Serves compiled SPA", "HTTPS")
+Rel(iam, shared, "Uses")
+Rel(profiles, shared, "Uses")
+Rel(fleet, shared, "Uses")
+Rel(rental, shared, "Uses")
+Rel(maintenance, shared, "Uses")
+Rel(operations, shared, "Uses")
+
+Rel(iam, api, "Authenticates and manages accounts", "HTTPS / JSON")
+Rel(profiles, api, "Manages profiles", "HTTPS / JSON")
+Rel(fleet, api, "Manages machinery", "HTTPS / JSON")
+Rel(rental, api, "Manages rentals", "HTTPS / JSON")
+Rel(maintenance, api, "Manages maintenance", "HTTPS / JSON")
+Rel(operations, api, "Manages service operations", "HTTPS / JSON")
+
+@enduml
