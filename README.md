@@ -324,7 +324,7 @@ La plataforma operará bajo un modelo distribuido accesible desde entornos web y
 En el sector de la construcción e infraestructura, las averías no detectadas a tiempo por falta de mantenimiento representan pérdidas operativas de hasta un 25% en el tiempo de ejecución de una obra. Asimismo, las demoras administrativas y la falta de digitalización en el cobro y facturación electrónica afectan directamente la liquidez de más del 40% de las pequeñas y medianas empresas proveedoras de equipos.
 
 ### 1.2.2 Lean UX Process
-En esta sección se aplica el proceso Lean UX para analizar la problemática desde una perspectiva centrada en los usuarios y en la validación temprana de supuestos. Se identifican los principales problemas, necesidades y comportamientos de los segmentos objetivo, y a partir de ellos se formulan assumptions e hypothesis statements que permiten orientar el desarrollo de MaquiControl. El resultado de este proceso se sintetiza en un Lean UX Canvas, que sirve como base para definir qué aspectos de la propuesta deben ser investigados y validados durante el proyecto.
+En esta sección se aplica el proceso Lean UX para analizar la problemática desde una perspectiva centrada en los usuarios y en la validación temprana de supuestos. Se identifican los principales problemas, necesidades y comportamientos de los segmentos objetivo, y a partir de ellos se formulan supuestos y declaraciones de hipótesis que permiten orientar el desarrollo de MaquiControl. El resultado de este proceso se sintetiza en un Lean UX Canvas, que sirve como base para definir qué aspectos de la propuesta deben ser investigados y validados durante el proyecto.
 
 #### 1.2.2.1 Lean UX Problem Statements
 The current state of **heavy machinery rental and fleet management** has focused mainly on **manual rental agreements through messaging apps, paper-based maintenance logs, untracked equipment availability, and delayed manual electronic invoicing processes**.
@@ -368,20 +368,20 @@ We'll know we are successful when we see **a 30% increase in rental booking conv
 * **Feature 5:** Dashboard con métricas de rendimiento de flota, ingresos generados y próximos mantenimientos.
 
 #### 1.2.2.3 Lean UX Hypothesis Statements
-* **Hypothesis Statement 1:**
-  We believe we will achieve **a 30% increase in successful machinery rentals** if **construction contractors** attain **quick identification and reservation of available equipment** with **a real-time interactive machinery catalog and search filters**.
+* **Declaración de hipótesis 1:**
+  Creemos que lograremos **un aumento del 30 % en los alquileres exitosos de maquinaria** si los **contratistas de construcción** consiguen **identificar y reservar rápidamente los equipos disponibles** mediante **un catálogo interactivo de maquinaria en tiempo real y filtros de búsqueda**.
 
-* **Hypothesis Statement 2:**
-  We believe we will achieve **a 40% reduction in booking transaction times** if **rental company managers** attain **streamlined contract creation and automated fee calculation** with **a digital rental contract management module**.
+* **Declaración de hipótesis 2:**
+  Creemos que lograremos **una reducción del 40 % en el tiempo de las transacciones de reserva** si los **administradores de empresas de alquiler** consiguen **agilizar la creación de contratos y automatizar el cálculo de tarifas** mediante **un módulo digital de gestión de contratos de alquiler**.
 
-* **Hypothesis Statement 3:**
-  We believe we will achieve **a 25% decrease in machinery breakdown incidents on site** if **fleet maintenance managers** attain **timely execution of technical revisions** with **an automated maintenance scheduling and alert system**.
+* **Declaración de hipótesis 3:**
+  Creemos que lograremos **una disminución del 25 % en las averías de maquinaria en obra** si los **responsables del mantenimiento de la flota** consiguen **ejecutar oportunamente las revisiones técnicas** mediante **un sistema automatizado de programación y alertas de mantenimiento**.
 
-* **Hypothesis Statement 4:**
-  We believe we will achieve **a 50% reduction in administrative billing errors** if **accounting staff** attain **instant and compliant invoice generation linked to rental agreements** with **an integrated electronic invoicing module**.
+* **Declaración de hipótesis 4:**
+  Creemos que lograremos **una reducción del 50 % en los errores administrativos de facturación** si el **personal contable** consigue **generar de manera inmediata facturas conformes vinculadas con los contratos de alquiler** mediante **un módulo integrado de facturación electrónica**.
 
-* **Hypothesis Statement 5:**
-  We believe we will achieve **an 85% user satisfaction rate among rental business owners** if **startup managers** attain **clear visibility into fleet productivity and monthly earnings** with **an analytics dashboard displaying real-time business KPIs**.
+* **Declaración de hipótesis 5:**
+  Creemos que lograremos **una tasa de satisfacción del 85 % entre los propietarios de empresas de alquiler** si los **administradores de la startup** consiguen **visualizar claramente la productividad de la flota y los ingresos mensuales** mediante **un panel analítico que muestre indicadores clave del negocio en tiempo real**.
 
 #### 1.2.2.4 Lean UX Canvas
 ![Lean UX Canvas](./assets/lean-ux-canvas.png)
