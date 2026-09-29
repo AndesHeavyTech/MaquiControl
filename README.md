@@ -746,16 +746,11 @@ A continuación se presenta el Empathy Map elaborado en **UXPressia** para el Us
 
 El Big Picture Event Storming de MaquiControl fue elaborado con el objetivo de representar de manera visual los principales procesos, eventos, actores, reglas de negocio y problemas identificados dentro del dominio de alquiler y gestión de maquinaria pesada. El análisis toma como base la problemática definida en el proyecto, las entrevistas realizadas, los User Personas, el User Task Matrix y los principales hallazgos del proceso de Needfinding.
 
-Durante la sesión se identificaron eventos relacionados con la búsqueda y disponibilidad de maquinaria, gestión de reservas, control de flota, mantenimiento, ejecución del servicio, validación de horas trabajadas, facturación electrónica, suscripciones, alertas operativas y visualización de información mediante dashboards.
+Durante la sesión se identificaron eventos relacionados con la búsqueda y disponibilidad de maquinaria, gestión de reservas, control de flota, mantenimiento, ejecución del servicio, validación de horas trabajadas, facturación electrónica, suscripciones, alertas operativas y visualización de información mediante dashboards. Por tratarse de una vista estratégica del dominio, el Big Picture se concentra en eventos de dominio, actores, políticas, sistemas externos y hotspots; los comandos se reservan para el modelado detallado posterior.
 
 Asimismo, se identificaron hotspots relevantes como las reservas duplicadas, información de disponibilidad desactualizada, fallas mecánicas inesperadas, dispersión de información entre WhatsApp y Excel, discrepancias en el registro de horas trabajadas y retrasos en la facturación. Estos hallazgos permiten comprender el dominio de negocio a alto nivel y sirven como base para posteriores actividades de modelado mediante Domain-Driven Design.
 
-![Big Picture Event Storming 1 - MaquiControl](assets/big-picture-event-storming-1.jpg)
-![Big Picture Event Storming 2 - MaquiControl](assets/big-picture-event-storming-2.jpg)
-![Big Picture Event Storming 3 - MaquiControl](assets/big-picture-event-storming-3.jpg)
-![Big Picture Event Storming 4 - MaquiControl](assets/big-picture-event-storming-4.jpg)
-![Big Picture Event Storming 5 - MaquiControl](assets/big-picture-event-storming-5.jpg)
-![Big Picture Event Storming 6 - MaquiControl](assets/big-picture-event-storming-6.jpg)
+![Big Picture Event Storming - MaquiControl](assets/big-picture-event-storming.png)
 A partir del mapa se reconocen áreas de dominio candidatas como Discovery and Availability, Rental and Reservation Management, Fleet and Maintenance Management, Service Execution and Hour Control, Subscription Management, Billing and SUNAT Compliance, Operational Notifications y Dashboard and Analytics. Estas áreas todavía no representan Bounded Contexts definitivos, ya que su refinamiento se realizará posteriormente mediante Design-Level Event Storming.
 
 ## 2.5 Ubiquitous Language
@@ -1277,44 +1272,44 @@ La arquitectura se documenta mediante Design-Level Event Storming y diagramas C4
 
 En esta sección se presenta el Design-Level Event Storming de MaquiControl, desarrollado a partir del Big Picture Event Storming realizado previamente.
 
-El objetivo de esta etapa es profundizar en el dominio del problema e identificar los principales Bounded Contexts, Aggregates, Commands, Domain Events, Queries y Read Models de la solución.
+El objetivo de esta etapa es profundizar en el dominio del problema e identificar los principales Bounded Contexts, Aggregates, Commands, Domain Events, Policies, Queries y Read Models de la solución. Las políticas expresan reglas reactivas con la estructura evento ocurrido, política aplicada y comando desencadenado.
 
 A partir del análisis realizado se identificaron los siguientes Bounded Contexts principales: Fleet Management, Rental Management, Maintenance Management, Operations Management, Identity & Access Management y Profiles Management.
 
 #### Fleet Management Bounded Context
 
-Este Bounded Context concentra las responsabilidades relacionadas con la gestión de la maquinaria, incluyendo su registro, actualización de información, cambio de estado, consulta de inventario y disponibilidad.
+Este Bounded Context concentra las responsabilidades relacionadas con la gestión de la maquinaria, incluyendo su registro, actualización de información, cambio de estado, consulta de inventario y disponibilidad. Su política inicializa como disponible la maquinaria recién registrada.
 
-![Fleet Management Design-Level Event Storming](assets/design-level-event-storming-fleet-management.png)
+![Fleet Management Design-Level Event Storming](assets/fleet-management-design-level.png)
 #### Rental Management Bounded Context
 
-Este Bounded Context gestiona las solicitudes y reservas de maquinaria, incluyendo la creación de solicitudes, confirmación, cancelación y actualización de las fechas asociadas al alquiler.
+Este Bounded Context gestiona las solicitudes y reservas de maquinaria, incluyendo la creación de solicitudes, confirmación, cancelación y actualización de las fechas asociadas al alquiler. Su política confirma una reserva únicamente cuando la maquinaria solicitada se encuentra disponible.
 
-![Rental Management Design-Level Event Storming](assets/design-level-event-storming-rental-management.png)
+![Rental Management Design-Level Event Storming](assets/rental-management-design-level.png)
 
 #### Maintenance Management Bounded Context
 
-Este Bounded Context agrupa las responsabilidades relacionadas con el mantenimiento de la maquinaria. Incluye la programación y finalización de mantenimientos, el reporte de averías y la actualización del estado de mantenimiento. Su agregado principal es Maintenance y permite además consultar el historial, los mantenimientos pendientes y el detalle de cada intervención realizada.
+Este Bounded Context agrupa las responsabilidades relacionadas con el mantenimiento de la maquinaria. Incluye la programación y finalización de mantenimientos, el reporte de averías y la actualización del estado de mantenimiento. Su agregado principal es Maintenance y permite además consultar el historial, los mantenimientos pendientes y el detalle de cada intervención realizada. Su política programa un mantenimiento correctivo cuando se reporta una avería.
 
-![Maintenance Management Design-Level Event Storming](assets/design-leve-event-storming-maintenance-management.png)
+![Maintenance Management Design-Level Event Storming](assets/maintenance-management-design-level.png)
 
 #### Operations Management Bounded Context
 
-Este Bounded Context representa la ejecución operativa de los servicios realizados con la maquinaria. Incluye el inicio y finalización de un servicio, el registro de horas trabajadas y la validación de dichas horas. Su agregado principal es Service Operation y permite consultar el estado del servicio, el resumen de horas trabajadas y el historial de operaciones.
+Este Bounded Context representa la ejecución operativa de los servicios realizados con la maquinaria. Incluye el inicio y finalización de un servicio, el registro de horas trabajadas y la validación de dichas horas. Su agregado principal es Service Operation y permite consultar el estado del servicio, el resumen de horas trabajadas y el historial de operaciones. Sus políticas exigen validar las horas registradas antes de completar el servicio.
 
-![Operations Management Design-Level Event Storming](assets/design-level-event-storming-operations-management.png)
+![Operations Management Design-Level Event Storming](assets/operations-management-design-level.png)
 
 #### Identity & Access Management Bounded Context
 
-Este Bounded Context se encarga de la gestión de identidad, autenticación y control de acceso de los usuarios de MaquiControl. Incluye el registro de cuentas, la autenticación, la asignación de roles y el cambio de contraseñas. Su agregado principal es User Account y permite consultar los datos de la cuenta, los roles asignados y el estado de autenticación.
+Este Bounded Context se encarga de la gestión de identidad, autenticación y control de acceso de los usuarios de MaquiControl. Incluye el registro de cuentas, la autenticación, la asignación de roles y el cambio de contraseñas. Su agregado principal es User Account y permite consultar los datos de la cuenta, los roles asignados y el estado de autenticación. Su política asigna el rol de contratista por defecto a una cuenta recién registrada.
 
-![Profiles Management Design-Level Event Storming](assets/design-level-event-storming-identity-management.png)
+![Identity and Access Management Design-Level Event Storming](assets/identity-access-management-design-level.png)
 
 #### Profiles Management Bounded Context
 
-Este Bounded Context gestiona la información asociada a los perfiles de los usuarios. Incluye la creación y actualización de perfiles, datos de contacto e información de la organización. Su agregado principal es Profile y permite consultar la información personal, de contacto y organizacional asociada a cada usuario.
+Este Bounded Context gestiona la información asociada a los perfiles de los usuarios. Incluye la creación y actualización de perfiles, datos de contacto e información de la organización. Su agregado principal es Profile y permite consultar la información personal, de contacto y organizacional asociada a cada usuario. Su política exige información de contacto válida después de crear el perfil.
 
-![Profiles Management Design-Level Event Storming](assets/design-level-event-storming-Profiles-management.png)
+![Profiles Management Design-Level Event Storming](assets/profiles-management-design-level.png)
 
 ### 4.6.2. Software Architecture Context Diagram
 

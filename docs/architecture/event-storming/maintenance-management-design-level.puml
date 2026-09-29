@@ -22,6 +22,8 @@ rectangle "DOMAIN EVENT\nMaintenance Completed" as EVT_COMPLETED #FFB74D
 rectangle "DOMAIN EVENT\nBreakdown Reported" as EVT_BREAKDOWN #FFB74D
 rectangle "DOMAIN EVENT\nMaintenance Status Updated" as EVT_STATUS_UPDATED #FFB74D
 
+rectangle "POLICY\nWhen a breakdown is reported,\nschedule corrective maintenance" as POL_CORRECTIVE_MAINTENANCE #B39DDB
+
 rectangle "QUERY\nView Maintenance History" as QUERY_HISTORY #A5D6A7
 rectangle "READ MODEL\nMaintenance History" as READ_HISTORY #C8E6C9
 
@@ -47,6 +49,9 @@ AGG_MAINTENANCE --> EVT_BREAKDOWN
 CMD_UPDATE_STATUS --> AGG_MAINTENANCE
 AGG_MAINTENANCE --> EVT_STATUS_UPDATED
 
+EVT_BREAKDOWN --> POL_CORRECTIVE_MAINTENANCE
+POL_CORRECTIVE_MAINTENANCE --> CMD_SCHEDULE
+
 ' =========================
 ' Queries -> Read Models
 ' =========================
@@ -60,6 +65,7 @@ legend right
 |<#87CEFA>| Command |
 |<#FFF59D>| Aggregate |
 |<#FFB74D>| Domain Event |
+|<#B39DDB>| Policy |
 |<#A5D6A7>| Query |
 |<#C8E6C9>| Read Model |
 endlegend

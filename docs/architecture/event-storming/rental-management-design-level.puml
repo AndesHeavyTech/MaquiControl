@@ -22,6 +22,8 @@ rectangle "DOMAIN EVENT\nReservation Confirmed" as EVT_CONFIRMED #FFB74D
 rectangle "DOMAIN EVENT\nReservation Cancelled" as EVT_CANCELLED #FFB74D
 rectangle "DOMAIN EVENT\nRental Dates Updated" as EVT_DATES_UPDATED #FFB74D
 
+rectangle "POLICY\nWhen a rental is requested and\nmachinery is available, confirm reservation" as POL_CONFIRM_AVAILABLE #B39DDB
+
 rectangle "QUERY\nView Rental Requests" as QUERY_REQUESTS #A5D6A7
 rectangle "READ MODEL\nRental Request List" as READ_REQUESTS #C8E6C9
 
@@ -47,6 +49,9 @@ AGG_RENTAL --> EVT_CANCELLED
 CMD_UPDATE_DATES --> AGG_RENTAL
 AGG_RENTAL --> EVT_DATES_UPDATED
 
+EVT_REQUESTED --> POL_CONFIRM_AVAILABLE
+POL_CONFIRM_AVAILABLE --> CMD_CONFIRM
+
 ' =========================
 ' Queries -> Read Models
 ' =========================
@@ -60,6 +65,7 @@ legend right
 |<#87CEFA>| Command |
 |<#FFF59D>| Aggregate |
 |<#FFB74D>| Domain Event |
+|<#B39DDB>| Policy |
 |<#A5D6A7>| Query |
 |<#C8E6C9>| Read Model |
 endlegend

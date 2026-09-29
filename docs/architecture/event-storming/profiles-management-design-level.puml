@@ -22,6 +22,8 @@ rectangle "DOMAIN EVENT\nProfile Information Updated" as EVT_PROFILE_UPDATED #FF
 rectangle "DOMAIN EVENT\nContact Information Updated" as EVT_CONTACT_UPDATED #FFB74D
 rectangle "DOMAIN EVENT\nOrganization Information Updated" as EVT_ORG_UPDATED #FFB74D
 
+rectangle "POLICY\nWhen a profile is created,\nrequire valid contact information" as POL_REQUIRE_CONTACT #B39DDB
+
 rectangle "QUERY\nView Profile" as QUERY_PROFILE #A5D6A7
 rectangle "READ MODEL\nProfile Details" as READ_PROFILE #C8E6C9
 
@@ -47,6 +49,9 @@ AGG_PROFILE --> EVT_CONTACT_UPDATED
 CMD_UPDATE_ORG --> AGG_PROFILE
 AGG_PROFILE --> EVT_ORG_UPDATED
 
+EVT_PROFILE_CREATED --> POL_REQUIRE_CONTACT
+POL_REQUIRE_CONTACT --> CMD_UPDATE_CONTACT
+
 ' =========================
 ' Queries -> Read Models
 ' =========================
@@ -60,6 +65,7 @@ legend right
 |<#87CEFA>| Command |
 |<#FFF59D>| Aggregate |
 |<#FFB74D>| Domain Event |
+|<#B39DDB>| Policy |
 |<#A5D6A7>| Query |
 |<#C8E6C9>| Read Model |
 endlegend
