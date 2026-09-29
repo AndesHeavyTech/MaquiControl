@@ -8,11 +8,11 @@ skinparam linetype ortho
 hide circle
 
 entity "service_operations" as service_operations {
-  * id : UUID <<PK>>
+  * id : BIGINT <<PK, IDENTITY>>
   --
-  * rental_id : UUID <<EXTERNAL REF, UNIQUE>>
-  * machinery_id : UUID <<EXTERNAL REF>>
-  * operator_profile_id : UUID <<EXTERNAL REF>>
+  * rental_id : BIGINT <<EXTERNAL REF, UNIQUE>>
+  * machinery_id : BIGINT <<EXTERNAL REF>>
+  * operator_profile_id : BIGINT <<EXTERNAL REF>>
   * status : VARCHAR(30) <<NOT NULL>>
   started_at : TIMESTAMP
   completed_at : TIMESTAMP
@@ -22,9 +22,9 @@ entity "service_operations" as service_operations {
 }
 
 entity "worked_hour_records" as worked_hour_records {
-  * id : UUID <<PK>>
+  * id : BIGINT <<PK, IDENTITY>>
   --
-  * service_operation_id : UUID <<FK, NOT NULL>>
+  * service_operation_id : BIGINT <<FK, NOT NULL>>
   * work_date : DATE <<NOT NULL>>
   * start_time : TIME <<NOT NULL>>
   * end_time : TIME <<NOT NULL>>
@@ -32,7 +32,7 @@ entity "worked_hour_records" as worked_hour_records {
   * status : VARCHAR(20) <<NOT NULL>>
   observations : VARCHAR(500)
   validated_at : TIMESTAMP
-  validated_by_profile_id : UUID <<EXTERNAL REF>>
+  validated_by_profile_id : BIGINT <<EXTERNAL REF>>
   * created_at : TIMESTAMP <<NOT NULL>>
 }
 
@@ -78,6 +78,7 @@ end note
 legend right
   |= Mark |= Meaning |
   | PK | Primary Key |
+  | IDENTITY | Database-generated numeric identifier |
   | FK | Foreign Key |
   | EXTERNAL REF | Identifier owned by another bounded context |
   | NOT NULL | Mandatory column |

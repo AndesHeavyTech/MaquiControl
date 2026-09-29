@@ -1449,25 +1449,25 @@ La Domain Layer contiene el aggregate Profile y sus reglas de negocio correspond
 
 ## 4.7 Software Object-Oriented Design
 
-El diseño orientado a objetos de MaquiControl representa las principales clases, interfaces, enumeraciones, atributos, operaciones y relaciones que conforman cada Bounded Context. Los modelos mantienen los límites definidos mediante Domain-Driven Design y utilizan identificadores para referenciar agregados pertenecientes a otros contextos, evitando el acoplamiento directo entre ellos.
+El diseño orientado a objetos de MaquiControl representa las principales clases, interfaces, enumeraciones, atributos, operaciones y relaciones que conforman cada Bounded Context. Los modelos mantienen los límites definidos mediante Domain-Driven Design y utilizan identificadores numéricos de tipo `Long` para referenciar agregados pertenecientes a otros contextos, evitando el acoplamiento directo entre ellos. Los valores monetarios se modelan mediante el Value Object `Money`, que encapsula el importe y su moneda y evita operar cantidades monetarias como valores numéricos sin contexto.
 
 ### 4.7.1 Class Diagrams
 
 #### Fleet Management Bounded Context Class Diagram
 
-El diagrama de Fleet Management representa el agregado `Machinery`, responsable del registro, actualización, clasificación, ubicación, estado y disponibilidad de la maquinaria. También incluye el objeto de valor `MachineryLocation`, las enumeraciones correspondientes y los servicios e interfaces necesarios para coordinar y persistir las operaciones del contexto.
+El diagrama de Fleet Management representa el agregado `Machinery`, responsable del registro, actualización, clasificación, ubicación, estado y disponibilidad de la maquinaria. También incluye los objetos de valor `MachineryLocation` y `Money`; este último representa la tarifa por hora mediante un importe y una moneda.
 
 ![Fleet Management Class Diagram](assets/fleet-management-class-diagram.png)
 
 #### Rental Management Bounded Context Class Diagram
 
-El diagrama de Rental Management representa el agregado `Rental` y el objeto de valor `RentalPeriod`. Este modelo administra las solicitudes de alquiler, confirmaciones, cancelaciones, fechas de reserva y estados del proceso, además de validar la existencia de reservas superpuestas para una maquinaria.
+El diagrama de Rental Management representa el agregado `Rental` y los objetos de valor `RentalPeriod` y `Money`. Este modelo administra las solicitudes de alquiler, confirmaciones, cancelaciones, fechas de reserva y estados del proceso, además de calcular el importe total sin perder la moneda asociada.
 
 ![Rental Management Class Diagram](assets/rental-management-class-diagram.png)
 
 #### Maintenance Management Bounded Context Class Diagram
 
-El diagrama de Maintenance Management representa el agregado `Maintenance` y las entidades asociadas a los reportes de averías. Permite programar, iniciar y completar mantenimientos, actualizar sus estados y conservar el historial técnico de cada maquinaria.
+El diagrama de Maintenance Management representa el agregado `Maintenance`, las entidades asociadas a los reportes de averías y el objeto de valor `Money` para registrar el costo del mantenimiento con su moneda. Permite programar, iniciar y completar mantenimientos, actualizar sus estados y conservar el historial técnico de cada maquinaria.
 
 ![Maintenance Management Class Diagram](assets/maintenance-management-class-diagram.png)
 
@@ -1494,6 +1494,8 @@ El diagrama de Profiles Management representa el agregado `Profile`, la informac
 El diseño de base de datos de MaquiControl se organiza según los límites definidos para cada Bounded Context. Cada modelo especifica las tablas, columnas, tipos de datos, claves primarias, claves foráneas, restricciones y cardinalidades necesarias para persistir la información de sus agregados y entidades.
 
 Para conservar la independencia entre Bounded Contexts, las asociaciones internas utilizan claves foráneas, mientras que las relaciones con agregados pertenecientes a otros contextos se representan mediante identificadores externos. De esta manera se evita el acoplamiento directo entre los modelos de persistencia y se mantiene una responsabilidad claramente definida sobre los datos.
+
+Las entidades utilizan claves primarias numéricas `BIGINT` generadas por la base de datos, en lugar de UUID. Los valores monetarios se persisten como pares de columnas de importe y código de moneda, manteniendo en la base de datos la semántica definida por el patrón `Money` del modelo de dominio.
 
 ### 4.8.1 Database Diagrams
 

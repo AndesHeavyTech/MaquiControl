@@ -11,21 +11,21 @@ hide empty members
 package "Fleet Management" {
 
   class Machinery <<Aggregate Root>> {
-    - id: UUID
-    - ownerProfileId: UUID
+    - id: Long
+    - ownerProfileId: Long
     - name: String
     - description: String
     - type: MachineryType
     - brand: String
     - model: String
     - year: Integer
-    - hourlyRate: BigDecimal
+    - hourlyRate: Money
     - status: MachineryStatus
     - location: MachineryLocation
     - createdAt: LocalDateTime
     - updatedAt: LocalDateTime
     + register(): void
-    + updateInformation(name: String, description: String, hourlyRate: BigDecimal): void
+    + updateInformation(name: String, description: String, hourlyRate: Money): void
     + changeStatus(status: MachineryStatus): void
     + updateLocation(location: MachineryLocation): void
     + isAvailable(): Boolean
@@ -40,6 +40,19 @@ package "Fleet Management" {
     - longitude: Double
     + fullAddress(): String
     + isValid(): Boolean
+  }
+
+  class Money <<Value Object>> {
+    - amount: BigDecimal
+    - currency: Currency
+    + add(other: Money): Money
+    + multiply(factor: BigDecimal): Money
+    + isNonNegative(): Boolean
+  }
+
+  enum Currency {
+    PEN
+    USD
   }
 
   enum MachineryType {
@@ -61,23 +74,25 @@ package "Fleet Management" {
 
   interface MachineryRepository {
     + save(machinery: Machinery): Machinery
-    + findById(id: UUID): Optional<Machinery>
+    + findById(id: Long): Optional<Machinery>
     + findAll(): List<Machinery>
     + findAvailable(): List<Machinery>
-    + existsById(id: UUID): Boolean
+    + existsById(id: Long): Boolean
   }
 
   class FleetManagementService <<Application Service>> {
     - machineryRepository: MachineryRepository
     + registerMachinery(machinery: Machinery): Machinery
-    + updateMachineryInformation(id: UUID, name: String, description: String, hourlyRate: BigDecimal): Machinery
-    + updateMachineryStatus(id: UUID, status: MachineryStatus): Machinery
+    + updateMachineryInformation(id: Long, name: String, description: String, hourlyRate: Money): Machinery
+    + updateMachineryStatus(id: Long, status: MachineryStatus): Machinery
     + viewMachineryInventory(): List<Machinery>
-    + checkMachineryAvailability(id: UUID): Boolean
+    + checkMachineryAvailability(id: Long): Boolean
   }
 }
 
 Machinery "1" *-- "1" MachineryLocation : contains >
+Machinery "1" *-- "1" Money : hourly rate >
+Money --> Currency : expressed in >
 Machinery --> MachineryType : classified as >
 Machinery --> MachineryStatus : has >
 FleetManagementService "1" --> "1" MachineryRepository : uses >

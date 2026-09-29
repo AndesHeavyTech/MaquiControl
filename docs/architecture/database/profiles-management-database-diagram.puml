@@ -8,7 +8,7 @@ skinparam linetype ortho
 hide circle
 
 entity "organizations" as organizations {
-  * id : UUID <<PK>>
+  * id : BIGINT <<PK, IDENTITY>>
   --
   * legal_name : VARCHAR(180) <<NOT NULL>>
   trade_name : VARCHAR(180)
@@ -20,10 +20,10 @@ entity "organizations" as organizations {
 }
 
 entity "profiles" as profiles {
-  * id : UUID <<PK>>
+  * id : BIGINT <<PK, IDENTITY>>
   --
-  * user_account_id : UUID <<EXTERNAL REF, UNIQUE>>
-  organization_id : UUID <<FK>>
+  * user_account_id : BIGINT <<EXTERNAL REF, UNIQUE>>
+  organization_id : BIGINT <<FK>>
   * first_name : VARCHAR(100) <<NOT NULL>>
   * last_name : VARCHAR(100) <<NOT NULL>>
   * document_number : VARCHAR(20) <<NOT NULL, UNIQUE>>
@@ -33,7 +33,7 @@ entity "profiles" as profiles {
 }
 
 entity "contact_information" as contact_information {
-  * profile_id : UUID <<PK, FK>>
+  * profile_id : BIGINT <<PK, FK>>
   --
   * phone_number : VARCHAR(25) <<NOT NULL>>
   secondary_email : VARCHAR(254)
@@ -85,6 +85,7 @@ end note
 legend right
   |= Mark |= Meaning |
   | PK | Primary Key |
+  | IDENTITY | Database-generated numeric identifier |
   | FK | Foreign Key |
   | EXTERNAL REF | Identifier owned by another bounded context |
   | NOT NULL | Mandatory column |
