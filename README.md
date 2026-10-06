@@ -772,6 +772,7 @@ El Ubiquitous Language de MaquiControl reúne los principales términos utilizad
 | **Contractor (Contratista)** | Persona o empresa que requiere maquinaria para realizar trabajos o proyectos y que puede solicitar su alquiler. |
 | **Site Manager (Responsable de obra)** | Persona encargada de coordinar actividades en una obra y verificar los recursos necesarios, incluyendo maquinaria. |
 | **Machinery Catalog (Catálogo de maquinaria)** | Conjunto organizado de máquinas disponibles para consulta por parte de potenciales clientes. |
+| **Machinery Category (Categoría de maquinaria)** | Clasificación administrable que agrupa máquinas por tipo (por ejemplo, excavadoras o grúas) y permite filtrar el catálogo. |
 | **Machinery Availability (Disponibilidad de maquinaria)** | Estado que indica si una máquina puede ser alquilada durante un periodo determinado. |
 | **Rental Request (Solicitud de alquiler)** | Solicitud realizada por un contratista para alquilar una maquinaria específica en determinadas fechas. |
 | **Quotation (Cotización)** | Propuesta que contiene las condiciones y el costo estimado de un alquiler de maquinaria. |
@@ -792,10 +793,12 @@ El Ubiquitous Language de MaquiControl reúne los principales términos utilizad
 | **Rental Closure (Cierre de alquiler)** | Finalización formal de un alquiler después de la devolución de la maquinaria, validación de horas y cálculo del monto correspondiente. |
 | **Rental Amount (Monto de alquiler)** | Importe económico calculado por el uso de una maquinaria durante el periodo contratado. |
 | **Electronic Invoice (Factura electrónica)** | Comprobante electrónico emitido como resultado de una operación de alquiler. |
+| **Late Penalty (Penalidad por mora)** | Recargo aplicado al monto de un alquiler cuando la maquinaria es devuelta después de la fecha pactada. |
 | **Subscription Plan (Plan de suscripción)** | Modalidad de pago mediante la cual una empresa accede a determinadas funcionalidades y capacidades de MaquiControl. |
 | **Essential Plan** | Plan de suscripción orientado a pequeños negocios que administran hasta 5 máquinas. |
 | **Pro Plan** | Plan de suscripción orientado a negocios en crecimiento que administran hasta 20 máquinas. |
 | **Subscription (Suscripción)** | Relación comercial mediante la cual un usuario mantiene acceso a MaquiControl de acuerdo con un plan contratado. |
+| **Subscription Payment (Pago de suscripción)** | Transacción procesada mediante un proveedor de pagos externo para activar o renovar una suscripción. |
 | **Service Commission (Comisión de servicio)** | Importe asociado a una operación de alquiler que puede formar parte del modelo de ingresos de MaquiControl. |
 | **Operational Alert (Alerta operativa)** | Aviso generado ante cambios relevantes como reservas, mantenimiento, disponibilidad o estado de una máquina. |
 | **Operational Dashboard (Panel operativo)** | Vista consolidada que permite conocer el estado de la flota, reservas, alquileres y principales indicadores operativos. |
@@ -865,6 +868,12 @@ El Ubiquitous Language de MaquiControl reúne los principales términos utilizad
 | TS-006 | Technical Story | Registro masivo de horómetros | Como desarrollador, quiero procesar lotes de lecturas mediante `POST /api/horometers/batch`, para sincronización móvil offline. | **Given:** una lista de datos de horómetro capturada sin conexión.<br>**When:** el cliente envía la petición en lote.<br>**Then:** la API actualiza los datos y responde `200 OK`. | EP-10 |
 | TS-007 | Technical Story | Endpoint para facturación fiscal | Como desarrollador, quiero integrar la API con el WebService del PSE/SUNAT, para tramitar la emisión de facturas. | **Given:** la solicitud de facturación incluye RUC y datos válidos.<br>**When:** se ejecuta `POST /api/invoices/issue`.<br>**Then:** la API responde con código `200` y el CDR firmado. | EP-10 |
 | TS-008 | Technical Story | Webhooks de eventos de reserva | Como desarrollador, quiero notificar eventos vía Webhook, para mantener sincronizados sistemas externos. | **Given:** una reserva cambia de estado.<br>**When:** el evento ocurre en el sistema.<br>**Then:** la API realiza un callback HTTP POST a los endpoints suscritos. | EP-10 |
+| EP-11 | Epic | Gestión de suscripciones y pagos | Permitir que los propietarios contraten, paguen y administren su plan de suscripción a MaquiControl. | El sistema debe gestionar los planes disponibles, el estado de la suscripción y el procesamiento de pagos mediante el proveedor externo. | — |
+| US-041 | User Story | Consultar planes de suscripción | Como propietario, quiero ver los planes de suscripción disponibles (Essential, Pro), para elegir el que se ajuste al tamaño de mi flota. | **Given:** el propietario no tiene una suscripción activa.<br>**When:** consulta los planes disponibles.<br>**Then:** el sistema muestra el límite de maquinarias y el precio de cada plan. | EP-11 |
+| US-042 | User Story | Contratar un plan de suscripción | Como propietario, quiero seleccionar y pagar un plan de suscripción mediante el proveedor de pagos, para habilitar la gestión de mi flota en MaquiControl. | **Given:** el propietario seleccionó un plan.<br>**When:** completa el pago a través del proveedor de pagos (sandbox).<br>**Then:** el sistema activa la suscripción y la vincula a la organización del propietario. | EP-11 |
+| US-043 | User Story | Renovar suscripción | Como propietario, quiero que mi suscripción se renueve automáticamente al vencer el periodo contratado, para mantener el acceso sin interrupciones. | **Given:** la suscripción está próxima a vencer.<br>**When:** el proveedor de pagos aprueba el cobro de renovación.<br>**Then:** el sistema extiende la fecha de vencimiento de la suscripción. | EP-11 |
+| US-044 | User Story | Consultar estado de la suscripción | Como propietario, quiero consultar el estado y el historial de pagos de mi suscripción, para verificar mi situación con la plataforma. | **Given:** el propietario tiene una suscripción registrada.<br>**When:** consulta su panel de cuenta.<br>**Then:** el sistema muestra el plan activo, la fecha de vencimiento y los pagos realizados. | EP-11 |
+| US-045 | User Story | Bloquear registro de maquinaria al superar el límite del plan | Como sistema, quiero impedir que un propietario registre más maquinarias que las permitidas por su plan, para hacer cumplir los límites comerciales de la suscripción. | **Given:** el propietario alcanzó el límite de maquinarias de su plan.<br>**When:** intenta registrar una maquinaria adicional.<br>**Then:** el sistema rechaza el registro e indica que debe actualizar su plan. | EP-11 |
 
 ## 3.2 Impact Mapping
 
@@ -879,7 +888,7 @@ Los principales actores considerados son Luis Herrera, representante del segment
 ## 3.3 Product Backlog
 ## 3.3 Product Backlog
 
-El Product Backlog reúne y prioriza las 40 User Stories y las 8 Technical Stories definidas en la sección 3.1. Los identificadores, títulos y descripciones mantienen trazabilidad directa con las historias y sus criterios de aceptación.
+El Product Backlog reúne y prioriza las 45 User Stories y las 8 Technical Stories definidas en la sección 3.1. Los identificadores, títulos y descripciones mantienen trazabilidad directa con las historias y sus criterios de aceptación.
 
 | Orden | User Story ID | Título | Descripción | Story Points |
 | :---: | :---: | :--- | :--- | :---: |
@@ -931,6 +940,11 @@ El Product Backlog reúne y prioriza las 40 User Stories y las 8 Technical Stori
 | 46 | **TS-006** | Registro masivo de horómetros | Como desarrollador, quiero procesar lotes de lecturas mediante `POST /api/horometers/batch`, para permitir la sincronización móvil. | 3 |
 | 47 | **TS-007** | Endpoint para facturación fiscal | Como desarrollador, quiero integrar la API con el servicio del PSE/SUNAT, para tramitar la emisión de facturas. | 3 |
 | 48 | **TS-008** | Webhooks de eventos de reserva | Como desarrollador, quiero notificar eventos mediante webhooks, para mantener sincronizados los sistemas externos. | 3 |
+| 49 | **US-041** | Consultar planes de suscripción | Como propietario, quiero ver los planes de suscripción disponibles (Essential, Pro), para elegir el que se ajuste al tamaño de mi flota. | 1 |
+| 50 | **US-042** | Contratar un plan de suscripción | Como propietario, quiero seleccionar y pagar un plan de suscripción mediante el proveedor de pagos, para habilitar la gestión de mi flota en MaquiControl. | 3 |
+| 51 | **US-043** | Renovar suscripción | Como propietario, quiero que mi suscripción se renueve automáticamente al vencer el periodo contratado, para mantener el acceso sin interrupciones. | 3 |
+| 52 | **US-044** | Consultar estado de la suscripción | Como propietario, quiero consultar el estado y el historial de pagos de mi suscripción, para verificar mi situación con la plataforma. | 2 |
+| 53 | **US-045** | Bloquear registro de maquinaria al superar el límite del plan | Como sistema, quiero impedir que un propietario registre más maquinarias que las permitidas por su plan, para hacer cumplir los límites comerciales de la suscripción. | 2 |
 # Capítulo IV: Product Design
 
 ## 4.1. Style Guidelines
@@ -1330,11 +1344,11 @@ En esta sección se presenta el Design-Level Event Storming de MaquiControl, des
 
 El objetivo de esta etapa es profundizar en el dominio del problema e identificar los principales Bounded Contexts, Aggregates, Commands, Domain Events, Policies, Queries y Read Models de la solución. Las políticas expresan reglas reactivas con la estructura evento ocurrido, política aplicada y comando desencadenado.
 
-A partir del análisis realizado se identificaron los siguientes Bounded Contexts principales: Fleet Management, Rental Management, Maintenance Management, Operations Management, Identity & Access Management y Profiles Management.
+A partir del análisis realizado se identificaron los siguientes Bounded Contexts principales: Fleet Management, Rental Management, Maintenance Management, Operations Management, Identity & Access Management, Profiles Management, Subscription Management y Billing Management.
 
 #### Fleet Management Bounded Context
 
-Este Bounded Context concentra las responsabilidades relacionadas con la gestión de la maquinaria, incluyendo su registro, actualización de información, cambio de estado, consulta de inventario y disponibilidad. Su política inicializa como disponible la maquinaria recién registrada.
+Este Bounded Context concentra las responsabilidades relacionadas con la gestión de la maquinaria, incluyendo su registro, actualización de información, cambio de estado, consulta de inventario y disponibilidad. También administra el catálogo de categorías de maquinaria (`Category`) como una entidad propia del contexto, lo que permite incorporar nuevas categorías sin modificar el código fuente. Su política inicializa como disponible la maquinaria recién registrada.
 
 ![Fleet Management Design-Level Event Storming](assets/fleet-management-design-level.png)
 #### Rental Management Bounded Context
@@ -1366,6 +1380,18 @@ Este Bounded Context se encarga de la gestión de identidad, autenticación y co
 Este Bounded Context gestiona la información asociada a los perfiles de los usuarios. Incluye la creación y actualización de perfiles, datos de contacto e información de la organización. Su agregado principal es Profile y permite consultar la información personal, de contacto y organizacional asociada a cada usuario. Su política exige información de contacto válida después de crear el perfil.
 
 ![Profiles Management Design-Level Event Storming](assets/profiles-management-design-level.png)
+
+#### Subscription Management Bounded Context
+
+Este Bounded Context gestiona la contratación, activación, renovación y cancelación de la suscripción de un propietario a MaquiControl. Incluye la selección de un plan de suscripción (Essential o Pro), el registro de pagos procesados mediante el proveedor de pagos externo y la activación o renovación resultante. Su agregado principal es Subscription, que registra los pagos asociados como entidades internas. Su política activa o renueva la suscripción cuando se aprueba un pago, y su límite de maquinarias por plan es consumido como política cruzada por Fleet Management al registrar nueva maquinaria.
+
+![Subscription Management Design-Level Event Storming](assets/subscription-management-design-level.png)
+
+#### Billing Management Bounded Context
+
+Este Bounded Context concentra el cálculo del monto de alquiler, la emisión de comprobantes electrónicos ante SUNAT y la aplicación de penalidades por mora. Sus agregados principales son Invoice y Late Penalty, ambos referenciando el alquiler correspondiente mediante un identificador externo perteneciente a Rental Management. Su política emite el comprobante electrónico una vez calculado el monto del alquiler, y aplica una penalidad por mora cuando la maquinaria se devuelve después de la fecha pactada.
+
+![Billing Management Design-Level Event Storming](assets/billing-management-design-level.png)
 
 ### 4.6.2. Software Architecture Context Diagram
 
@@ -1545,6 +1571,18 @@ El diagrama de Profiles Management representa el agregado `Profile`, la informac
 
 ![Profiles Management Class Diagram](assets/profiles-management-class-diagram.png)
 
+#### Subscription Management Bounded Context Class Diagram
+
+El diagrama de Subscription Management representa el agregado `Subscription`, la entidad `SubscriptionPlan` y los pagos (`Payment`) registrados como parte del ciclo de vida de la suscripción. Utiliza el Value Object `Money` para el precio del plan y el importe de cada pago, evitando operar montos sin su moneda asociada.
+
+![Subscription Management Class Diagram](assets/subscription-management-class-diagram.png)
+
+#### Billing Management Bounded Context Class Diagram
+
+El diagrama de Billing Management representa los agregados `Invoice` y `Late Penalty`, ambos referenciando el alquiler correspondiente mediante un identificador externo. Permite calcular el monto de alquiler, emitir o rechazar el comprobante electrónico y aplicar penalidades por mora, utilizando el Value Object `Money` para los importes involucrados.
+
+![Billing Management Class Diagram](assets/billing-management-class-diagram.png)
+
 ## 4.8 Database Design
 
 El diseño de base de datos de MaquiControl se organiza según los límites definidos para cada Bounded Context. Cada modelo especifica las tablas, columnas, tipos de datos, claves primarias, claves foráneas, restricciones y cardinalidades necesarias para persistir la información de sus agregados y entidades.
@@ -1557,7 +1595,7 @@ Las entidades utilizan claves primarias numéricas `BIGINT` generadas por la bas
 
 #### Fleet Management Bounded Context Database Diagram
 
-El modelo de Fleet Management almacena la información principal de cada maquinaria y su ubicación. La tabla `machinery` conserva los datos técnicos, la tarifa, el tipo y el estado operativo, mientras que `machinery_locations` representa la ubicación asociada mediante una relación uno a uno. El propietario se referencia mediante un identificador externo perteneciente a Profiles Management.
+El modelo de Fleet Management almacena el catálogo de categorías y la información principal de cada maquinaria y su ubicación. La tabla `categories` administra las categorías disponibles, `machinery` conserva los datos técnicos, la tarifa y el estado operativo referenciando su categoría mediante `category_id`, mientras que `machinery_locations` representa la ubicación asociada mediante una relación uno a uno. El propietario se referencia mediante un identificador externo perteneciente a Profiles Management.
 
 ![Fleet Management Database Diagram](assets/fleet-management-database-diagram.png)
 
@@ -1590,6 +1628,18 @@ El modelo de Identity & Access Management almacena cuentas, credenciales y roles
 El modelo de Profiles Management almacena perfiles, información de contacto y organizaciones. Cada perfil posee un único registro de contacto y puede pertenecer opcionalmente a una organización. El identificador de la cuenta de usuario se conserva como una referencia externa a Identity & Access Management.
 
 ![Profiles Management Database Diagram](assets/profiles-management-database-diagram.png)
+
+#### Subscription Management Bounded Context Database Diagram
+
+El modelo de Subscription Management almacena los planes de suscripción disponibles, las suscripciones contratadas y los pagos asociados. La tabla `subscription_plans` define el límite de maquinarias y el precio de cada plan, `subscriptions` conserva el estado y vigencia de la suscripción contratada por un propietario, y `payments` registra cada transacción procesada mediante el proveedor de pagos externo.
+
+![Subscription Management Database Diagram](assets/subscription-management-database-diagram.png)
+
+#### Billing Management Bounded Context Database Diagram
+
+El modelo de Billing Management almacena los comprobantes electrónicos y las penalidades por mora. La tabla `invoices` conserva el monto, estado y datos de emisión ante SUNAT, mientras que `late_penalties` registra los recargos aplicados por devoluciones tardías. Ambas tablas referencian el alquiler correspondiente mediante un identificador externo perteneciente a Rental Management.
+
+![Billing Management Database Diagram](assets/billing-management-database-diagram.png)
 
 # Capítulo V: Product Implementation, Validation & Deployment
 
