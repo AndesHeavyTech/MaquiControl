@@ -14,7 +14,7 @@ System_Boundary(maquicontrol, "MaquiControl") {
 
     Container(api, "REST API", "Spring Boot / Java", "Provides business capabilities for machinery, rentals, maintenance, operations, profiles and identity management.")
 
-    ContainerDb(database, "Database", "Relational Database", "Stores machinery, rental, maintenance, operational, account and profile information.")
+    ContainerDb(database, "Database", "Relational Database", "Stores machinery, rental, maintenance, operational, account, profile, subscription and billing information.")
 }
 
 System_Ext(sunat, "SUNAT", "Validates and receives electronic invoices.")
