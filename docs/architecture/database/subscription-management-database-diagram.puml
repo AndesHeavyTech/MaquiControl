@@ -1,0 +1,102 @@
+@startuml
+title MaquiControl - Subscription Management Bounded Context\nDatabase Diagram
+
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam linetype ortho
+hide circle
+
+entity "subscription_plans" as subscription_plans {
+  * id : BIGINT <<PK, IDENTITY>>
+  --
+  * code : VARCHAR(20) <<NOT NULL, UNIQUE>>
+  * name : VARCHAR(80) <<NOT NULL>>
+  * machinery_limit : INTEGER <<NOT NULL>>
+  * price_amount : DECIMAL(12,2) <<NOT NULL>>
+  * price_currency : CHAR(3) <<NOT NULL>>
+  * billing_cycle : VARCHAR(20) <<NOT NULL>>
+}
+
+entity "subscriptions" as subscriptions {
+  * id : BIGINT <<PK, IDENTITY>>
+  --
+  * owner_profile_id : BIGINT <<EXTERNAL REF>>
+  * plan_id : BIGINT <<FK, NOT NULL>>
+  * status : VARCHAR(20) <<NOT NULL>>
+  * started_at : TIMESTAMP <<NOT NULL>>
+  current_period_end : TIMESTAMP
+  * created_at : TIMESTAMP <<NOT NULL>>
+  * updated_at : TIMESTAMP <<NOT NULL>>
+  * version : BIGINT <<NOT NULL, DEFAULT 0>>
+}
+
+entity "payments" as payments {
+  * id : BIGINT <<PK, IDENTITY>>
+  --
+  * subscription_id : BIGINT <<FK, NOT NULL>>
+  * provider : VARCHAR(30) <<NOT NULL>>
+  provider_payment_id : VARCHAR(100)
+  * amount : DECIMAL(12,2) <<NOT NULL>>
+  * currency : CHAR(3) <<NOT NULL>>
+  * status : VARCHAR(20) <<NOT NULL>>
+  paid_at : TIMESTAMP
+  * created_at : TIMESTAMP <<NOT NULL>>
+}
+
+subscription_plans ||--o{ subscriptions : defines
+subscriptions ||--o{ payments : records
+
+note right of subscription_plans
+  Constraints:
+  PK (id)
+  UNIQUE (code)
+  CHECK (code IN ('ESSENTIAL', 'PRO'))
+  CHECK (machinery_limit > 0)
+  CHECK (price_amount >= 0)
+  CHECK (price_currency IN ('PEN', 'USD'))
+  CHECK (billing_cycle IN ('MONTHLY', 'ANNUAL'))
+end note
+
+note right of subscriptions
+  Constraints:
+  PK (id)
+  FK (plan_id)
+    REFERENCES subscription_plans(id)
+    ON DELETE RESTRICT
+  CHECK (status IN
+    PENDING, ACTIVE, PAST_DUE,
+    CANCELLED, EXPIRED)
+
+  owner_profile_id references a Profile
+  in Profiles Management.
+  No cross-context database FK is created.
+end note
+
+note right of payments
+  Constraints:
+  PK (id)
+  FK (subscription_id)
+    REFERENCES subscriptions(id)
+    ON DELETE CASCADE
+  CHECK (amount >= 0)
+  CHECK (currency IN ('PEN', 'USD'))
+  CHECK (status IN
+    PENDING, APPROVED, REJECTED)
+  CHECK (
+    status <> 'APPROVED'
+    OR paid_at IS NOT NULL
+  )
+end note
+
+legend right
+  |= Mark |= Meaning |
+  | PK | Primary Key |
+  | IDENTITY | Database-generated numeric identifier |
+  | FK | Foreign Key |
+  | EXTERNAL REF | Identifier owned by another bounded context |
+  | NOT NULL | Mandatory column |
+  | UNIQUE | Value cannot be repeated |
+endlegend
+
+@enduml

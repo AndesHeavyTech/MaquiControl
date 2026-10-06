@@ -13,9 +13,9 @@ package "Fleet Management" {
   class Machinery <<Aggregate Root>> {
     - id: Long
     - ownerProfileId: Long
+    - categoryId: Long
     - name: String
     - description: String
-    - type: MachineryType
     - brand: String
     - model: String
     - year: Integer
@@ -28,7 +28,17 @@ package "Fleet Management" {
     + updateInformation(name: String, description: String, hourlyRate: Money): void
     + changeStatus(status: MachineryStatus): void
     + updateLocation(location: MachineryLocation): void
+    + classifyAs(category: Category): void
     + isAvailable(): Boolean
+  }
+
+  class Category <<Entity>> {
+    - id: Long
+    - code: String
+    - name: String
+    - active: Boolean
+    + rename(name: String): void
+    + deactivate(): void
   }
 
   class MachineryLocation <<Value Object>> {
@@ -55,15 +65,6 @@ package "Fleet Management" {
     USD
   }
 
-  enum MachineryType {
-    EXCAVATOR
-    BACKHOE_LOADER
-    LOADER
-    CRANE
-    BULLDOZER
-    OTHER
-  }
-
   enum MachineryStatus {
     AVAILABLE
     RESERVED
@@ -77,26 +78,40 @@ package "Fleet Management" {
     + findById(id: Long): Optional<Machinery>
     + findAll(): List<Machinery>
     + findAvailable(): List<Machinery>
+    + findByCategoryId(categoryId: Long): List<Machinery>
+    + existsById(id: Long): Boolean
+  }
+
+  interface CategoryRepository {
+    + save(category: Category): Category
+    + findById(id: Long): Optional<Category>
+    + findAllActive(): List<Category>
     + existsById(id: Long): Boolean
   }
 
   class FleetManagementService <<Application Service>> {
     - machineryRepository: MachineryRepository
+    - categoryRepository: CategoryRepository
     + registerMachinery(machinery: Machinery): Machinery
     + updateMachineryInformation(id: Long, name: String, description: String, hourlyRate: Money): Machinery
     + updateMachineryStatus(id: Long, status: MachineryStatus): Machinery
+    + registerCategory(category: Category): Category
+    + updateCategory(id: Long, name: String): Category
     + viewMachineryInventory(): List<Machinery>
+    + viewCategories(): List<Category>
     + checkMachineryAvailability(id: Long): Boolean
   }
 }
 
 Machinery "1" *-- "1" MachineryLocation : contains >
 Machinery "1" *-- "1" Money : hourly rate >
+Machinery "0..*" --> "1" Category : classified as >
 Money --> Currency : expressed in >
-Machinery --> MachineryType : classified as >
 Machinery --> MachineryStatus : has >
 FleetManagementService "1" --> "1" MachineryRepository : uses >
+FleetManagementService "1" --> "1" CategoryRepository : uses >
 MachineryRepository ..> Machinery : persists >
+CategoryRepository ..> Category : persists >
 
 legend right
   |= Symbol |= Meaning |

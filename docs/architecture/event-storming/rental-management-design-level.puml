@@ -11,11 +11,16 @@ skinparam defaultFontName Arial
 ' =========================
 
 rectangle "COMMAND\nRequest Rental" as CMD_REQUEST #87CEFA
+rectangle "AGGREGATE\nRental" as AGG_REQUEST #FFF59D
+rectangle "ACTOR\nContractor" as ACT_REQUEST #FFF9C4
 rectangle "COMMAND\nConfirm Reservation" as CMD_CONFIRM #87CEFA
+rectangle "AGGREGATE\nRental" as AGG_CONFIRM #FFF59D
 rectangle "COMMAND\nCancel Reservation" as CMD_CANCEL #87CEFA
+rectangle "AGGREGATE\nRental" as AGG_CANCEL #FFF59D
+rectangle "ACTOR\nContractor" as ACT_CANCEL #FFF9C4
 rectangle "COMMAND\nUpdate Rental Dates" as CMD_UPDATE_DATES #87CEFA
-
-rectangle "AGGREGATE\nRental" as AGG_RENTAL #FFF59D
+rectangle "AGGREGATE\nRental" as AGG_UPDATE_DATES #FFF59D
+rectangle "ACTOR\nContractor" as ACT_UPDATE_DATES #FFF9C4
 
 rectangle "DOMAIN EVENT\nRental Requested" as EVT_REQUESTED #FFB74D
 rectangle "DOMAIN EVENT\nReservation Confirmed" as EVT_CONFIRMED #FFB74D
@@ -24,30 +29,36 @@ rectangle "DOMAIN EVENT\nRental Dates Updated" as EVT_DATES_UPDATED #FFB74D
 
 rectangle "POLICY\nWhen a rental is requested and\nmachinery is available, confirm reservation" as POL_CONFIRM_AVAILABLE #B39DDB
 
-rectangle "QUERY\nView Rental Requests" as QUERY_REQUESTS #A5D6A7
-rectangle "READ MODEL\nRental Request List" as READ_REQUESTS #C8E6C9
+rectangle "READ MODEL\nRental Request List" as READ_REQUESTS #81C784
+rectangle "QUERY\nView Rental Requests" as QUERY_REQUESTS #87CEFA
+rectangle "QUERY RESULT\nRental Request List" as RESULT_REQUESTS #C8E6C9
 
-rectangle "QUERY\nView My Reservations" as QUERY_RESERVATIONS #A5D6A7
-rectangle "READ MODEL\nReservation List" as READ_RESERVATIONS #C8E6C9
+rectangle "READ MODEL\nReservation List" as READ_RESERVATIONS #81C784
+rectangle "QUERY\nView My Reservations" as QUERY_RESERVATIONS #87CEFA
+rectangle "QUERY RESULT\nReservation List" as RESULT_RESERVATIONS #C8E6C9
 
-rectangle "QUERY\nCheck Reservation Details" as QUERY_DETAILS #A5D6A7
-rectangle "READ MODEL\nReservation Details" as READ_DETAILS #C8E6C9
+rectangle "READ MODEL\nReservation Details" as READ_DETAILS #81C784
+rectangle "QUERY\nCheck Reservation Details" as QUERY_DETAILS #87CEFA
+rectangle "QUERY RESULT\nReservation Details" as RESULT_DETAILS #C8E6C9
 
 ' =========================
 ' Commands -> Aggregate -> Events
 ' =========================
 
-CMD_REQUEST --> AGG_RENTAL
-AGG_RENTAL --> EVT_REQUESTED
+CMD_REQUEST --> AGG_REQUEST
+AGG_REQUEST --> EVT_REQUESTED
+ACT_REQUEST -[hidden]up-> CMD_REQUEST
 
-CMD_CONFIRM --> AGG_RENTAL
-AGG_RENTAL --> EVT_CONFIRMED
+CMD_CONFIRM --> AGG_CONFIRM
+AGG_CONFIRM --> EVT_CONFIRMED
 
-CMD_CANCEL --> AGG_RENTAL
-AGG_RENTAL --> EVT_CANCELLED
+CMD_CANCEL --> AGG_CANCEL
+AGG_CANCEL --> EVT_CANCELLED
+ACT_CANCEL -[hidden]up-> CMD_CANCEL
 
-CMD_UPDATE_DATES --> AGG_RENTAL
-AGG_RENTAL --> EVT_DATES_UPDATED
+CMD_UPDATE_DATES --> AGG_UPDATE_DATES
+AGG_UPDATE_DATES --> EVT_DATES_UPDATED
+ACT_UPDATE_DATES -[hidden]up-> CMD_UPDATE_DATES
 
 EVT_REQUESTED --> POL_CONFIRM_AVAILABLE
 POL_CONFIRM_AVAILABLE --> CMD_CONFIRM
@@ -56,18 +67,22 @@ POL_CONFIRM_AVAILABLE --> CMD_CONFIRM
 ' Queries -> Read Models
 ' =========================
 
-QUERY_REQUESTS --> READ_REQUESTS
-QUERY_RESERVATIONS --> READ_RESERVATIONS
-QUERY_DETAILS --> READ_DETAILS
+READ_REQUESTS --> QUERY_REQUESTS
+QUERY_REQUESTS --> RESULT_REQUESTS
+READ_RESERVATIONS --> QUERY_RESERVATIONS
+QUERY_RESERVATIONS --> RESULT_RESERVATIONS
+READ_DETAILS --> QUERY_DETAILS
+QUERY_DETAILS --> RESULT_DETAILS
 
 legend right
 |= Color |= Element |
-|<#87CEFA>| Command |
+|<#87CEFA>| Command / Query |
 |<#FFF59D>| Aggregate |
 |<#FFB74D>| Domain Event |
+|<#FFF9C4>| Actor |
 |<#B39DDB>| Policy |
-|<#A5D6A7>| Query |
-|<#C8E6C9>| Read Model |
+|<#81C784>| Read Model |
+|<#C8E6C9>| Query Result |
 endlegend
 
 @enduml

@@ -1,0 +1,95 @@
+@startuml
+title MaquiControl - Billing Management Bounded Context\nClass Diagram
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam linetype ortho
+hide empty members
+
+package "Billing Management" {
+
+  class Invoice <<Aggregate Root>> {
+    - id: Long
+    - rentalId: Long
+    - invoiceNumber: String
+    - sunatCdr: String
+    - amount: Money
+    - status: InvoiceStatus
+    - issuedAt: LocalDateTime
+    + calculate(amount: Money): void
+    + issue(invoiceNumber: String, sunatCdr: String): void
+    + reject(reason: String): void
+    + isIssued(): Boolean
+  }
+
+  class LatePenalty <<Aggregate Root>> {
+    - id: Long
+    - rentalId: Long
+    - amount: Money
+    - reason: String
+    - appliedAt: LocalDateTime
+    + apply(): void
+  }
+
+  class Money <<Value Object>> {
+    - amount: BigDecimal
+    - currency: Currency
+    + add(other: Money): Money
+    + isNonNegative(): Boolean
+  }
+
+  enum Currency {
+    PEN
+    USD
+  }
+
+  enum InvoiceStatus {
+    PENDING
+    ISSUED
+    REJECTED
+  }
+
+  interface InvoiceRepository {
+    + save(invoice: Invoice): Invoice
+    + findById(id: Long): Optional<Invoice>
+    + findByRentalId(rentalId: Long): Optional<Invoice>
+  }
+
+  interface LatePenaltyRepository {
+    + save(penalty: LatePenalty): LatePenalty
+    + findByRentalId(rentalId: Long): List<LatePenalty>
+  }
+
+  class BillingManagementService <<Application Service>> {
+    - invoiceRepository: InvoiceRepository
+    - latePenaltyRepository: LatePenaltyRepository
+    + calculateRentalAmount(rentalId: Long, amount: Money): Invoice
+    + issueInvoice(invoiceId: Long, invoiceNumber: String, sunatCdr: String): Invoice
+    + applyLatePenalty(rentalId: Long, amount: Money, reason: String): LatePenalty
+    + viewInvoice(id: Long): Invoice
+    + viewInvoiceHistory(rentalId: Long): List<Invoice>
+    + viewLatePenaltiesByRental(rentalId: Long): List<LatePenalty>
+  }
+}
+
+Invoice "1" *-- "1" Money : amount >
+LatePenalty "1" *-- "1" Money : amount >
+Money --> Currency : expressed in >
+Invoice --> InvoiceStatus : has >
+BillingManagementService "1" --> "1" InvoiceRepository : uses >
+BillingManagementService "1" --> "1" LatePenaltyRepository : uses >
+InvoiceRepository ..> Invoice : persists >
+LatePenaltyRepository ..> LatePenalty : persists >
+
+legend right
+  |= Symbol |= Meaning |
+  | + | Public |
+  | - | Private |
+  | *-- | Composition |
+  | --> | Association |
+  | ..> | Dependency |
+endlegend
+
+@enduml

@@ -7,13 +7,21 @@ skinparam defaultFontName Arial
 skinparam linetype ortho
 hide circle
 
+entity "categories" as categories {
+  * id : BIGINT <<PK, IDENTITY>>
+  --
+  * code : VARCHAR(40) <<NOT NULL, UNIQUE>>
+  * name : VARCHAR(80) <<NOT NULL>>
+  * active : BOOLEAN <<NOT NULL, DEFAULT TRUE>>
+}
+
 entity "machinery" as machinery {
   * id : BIGINT <<PK, IDENTITY>>
   --
   * owner_profile_id : BIGINT <<EXTERNAL REF>>
+  * category_id : BIGINT <<FK, NOT NULL>>
   * name : VARCHAR(120) <<NOT NULL>>
   description : VARCHAR(500)
-  * machinery_type : VARCHAR(30) <<NOT NULL>>
   * brand : VARCHAR(80) <<NOT NULL>>
   * model : VARCHAR(80) <<NOT NULL>>
   * manufacture_year : SMALLINT <<NOT NULL>>
@@ -36,17 +44,25 @@ entity "machinery_locations" as machinery_locations {
   longitude : DECIMAL(9,6)
 }
 
+categories ||--o{ machinery : classifies
 machinery ||--|| machinery_locations : owns
+
+note right of categories
+  Constraints:
+  PK (id)
+  UNIQUE (code)
+  CHECK (code <> '')
+end note
 
 note right of machinery
   Constraints:
   PK (id)
+  FK (category_id)
+    REFERENCES categories(id)
+    ON DELETE RESTRICT
   CHECK (manufacture_year >= 1950)
   CHECK (hourly_rate_amount >= 0)
   CHECK (hourly_rate_currency IN ('PEN', 'USD'))
-  CHECK (machinery_type IN
-    EXCAVATOR, BACKHOE_LOADER,
-    LOADER, CRANE, BULLDOZER, OTHER)
   CHECK (status IN
     AVAILABLE, RESERVED, RENTED,
     IN_MAINTENANCE, OUT_OF_SERVICE)
@@ -73,6 +89,7 @@ legend right
   | FK | Foreign Key |
   | EXTERNAL REF | Identifier owned by another bounded context |
   | NOT NULL | Mandatory column |
+  | UNIQUE | Value cannot be repeated |
 endlegend
 
 @enduml
