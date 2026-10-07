@@ -4,27 +4,27 @@
 title MaquiControl - Profiles Management Frontend Component Diagram (DDD Layers)
 
 Container_Boundary(profiles, "Profiles Management Bounded Context [Angular]") {
-    Boundary(presentation, "Presentation") {
-        Component(profilePage, "Profile Page", "Angular component", "Displays and edits personal and contact information.")
-        Component(organizationForm, "Organization Form", "Angular component", "Captures organization information.")
+    Boundary(presentation, "Presentation Layer") {
+        Component(profileViewComponent, "ProfileViewComponent", "Angular Component", "Displays user profile and calls profileStore.loadProfile() and updateProfile(data).")
+        Component(organizationFormComponent, "OrganizationFormComponent", "Angular Component", "Captures organization data and calls profileStore.setOrganization(orgData).")
     }
-    Boundary(application, "Application") {
-        Component(profileStore, "Profile Store", "Angular signals", "Coordinates profile loading and update use cases.")
+    Boundary(application, "Application Layer") {
+        Component(profileStore, "ProfileStore", "Angular Signals Store", "Coordinates profile state; exposes profile(), updateProfile() and setOrganization() signals.")
     }
-    Boundary(domain, "Domain") {
-        Component(profileModel, "Profile Model", "TypeScript", "Profile, contact information and organization value objects.")
+    Boundary(domain, "Domain Layer") {
+        Component(profileModel, "ProfileModel", "TypeScript Interface / Class", "Defines user profile domain model: id, fullName, email, phone and organization details.")
     }
-    Boundary(infrastructure, "Infrastructure") {
-        Component(profileApi, "Profiles API Client", "Angular HttpClient", "Calls profile and organization endpoints.")
+    Boundary(infrastructure, "Infrastructure Layer") {
+        Component(profilesApiService, "ProfilesApiService", "Angular HttpClient Service", "Executes HTTP calls: getProfile(id), putProfile(data) and postOrganization(data).")
     }
 }
 
-Container(api, "REST API", "Spring Boot / Java", "Profiles management endpoints.")
+Container(api, "REST API", "Spring Boot / Java", "Exposes /api/v1/profiles endpoints.")
 
-Rel(profilePage, profileStore, "Loads and updates profile")
-Rel(organizationForm, profileStore, "Updates organization")
-Rel(profileStore, profileModel, "Builds and holds")
-Rel(profileStore, profileApi, "Invokes")
-Rel(profileApi, api, "Calls", "HTTPS / JSON")
+Rel(profileViewComponent, profileStore, "Calls loadProfile() / updateProfile(data)")
+Rel(organizationFormComponent, profileStore, "Calls setOrganization(orgData)")
+Rel(profileStore, profileModel, "Instantiates and updates state")
+Rel(profileStore, profilesApiService, "Calls getProfile() / putProfile()")
+Rel(profilesApiService, api, "Dispatches HTTP GET/PUT /api/v1/profiles/*", "HTTPS / JSON")
 
 @enduml

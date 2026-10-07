@@ -20,10 +20,13 @@ System_Boundary(maquicontrol, "MaquiControl") {
 System_Ext(sunat, "SUNAT", "Validates and receives electronic invoices.")
 System_Ext(paymentProvider, "Payment Provider", "Processes subscription payments and renewals.")
 
-Rel(admin, webServer, "Accesses", "HTTPS")
-Rel(contractor, webServer, "Accesses", "HTTPS")
+Rel(admin, webServer, "Loads web application from", "HTTPS")
+Rel(contractor, webServer, "Loads web application from", "HTTPS")
 
-Rel(webServer, spa, "Serves compiled application", "HTTPS")
+Rel(webServer, spa, "Delivers compiled application to browser", "HTTPS")
+
+Rel(admin, spa, "Manages fleet, reservations, maintenance and operations using", "HTTPS")
+Rel(contractor, spa, "Searches machinery, requests rentals and reviews services using", "HTTPS")
 
 Rel(spa, api, "Uses", "HTTPS / JSON")
 

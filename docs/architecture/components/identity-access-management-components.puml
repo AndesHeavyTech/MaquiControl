@@ -7,24 +7,24 @@ Container(webapp, "Single Page Application", "Angular", "Provides the user inter
 
 Container_Boundary(iam, "Identity & Access Management Bounded Context") {
 
-    Component(interfaces, "Interfaces Layer", "Spring Web", "Exposes endpoints for authentication and account management.")
+    Component(interfaces, "AuthController", "Spring Boot @RestController", "Exposes POST /api/v1/auth/login and POST /api/v1/auth/register endpoints.")
 
-    Component(application, "Application Layer", "Spring Boot", "Coordinates registration, authentication, role assignment and password management use cases.")
+    Component(application, "IdentityAccessService", "Spring Boot @Service", "Coordinates authenticateUser(), registerUser(), assignRole() and changePassword() use cases.")
 
-    Component(domain, "Domain Layer", "Java", "Contains the User Account aggregate and identity business rules.")
+    Component(domain, "UserAccount Aggregate", "Java Domain Entity", "Contains UserAccount aggregate root, Credential value object, Role entity and status logic.")
 
-    Component(infrastructure, "Infrastructure Layer", "Spring Data JPA", "Provides persistence for user accounts and roles.")
+    Component(infrastructure, "UserAccountRepository", "Spring Data JPA @Repository", "Provides persistence via save(), findById(), findByEmail() and existsByEmail().")
 
-    Component(security, "Security Connector", "Spring Security", "Provides authentication and authorization mechanisms.")
+    Component(security, "SecurityFilterChain", "Spring Security Component", "Applies JwtTokenFilter to validate Bearer tokens and permissions.")
 }
 
 ContainerDb(database, "Database", "Relational Database", "Stores user account, credential and role information.")
 
-Rel(webapp, interfaces, "Uses", "HTTPS / JSON")
-Rel(interfaces, application, "Invokes")
-Rel(application, domain, "Uses")
-Rel(application, infrastructure, "Uses")
-Rel(infrastructure, database, "Reads from and writes to")
-Rel(interfaces, security, "Uses")
+Rel(webapp, interfaces, "Calls /api/v1/auth/*", "HTTPS / JSON")
+Rel(interfaces, application, "Calls authenticateUser() / registerUser()")
+Rel(application, domain, "Invokes authenticate() / register()")
+Rel(application, infrastructure, "Calls save() / findByEmail()")
+Rel(infrastructure, database, "Executes SQL queries")
+Rel(interfaces, security, "Validates security context")
 
 @enduml

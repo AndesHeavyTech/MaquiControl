@@ -4,29 +4,29 @@
 title MaquiControl - Identity & Access Frontend Component Diagram (DDD Layers)
 
 Container_Boundary(iam, "Identity & Access Bounded Context [Angular]") {
-    Boundary(presentation, "Presentation") {
-        Component(loginPage, "Login Page", "Angular component", "Captures credentials and presents authentication results.")
-        Component(registerPage, "Registration Page", "Angular component", "Captures the information required to create an account.")
+    Boundary(presentation, "Presentation Layer") {
+        Component(loginComponent, "LoginComponent", "Angular Component", "Renders login form, validates user input and calls authStore.login(credentials).")
+        Component(registerComponent, "RegisterComponent", "Angular Component", "Renders registration form and calls authStore.register(accountData).")
     }
-    Boundary(application, "Application") {
-        Component(authStore, "Auth Store", "Angular signals", "Coordinates sign-in, registration, sign-out and session state.")
+    Boundary(application, "Application Layer") {
+        Component(authStore, "AuthStore", "Angular Signals Store", "Coordinates auth state; exposes login(), register(), logout() and currentUser() signals.")
     }
-    Boundary(domain, "Domain") {
-        Component(accountModel, "Account Model", "TypeScript", "User account, credentials, role and authentication state.")
+    Boundary(domain, "Domain Layer") {
+        Component(accountModel, "AccountModel", "TypeScript Interface / Class", "Defines user account domain model: id, email, roles, token and account status.")
     }
-    Boundary(infrastructure, "Infrastructure") {
-        Component(authApi, "Auth API Client", "Angular HttpClient", "Calls authentication and account endpoints.")
-        Component(authInterceptor, "Authentication Interceptor", "Angular HTTP interceptor", "Adds the access token and handles unauthorized responses.")
+    Boundary(infrastructure, "Infrastructure Layer") {
+        Component(authApiService, "AuthApiService", "Angular HttpClient Service", "Executes HTTP calls: postLogin(credentials) and postRegister(accountData).")
+        Component(authInterceptor, "AuthInterceptor", "Angular HttpInterceptorFn", "Implements intercept(req, next) to append Bearer JWT and handle 401 Unauthorized.")
     }
 }
 
-Container(api, "REST API", "Spring Boot / Java", "Identity and access endpoints.")
+Container(api, "REST API", "Spring Boot / Java", "Exposes /api/v1/auth endpoints.")
 
-Rel(loginPage, authStore, "Submits credentials")
-Rel(registerPage, authStore, "Submits registration")
-Rel(authStore, accountModel, "Holds")
-Rel(authStore, authApi, "Invokes")
-Rel(authApi, authInterceptor, "Uses")
-Rel(authInterceptor, api, "Calls", "HTTPS / JSON")
+Rel(loginComponent, authStore, "Calls login(credentials)")
+Rel(registerComponent, authStore, "Calls register(accountData)")
+Rel(authStore, accountModel, "Instantiates and updates state")
+Rel(authStore, authApiService, "Calls postLogin() / postRegister()")
+Rel(authApiService, authInterceptor, "Processed by intercept(req, next)")
+Rel(authInterceptor, api, "Dispatches HTTP POST /api/v1/auth/*", "HTTPS / JSON")
 
 @enduml

@@ -7,24 +7,24 @@ Container(webapp, "Single Page Application", "Angular", "Provides the user inter
 
 Container_Boundary(rental, "Rental Management Bounded Context") {
 
-    Component(interfaces, "Interfaces Layer", "Spring Web", "Exposes endpoints for rental requests and reservations.")
+    Component(interfaces, "RentalController", "Spring Boot @RestController", "Exposes GET, POST, PATCH /api/v1/rentals endpoints.")
 
-    Component(application, "Application Layer", "Spring Boot", "Coordinates rental request, confirmation, cancellation and date update use cases.")
+    Component(application, "RentalApplicationService", "Spring Boot @Service", "Coordinates requestRental(), confirmRental(), cancelRental() and updateDates() use cases.")
 
-    Component(domain, "Domain Layer", "Java", "Contains the Rental aggregate and rental business rules.")
+    Component(domain, "Rental Aggregate", "Java Domain Entity", "Contains Rental aggregate root, RentalPeriod and Money value objects.")
 
-    Component(infrastructure, "Infrastructure Layer", "Spring Data JPA", "Provides persistence for rental and reservation information.")
+    Component(infrastructure, "RentalRepository", "Spring Data JPA @Repository", "Provides persistence via save(), findById(), findByStatus() and findByContractorId().")
 
-    Component(security, "Security Connector", "Spring Security", "Validates authenticated users and permissions.")
+    Component(security, "SecurityConnector", "Spring Security Component", "Validates authenticated users and contractor permissions.")
 }
 
 ContainerDb(database, "Database", "Relational Database", "Stores rental and reservation information.")
 
-Rel(webapp, interfaces, "Uses", "HTTPS / JSON")
-Rel(interfaces, application, "Invokes")
-Rel(application, domain, "Uses")
-Rel(application, infrastructure, "Uses")
-Rel(infrastructure, database, "Reads from and writes to")
-Rel(interfaces, security, "Validates access through")
+Rel(webapp, interfaces, "Calls /api/v1/rentals/*", "HTTPS / JSON")
+Rel(interfaces, application, "Calls requestRental() / confirmRental()")
+Rel(application, domain, "Invokes confirm() / cancel() / calculateTotal()")
+Rel(application, infrastructure, "Calls save() / findById()")
+Rel(infrastructure, database, "Executes SQL queries")
+Rel(interfaces, security, "Validates security context")
 
 @enduml

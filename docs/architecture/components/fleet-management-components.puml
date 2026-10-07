@@ -7,24 +7,24 @@ Container(webapp, "Single Page Application", "Angular", "Provides the user inter
 
 Container_Boundary(fleet, "Fleet Management Bounded Context") {
 
-    Component(interfaces, "Interfaces Layer", "Spring Web", "Exposes endpoints related to machinery management.")
+    Component(interfaces, "MachineryController", "Spring Boot @RestController", "Exposes GET, POST, PUT /api/v1/machinery endpoints.")
 
-    Component(application, "Application Layer", "Spring Boot", "Coordinates use cases for machinery registration, updates and availability.")
+    Component(application, "FleetApplicationService", "Spring Boot @Service", "Coordinates registerMachinery(), updateMachinery() and checkAvailability() use cases.")
 
-    Component(domain, "Domain Layer", "Java", "Contains the Machinery aggregate and fleet business rules.")
+    Component(domain, "Machinery Aggregate", "Java Domain Entity", "Contains Machinery aggregate root, MachineryLocation and Money value objects.")
 
-    Component(infrastructure, "Infrastructure Layer", "Spring Data JPA", "Provides persistence and external technical services.")
+    Component(infrastructure, "MachineryRepository", "Spring Data JPA @Repository", "Provides persistence via save(), findById(), findByStatus() and findAll().")
 
-    Component(security, "Security Connector", "Spring Security", "Validates authenticated users and access permissions.")
+    Component(security, "SecurityConnector", "Spring Security Component", "Validates authenticated users and administrative roles.")
 }
 
 ContainerDb(database, "Database", "Relational Database", "Stores machinery and fleet information.")
 
-Rel(webapp, interfaces, "Uses", "HTTPS / JSON")
-Rel(interfaces, application, "Invokes")
-Rel(application, domain, "Uses")
-Rel(application, infrastructure, "Uses")
-Rel(infrastructure, database, "Reads from and writes to")
-Rel(interfaces, security, "Validates access through")
+Rel(webapp, interfaces, "Calls /api/v1/machinery/*", "HTTPS / JSON")
+Rel(interfaces, application, "Calls registerMachinery() / updateMachinery()")
+Rel(application, domain, "Invokes updateStatus() / updateLocation()")
+Rel(application, infrastructure, "Calls save() / findById()")
+Rel(infrastructure, database, "Executes SQL queries")
+Rel(interfaces, security, "Validates security context")
 
 @enduml

@@ -4,27 +4,27 @@
 title MaquiControl - Maintenance Management Frontend Component Diagram (DDD Layers)
 
 Container_Boundary(maintenance, "Maintenance Management Bounded Context [Angular]") {
-    Boundary(presentation, "Presentation") {
-        Component(schedulePage, "Maintenance Schedule", "Angular component", "Displays pending and scheduled maintenance.")
-        Component(breakdownForm, "Breakdown Report Form", "Angular component", "Captures machinery breakdown information.")
+    Boundary(presentation, "Presentation Layer") {
+        Component(maintenanceScheduleComponent, "MaintenanceScheduleComponent", "Angular Component", "Renders maintenance calendar and calls maintenanceStore.loadSchedule() and scheduleMaintenance(data).")
+        Component(breakdownReportComponent, "BreakdownReportComponent", "Angular Component", "Captures incident form data and calls maintenanceStore.reportBreakdown(breakdownData).")
     }
-    Boundary(application, "Application") {
-        Component(maintenanceStore, "Maintenance Store", "Angular signals", "Coordinates scheduling, completion and breakdown reporting.")
+    Boundary(application, "Application Layer") {
+        Component(maintenanceStore, "MaintenanceStore", "Angular Signals Store", "Coordinates maintenance state; exposes schedule(), scheduleMaintenance(), reportBreakdown() and completeMaintenance().")
     }
-    Boundary(domain, "Domain") {
-        Component(maintenanceModel, "Maintenance Model", "TypeScript", "Maintenance, maintenance status and maintenance type.")
+    Boundary(domain, "Domain Layer") {
+        Component(maintenanceModel, "MaintenanceModel", "TypeScript Interface / Class", "Defines maintenance domain model: id, machineryId, scheduledDate, maintenanceType, status and notes.")
     }
-    Boundary(infrastructure, "Infrastructure") {
-        Component(maintenanceApi, "Maintenance API Client", "Angular HttpClient", "Calls maintenance and breakdown endpoints.")
+    Boundary(infrastructure, "Infrastructure Layer") {
+        Component(maintenanceApiService, "MaintenanceApiService", "Angular HttpClient Service", "Executes HTTP calls: getMaintenanceSchedule(), postScheduleMaintenance() and postBreakdownReport().")
     }
 }
 
-Container(api, "REST API", "Spring Boot / Java", "Maintenance management endpoints.")
+Container(api, "REST API", "Spring Boot / Java", "Exposes /api/v1/maintenance endpoints.")
 
-Rel(schedulePage, maintenanceStore, "Loads and updates schedule")
-Rel(breakdownForm, maintenanceStore, "Reports breakdown")
-Rel(maintenanceStore, maintenanceModel, "Builds and holds")
-Rel(maintenanceStore, maintenanceApi, "Invokes")
-Rel(maintenanceApi, api, "Calls", "HTTPS / JSON")
+Rel(maintenanceScheduleComponent, maintenanceStore, "Calls loadSchedule() / scheduleMaintenance(data)")
+Rel(breakdownReportComponent, maintenanceStore, "Calls reportBreakdown(breakdownData)")
+Rel(maintenanceStore, maintenanceModel, "Instantiates and updates state")
+Rel(maintenanceStore, maintenanceApiService, "Calls getMaintenanceSchedule() / postScheduleMaintenance()")
+Rel(maintenanceApiService, api, "Dispatches HTTP GET/POST /api/v1/maintenance/*", "HTTPS / JSON")
 
 @enduml

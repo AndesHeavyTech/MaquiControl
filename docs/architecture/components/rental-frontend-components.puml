@@ -4,27 +4,27 @@
 title MaquiControl - Rental Management Frontend Component Diagram (DDD Layers)
 
 Container_Boundary(rental, "Rental Management Bounded Context [Angular]") {
-    Boundary(presentation, "Presentation") {
-        Component(requestPage, "Rental Request Page", "Angular component", "Captures machinery, period and contractor rental data.")
-        Component(reservationList, "Reservation List", "Angular component", "Displays and manages current reservations.")
+    Boundary(presentation, "Presentation Layer") {
+        Component(rentalRequestComponent, "RentalRequestComponent", "Angular Component", "Renders rental form and calls rentalStore.submitRentalRequest(rentalData).")
+        Component(reservationListComponent, "ReservationListComponent", "Angular Component", "Renders active reservations and calls rentalStore.confirmReservation(id) and cancelReservation(id).")
     }
-    Boundary(application, "Application") {
-        Component(rentalStore, "Rental Store", "Angular signals", "Coordinates rental requests, confirmation and cancellation.")
+    Boundary(application, "Application Layer") {
+        Component(rentalStore, "RentalStore", "Angular Signals Store", "Coordinates rental state; exposes reservations(), submitRentalRequest(), confirmReservation() and cancelReservation().")
     }
-    Boundary(domain, "Domain") {
-        Component(rentalModel, "Rental Model", "TypeScript", "Rental, rental period, rental status and monetary totals.")
+    Boundary(domain, "Domain Layer") {
+        Component(rentalModel, "RentalModel", "TypeScript Interface / Class", "Defines rental domain model: id, machineryId, startDate, endDate, totalCost and rentalStatus.")
     }
-    Boundary(infrastructure, "Infrastructure") {
-        Component(rentalApi, "Rental API Client", "Angular HttpClient", "Calls rental and reservation endpoints.")
+    Boundary(infrastructure, "Infrastructure Layer") {
+        Component(rentalApiService, "RentalApiService", "Angular HttpClient Service", "Executes HTTP calls: postRentalRequest(data), getReservations() and patchReservationStatus(id, status).")
     }
 }
 
-Container(api, "REST API", "Spring Boot / Java", "Rental management endpoints.")
+Container(api, "REST API", "Spring Boot / Java", "Exposes /api/v1/rentals endpoints.")
 
-Rel(requestPage, rentalStore, "Submits rental request")
-Rel(reservationList, rentalStore, "Confirms or cancels reservation")
-Rel(rentalStore, rentalModel, "Builds and holds")
-Rel(rentalStore, rentalApi, "Invokes")
-Rel(rentalApi, api, "Calls", "HTTPS / JSON")
+Rel(rentalRequestComponent, rentalStore, "Calls submitRentalRequest(rentalData)")
+Rel(reservationListComponent, rentalStore, "Calls confirmReservation() / cancelReservation()")
+Rel(rentalStore, rentalModel, "Instantiates and updates state")
+Rel(rentalStore, rentalApiService, "Calls postRentalRequest() / getReservations()")
+Rel(rentalApiService, api, "Dispatches HTTP POST/GET/PATCH /api/v1/rentals/*", "HTTPS / JSON")
 
 @enduml

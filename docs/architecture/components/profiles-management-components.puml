@@ -7,24 +7,24 @@ Container(webapp, "Single Page Application", "Angular", "Provides the user inter
 
 Container_Boundary(profiles, "Profiles Management Bounded Context") {
 
-    Component(interfaces, "Interfaces Layer", "Spring Web", "Exposes endpoints for profile and organization information.")
+    Component(interfaces, "ProfileController", "Spring Boot @RestController", "Exposes GET, PUT /api/v1/profiles and POST /api/v1/profiles/organization endpoints.")
 
-    Component(application, "Application Layer", "Spring Boot", "Coordinates profile creation and update use cases.")
+    Component(application, "ProfileApplicationService", "Spring Boot @Service", "Coordinates viewProfile(), updateProfile() and registerOrganization() use cases.")
 
-    Component(domain, "Domain Layer", "Java", "Contains the Profile aggregate and profile business rules.")
+    Component(domain, "Profile Aggregate", "Java Domain Entity", "Contains Profile aggregate root, ContactInformation and Organization value objects.")
 
-    Component(infrastructure, "Infrastructure Layer", "Spring Data JPA", "Provides persistence for profile and organization information.")
+    Component(infrastructure, "ProfileRepository", "Spring Data JPA @Repository", "Provides persistence via save(), findById(), findByEmail() and existsByUserId().")
 
-    Component(security, "Security Connector", "Spring Security", "Validates authenticated users and permissions.")
+    Component(security, "SecurityConnector", "Spring Security Component", "Validates authenticated user identity.")
 }
 
 ContainerDb(database, "Database", "Relational Database", "Stores profile, contact and organization information.")
 
-Rel(webapp, interfaces, "Uses", "HTTPS / JSON")
-Rel(interfaces, application, "Invokes")
-Rel(application, domain, "Uses")
-Rel(application, infrastructure, "Uses")
-Rel(infrastructure, database, "Reads from and writes to")
-Rel(interfaces, security, "Validates access through")
+Rel(webapp, interfaces, "Calls /api/v1/profiles/*", "HTTPS / JSON")
+Rel(interfaces, application, "Calls viewProfile() / updateProfile()")
+Rel(application, domain, "Invokes updateContact() / updateOrganization()")
+Rel(application, infrastructure, "Calls save() / findById()")
+Rel(infrastructure, database, "Executes SQL queries")
+Rel(interfaces, security, "Validates security context")
 
 @enduml

@@ -4,27 +4,27 @@
 title MaquiControl - Fleet Management Frontend Component Diagram (DDD Layers)
 
 Container_Boundary(fleet, "Fleet Management Bounded Context [Angular]") {
-    Boundary(presentation, "Presentation") {
-        Component(catalogPage, "Machinery Catalog", "Angular component", "Lists and filters available machinery.")
-        Component(machineryForm, "Machinery Form", "Angular component", "Registers and updates machinery information.")
+    Boundary(presentation, "Presentation Layer") {
+        Component(machineryCatalogComponent, "MachineryCatalogComponent", "Angular Component", "Renders machinery catalog and calls fleetStore.loadCatalog() and filterCatalog(filter).")
+        Component(machineryFormComponent, "MachineryFormComponent", "Angular Component", "Captures machinery form data and calls fleetStore.saveMachinery(machineryData).")
     }
-    Boundary(application, "Application") {
-        Component(fleetStore, "Fleet Store", "Angular signals", "Coordinates inventory, availability and machinery management use cases.")
+    Boundary(application, "Application Layer") {
+        Component(fleetStore, "FleetStore", "Angular Signals Store", "Coordinates fleet state; exposes catalog(), saveMachinery() and updateMachineryStatus() signals.")
     }
-    Boundary(domain, "Domain") {
-        Component(fleetModel, "Fleet Model", "TypeScript", "Machinery, machinery status and machinery location.")
+    Boundary(domain, "Domain Layer") {
+        Component(machineryModel, "MachineryModel", "TypeScript Interface / Class", "Defines machinery domain model: id, name, category, hourlyRate, status and location.")
     }
-    Boundary(infrastructure, "Infrastructure") {
-        Component(fleetApi, "Fleet API Client", "Angular HttpClient", "Calls machinery inventory and availability endpoints.")
+    Boundary(infrastructure, "Infrastructure Layer") {
+        Component(fleetApiService, "FleetApiService", "Angular HttpClient Service", "Executes HTTP calls: getMachineryList(), postMachinery() and putMachinery().")
     }
 }
 
-Container(api, "REST API", "Spring Boot / Java", "Fleet management endpoints.")
+Container(api, "REST API", "Spring Boot / Java", "Exposes /api/v1/machinery endpoints.")
 
-Rel(catalogPage, fleetStore, "Loads and filters inventory")
-Rel(machineryForm, fleetStore, "Registers and updates machinery")
-Rel(fleetStore, fleetModel, "Builds and holds")
-Rel(fleetStore, fleetApi, "Invokes")
-Rel(fleetApi, api, "Calls", "HTTPS / JSON")
+Rel(machineryCatalogComponent, fleetStore, "Calls loadCatalog() / filterCatalog(filter)")
+Rel(machineryFormComponent, fleetStore, "Calls saveMachinery(machineryData)")
+Rel(fleetStore, machineryModel, "Instantiates and updates state")
+Rel(fleetStore, fleetApiService, "Calls getMachineryList() / postMachinery()")
+Rel(fleetApiService, api, "Dispatches HTTP GET/POST/PUT /api/v1/machinery/*", "HTTPS / JSON")
 
 @enduml

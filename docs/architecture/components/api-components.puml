@@ -7,29 +7,29 @@ Container(webapp, "Single Page Application", "Angular", "Provides the user inter
 
 Container_Boundary(api, "REST API") {
 
-    Component(iam, "Identity & Access Management Bounded Context", "Spring Boot", "Handles authentication, authorization, user accounts and roles.")
+    Component(iam, "Identity & Access Management Bounded Context", "Spring Boot", "Handles authentication, authorization, user accounts and roles via /api/v1/auth.")
 
-    Component(profiles, "Profiles Management Bounded Context", "Spring Boot", "Manages user profile, contact and organization information.")
+    Component(profiles, "Profiles Management Bounded Context", "Spring Boot", "Manages user profile, contact and organization information via /api/v1/profiles.")
 
-    Component(fleet, "Fleet Management Bounded Context", "Spring Boot", "Manages machinery inventory, status and availability.")
+    Component(fleet, "Fleet Management Bounded Context", "Spring Boot", "Manages machinery inventory, status and availability via /api/v1/machinery.")
 
-    Component(rental, "Rental Management Bounded Context", "Spring Boot", "Manages rental requests, reservations, confirmations and cancellations.")
+    Component(rental, "Rental Management Bounded Context", "Spring Boot", "Manages rental requests, reservations, confirmations and cancellations via /api/v1/rentals.")
 
-    Component(maintenance, "Maintenance Management Bounded Context", "Spring Boot", "Manages maintenance scheduling, history and breakdown reports.")
+    Component(maintenance, "Maintenance Management Bounded Context", "Spring Boot", "Manages maintenance scheduling, history and breakdown reports via /api/v1/maintenance.")
 
-    Component(operations, "Operations Management Bounded Context", "Spring Boot", "Manages service execution, worked hours and operational tracking.")
+    Component(operations, "Operations Management Bounded Context", "Spring Boot", "Manages service execution, worked hours and operational tracking via /api/v1/operations.")
 
-    Component(shared, "Shared Bounded Context", "Spring Boot", "Provides common domain and application elements shared across bounded contexts.")
+    Component(shared, "Shared Kernel Bounded Context", "Spring Boot", "Provides common domain and application elements shared across bounded contexts.")
 }
 
 ContainerDb(database, "Database", "Relational Database", "Stores information required by the MaquiControl platform.")
 
-Rel(webapp, iam, "Uses")
-Rel(webapp, profiles, "Uses")
-Rel(webapp, fleet, "Uses")
-Rel(webapp, rental, "Uses")
-Rel(webapp, maintenance, "Uses")
-Rel(webapp, operations, "Uses")
+Rel(webapp, iam, "Dispatches /api/v1/auth/*")
+Rel(webapp, profiles, "Dispatches /api/v1/profiles/*")
+Rel(webapp, fleet, "Dispatches /api/v1/machinery/*")
+Rel(webapp, rental, "Dispatches /api/v1/rentals/*")
+Rel(webapp, maintenance, "Dispatches /api/v1/maintenance/*")
+Rel(webapp, operations, "Dispatches /api/v1/operations/*")
 
 Rel(iam, database, "Reads from and writes to")
 Rel(profiles, database, "Reads from and writes to")
