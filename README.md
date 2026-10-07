@@ -2404,6 +2404,14 @@ Durante el Sprint 2 se presenta la documentación de los servicios RESTful imple
 
 Durante el Sprint 2 se presenta la evidencia correspondiente al despliegue del software desarrollado. Las capturas permiten verificar la configuración del entorno de ejecución, el despliegue de los productos y la disponibilidad de los servicios implementados. Estas evidencias permiten demostrar que el incremento desarrollado puede ejecutarse en el entorno definido para el proyecto.
 
+
+## 5.2.2.8. Team Collaboration Insights during Sprint
+
+Durante el Sprint 2, el equipo mantuvo un flujo de trabajo colaborativo basado en Git y GitHub, utilizando la rama develop para la integración de los cambios y commits descriptivos para mantener la trazabilidad de las actividades realizadas. La planificación, definición de responsables y elaboración del Sprint Backlog fueron registradas como parte de la documentación del Sprint.
+
+La colaboración también se evidencia mediante los commits realizados por los integrantes, la organización de las tareas y la integración de los cambios desarrollados durante el Sprint.
+
+
 ## 5.3. Validation Interviews
 
 ## 5.4. Video About-the-Product
