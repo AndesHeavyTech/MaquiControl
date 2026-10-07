@@ -2194,6 +2194,29 @@ Las cantidades representan actividad registrada en los repositorios y no constit
 
 ![Project Report Collaboration Additional Commits](assets/project-report-collaboration-av1-commits-2.png)
 
+## 5.2.2. Sprint2
+
+El Sprint 2 estuvo orientado a continuar la implementación del producto MaquiControl mediante el desarrollo de los componentes principales de la solución web. Tomando como base el trabajo realizado durante el Sprint 1, el objetivo fue avanzar desde la Landing Page hacia la implementación de los servicios backend y la aplicación web frontend.
+
+Durante este Sprint se priorizó la construcción de la RESTful API desarrollada con Java y Spring Boot, así como el desarrollo inicial de la Single Page Application mediante Angular. Estas actividades permiten transformar los artefactos de arquitectura, diseño de clases y diseño de base de datos definidos previamente en componentes funcionales del producto.
+
+
+| Campo | Detalle |
+|---|---|
+| Sprint | Sprint 2 |
+| Fecha de inicio | 01/10/2026 |
+| Fecha de finalización | 07/10/2026 |
+| Duración | 6 dias |
+| Objetivo | Implementar los primeros servicios RESTful y avanzar en la construcción de la Single Page Application de MaquiControl. |
+| User Stories consideradas | [COMPLETAR CON LOS ID DE LAS USER STORIES DEL PRODUCT BACKLOG] |
+| Productos incluidos | RESTful Web Services y primera versión de la Frontend Web Application. |
+| Tecnologías principales | Java 21, Spring Boot 3, Spring Data JPA, PostgreSQL, Angular y TypeScript. |
+| Resultado esperado | Contar con una primera versión funcional de los servicios backend y una interfaz frontend preparada para consumir la API REST. |
+
+El Sprint contempló la implementación progresiva de la arquitectura backend utilizando Java  y Spring Boot , siguiendo una arquitectura hexagonal guiada por Domain-Driven Design (DDD). Asimismo, se consideró PostgreSQL como sistema gestor de base de datos y Angular como tecnología principal para la aplicación web frontend.
+
+
+
 ## 5.3. Validation Interviews
 
 ## 5.4. Video About-the-Product
