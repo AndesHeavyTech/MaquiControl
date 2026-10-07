@@ -2229,7 +2229,26 @@ La siguiente matriz identifica a los líderes y colaboradores de los principales
 
 La distribución anterior mantiene la participación de los cinco integrantes del equipo y organiza el trabajo alrededor de los nuevos productos digitales definidos para esta etapa del proyecto.
 
+## 5.2.2.3. Sprint Backlog 2
 
+El Sprint Backlog 2 se estructuró considerando las actividades necesarias para implementar la RESTful API y la Frontend Web Application de MaquiControl. Las estimaciones corresponden a una planificación de trabajo basada en la complejidad de las tareas.
+
+| Sprint | Story ID | Story Title | Task ID | Task Title | Task Description | Estimation (Hours) | Assigned To | Status |
+|---|---|---|---|---|---|---:|---|---|
+| Sprint 2 | [US-ID] | [Historia de usuario] | S2-T01 | Configurar proyecto Backend | Crear y configurar el proyecto Spring Boot utilizando Java 21 y Maven. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | [US-ID] | [Historia de usuario] | S2-T02 | Implementar arquitectura Backend | Organizar el Backend mediante arquitectura hexagonal y principios de DDD. | 6 | Carlos Cespedes | Done |
+| Sprint 2 | [US-ID] | [Historia de usuario] | S2-T03 | Implementar modelo de dominio | Definir entidades, objetos y componentes correspondientes al dominio de MaquiControl. | 6 | Carlos Cespedes | Done |
+| Sprint 2 | [US-ID] | [Historia de usuario] | S2-T04 | Configurar persistencia | Configurar PostgreSQL y los componentes necesarios para la persistencia de información. | 5 | Mathias Castillo | Done |
+| Sprint 2 | [US-ID] | [Historia de usuario] | S2-T05 | Implementar servicios RESTful | Desarrollar los endpoints necesarios para exponer la información del sistema mediante HTTP. | 8 | Carlos Cespedes | Done |
+| Sprint 2 | [US-ID] | [Historia de usuario] | S2-T06 | Documentar API | Configurar SpringDoc OpenAPI y Swagger UI para documentar los servicios implementados. | 4 | Nicolas Tantalean | Done |
+| Sprint 2 | [US-ID] | [Historia de usuario] | S2-T07 | Configurar Frontend Angular | Crear y configurar la aplicación SPA utilizando Angular y TypeScript. | 5 | Angiela Fuentes | Done |
+| Sprint 2 | [US-ID] | [Historia de usuario] | S2-T08 | Implementar componentes Frontend | Desarrollar las vistas y componentes principales de la aplicación web. | 8 | Angiela Fuentes | Done |
+| Sprint 2 | [US-ID] | [Historia de usuario] | S2-T09 | Implementar consumo de API | Crear los servicios HTTP necesarios para consumir el Backend API desde Angular. | 6 | Angiela Fuentes | Done |
+| Sprint 2 | [US-ID] | [Historia de usuario] | S2-T10 | Integrar Frontend y Backend | Establecer la comunicación entre la SPA Angular y la RESTful API. | 5 | Equipo AndesHeavyTech | Done |
+| Sprint 2 | [US-ID] | [Historia de usuario] | S2-T11 | Ejecutar pruebas | Validar el funcionamiento de los endpoints y de la aplicación web. | 5 | Nicolas Tantalean | Done |
+| Sprint 2 | — | Despliegue | S2-T12 | Preparar despliegue | Configurar los componentes necesarios para desplegar Backend, Frontend y base de datos. | 5 | Mathias Castillo | Done |
+
+Durante el Sprint se utilizaron las herramientas definidas para el entorno de desarrollo del proyecto, incluyendo GitHub para el control de versiones, IntelliJ IDEA para el desarrollo del Backend, Visual Studio Code para el Frontend y PostgreSQL para la persistencia de información.
 ## 5.3. Validation Interviews
 
 ## 5.4. Video About-the-Product
