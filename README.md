@@ -2363,6 +2363,36 @@ El Sprint Backlog 2 se estructuró considerando las actividades necesarias para 
 | Sprint 2 | — | Despliegue | S2-T12 | Preparar despliegue | Configurar los componentes necesarios para desplegar Backend, Frontend y base de datos. | 5 | Mathias Castillo | Done |
 
 Durante el Sprint se utilizaron las herramientas definidas para el entorno de desarrollo del proyecto, incluyendo GitHub para el control de versiones, IntelliJ IDEA para el desarrollo del Backend, Visual Studio Code para el Frontend y PostgreSQL para la persistencia de información.
+
+## 5.2.2.4. Development Evidence for Sprint Review
+
+La siguiente tabla presenta las principales evidencias de desarrollo asociadas con la implementación de los componentes correspondientes al Sprint 2.
+
+| Repository | Branch | Commit ID | Commit Message | Commit Message Body | Committed on |
+|---|---|---|---|---|---|
+| AndesHeavyTech/maquicontrol-backend | `develop` | `[COMPLETAR]` | `[COMPLETAR]` |  No se registró body adicional. | `[COMPLETAR]` |
+| AndesHeavyTech/maquicontrol-backend | `develop` | `[COMPLETAR]` | `[COMPLETAR]` |  No se registró body adicional. | `[COMPLETAR]` |
+| AndesHeavyTech/maquicontrol-backend | `develop` | `[COMPLETAR]` | `[COMPLETAR]` |  No se registró body adicional. | `[COMPLETAR]` |
+| AndesHeavyTech/maquicontrol-frontend | `develop` | `[COMPLETAR]` | `[COMPLETAR]` | No se registró body adicional. | `[COMPLETAR]` |
+| AndesHeavyTech/maquicontrol-frontend | `develop` | `[COMPLETAR]` | `[COMPLETAR]` | No se registró body adicional. | `[COMPLETAR]` |
+| AndesHeavyTech/maquicontrol-frontend | `develop` | `[COMPLETAR]` | `[COMPLETAR]` | No se registró body adicional. | `[COMPLETAR]` |
+
+Las evidencias de desarrollo deben mostrar la evolución del código fuente del Backend API y del Frontend Web Application.
+
+**Backend API**
+
+El Backend se desarrolla utilizando Java 21 y Spring Boot 3, siguiendo una arquitectura hexagonal guiada por DDD. La solución contempla PostgreSQL como base de datos y servicios RESTful para la comunicación con otros componentes.
+
+![Sprint 2 Backend Development Evidence](assets/sprint-2-backend-development.png)
+
+**Frontend Web Application**
+
+La aplicación frontend se desarrolla como una Single Page Application utilizando Angular y TypeScript. Esta aplicación consume los servicios expuestos por el Backend API.
+
+![Sprint 2 Frontend Development Evidence](assets/sprint-2-frontend-development.png)
+
+
+
 ## 5.3. Validation Interviews
 
 ## 5.4. Video About-the-Product
