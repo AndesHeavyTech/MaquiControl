@@ -2215,6 +2215,19 @@ Durante este Sprint se priorizó la construcción de la RESTful API desarrollada
 
 El Sprint contempló la implementación progresiva de la arquitectura backend utilizando Java  y Spring Boot , siguiendo una arquitectura hexagonal guiada por Domain-Driven Design (DDD). Asimismo, se consideró PostgreSQL como sistema gestor de base de datos y Angular como tecnología principal para la aplicación web frontend.
 
+## 5.2.2.2. Aspect Leaders and Collaborators
+
+La siguiente matriz identifica a los líderes y colaboradores de los principales aspectos trabajados durante el Sprint 2. Se utiliza `L` para líder y `C` para colaborador.
+
+| Team Member | GitHub Username / Git Author | Backend API | Frontend SPA | Architecture & Database | Testing | SCM & Deployment |
+|---|---|:---:|:---:|:---:|:---:|:---:|
+| Cespedes Lezcano, Carlos Gabriel | `Leikop` | L | C | L | C | C |
+| Fuentes Alvarez, Angiela Stephany | `angielafuentes` | C | L | C | C | C |
+| Tantalean Granda, Nicolas | `NicolasTantalean` | C | C | C | L | C |
+| Castillo Guevara, Mathias Alejandro | `mathias9939` | C | C | L | C | L |
+| Gutiérrez Lizarbe, Wilmer Sebastián | `WILMER SEBASTIAN` | C | C | C | C | C |
+
+La distribución anterior mantiene la participación de los cinco integrantes del equipo y organiza el trabajo alrededor de los nuevos productos digitales definidos para esta etapa del proyecto.
 
 
 ## 5.3. Validation Interviews
