@@ -2391,6 +2391,14 @@ La aplicación frontend se desarrolla como una Single Page Application utilizand
 
 ![Sprint 2 Frontend Development Evidence](assets/sprint-2-frontend-development.png)
 
+## 5.2.2.5. Execution Evidence for Sprint Review
+
+Durante el Sprint 2 se presenta la evidencia de ejecución del incremento funcional desarrollado por el equipo. Las capturas muestran el producto en funcionamiento y permiten verificar los principales escenarios implementados durante el Sprint, así como la correcta interacción con las funcionalidades desarrolladas.
+
+
+## 5.2.2.6. Services Documentation Evidence for Sprint Review
+
+
 
 
 ## 5.3. Validation Interviews
