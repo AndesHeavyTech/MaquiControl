@@ -2322,7 +2322,7 @@ Durante este Sprint se priorizó la construcción de la RESTful API desarrollada
 | Fecha de finalización | 07/10/2026 |
 | Duración | 6 dias |
 | Objetivo | Implementar los primeros servicios RESTful y avanzar en la construcción de la Single Page Application de MaquiControl. |
-| User Stories consideradas | [COMPLETAR CON LOS ID DE LAS USER STORIES DEL PRODUCT BACKLOG] |
+| User Stories consideradas | US-001, US-002, US-003, US-004, US-005, US-006, US-007, US-008, US-009, US-010, US-011, US-016, US-017, US-019, US-026, US-027, US-029, US-030, US-032 y US-034. |
 | Productos incluidos | RESTful Web Services y primera versión de la Frontend Web Application. |
 | Tecnologías principales | Java 21, Spring Boot 3, Spring Data JPA, PostgreSQL, Angular y TypeScript. |
 | Resultado esperado | Contar con una primera versión funcional de los servicios backend y una interfaz frontend preparada para consumir la API REST. |
