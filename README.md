@@ -1395,137 +1395,251 @@ Este Bounded Context concentra el cálculo del monto de alquiler, la emisión de
 
 ### 4.6.2. Software Architecture Context Diagram
 
-El Software Architecture Context Diagram presenta a MaquiControl como el sistema principal y muestra su relación con los principales tipos de usuario y sistemas externos identificados en el proyecto.
+El Software Architecture Context Diagram presenta a MaquiControl como el sistema central de la solución y define su frontera respecto a los actores humanos y a los sistemas externos que interactúan con la plataforma.
 
-El Fleet Administrator utiliza MaquiControl para gestionar la maquinaria, reservas, mantenimiento y operaciones asociadas al servicio. Por otro lado, el Contractor o Site Manager utiliza la plataforma para consultar maquinaria disponible, solicitar alquileres y realizar seguimiento de los servicios contratados.
+- **Fleet Administrator**: Utiliza MaquiControl para administrar el inventario de maquinaria pesada, programar y registrar tareas de mantenimiento preventivo y correctivo, evaluar solicitudes de alquiler y supervisar las operaciones en campo.
+- **Contractor / Site Manager**: Utiliza la plataforma para consultar el catálogo de maquinaria disponible por categoría y ubicación, enviar solicitudes de alquiler, realizar seguimiento a sus reservas activas y verificar la ejecución de los servicios contratados.
+- **SUNAT**: Sistema gubernamental tributario con el cual MaquiControl se comunica mediante HTTPS para la emisión, validación y control de comprobantes de pago electrónicos generados en la facturación de servicios.
+- **Payment Provider**: Plataforma externa encargada del procesamiento seguro de cobros recurrentes y transacciones electrónicas asociadas a los planes de suscripción de las empresas cliente.
 
-Además, MaquiControl se comunica con SUNAT para validar información tributaria y con un proveedor de pagos para procesar las transacciones asociadas a los alquileres. Este nivel del modelo C4 permite visualizar el alcance general de la solución y sus dependencias externas sin mostrar detalles internos de implementación.
+Este diagrama de nivel 1 del modelo C4 permite dimensionar el alcance funcional del ecosistema, estableciendo con claridad las fronteras del sistema sin profundizar en decisiones internas de tecnología o implementación.
 
 ![MaquiControl Software Architecture Context Diagram](assets/context.png)
 
 ### 4.6.3. Software Architecture Container Diagram
 
-El Software Architecture Container Diagram muestra la estructura de alto nivel de MaquiControl y la distribución de responsabilidades entre los principales elementos de la solución.
+El Software Architecture Container Diagram detalla la arquitectura de alto nivel de MaquiControl, ilustrando las unidades de despliegue independientes (containers), las responsabilidades asignadas a cada una y los protocolos de comunicación utilizados.
 
-La aplicación está compuesta por un Web Application Server implementado con Nginx, una Single Page Application desarrollada con Angular, una REST API desarrollada con Spring Boot y Java, y una base de datos relacional encargada de la persistencia de la información. El Web Application Server y la Single Page Application se representan como containers distintos porque el primero publica los archivos compilados y el segundo ejecuta la experiencia de usuario en el navegador.
+La solución se compone de los siguientes containers principales:
+- **Web Application Server (Nginx)**: Actúa como servidor web estático y reverse proxy, responsable de alojar y servir los paquetes compilados (HTML, JavaScript, CSS y assets) de la aplicación Angular hacia los navegadores cliente mediante HTTPS.
+- **Single Page Application (Angular)**: Ejecuta la lógica de presentación e interactividad directamente en el navegador del usuario cliente. Proporciona una interfaz reactiva desarrollada con TypeScript, componentes basados en Angular y Angular Material, y un manejo reactivo de estado.
+- **REST API (Spring Boot / Java)**: Container de backend que concentra la lógica de negocio, reglas de dominio y casos de uso organizados bajo principios de Domain-Driven Design (DDD). Expone servicios web RESTful seguros mediante HTTPS y serialización JSON.
+- **Database (Relational Database)**: Almacena de forma estructurada y persistente las entidades de la plataforma (cuentas de usuario, perfiles, maquinaria, alquileres, órdenes de mantenimiento, partes operativos de servicio, facturas y suscripciones).
 
-Los usuarios acceden al Web Application Server mediante HTTPS; este entrega la Single Page Application al navegador. La Single Page Application consume los servicios proporcionados por la REST API utilizando HTTPS y JSON. A su vez, la API gestiona el acceso a la información persistida mediante Spring Data JPA y se integra con SUNAT y el proveedor de pagos.
-
-Este nivel del modelo C4 permite visualizar las principales decisiones tecnológicas de la solución y la comunicación entre los containers que conforman MaquiControl.
+**Flujo de interacción y comunicaciones:**
+1. Tanto el **Fleet Administrator** como el **Contractor / Site Manager** acceden inicialmente al **Web Application Server** a través de HTTPS para descargar los artefactos estáticos de la aplicación.
+2. Una vez cargada en el navegador web, ambos usuarios interactúan de forma directa y continua con la **Single Page Application**, ejecutando allí sus operaciones cotidianas (búsqueda de flota, gestión de reservas, asignación de mantenimiento y registro de operaciones).
+3. La **Single Page Application** se comunica con la **REST API** mediante peticiones asíncronas HTTPS/JSON para autenticar usuarios y coordinar las transacciones de negocio.
+4. La **REST API** persiste y consulta los datos en la base de datos relacional mediante Spring Data JPA.
+5. Finalmente, la **REST API** gestiona la integración externa con **SUNAT** para la emisión de comprobantes electrónicos y con el **Payment Provider** para la recaudación de suscripciones.
 
 ![MaquiControl Software Architecture Container Diagram](assets/container.png)
 
 ### 4.6.4. Software Architecture Components Diagrams
 
-En esta sección se presentan los Component Diagrams de MaquiControl, los cuales permiten visualizar por separado la descomposición interna de la Single Page Application y de la REST API.
+En esta sección se presentan los diagramas de componentes (Nivel 3 de C4 Model) de MaquiControl, desagregando internamente tanto la **Single Page Application (Frontend)** como la **REST API (Backend)** en sus capas y artefactos de código (componentes UI, almacenes de estado reactivo, modelos de dominio, servicios HTTP, controladores REST, servicios de aplicación y repositorios).
 
 #### Single Page Application Component Diagram
 
-El siguiente diagrama presenta la organización general del frontend de MaquiControl. La Single Page Application contiene componentes correspondientes a Identity & Access, Profiles, Fleet, Rental, Maintenance y Operations, además de un Shared Kernel con elementos reutilizables. Todos los contextos consumen la REST API mediante HTTPS y JSON.
+Presenta la descomposición de alto nivel de la Single Page Application en módulos de funcionalidades (Feature Modules) organizados según los Bounded Contexts del dominio, junto con un núcleo reutilizable (Shared Kernel Module):
+
+- **IamFeatureModule**: Módulo frontend para autenticación, registro y control de sesión de usuarios.
+- **ProfilesFeatureModule**: Módulo frontend para la consulta y edición de perfiles personales y empresariales.
+- **FleetFeatureModule**: Módulo frontend para la visualización del catálogo, registro y actualización de maquinaria.
+- **RentalFeatureModule**: Módulo frontend para la emisión de solicitudes de alquiler y administración de reservas.
+- **MaintenanceFeatureModule**: Módulo frontend para la programación de revisiones técnicas y reporte de incidencias.
+- **OperationsFeatureModule**: Módulo frontend para el control de servicio y registro de partes de horas trabajadas.
+- **SharedKernelModule**: Provee componentes transversales (layout, barra de navegación, notificaciones), modelos comunes y el cliente HTTP base.
+
+Todos los Feature Modules consumen la **REST API** a través de HTTPS y JSON, utilizando sus respectivos endpoints de negocio (`/api/v1/*`).
 
 ![MaquiControl Single Page Application Component Diagram](assets/spa-components.png)
 
 #### Identity & Access Frontend Component Diagram
 
-Este diagrama organiza los componentes frontend de autenticación y control de acceso en las capas Presentation, Application, Domain e Infrastructure.
+Este diagrama descompone el Bounded Context de Identity & Access en el frontend siguiendo la arquitectura por capas de DDD:
+
+- **Presentation Layer**:
+  - `LoginComponent`: Componente Angular que renderiza el formulario de inicio de sesión, valida credenciales capturadas e invoca la función `authStore.login(credentials)`.
+  - `RegisterComponent`: Componente Angular que captura el formulario de registro de nueva cuenta e invoca la función `authStore.register(accountData)`.
+- **Application Layer**:
+  - `AuthStore`: Almacén de estado reactivo (Angular Signals) que centraliza la sesión del usuario y expone funciones y señales como `login()`, `register()`, `logout()` y `currentUser()`.
+- **Domain Layer**:
+  - `AccountModel`: Interfaz y clase TypeScript que modela la entidad de cuenta de usuario con propiedades como `id`, `email`, `roles`, `status` y token de sesión.
+- **Infrastructure Layer**:
+  - `AuthApiService`: Servicio Angular (`HttpClient`) que encapsula las llamadas HTTP hacia los endpoints del backend implementando métodos como `postLogin(credentials)` y `postRegister(accountData)`.
+  - `AuthInterceptor`: Función interceptora (`HttpInterceptorFn`) que ejecuta el método `intercept(req, next)` para inyectar la cabecera `Authorization: Bearer <token>` y controlar respuestas HTTP 401 Unauthorized.
 
 ![Identity and Access Frontend Component Diagram](assets/identity-access-frontend-components.png)
 
 #### Profiles Frontend Component Diagram
 
-Este diagrama presenta los componentes frontend para consultar y actualizar la información personal, de contacto y de organización del usuario.
+Organiza los componentes del frontend correspondientes a la gestión de identidad de perfil y empresas:
+
+- **Presentation Layer**:
+  - `ProfileViewComponent`: Componente Angular que presenta la información del usuario y permite su actualización mediante `profileStore.loadProfile()` y `profileStore.updateProfile(data)`.
+  - `OrganizationFormComponent`: Componente Angular que captura la información corporativa de la empresa contratista o administradora e invoca `profileStore.setOrganization(orgData)`.
+- **Application Layer**:
+  - `ProfileStore`: Gestiona el estado reactivo del perfil mediante señales de Angular, coordinando operaciones a través de `fetchProfile()`, `updateProfile()` y `setOrganization()`.
+- **Domain Layer**:
+  - `ProfileModel`: Modela la estructura TypeScript del perfil, incluyendo `id`, `fullName`, `email`, `phone` y los datos asociados a la organización.
+- **Infrastructure Layer**:
+  - `ProfilesApiService`: Servicio de comunicación HTTP que consume los endpoints `/api/v1/profiles/*` implementando métodos como `getProfile(id)`, `putProfile(data)` y `postOrganization(data)`.
 
 ![Profiles Frontend Component Diagram](assets/profiles-frontend-components.png)
 
 #### Fleet Frontend Component Diagram
 
-Este diagrama muestra los componentes frontend destinados al inventario, registro, detalle, actualización y disponibilidad de maquinaria.
+Estructura los componentes de la interfaz dedicados al inventario de maquinaria y disponibilidad de flota:
+
+- **Presentation Layer**:
+  - `MachineryCatalogComponent`: Renderiza el listado y filtros de maquinaria disponible, invocando `fleetStore.loadCatalog()` y `fleetStore.filterCatalog(filter)`.
+  - `MachineryFormComponent`: Formulario de alta y edición de maquinaria que invoca la función `fleetStore.saveMachinery(machineryData)`.
+- **Application Layer**:
+  - `FleetStore`: Administra la reactividad del catálogo y estado de las máquinas mediante las funciones `loadCatalog()`, `saveMachinery()` y `updateMachineryStatus()`.
+- **Domain Layer**:
+  - `MachineryModel`: Entidad TypeScript que encapsula los atributos de la máquina (`id`, `name`, `category`, `hourlyRate`, `status`, `location`).
+- **Infrastructure Layer**:
+  - `FleetApiService`: Servicio Angular que despacha peticiones HTTP hacia `/api/v1/machinery/*` a través de `getMachineryList()`, `postMachinery()` y `putMachinery()`.
 
 ![Fleet Frontend Component Diagram](assets/fleet-frontend-components.png)
 
 #### Rental Frontend Component Diagram
 
-Este diagrama muestra los componentes frontend que permiten buscar maquinaria, solicitar alquileres y consultar o gestionar las reservas.
+Representa los componentes frontend encargados de las solicitudes de alquiler y reservas:
+
+- **Presentation Layer**:
+  - `RentalRequestComponent`: Interfaz para especificar fechas, maquinaria y condiciones de alquiler, invocando `rentalStore.submitRentalRequest(rentalData)`.
+  - `ReservationListComponent`: Componente que visualiza reservas activas y permite su confirmación o cancelación mediante `rentalStore.confirmReservation(id)` y `rentalStore.cancelReservation(id)`.
+- **Application Layer**:
+  - `RentalStore`: Coordina el estado de solicitudes y reservas mediante señales y métodos como `submitRentalRequest()`, `confirmReservation()` y `cancelReservation()`.
+- **Domain Layer**:
+  - `RentalModel`: Modelo de datos en TypeScript que representa el alquiler (`id`, `machineryId`, `startDate`, `endDate`, `totalCost`, `rentalStatus`).
+- **Infrastructure Layer**:
+  - `RentalApiService`: Servicio HTTP que ejecuta las peticiones hacia `/api/v1/rentals/*` mediante `postRentalRequest(data)`, `getReservations()` y `patchReservationStatus(id, status)`.
 
 ![Rental Frontend Component Diagram](assets/rental-frontend-components.png)
 
 #### Maintenance Frontend Component Diagram
 
-Este diagrama presenta los componentes frontend utilizados para reportar averías, programar mantenimientos y consultar el historial técnico.
+Muestra los componentes frontend orientados a la programación y control técnico de la maquinaria:
+
+- **Presentation Layer**:
+  - `MaintenanceScheduleComponent`: Muestra el cronograma de revisiones preventivas e invoca `maintenanceStore.loadSchedule()` y `maintenanceStore.scheduleMaintenance(data)`.
+  - `BreakdownReportComponent`: Formulario de reporte de averías mecánicas que invoca `maintenanceStore.reportBreakdown(breakdownData)`.
+- **Application Layer**:
+  - `MaintenanceStore`: Almacén reactivo que gestiona el estado de mantenimiento mediante `scheduleMaintenance()`, `reportBreakdown()` y `completeMaintenance()`.
+- **Domain Layer**:
+  - `MaintenanceModel`: Define la estructura técnica del mantenimiento (`id`, `machineryId`, `scheduledDate`, `maintenanceType`, `status`, `notes`).
+- **Infrastructure Layer**:
+  - `MaintenanceApiService`: Servicio HTTP que interactúa con `/api/v1/maintenance/*` a través de los métodos `getMaintenanceSchedule()`, `postScheduleMaintenance()` y `postBreakdownReport()`.
 
 ![Maintenance Frontend Component Diagram](assets/maintenance-frontend-components.png)
 
 #### Operations Frontend Component Diagram
 
-Este diagrama presenta los componentes frontend para iniciar servicios, registrar horas trabajadas y realizar el seguimiento operativo.
+Presenta los componentes frontend para la ejecución operativa en obra y el control de horas:
+
+- **Presentation Layer**:
+  - `ServiceOperationComponent`: Muestra el estado operativo de los servicios activos e invoca `operationsStore.loadOperation()` y `operationsStore.completeOperation(id)`.
+  - `WorkedHoursFormComponent`: Formulario de registro diario de horómetro y partes de trabajo que invoca `operationsStore.submitWorkedHours(hoursData)`.
+- **Application Layer**:
+  - `OperationsStore`: Coordina el ciclo de vida del servicio en campo exponiendo `startOperation()`, `recordHours()` y `completeOperation()`.
+- **Domain Layer**:
+  - `OperationModel`: Representa la entidad operativa (`id`, `rentalId`, `workedHours`, `operatorNotes`, `operationStatus`).
+- **Infrastructure Layer**:
+  - `OperationsApiService`: Realiza llamadas HTTP hacia `/api/v1/operations/*` implementando `getOperationStatus()`, `postWorkedHours()` y `patchOperationStatus()`.
 
 ![Operations Frontend Component Diagram](assets/operations-frontend-components.png)
 
 #### Shared Frontend Component Diagram
 
-Este diagrama presenta los componentes compartidos de presentación, estado de sesión, modelo común y comunicación HTTP utilizados por los demás Bounded Contexts del frontend.
+Detalla los componentes reutilizables compartidos por todos los Bounded Contexts de la aplicación web:
+
+- **Presentation Layer**:
+  - `AppLayoutComponent`: Componente contenedor que orquesta el encabezado, contenedor de rutas `<router-outlet>` y pie de página.
+  - `NavbarComponent`: Barra de navegación sensible al rol que permite cambiar de módulo e invoca `sessionStore.clearSession()` al cerrar sesión.
+  - `NotificationToastComponent`: Componente de retroalimentación visual para mostrar alertas, diálogos de confirmación y errores.
+- **Application Layer**:
+  - `SessionStore`: Almacén global que preserva el estado de la sesión, rol activo y credenciales mediante `currentUser()`, `userRole()` y `clearSession()`.
+- **Domain Layer**:
+  - `SharedDomainModel`: Colección de tipos y Value Objects comunes (`Money`, `DateRange`, `PageResponse`, `EntityId`).
+- **Infrastructure Layer**:
+  - `BaseHttpService`: Servicio base configurable para ejecutar peticiones HTTP estandarizadas (`get()`, `post()`, `put()`, `delete()`).
+  - `AuthInterceptor`: Interceptor HTTP que inyecta automáticamente el token JWT en cada solicitud enviada a la REST API.
 
 ![Shared Frontend Component Diagram](assets/shared-frontend-components.png)
 
 #### REST API Component Diagrams
 
-Los siguientes diagramas muestran la organización general de los principales Bounded Contexts de la REST API identificados durante el proceso de Domain-Driven Design y el detalle interno de cada uno.
-
-La estructura interna sigue una separación entre Interfaces Layer, Application Layer, Domain Layer e Infrastructure Layer, permitiendo mantener separadas las responsabilidades del dominio y los aspectos técnicos de la implementación.
+Los siguientes diagramas detallan la estructura interna de la REST API desarrollada en Spring Boot y Java, siguiendo una arquitectura en capas alineada a los principios de Domain-Driven Design (Interfaces, Application, Domain e Infrastructure).
 
 #### API Application Component Diagram
 
-El siguiente diagrama muestra la organización general de la REST API de MaquiControl y los principales Bounded Contexts que forman parte de la solución: Identity & Access Management, Profiles Management, Fleet Management, Rental Management, Maintenance Management y Operations Management.
-
-También se representan las principales relaciones entre los contextos, la Single Page Application y la base de datos.
+Presenta la visión global de la REST API y la interconexión de sus seis Bounded Contexts principales con la Single Page Application y la base de datos relacional:
+- **Identity & Access Management**: Autenticación, asignación de roles y control de credenciales mediante endpoints `/api/v1/auth/*`.
+- **Profiles Management**: Gestión de datos de perfiles personales y empresas mediante endpoints `/api/v1/profiles/*`.
+- **Fleet Management**: Administración de maquinaria, disponibilidad y tarifas horarias mediante `/api/v1/machinery/*`.
+- **Rental Management**: Gestión integral de solicitudes de alquiler y contratos mediante `/api/v1/rentals/*`.
+- **Maintenance Management**: Programación de mantenimientos y reporte de averías mediante `/api/v1/maintenance/*`.
+- **Operations Management**: Registro de horas operadas y cierre de servicios mediante `/api/v1/operations/*`.
+- **Shared Kernel Bounded Context**: Clases transversales, Value Objects base y utilitarios compartidos.
 
 ![MaquiControl API Application Component Diagram](assets/c4-api-component-diagram.png)
 
 #### Fleet Management Bounded Context Component Diagram
 
-Este diagrama presenta la estructura interna del Fleet Management Bounded Context. La Interfaces Layer expone los servicios relacionados con la gestión de maquinaria, mientras que la Application Layer coordina los casos de uso definidos para este contexto.
-
-La Domain Layer contiene el aggregate Machinery y las reglas de negocio asociadas al inventario, estado y disponibilidad de la maquinaria. Finalmente, la Infrastructure Layer se encarga de la persistencia de la información.
+Detalla la arquitectura interna del Bounded Context de Fleet Management en el backend:
+- `MachineryController`: Controlador REST (`@RestController`) que expone los endpoints GET, POST y PUT bajo la ruta `/api/v1/machinery`.
+- `FleetApplicationService`: Servicio de aplicación (`@Service`) que coordina los casos de uso `registerMachinery()`, `updateMachinery()` y `checkAvailability()`.
+- `Machinery Aggregate`: Entidad agregada del dominio que encapsula las reglas de negocio sobre el estado del equipo, ubicación (`MachineryLocation`) y tarifa (`Money`).
+- `MachineryRepository`: Repositorio Spring Data JPA (`@Repository`) que persiste y consulta datos de maquinaria mediante `save()`, `findById()`, `findByStatus()` y `findAll()`.
+- `SecurityConnector`: Componente de seguridad basado en Spring Security que restringe la modificación de inventario exclusivamente a usuarios con rol administrativo.
 
 ![Fleet Management Component Diagram](assets/c4-fleet-management-component-diagram.png)
 
 #### Rental Management Bounded Context Component Diagram
 
-Este diagrama representa la estructura interna del Rental Management Bounded Context. Este contexto gestiona las solicitudes de alquiler, reservas, confirmaciones, cancelaciones y actualización de fechas.
-
-La Domain Layer contiene el aggregate Rental, mientras que las demás capas permiten exponer, coordinar y persistir las operaciones asociadas al proceso de alquiler.
+Detalla la arquitectura interna del Bounded Context de Rental Management:
+- `RentalController`: Controlador REST (`@RestController`) que publica endpoints GET, POST y PATCH en `/api/v1/rentals`.
+- `RentalApplicationService`: Servicio de aplicación (`@Service`) que orquesta los casos de uso `requestRental()`, `confirmRental()`, `cancelRental()` y `updateDates()`.
+- `Rental Aggregate`: Agregado raíz del dominio que gobierna el ciclo de vida del alquiler, el periodo pactado (`RentalPeriod`), el cálculo de importes (`Money`) y las transiciones de estado.
+- `RentalRepository`: Repositorio Spring Data JPA que implementa métodos de consulta y persistencia como `save()`, `findById()`, `findByStatus()` y `findByContractorId()`.
+- `SecurityConnector`: Valida que las solicitudes sean emitidas por contratistas registrados y autorizados.
 
 ![Rental Management Component Diagram](assets/c4-rental-management-component-diagram.png)
 
 #### Maintenance Management Bounded Context Component Diagram
 
-Este diagrama muestra la estructura interna del Maintenance Management Bounded Context, encargado de la programación de mantenimiento, reporte de averías, actualización de estados y mantenimiento del historial técnico de la maquinaria.
-
-La Domain Layer contiene el aggregate Maintenance y las reglas de negocio relacionadas con estos procesos.
+Detalla la arquitectura interna del Bounded Context de Maintenance Management:
+- `MaintenanceController`: Controlador REST (`@RestController`) con endpoints GET, POST y PUT en `/api/v1/maintenance`.
+- `MaintenanceApplicationService`: Servicio de aplicación (`@Service`) que coordina `scheduleMaintenance()`, `reportBreakdown()` y `completeMaintenance()`.
+- `Maintenance Aggregate`: Agregado del dominio encargado de registrar revisiones técnicas, tipos de mantenimiento (`MaintenanceType`) y bloqueos operativos de maquinaria averiada.
+- `MaintenanceRepository`: Repositorio Spring Data JPA con métodos `save()`, `findById()`, `findByMachineryId()` y `findByStatus()`.
+- `SecurityConnector`: Controla que únicamente administradores de flota y personal técnico autorizado gestionen las órdenes de trabajo.
 
 ![Maintenance Management Component Diagram](assets/c4-maintenance-management-component-diagram.png)
 
 #### Operations Management Bounded Context Component Diagram
 
-Este diagrama presenta la estructura interna del Operations Management Bounded Context. Este contexto administra la ejecución de servicios, el registro y validación de horas trabajadas y el seguimiento operativo.
-
-La Domain Layer contiene el aggregate Service Operation, mientras que las demás capas coordinan la interacción entre la aplicación, el dominio y la persistencia.
+Detalla la arquitectura interna del Bounded Context de Operations Management:
+- `ServiceOperationController`: Controlador REST (`@RestController`) con endpoints GET, POST, PUT y PATCH en `/api/v1/operations`.
+- `OperationsApplicationService`: Servicio de aplicación (`@Service`) que coordina `startService()`, `recordWorkedHours()` y `completeService()`.
+- `ServiceOperation Aggregate`: Agregado que gobierna el parte diario de servicio, validación del horómetro (`WorkedHours`) y cierre operativo.
+- `ServiceOperationRepository`: Repositorio Spring Data JPA que ejecuta operaciones `save()`, `findById()`, `findByRentalId()` y `findByStatus()`.
+- `SecurityConnector`: Valida permisos del operador o supervisor de obra responsable del registro de horas.
 
 ![Operations Management Component Diagram](assets/c4-operations-management-component-diagram.png)
 
 #### Identity & Access Management Bounded Context Component Diagram
 
-Este diagrama representa la estructura interna del Identity & Access Management Bounded Context. Este contexto se encarga de la autenticación, autorización, gestión de cuentas, roles y credenciales de los usuarios de MaquiControl.
-
-La Domain Layer contiene el aggregate User Account y las reglas asociadas al control de identidad y acceso.
+Detalla la arquitectura interna del Bounded Context de Identity & Access Management:
+- `AuthController`: Controlador REST (`@RestController`) que publica los endpoints de autenticación y registro en `/api/v1/auth/login` y `/api/v1/auth/register`.
+- `IdentityAccessService`: Servicio de aplicación (`@Service`) que ejecuta `authenticateUser()`, `registerUser()`, `assignRole()` y `changePassword()`.
+- `UserAccount Aggregate`: Agregado raíz de identidad que encapsula credenciales seguras (`Credential`), asignación de roles (`Role`) y políticas de activación o suspensión de cuentas.
+- `UserAccountRepository`: Repositorio Spring Data JPA que provee métodos de acceso a datos como `save()`, `findById()`, `findByEmail()` y `existsByEmail()`.
+- `SecurityFilterChain`: Cadena de filtros de Spring Security equipada con `JwtTokenFilter` para validar firmas de tokens JWT y autorizar el acceso a rutas protegidas.
 
 ![Identity and Access Management Component Diagram](assets/c4-identity-access-management-component-diagram.png)
 
 #### Profiles Management Bounded Context Component Diagram
 
-Este diagrama muestra la estructura interna del Profiles Management Bounded Context, encargado de gestionar la información del perfil, datos de contacto e información de las organizaciones asociadas a los usuarios.
-
-La Domain Layer contiene el aggregate Profile y sus reglas de negocio correspondientes.
+Detalla la arquitectura interna del Bounded Context de Profiles Management:
+- `ProfileController`: Controlador REST (`@RestController`) que expone los endpoints GET y PUT en `/api/v1/profiles` y POST en `/api/v1/profiles/organization`.
+- `ProfileApplicationService`: Servicio de aplicación (`@Service`) que coordina `viewProfile()`, `updateProfile()` y `registerOrganization()`.
+- `Profile Aggregate`: Agregado del dominio que contiene el perfil de usuario, información de contacto (`ContactInformation`) y pertenencia a empresa u organización (`Organization`).
+- `ProfileRepository`: Repositorio Spring Data JPA con métodos de persistencia `save()`, `findById()`, `findByEmail()` y `existsByUserId()`.
+- `SecurityConnector`: Garantiza que cada usuario consulte y actualice exclusivamente su propia información de perfil o la de su organización autorizada.
 
 ![Profiles Management Component Diagram](assets/c4-profiles-management-component-diagram.png)
 
