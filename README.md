@@ -2400,6 +2400,9 @@ Durante el Sprint 2 se presenta la evidencia de ejecución del incremento funcio
 
 Durante el Sprint 2 se presenta la documentación de los servicios RESTful implementados para MaquiControl. La evidencia permite verificar los endpoints desarrollados, sus métodos HTTP, rutas, parámetros, respuestas y códigos de estado. Asimismo, se utiliza la documentación interactiva mediante OpenAPI/Swagger para facilitar la consulta y validación de los servicios disponibles.
 
+## 5.2.2.7 Software Deployment Evidence for Sprint Review
+
+Durante el Sprint 2 se presenta la evidencia correspondiente al despliegue del software desarrollado. Las capturas permiten verificar la configuración del entorno de ejecución, el despliegue de los productos y la disponibilidad de los servicios implementados. Estas evidencias permiten demostrar que el incremento desarrollado puede ejecutarse en el entorno definido para el proyecto.
 
 ## 5.3. Validation Interviews
 
