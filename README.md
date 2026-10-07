@@ -2345,8 +2345,11 @@ La distribución anterior mantiene la participación de los cinco integrantes de
 
 ## 5.2.2.3. Sprint Backlog 2
 
+## 5.2.2.3. Sprint Backlog 2
+
 El Sprint Backlog 2 se estructuró considerando las actividades necesarias para implementar la RESTful API y la Frontend Web Application de MaquiControl. Las estimaciones corresponden a una planificación de trabajo basada en la complejidad de las tareas.
 
+| Sprint | Story ID | Story Title | Task ID | Task Title | Task Description | Estimation (Hours) | Assigned To | Status |
 |---|---|---|---|---|---|---:|---|---|
 | Sprint 2 | US-001 | Registrar maquinaria | S2-T01 | Configurar proyecto Backend | Crear y configurar el proyecto Spring Boot utilizando Java 21 y Maven. | 4 | Carlos Cespedes | Done |
 | Sprint 2 | US-001, US-002, US-003, US-016, US-017 | Gestión de maquinaria | S2-T02 | Implementar arquitectura Backend | Organizar el Backend mediante arquitectura hexagonal y principios de DDD. | 6 | Carlos Cespedes | Done |
