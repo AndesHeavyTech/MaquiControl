@@ -57,7 +57,7 @@
 
 <br>
 
-### Septiembre 2026
+### Octubre 2026
 
 </div>
 
@@ -217,12 +217,12 @@
 | 0.10 | 19/09/2026 | Carlos Gabriel Cespedes Lezcano | Desarrollo del punto 4.7 Software Object-Oriented Design y del punto 4.8 Database Design, incorporando diagramas de clases y de base de datos para los seis Bounded Contexts de MaquiControl. |
 | 0.11 | 19/09/2026 | Carlos Gabriel Cespedes Lezcano | Desarrollo del punto 5.2.1 Sprint 1, incorporando Sprint Planning, matriz de líderes y colaboradores, Sprint Backlog, evidencias de desarrollo, ejecución y despliegue de la Landing Page, y análisis de colaboración del equipo. |
 | 0.12 | 07/10/2026 | Nicolas Tantalean Granda, Mathias Alejandro Castillo Guevara y Wilmer Sebastián Gutiérrez Lizarbe | Estructura inicial del punto 5.2.2 Sprint 2, diagramas PlantUML de Event Storming y Design-Level, y actualización de las descripciones de componentes y diagramas de arquitectura. |
-| 0.13 | 08/10/2026 | Carlos Gabriel Cespedes Lezcano | Actualización del Capítulo V para TB2: herramientas reales del entorno (Angular 22, Node.js 24, WebStorm, json-server), configuración de despliegue en GitHub Pages, Azure Static Web Apps y Azure App Service, desarrollo del punto 5.2.2 Sprint 2 con las evidencias de la aplicación web, la Fake API y la Landing Page v2.0.0, y corrección de los diagramas de contenedores y componentes para reflejar el código implementado. |
+| 0.13 | 08/10/2026 | Carlos Gabriel Cespedes Lezcano | Actualización del Capítulo V para TB1: herramientas reales del entorno (Angular 22, Node.js 24, WebStorm, json-server), configuración de despliegue en GitHub Pages, Azure Static Web Apps y Azure App Service, desarrollo del punto 5.2.2 Sprint 2 con las evidencias de la aplicación web, la Fake API y la Landing Page v2.0.0, corrección de los diagramas de contenedores y componentes para reflejar el código implementado, actualización de Project Report Collaboration Insights y Student Outcome para TB1, y avance de Conclusiones, Bibliografía y Anexos. |
 
 ## Project Report Collaboration Insights
 
-**Repositorio de la organización:** [AndesHeavyTech](https://github.com/AndesHeavyTech)  
-**Repositorio del informe:** [MaquiControl - develop](https://github.com/AndesHeavyTech/MaquiControl/tree/develop)
+**Repositorio de la organización:** [upc-pre-202620-1asi0729-7750-heavytech](https://github.com/upc-pre-202620-1asi0729-7750-heavytech)  
+**Repositorio del informe:** [maquicontrol-report - develop](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-report/tree/develop)
 
 ### Reporte de colaboración - Avance de la entrega AV1
 
@@ -253,18 +253,43 @@ con corte temporal en el commit `69f392a`, previo a esta actualización
 
 Estas evidencias reflejan la participación de todos los integrantes en la elaboración del informe y mantienen coherencia con las modificaciones documentadas en el Registro de Versiones del Informe.
 
+### Reporte de colaboración - Entrega TB1
+
+Para la entrega TB1 el equipo mantuvo el flujo GitFlow en el repositorio del informe. Cada integrante trabajó sus secciones en ramas `feature` creadas desde `develop` y las integró con Git Flow Helper. En este periodo se corrigieron los artefactos observados en AV1, se incorporaron los Bounded Contexts Category, Subscription y Billing, se elaboraron los diagramas PlantUML de Event Storming y Design-Level, se alinearon los diagramas de contenedores y componentes con el código implementado y se documentó el punto 5.2.2 Sprint 2.
+
+#### Evidencias de commits en `develop`
+
+![Historial de commits de develop - TB1 - Parte 1](assets/project-report-collaboration-tb1-commits.png)
+
+![Historial de commits de develop - TB1 - Parte 2](assets/project-report-collaboration-tb1-commits2.png)
+
+#### Resumen de contribuciones
+
+con corte temporal en el commit `b9f368e`, previo a esta actualización
+
+| Integrante | Commits en el periodo TB1 | Commits acumulados |
+| :--- | :---: | :---: |
+| Carlos Gabriel Cespedes Lezcano | 20 | 43 |
+| Nicolas Tantalean Granda | 12 | 17 |
+| Mathias Alejandro Castillo Guevara | 10 | 15 |
+| Wilmer Sebastián Gutiérrez Lizarbe | 1 | 6 |
+| Angiela Stephany Fuentes Alvarez | 0 | 2 |
+| **Total** | **43** | **83** |
+
+Los commits del periodo TB1 se cuentan desde el commit `69f392a`, corte de la entrega AV1, y no incluyen merge commits. Durante TB1, la participación de Angiela Stephany Fuentes Alvarez se concentró en el repositorio de la Landing Page, donde implementó cambios integrados en la versión v2.0.0, tal como se detalla en el punto 5.2.2.8.
+
 ## Contenido
 
 ## Student Outcome
 
 El curso contribuye al cumplimiento del **ABET - EAC - Student Outcome 3: Capacidad de comunicarse efectivamente con un rango de audiencias**.
 
-El siguiente cuadro presenta las acciones verificables realizadas por los integrantes durante la entrega AV1 y su relación con las dimensiones de comunicación oral y escrita del Student Outcome 3.
+El siguiente cuadro presenta las acciones verificables realizadas por los integrantes durante las entregas AV1 y TB1 y su relación con las dimensiones de comunicación oral y escrita del Student Outcome 3.
 
 | **Criterio específico** | **Acciones realizadas** | **Conclusiones** |
 | :--- | :--- | :--- |
-| **Comunica oralmente con efectividad a diferentes rangos de audiencia.** | **Fuentes Alvarez, Angiela Stephany**<br>**AV1:** Realizó la entrevista a Piero Reaño, representante del segmento de contratistas independientes y responsables de obra. Adaptó las preguntas al contexto del entrevistado para recopilar información sobre disponibilidad, costos, mantenimiento y gestión de maquinaria. El registro, resumen, captura y evidencia audiovisual de la entrevista fueron incorporados en la sección 2.2.2.<br><br>**Tantalean Granda, Nicolas**<br>**AV1:** Evidencia oral pendiente. Sustentará los resultados del análisis competitivo, la investigación de usuarios y la especificación de requerimientos antes del cierre de la entrega.<br><br>**Gutiérrez Lizarbe, Wilmer Sebastián**<br>**AV1:** Realizó la entrevista a Harold Angello, representante del segmento de contratistas y responsables de obra. Adaptó las preguntas al contexto del entrevistado para recopilar información sobre sus necesidades, experiencias y problemas relacionados con el alquiler de maquinaria.<br><br>**Castillo Guevara, Mathias Alejandro**<br>**AV1:** Realizó la entrevista a Renzo Huamán, representante del segmento de contratistas independientes. La información obtenida fue empleada posteriormente en la elaboración de artefactos de Needfinding.<br><br>**Cespedes Lezcano, Carlos Gabriel**<br>**AV1:** Realizó las entrevistas a José Ramírez, Carlos Stephano Mendoza y Andrea López, representantes relacionados con la administración y el alquiler de maquinaria. Recopiló información sobre disponibilidad, tarifas, mantenimiento, coordinación y control operativo. |**Avance AV1:** Las entrevistas permitieron establecer comunicación directa con representantes de ambos segmentos objetivo y adaptar las preguntas al contexto de cada participante. Carlos, Mathias, Wilmer y Angiela realizaron entrevistas y documentaron sus resultados en el informe. Nicolas incorporará su evidencia de comunicación oral mediante la exposición de los resultados del análisis competitivo, la investigación de usuarios y la especificación de requerimientos durante la sustentación de AV1.|
-| **Comunica por escrito con efectividad a diferentes rangos de audiencia.** | **Fuentes Alvarez, Angiela Stephany**<br>**AV1:** Documentó Student Outcome y desarrolló contenido del Capítulo IV: Product Design, incluyendo Style Guidelines, Information Architecture y Landing Page UI Design.<br><br>**Tantalean Granda, Nicolas**<br>**AV1:** Documentó el análisis competitivo, el diseño de entrevistas, User Stories y Product Backlog, organizando los requerimientos identificados para los segmentos objetivo.<br><br>**Gutiérrez Lizarbe, Wilmer Sebastián**<br>**AV1:** Documentó los resultados de la entrevista a Harold Angello y desarrolló artefactos de Needfinding, incluyendo User Persona, User Journey Mapping y Empathy Mapping.<br><br>**Castillo Guevara, Mathias Alejandro**<br>**AV1:** Documentó la entrevista a Renzo Huamán y elaboró artefactos de Needfinding relacionados con User Personas, User Task Matrix, User Journey Mapping y Empathy Mapping.<br><br>**Cespedes Lezcano, Carlos Gabriel**<br>**AV1:** Participó en la estructuración y corrección del informe; documentó entrevistas, Needfinding, Big Picture Event Storming, Ubiquitous Language, Impact Mapping, Web Application UX/UI Design y la arquitectura de software basada en DDD. | **Avance AV1:** Los integrantes han documentado los resultados de investigación, requisitos, decisiones de diseño y arquitectura mediante contenido escrito y artefactos visuales. El uso de una estructura común, lenguaje técnico y control de versiones permite comunicar el avance del proyecto de forma organizada y trazable. |
+| **Comunica oralmente con efectividad a diferentes rangos de audiencia.** | **Fuentes Alvarez, Angiela Stephany**<br>**AV1:** Realizó la entrevista a Piero Reaño, representante del segmento de contratistas independientes y responsables de obra. Adaptó las preguntas al contexto del entrevistado para recopilar información sobre disponibilidad, costos, mantenimiento y gestión de maquinaria. El registro, resumen, captura y evidencia audiovisual de la entrevista fueron incorporados en la sección 2.2.2.<br>**TB1:** Expondrá en el Stage Review la Landing Page v2.0.0 y su integración con la aplicación web desplegada.<br><br>**Tantalean Granda, Nicolas**<br>**AV1:** Evidencia oral pendiente. Sustentará los resultados del análisis competitivo, la investigación de usuarios y la especificación de requerimientos antes del cierre de la entrega.<br>**TB1:** Expondrá en el Stage Review la planificación del Sprint 2, el Sprint Backlog y las User Stories atendidas.<br><br>**Gutiérrez Lizarbe, Wilmer Sebastián**<br>**AV1:** Realizó la entrevista a Harold Angello, representante del segmento de contratistas y responsables de obra. Adaptó las preguntas al contexto del entrevistado para recopilar información sobre sus necesidades, experiencias y problemas relacionados con el alquiler de maquinaria.<br>**TB1:** Expondrá en el Stage Review el Event Storming y los diagramas Design-Level elaborados en PlantUML.<br><br>**Castillo Guevara, Mathias Alejandro**<br>**AV1:** Realizó la entrevista a Renzo Huamán, representante del segmento de contratistas independientes. La información obtenida fue empleada posteriormente en la elaboración de artefactos de Needfinding.<br>**TB1:** Expondrá en el Stage Review la arquitectura de software y los diagramas C4 de contenedores y componentes.<br><br>**Cespedes Lezcano, Carlos Gabriel**<br>**AV1:** Realizó las entrevistas a José Ramírez, Carlos Stephano Mendoza y Andrea López, representantes relacionados con la administración y el alquiler de maquinaria. Recopiló información sobre disponibilidad, tarifas, mantenimiento, coordinación y control operativo.<br>**TB1:** Presentará la demostración en vivo de la aplicación web desplegada en Azure Static Web Apps, la Fake API en Azure App Service y el flujo de suscripción con Mercado Pago en modo sandbox. |**Avance AV1:** Las entrevistas permitieron establecer comunicación directa con representantes de ambos segmentos objetivo y adaptar las preguntas al contexto de cada participante. Carlos, Mathias, Wilmer y Angiela realizaron entrevistas y documentaron sus resultados en el informe. Nicolas incorporará su evidencia de comunicación oral mediante la exposición de los resultados del análisis competitivo, la investigación de usuarios y la especificación de requerimientos durante la sustentación de AV1.<br><br>**Avance TB1:** Para el Stage Review cada integrante expone las secciones y productos que lideró en el Sprint 2. La demostración en vivo de la aplicación web y la Landing Page permite explicar las funcionalidades a una audiencia técnica y no técnica.|
+| **Comunica por escrito con efectividad a diferentes rangos de audiencia.** | **Fuentes Alvarez, Angiela Stephany**<br>**AV1:** Documentó Student Outcome y desarrolló contenido del Capítulo IV: Product Design, incluyendo Style Guidelines, Information Architecture y Landing Page UI Design.<br>**TB1:** Desarrolló cambios de la Landing Page integrados en la versión v2.0.0, incluyendo los enlaces hacia la aplicación web desplegada.<br><br>**Tantalean Granda, Nicolas**<br>**AV1:** Documentó el análisis competitivo, el diseño de entrevistas, User Stories y Product Backlog, organizando los requerimientos identificados para los segmentos objetivo.<br>**TB1:** Estructuró el punto 5.2.2 Sprint 2, incluyendo Sprint Planning, Aspect Leaders and Collaborators y Sprint Backlog.<br><br>**Gutiérrez Lizarbe, Wilmer Sebastián**<br>**AV1:** Documentó los resultados de la entrevista a Harold Angello y desarrolló artefactos de Needfinding, incluyendo User Persona, User Journey Mapping y Empathy Mapping.<br>**TB1:** Elaboró los diagramas PlantUML de Big Picture Event Storming y Design-Level Event Storming.<br><br>**Castillo Guevara, Mathias Alejandro**<br>**AV1:** Documentó la entrevista a Renzo Huamán y elaboró artefactos de Needfinding relacionados con User Personas, User Task Matrix, User Journey Mapping y Empathy Mapping.<br>**TB1:** Actualizó las descripciones de componentes y los diagramas de arquitectura de software del punto 4.6.<br><br>**Cespedes Lezcano, Carlos Gabriel**<br>**AV1:** Participó en la estructuración y corrección del informe; documentó entrevistas, Needfinding, Big Picture Event Storming, Ubiquitous Language, Impact Mapping, Web Application UX/UI Design y la arquitectura de software basada en DDD.<br>**TB1:** Documentó los Bounded Contexts Category, Subscription y Billing, actualizó el Capítulo V con la configuración real de herramientas y despliegue, completó el punto 5.2.2 Sprint 2 con evidencias de la aplicación web y la Fake API, y alineó los diagramas C4 con el código implementado. | **Avance AV1:** Los integrantes han documentado los resultados de investigación, requisitos, decisiones de diseño y arquitectura mediante contenido escrito y artefactos visuales. El uso de una estructura común, lenguaje técnico y control de versiones permite comunicar el avance del proyecto de forma organizada y trazable.<br><br>**Avance TB1:** El equipo documentó la implementación del Sprint 2, la configuración de despliegue y la arquitectura actualizada. Los diagramas y descripciones reflejan el código implementado, lo que facilita que docentes, usuarios y desarrolladores comprendan el estado real del producto. |
 
 # Capítulo I: Introducción
 
@@ -1823,7 +1848,7 @@ A continuación, se detallan los productos de software seleccionados, organizado
 | **Software Deployment (Cloud Hosting)** | Microsoft Azure App Service | SaaS | Plan F1 (Free) | Hospedaje en Linux (Node 24 LTS, región Central US) de la Fake API y de los endpoints de pago; en los siguientes Sprints alojará la RESTful API en Spring Boot. | [Azure App Service](https://azure.microsoft.com/products/app-service) |
 | **Software Deployment (Cloud Database)** | Neon Serverless PostgreSQL | SaaS | Cloud | Servicio de base de datos PostgreSQL Serverless alojado en la nube para el almacenamiento de datos en entornos de producción y pruebas. | [Neon Console](https://neon.tech/) |
 | **Software Deployment (Frontend Hosting)** | Azure Static Web Apps | SaaS | Plan Free | Hospedaje de la Single Page Application Angular con CDN, HTTPS y despliegue continuo desde la rama `main` mediante GitHub Actions. | [Azure Static Web Apps](https://azure.microsoft.com/products/app-service/static) |
-| **Software Deployment (Landing Hosting)** | GitHub Pages | SaaS | Cloud | Publicación del sitio estático de la Landing Page desde la rama `main` del repositorio `MaquiControl-LandingPage`. | [GitHub Pages](https://pages.github.com/) |
+| **Software Deployment (Landing Hosting)** | GitHub Pages | SaaS | Cloud | Publicación del sitio estático de la Landing Page desde la rama `main` del repositorio `maquicontrol-website`. | [GitHub Pages](https://pages.github.com/) |
 | **Software Integration (Payments)** | Mercado Pago Checkout Pro | SaaS | Sandbox | Pasarela de pagos en modo de prueba para la contratación de los planes de suscripción. El Access Token se configura solo como variable de entorno en Azure. | [Mercado Pago Developers](https://www.mercadopago.com.pe/developers) |
 | **Software Deployment (CI/CD)** | GitHub Actions | SaaS | Cloud | Motor de automatización de flujos de trabajo para ejecutar pruebas unitarias, verificación de sintaxis y disparar el despliegue automático ante confirmaciones. | [GitHub Actions](https://github.com/features/actions) |
 | **Software Documentation (API Specs)** | SpringDoc OpenAPI & Swagger UI | Biblioteca / SaaS | 2.5.x | Generación automática y visualización interactiva de especificaciones OpenAPI 3.0 para la documentación y pruebas de los endpoints de la API REST. | [SpringDoc OpenAPI](https://springdoc.org/) |
@@ -1860,24 +1885,24 @@ Para asegurar que cualquier miembro del equipo de AndesHeavyTech pueda clonar, c
 
 El código fuente de todos los artefactos de software producidos para MaquiControl se administra de manera centralizada en la organización pública de GitHub de AndesHeavyTech:
 
-- **Organización en GitHub:** [https://github.com/AndesHeavyTech](https://github.com/AndesHeavyTech)
+- **Organización en GitHub:** [https://github.com/upc-pre-202620-1asi0729-7750-heavytech](https://github.com/upc-pre-202620-1asi0729-7750-heavytech)
 
 Dentro de dicha organización se han estructurado repositorios dedicados e independientes para cada producto de la solución, garantizando un ciclo de vida desacoplado y una trazabilidad estricta:
 
 1. **Repositorio del Landing Page:**
-- **URL:** [https://github.com/AndesHeavyTech/maquicontrol-landing-page](https://github.com/AndesHeavyTech/maquicontrol-landing-page)
+- **URL:** [https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website)
 - **Descripción:** Alberga el código fuente del sitio web público y estático de difusión comercial de MaquiControl (HTML5 semántico, CSS3 adaptable y JavaScript modular), optimizado para SEO, accesibilidad e interfaces responsivas en escritorio y móviles.
 
-2. **Repositorio de Web Services (Backend RESTful API):**
-- **URL:** [https://github.com/AndesHeavyTech/maquicontrol-backend](https://github.com/AndesHeavyTech/maquicontrol-backend)
-- **Descripción:** Contiene el proyecto de backend empresarial desarrollado con Java 21 y Spring Boot 3. Incluye la implementación de los Bounded Contexts según principios de Domain-Driven Design (DDD), los controladores REST, la capa de persistencia con Spring Data JPA y la suite completa de pruebas unitarias (con JUnit 5 y Mockito) y pruebas de integración/aceptación.
+2. **Repositorio de Web Services (Fake API):**
+- **URL:** [https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform)
+- **Descripción:** Contiene la Fake API construida con json-server, que expone los endpoints REST bajo el prefijo `/api/v1` consumidos por la aplicación web y la integración de pagos con Mercado Pago en modo sandbox. Se despliega en Azure App Service. El backend definitivo con Java y Spring Boot se implementará en un repositorio propio en los siguientes sprints.
 
 3. **Repositorio de Frontend Web Application:**
-- **URL:** [https://github.com/AndesHeavyTech/maquicontrol-frontend](https://github.com/AndesHeavyTech/maquicontrol-frontend)
+- **URL:** [https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp)
 - **Descripción:** Aloja el código de la Single Page Application (SPA) desarrollada con el framework Angular y TypeScript. Implementa la arquitectura basada en componentes, servicios HTTP para el consumo de la RESTful API, guards de protección de rutas y estilos CSS basados en el Design System del producto.
 
 4. **Repositorio del Informe y Gestión del Proyecto (Project Report):**
-- **URL:** [https://github.com/AndesHeavyTech/MaquiControl](https://github.com/AndesHeavyTech/MaquiControl)
+- **URL:** [https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-report](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-report)
 - **Descripción:** Repositorio central que contiene el informe técnico colaborativo en formato Markdown, las minutas de Sprint Planning, el registro de versiones y los artefactos de análisis y diseño.
 
 #### Estrategia de Ramificación: GitFlow Workflow
@@ -2086,10 +2111,10 @@ Cada producto se despliega de forma independiente:
 
 ```mermaid
 flowchart LR
-    subgraph GitHub ["GitHub - AndesHeavyTech"]
-        RepoLanding["Repo: MaquiControl-LandingPage\n(branch: main)"]
-        RepoFrontend["Repo: MaquiControl-Frontend\n(branch: main)"]
-        RepoMock["Repo: maquicontrol-platform-mock\n(branch: main)"]
+    subgraph GitHub ["GitHub - upc-pre-202620-1asi0729-7750-heavytech"]
+        RepoLanding["Repo: maquicontrol-website\n(branch: main)"]
+        RepoFrontend["Repo: maquicontrol-webapp\n(branch: main)"]
+        RepoMock["Repo: maquicontrol-platform\n(branch: main)"]
     end
 
     subgraph CI_CD ["GitHub Actions"]
@@ -2117,14 +2142,14 @@ flowchart LR
 - **Plataforma seleccionada:** GitHub Pages.
 - **Tipo de producto:** sitio web estático (HTML5, CSS3, JavaScript y diccionarios de traducción `i18n/en.json` e `i18n/es.json`).
 - **Procedimiento de despliegue:**
-  1. En el repositorio `MaquiControl-LandingPage`, ingresar a **Settings → Pages**.
+  1. En el repositorio `maquicontrol-website`, ingresar a **Settings → Pages**.
   2. Seleccionar como origen la rama `main` y la carpeta raíz (`/`).
   3. Cada release de GitFlow que integra cambios en `main` dispara una nueva publicación del sitio.
 - **Versión publicada:** `v2.0.0`, con los botones conectados a la aplicación web desplegada.
-- **URL pública de despliegue:** [https://andesheavytech.github.io/MaquiControl-LandingPage/](https://andesheavytech.github.io/MaquiControl-LandingPage/)
+- **URL pública de despliegue:** [https://upc-pre-202620-1asi0729-7750-heavytech.github.io/maquicontrol-website/](https://upc-pre-202620-1asi0729-7750-heavytech.github.io/maquicontrol-website/)
 
 #### 2. Despliegue de los Web Services (Fake API en Azure App Service)
-Durante el Sprint 2 los servicios se exponen mediante una Fake API construida con json-server, publicada como proyecto independiente en el repositorio `maquicontrol-platform-mock`. La RESTful API en Spring Boot se desplegará en el mismo servicio de Azure en los siguientes Sprints.
+Durante el Sprint 2 los servicios se exponen mediante una Fake API construida con json-server, publicada como proyecto independiente en el repositorio `maquicontrol-platform`. La RESTful API en Spring Boot se desplegará en el mismo servicio de Azure en los siguientes Sprints.
 - **Plataforma seleccionada:** Microsoft Azure App Service (Linux, Node 24 LTS, plan F1 Free, región Central US, grupo de recursos `maquicontrol-rg`).
 - **Comando de inicio:** `npm start` (`node server.js`), que lee el puerto desde la variable `PORT` asignada por Azure.
 - **Variables de entorno:** `MERCADO_PAGO_ACCESS_TOKEN`, configurada únicamente en **Configuración → Variables de entorno** del App Service. El token nunca se guarda en el repositorio ni en el frontend.
@@ -2154,7 +2179,7 @@ Durante el Sprint 2 los servicios se exponen mediante una Fake API construida co
   }
   ```
 - **Procedimiento de despliegue:**
-  1. Crear el recurso Static Web App en Azure y vincularlo con el repositorio `MaquiControl-Frontend`, rama `main`.
+  1. Crear el recurso Static Web App en Azure y vincularlo con el repositorio `maquicontrol-webapp`, rama `main`.
   2. Seleccionar el preset de compilación **Angular**, con *App location* `/` y *Output location* `dist/maquicontrol-frontend/browser`.
   3. Azure agrega el workflow `.github/workflows/azure-static-web-apps-lemon-pebble-0a946d810.yml`, que compila y publica la aplicación ante cada push a `main`.
 - **URL pública de despliegue:** [https://lemon-pebble-0a946d810.4.azurestaticapps.net](https://lemon-pebble-0a946d810.4.azurestaticapps.net)
@@ -2210,8 +2235,8 @@ El Sprint Backlog se reconstruyó a partir de las User Stories seleccionadas y d
 
 Durante el Sprint 1 no se configuró un tablero público de GitHub Projects. La trazabilidad se mantuvo mediante ramas feature, commits y merges registrados en los repositorios públicos. Como mejora de proceso, los siguientes Sprints deberán contar con un tablero público desde el inicio.
 
-- [Repositorio del informe](https://github.com/AndesHeavyTech/MaquiControl)
-- [Repositorio de la Landing Page](https://github.com/AndesHeavyTech/MaquiControl-LandingPage)
+- [Repositorio del informe](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-report)
+- [Repositorio de la Landing Page](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website)
 
 #### 5.2.1.4. Development Evidence for Sprint Review
 
@@ -2219,18 +2244,18 @@ La siguiente tabla presenta los principales commits asociados con la implementac
 
 | Repository | Branch | Commit ID | Commit Message | Commit Message Body | Committed on |
 |---|---|---|---|---|---|
-| AndesHeavyTech/MaquiControl-LandingPage | `develop` | `788fc8e` | `feat(landing): add landing page wireframe structure.` | No se registró body adicional. | 14/09/2026 |
-| AndesHeavyTech/MaquiControl-LandingPage | `develop` | `345111b` | `feat(landing): add basic wireframe layout styles.` | No se registró body adicional. | 14/09/2026 |
-| AndesHeavyTech/MaquiControl-LandingPage | `develop` | `fe49312` | `feat(landing): implement final mockup styles.` | No se registró body adicional. | 14/09/2026 |
-| AndesHeavyTech/MaquiControl-LandingPage | `develop` | `1f8759e` | `feat(i18n): add English and Spanish landing page translations.` | No se registró body adicional. | 14/09/2026 |
-| AndesHeavyTech/MaquiControl-LandingPage | `develop` | `dde212a` | `feat(landing): add machinery hero illustration.` | No se registró body adicional. | 14/09/2026 |
-| AndesHeavyTech/MaquiControl-LandingPage | `develop` | `b81271d` | `feat(landing): add pricing plans and finalize landing page.` | No se registró body adicional. | 15/09/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website | `develop` | `788fc8e` | `feat(landing): add landing page wireframe structure.` | No se registró body adicional. | 14/09/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website | `develop` | `345111b` | `feat(landing): add basic wireframe layout styles.` | No se registró body adicional. | 14/09/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website | `develop` | `fe49312` | `feat(landing): implement final mockup styles.` | No se registró body adicional. | 14/09/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website | `develop` | `1f8759e` | `feat(i18n): add English and Spanish landing page translations.` | No se registró body adicional. | 14/09/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website | `develop` | `dde212a` | `feat(landing): add machinery hero illustration.` | No se registró body adicional. | 14/09/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website | `develop` | `b81271d` | `feat(landing): add pricing plans and finalize landing page.` | No se registró body adicional. | 15/09/2026 |
 
 #### 5.2.1.5. Execution Evidence for Sprint Review
 
 La Landing Page se encuentra disponible públicamente y permite comprobar el incremento funcional desarrollado. La página presenta navegación interna, diseño responsive, beneficios, contenido por segmento, explicación del funcionamiento, planes comerciales, llamados a la acción y selección de idioma.
 
-- **URL de ejecución:** [MaquiControl Landing Page](https://andesheavytech.github.io/MaquiControl-LandingPage/)
+- **URL de ejecución:** [MaquiControl Landing Page](https://upc-pre-202620-1asi0729-7750-heavytech.github.io/maquicontrol-website/)
 - **Tecnologías:** HTML5, CSS3 y JavaScript.
 - **Resultado de verificación:** La URL pública respondió correctamente y mostró el contenido desplegado.
 
@@ -2250,8 +2275,8 @@ La Landing Page fue desplegada mediante GitHub Pages desde el repositorio públi
 |---|---|
 | Producto desplegado | MaquiControl Landing Page |
 | Plataforma | GitHub Pages |
-| Repositorio | [MaquiControl-LandingPage](https://github.com/AndesHeavyTech/MaquiControl-LandingPage) |
-| URL pública | [https://andesheavytech.github.io/MaquiControl-LandingPage/](https://andesheavytech.github.io/MaquiControl-LandingPage/) |
+| Repositorio | [maquicontrol-website](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website) |
+| URL pública | [https://upc-pre-202620-1asi0729-7750-heavytech.github.io/maquicontrol-website/](https://upc-pre-202620-1asi0729-7750-heavytech.github.io/maquicontrol-website/) |
 | Protocolo | HTTPS |
 | Estado verificado | Disponible - HTTP 200 |
 | Última versión identificada | `1.1.0` |
@@ -2342,9 +2367,9 @@ Las horas corresponden a una estimación retrospectiva basada en la complejidad 
 | Sprint 2 | US-014 | Mostrar información por segmento | S2-T23 | Separar traducciones de la Landing Page | Mover los textos a `i18n/en.json` e `i18n/es.json` y apuntar los enlaces a la aplicación desplegada. | 2 | Carlos Cespedes | Done |
 | Sprint 2 | — | Despliegue | S2-T24 | Desplegar los productos | Publicar la Fake API en Azure App Service, la aplicación en Azure Static Web Apps y los releases `1.0.0` (frontend) y `v2.0.0` (Landing Page). | 5 | Carlos Cespedes | Done |
 
-- [Repositorio de la Frontend Web Application](https://github.com/AndesHeavyTech/MaquiControl-Frontend)
-- [Repositorio de la Fake API](https://github.com/AndesHeavyTech/maquicontrol-platform-mock)
-- [Repositorio de la Landing Page](https://github.com/AndesHeavyTech/MaquiControl-LandingPage)
+- [Repositorio de la Frontend Web Application](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp)
+- [Repositorio de la Fake API](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform)
+- [Repositorio de la Landing Page](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website)
 
 #### 5.2.2.4. Development Evidence for Sprint Review
 
@@ -2352,29 +2377,29 @@ La tabla presenta los commits principales del Sprint. Los identificadores y mens
 
 | Repository | Branch | Commit ID | Commit Message | Commit Message Body | Committed on |
 |---|---|---|---|---|---|
-| AndesHeavyTech/MaquiControl-Frontend | `develop` | `a9c3c5c` | `chore(project): initialize Angular workspace` | No se registró body adicional. | 01/10/2026 |
-| AndesHeavyTech/MaquiControl-Frontend | `develop` | `c73db7a` | `feat(shared): add the application shell and navigation.` | No se registró body adicional. | 01/10/2026 |
-| AndesHeavyTech/MaquiControl-Frontend | `develop` | `3d039c5` | `feat(fleet-management): display the machinery catalog.` | No se registró body adicional. | 01/10/2026 |
-| AndesHeavyTech/MaquiControl-Frontend | `develop` | `251137e` | `feat(identity-access-management): add UserAccount aggregate model.` | No se registró body adicional. | 06/10/2026 |
-| AndesHeavyTech/MaquiControl-Frontend | `develop` | `a35ae2f` | `feat(identity-access-management): add the identityAccessGuard route guard.` | No se registró body adicional. | 06/10/2026 |
-| AndesHeavyTech/MaquiControl-Frontend | `develop` | `5b3e346` | `feat(fleet-management): add publish, edit and delete actions to the machinery catalog.` | No se registró body adicional. | 06/10/2026 |
-| AndesHeavyTech/MaquiControl-Frontend | `develop` | `f9d49c9` | `feat(profiles-management): add profile page and organization form views` | No se registró body adicional. | 06/10/2026 |
-| AndesHeavyTech/MaquiControl-Frontend | `develop` | `58fd436` | `feat(rental-management): add rental request page and reservation list, gated by ownership` | No se registró body adicional. | 06/10/2026 |
-| AndesHeavyTech/MaquiControl-Frontend | `develop` | `6310df8` | `feat: add plans page` | No se registró body adicional. | 07/10/2026 |
-| AndesHeavyTech/MaquiControl-Frontend | `develop` | `6311df0` | `feat(maintenance-management): add maintenance schedule page and breakdown report form` | No se registró body adicional. | 07/10/2026 |
-| AndesHeavyTech/MaquiControl-Frontend | `develop` | `3bf8343` | `feat(operations-management): add service operation page and worked hours form` | No se registró body adicional. | 07/10/2026 |
-| AndesHeavyTech/MaquiControl-Frontend | `develop` | `bd07544` | `feat(shared): add ngx-translate with en and es-419 dictionaries and language switcher` | No se registró body adicional. | 07/10/2026 |
-| AndesHeavyTech/MaquiControl-Frontend | `develop` | `019b1a1` | `feat(identity-access-management): add role-based access and replace machinery type with category` | No se registró body adicional. | 07/10/2026 |
-| AndesHeavyTech/MaquiControl-Frontend | `develop` | `52cdfe0` | `feat(subscription-management): add subscription plans with Mercado Pago sandbox checkout` | No se registró body adicional. | 07/10/2026 |
-| AndesHeavyTech/MaquiControl-Frontend | `develop` | `86f98cd` | `feat(fleet-management): add category management with unique names and in-use protection` | No se registró body adicional. | 07/10/2026 |
-| AndesHeavyTech/MaquiControl-Frontend | `develop` | `ea50db1` | `fix(maintenance-management): mark machinery as in maintenance while in progress and remove code comments` | No se registró body adicional. | 07/10/2026 |
-| AndesHeavyTech/MaquiControl-Frontend | `develop` | `5230f71` | `feat(shared): add ARIA labels and contrast fixes, and show only the user's own reservations` | No se registró body adicional. | 07/10/2026 |
-| AndesHeavyTech/MaquiControl-Frontend | `develop` | `065ac7b` | `chore(release): bump version to 1.0.0 and set node engine for deployment` | No se registró body adicional. | 07/10/2026 |
-| AndesHeavyTech/maquicontrol-platform-mock | `main` | `2a54743` | `chore: add the mock API as its own deployable project` | No se registró body adicional. | 07/10/2026 |
-| AndesHeavyTech/maquicontrol-platform-mock | `main` | `e1bb8fd` | `feat(payments): add Mercado Pago sandbox checkout and payment confirmation endpoints` | No se registró body adicional. | 07/10/2026 |
-| AndesHeavyTech/MaquiControl-LandingPage | `develop` | `d9654ee` | `feat: connect landing page to platform` | No se registró body adicional. | 06/10/2026 |
-| AndesHeavyTech/MaquiControl-LandingPage | `develop` | `5d0961c` | `feat: connect plans buttons` | No se registró body adicional. | 07/10/2026 |
-| AndesHeavyTech/MaquiControl-LandingPage | `develop` | `2fa0cd0` | `feat(landing): move translations to i18n files and link to deployed platform` | No se registró body adicional. | 07/10/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `develop` | `a9c3c5c` | `chore(project): initialize Angular workspace` | No se registró body adicional. | 01/10/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `develop` | `c73db7a` | `feat(shared): add the application shell and navigation.` | No se registró body adicional. | 01/10/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `develop` | `3d039c5` | `feat(fleet-management): display the machinery catalog.` | No se registró body adicional. | 01/10/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `develop` | `251137e` | `feat(identity-access-management): add UserAccount aggregate model.` | No se registró body adicional. | 06/10/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `develop` | `a35ae2f` | `feat(identity-access-management): add the identityAccessGuard route guard.` | No se registró body adicional. | 06/10/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `develop` | `5b3e346` | `feat(fleet-management): add publish, edit and delete actions to the machinery catalog.` | No se registró body adicional. | 06/10/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `develop` | `f9d49c9` | `feat(profiles-management): add profile page and organization form views` | No se registró body adicional. | 06/10/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `develop` | `58fd436` | `feat(rental-management): add rental request page and reservation list, gated by ownership` | No se registró body adicional. | 06/10/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `develop` | `6310df8` | `feat: add plans page` | No se registró body adicional. | 07/10/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `develop` | `6311df0` | `feat(maintenance-management): add maintenance schedule page and breakdown report form` | No se registró body adicional. | 07/10/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `develop` | `3bf8343` | `feat(operations-management): add service operation page and worked hours form` | No se registró body adicional. | 07/10/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `develop` | `bd07544` | `feat(shared): add ngx-translate with en and es-419 dictionaries and language switcher` | No se registró body adicional. | 07/10/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `develop` | `019b1a1` | `feat(identity-access-management): add role-based access and replace machinery type with category` | No se registró body adicional. | 07/10/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `develop` | `52cdfe0` | `feat(subscription-management): add subscription plans with Mercado Pago sandbox checkout` | No se registró body adicional. | 07/10/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `develop` | `86f98cd` | `feat(fleet-management): add category management with unique names and in-use protection` | No se registró body adicional. | 07/10/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `develop` | `ea50db1` | `fix(maintenance-management): mark machinery as in maintenance while in progress and remove code comments` | No se registró body adicional. | 07/10/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `develop` | `5230f71` | `feat(shared): add ARIA labels and contrast fixes, and show only the user's own reservations` | No se registró body adicional. | 07/10/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `develop` | `065ac7b` | `chore(release): bump version to 1.0.0 and set node engine for deployment` | No se registró body adicional. | 07/10/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `2a54743` | `chore: add the mock API as its own deployable project` | No se registró body adicional. | 07/10/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `e1bb8fd` | `feat(payments): add Mercado Pago sandbox checkout and payment confirmation endpoints` | No se registró body adicional. | 07/10/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website | `develop` | `d9654ee` | `feat: connect landing page to platform` | No se registró body adicional. | 06/10/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website | `develop` | `5d0961c` | `feat: connect plans buttons` | No se registró body adicional. | 07/10/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website | `develop` | `2fa0cd0` | `feat(landing): move translations to i18n files and link to deployed platform` | No se registró body adicional. | 07/10/2026 |
 
 #### 5.2.2.5. Execution Evidence for Sprint Review
 
@@ -2387,7 +2412,7 @@ La aplicación web se encuentra disponible públicamente. Al ingresar, el usuari
 | Producto | URL de ejecución |
 |---|---|
 | Frontend Web Application | [https://lemon-pebble-0a946d810.4.azurestaticapps.net](https://lemon-pebble-0a946d810.4.azurestaticapps.net) |
-| Landing Page | [https://andesheavytech.github.io/MaquiControl-LandingPage/](https://andesheavytech.github.io/MaquiControl-LandingPage/) |
+| Landing Page | [https://upc-pre-202620-1asi0729-7750-heavytech.github.io/maquicontrol-website/](https://upc-pre-202620-1asi0729-7750-heavytech.github.io/maquicontrol-website/) |
 
 ![Sprint 2 Web Application Execution Evidence](assets/sprint-2-web-application-execution.png)
 
@@ -2433,9 +2458,9 @@ Los tres productos se publicaron con despliegue automático desde la rama `main`
 
 | Producto desplegado | Plataforma | Repositorio | URL pública | Versión |
 |---|---|---|---|---|
-| Landing Page | GitHub Pages | [MaquiControl-LandingPage](https://github.com/AndesHeavyTech/MaquiControl-LandingPage) | [Landing Page](https://andesheavytech.github.io/MaquiControl-LandingPage/) | `v2.0.0` |
-| Frontend Web Application | Azure Static Web Apps (Free) | [MaquiControl-Frontend](https://github.com/AndesHeavyTech/MaquiControl-Frontend) | [Web Application](https://lemon-pebble-0a946d810.4.azurestaticapps.net) | `1.0.0` |
-| Fake API | Azure App Service (F1, Central US) | [maquicontrol-platform-mock](https://github.com/AndesHeavyTech/maquicontrol-platform-mock) | [Fake API](https://maquicontrol-mockapi-beaxb2dta0grcpcd.centralus-01.azurewebsites.net/api/v1/health) | — |
+| Landing Page | GitHub Pages | [maquicontrol-website](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website) | [Landing Page](https://upc-pre-202620-1asi0729-7750-heavytech.github.io/maquicontrol-website/) | `v2.0.0` |
+| Frontend Web Application | Azure Static Web Apps (Free) | [maquicontrol-webapp](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp) | [Web Application](https://lemon-pebble-0a946d810.4.azurestaticapps.net) | `1.0.0` |
+| Fake API | Azure App Service (F1, Central US) | [maquicontrol-platform](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform) | [Fake API](https://maquicontrol-mockapi-beaxb2dta0grcpcd.centralus-01.azurewebsites.net/api/v1/health) | — |
 
 Durante el despliegue se resolvieron dos incidencias: la política de regiones de la suscripción Azure for Students rechazó la región East US 2, por lo que los recursos se crearon en Central US; y se agregó `staticwebapp.config.json` para que las rutas de Angular no devuelvan 404 al recargar la página.
 
@@ -2473,18 +2498,46 @@ Las cantidades representan la actividad registrada en los repositorios y no mide
 
 - La propuesta de valor de AndesHeavyTech busca mejorar la trazabilidad y eficiencia de las operaciones mediante una plataforma accesible desde entornos web y móviles, incorporando funcionalidades como catálogo de maquinaria, consulta de disponibilidad, reservas, alertas de mantenimiento y facturación electrónica.
 
+- Durante el Sprint 2 el equipo implementó y desplegó la primera versión de la aplicación web en Angular, junto con una Fake API en json-server. Esto permitió validar los flujos principales de flota, alquileres, mantenimiento, operaciones y suscripciones antes de construir el backend definitivo.
+
+- El despliegue en Azure Static Web Apps, Azure App Service y GitHub Pages, conectado a GitHub Actions, permitió publicar cada versión de forma automática a partir de la rama `main`, manteniendo la trazabilidad del flujo GitFlow.
+
+- Alinear los diagramas de arquitectura con el código implementado ayudó a mantener la coherencia entre el diseño documentado y el producto real, y facilita la incorporación del backend con Spring Boot en los siguientes sprints.
+
 - Finalmente, MaquiControl busca contribuir a la transformación digital del sector de alquiler de maquinaria pesada, proporcionando una herramienta que permita mejorar la coordinación entre proveedores y contratistas, reducir problemas derivados de la falta de información y facilitar una gestión más organizada de las operaciones.
 
 # Bibliografía
 - Angular Team. (2024). *Angular coding style guide*. https://angular.dev/style-guide
+- Angular Team. (2026). *Angular Material*. https://material.angular.dev/
 - Conventional Commits. (2020). *Conventional Commits 1.0.0: A specification for adding human and machine readable meaning to commit messages*. https://www.conventionalcommits.org/
 - Driessen, V. (2010). *A successful Git branching model*. https://nvie.com/posts/a-successful-git-branching-model/
+- GitHub. (2026). *GitHub Pages documentation*. https://docs.github.com/en/pages
 - Google. (2023). *Google HTML/CSS Style Guide*. https://google.github.io/styleguide/htmlcssguide.html
 - Google. (2023). *Google Java Style Guide*. https://google.github.io/styleguide/javaguide.html
 - Google. (2023). *Google TypeScript Style Guide*. https://google.github.io/styleguide/tsguide.html
+- Mercado Pago. (2026). *Checkout Pro*. https://www.mercadopago.com.pe/developers/es/docs/checkout-pro/overview
+- Microsoft. (2026). *Azure App Service documentation*. https://learn.microsoft.com/en-us/azure/app-service/
+- Microsoft. (2026). *Azure Static Web Apps documentation*. https://learn.microsoft.com/en-us/azure/static-web-apps/
+- ngx-translate. (2026). *ngx-translate documentation*. https://ngx-translate.org/
 - Preston-Werner, T. (2013). *Semantic Versioning 2.0.0*. https://semver.org/
 - SmartBear. (2023). *Gherkin Conventions for Readable Specifications*. https://specflow.org/gherkin/gherkin-conventions-for-readable-specifications/
 - VMware Tanzu. (2024). *Spring Boot Features*. https://docs.spring.io/spring-boot/docs/current/reference/html/features.html
+- Typicode. (2024). *json-server*. https://github.com/typicode/json-server
 - W3Schools. (2024). *HTML Style Guide and Coding Conventions*. https://www.w3schools.com/html/html5_syntax.asp
 
 # Anexos
+
+## Anexo: Repositorios y productos desplegados
+
+| Producto | Repositorio | URL desplegada |
+| :--- | :--- | :--- |
+| Informe del proyecto | [upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-report](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-report) | No aplica |
+| Landing Page v2.0.0 | [upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website) | [GitHub Pages](https://upc-pre-202620-1asi0729-7750-heavytech.github.io/maquicontrol-website/) |
+| Frontend Web Application | [upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp) | [Azure Static Web Apps](https://lemon-pebble-0a946d810.4.azurestaticapps.net) |
+| Fake API | [upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform) | [Azure App Service](https://maquicontrol-mockapi-beaxb2dta0grcpcd.centralus-01.azurewebsites.net/api/v1/health) |
+
+## Anexo: Videos de Exposiciones
+
+| Entrega | Video | Duración |
+| :--- | :--- | :--- |
+| TB1 | Pendiente: enlace de Microsoft Stream de la exposición TB1 | Pendiente |
