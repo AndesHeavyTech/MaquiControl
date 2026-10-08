@@ -7,24 +7,24 @@ Container(webapp, "Single Page Application", "Angular", "Provides the user inter
 
 Container_Boundary(maintenance, "Maintenance Management Bounded Context") {
 
-    Component(interfaces, "Interfaces Layer", "Spring Web", "Exposes endpoints for maintenance management and breakdown reporting.")
+    Component(interfaces, "MaintenanceController", "Spring Boot @RestController", "Exposes GET, POST, PUT /api/v1/maintenances endpoints.")
 
-    Component(application, "Application Layer", "Spring Boot", "Coordinates maintenance scheduling, completion and status update use cases.")
+    Component(application, "MaintenanceApplicationService", "Spring Boot @Service", "Coordinates scheduleMaintenance(), reportBreakdown() and completeMaintenance() use cases.")
 
-    Component(domain, "Domain Layer", "Java", "Contains the Maintenance aggregate and maintenance business rules.")
+    Component(domain, "Maintenance Aggregate", "Java Domain Entity", "Contains Maintenance aggregate root, MaintenanceType and status business rules.")
 
-    Component(infrastructure, "Infrastructure Layer", "Spring Data JPA", "Provides persistence for maintenance records and history.")
+    Component(infrastructure, "MaintenanceRepository", "Spring Data JPA @Repository", "Provides persistence via save(), findById(), findByMachineryId() and findByStatus().")
 
-    Component(security, "Security Connector", "Spring Security", "Validates authenticated users and permissions.")
+    Component(security, "SecurityConnector", "Spring Security Component", "Validates authenticated users and fleet administrator roles.")
 }
 
 ContainerDb(database, "Database", "Relational Database", "Stores maintenance and breakdown information.")
 
-Rel(webapp, interfaces, "Uses", "HTTPS / JSON")
-Rel(interfaces, application, "Invokes")
-Rel(application, domain, "Uses")
-Rel(application, infrastructure, "Uses")
-Rel(infrastructure, database, "Reads from and writes to")
-Rel(interfaces, security, "Validates access through")
+Rel(webapp, interfaces, "Calls /api/v1/maintenances/*", "HTTPS / JSON")
+Rel(interfaces, application, "Calls scheduleMaintenance() / reportBreakdown()")
+Rel(application, domain, "Invokes complete() / reschedule() / updateNotes()")
+Rel(application, infrastructure, "Calls save() / findById()")
+Rel(infrastructure, database, "Executes SQL queries")
+Rel(interfaces, security, "Validates security context")
 
-@enduml
+@enduml

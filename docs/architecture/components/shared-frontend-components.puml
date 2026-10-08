@@ -1,0 +1,36 @@
+@startuml
+!include <C4/C4_Component>
+
+title MaquiControl - Shared Frontend Component Diagram (DDD Layers)
+
+Container_Boundary(bc, "Shared Bounded Context [Angular]") {
+    Boundary(presentation, "Presentation Layer") {
+        Component(layout, "Layout", "Angular Component", "Application shell with toolbar, role-aware navigation, router outlet and footer.")
+        Component(languageSwitcher, "LanguageSwitcher", "Angular Component", "Switches between English and Spanish with useLanguage().")
+        Component(footer, "FooterContent", "Angular Component", "Footer with links and terms of service.")
+        Component(views, "Home, PageNotFound, TermsOfService", "Angular Components", "Shared pages.")
+    }
+    Boundary(application, "Application Layer") {
+        Component(titleStrategy, "TranslatedTitleStrategy", "Angular TitleStrategy", "Translates the browser title of each route.")
+    }
+    Boundary(domain, "Domain Layer") {
+        Component(baseEntity, "BaseEntity", "Interface", "Common id contract for all entities.")
+    }
+    Boundary(infrastructure, "Infrastructure Layer") {
+        Component(baseApi, "BaseApi", "Abstract Service", "Base class of every bounded context API.")
+        Component(baseEndpoint, "BaseApiEndpoint", "Generic Class", "getAll(), getById(), create(), update() and delete() with error handling.")
+        Component(baseAssembler, "BaseAssembler, BaseResponse, BaseResource", "Interfaces", "Contracts to map API resources and entities.")
+    }
+}
+
+Container(api, "REST API", "Fake API (json-server) on Azure App Service; Spring Boot REST API planned", "Exposes /api/v1 endpoints.")
+
+Rel(layout, languageSwitcher, "Renders")
+Rel(layout, footer, "Renders")
+Rel(layout, views, "Routes to")
+Rel(baseApi, baseEndpoint, "Composes")
+Rel(baseEndpoint, baseAssembler, "Maps with")
+Rel(baseEndpoint, baseEntity, "Returns")
+Rel(baseEndpoint, api, "HTTP requests", "HTTPS / JSON")
+
+@enduml

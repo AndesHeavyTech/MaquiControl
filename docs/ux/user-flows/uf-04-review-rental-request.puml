@@ -1,0 +1,46 @@
+@startuml
+title UF-04 - Revisar solicitud de alquiler
+
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam activity {
+  BackgroundColor #F8FAFC
+  BorderColor #334155
+  DiamondBackgroundColor #FFF7ED
+  DiamondBorderColor #F59E0B
+  StartColor #F59E0B
+  EndColor #0F172A
+}
+
+start
+:Abrir solicitudes pendientes;
+:Revisar solicitante, maquinaria y periodo;
+:Validar disponibilidad actual;
+if (¿Maquinaria disponible?) then (Sí)
+  if (¿Aprobar solicitud?) then (Sí)
+    :Confirmar condiciones y tarifa;
+    :Reservar periodo de forma atómica;
+    if (¿Surgió conflicto concurrente?) then (Sí)
+      :Informar cambio de disponibilidad;
+      :Proponer maquinaria o fechas alternativas;
+    else (No)
+      :Cambiar estado a confirmada;
+      :Notificar al contratista;
+    endif
+  else (Rechazar)
+    :Registrar motivo de rechazo;
+    :Notificar al contratista;
+  endif
+else (No)
+  :Mostrar causa de indisponibilidad;
+  if (¿Proponer alternativa?) then (Sí)
+    :Seleccionar otra maquinaria o periodo;
+    :Enviar propuesta al contratista;
+  else (Rechazar)
+    :Registrar motivo y notificar;
+  endif
+endif
+stop
+
+@enduml

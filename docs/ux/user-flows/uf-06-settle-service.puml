@@ -1,0 +1,48 @@
+@startuml
+title UF-06 - Liquidar servicio
+
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam activity {
+  BackgroundColor #F8FAFC
+  BorderColor #334155
+  DiamondBackgroundColor #FFF7ED
+  DiamondBorderColor #F59E0B
+  StartColor #F59E0B
+  EndColor #0F172A
+}
+
+start
+:Abrir servicio en curso;
+:Registrar lecturas inicial y final;
+if (¿Lecturas y fechas válidas?) then (Sí)
+  :Calcular horas trabajadas;
+else (No)
+  :Mostrar inconsistencias;
+  if (¿Corregir registro?) then (Sí)
+    :Editar lecturas o fechas;
+    :Calcular horas trabajadas;
+  else (Guardar borrador)
+    :Mantener servicio pendiente;
+    stop
+  endif
+endif
+:Enviar horas para validación;
+if (¿Responsable valida las horas?) then (Sí)
+  :Calcular importe con tarifa y moneda;
+else (Rechaza)
+  :Registrar observación;
+  :Devolver registro para corrección;
+  stop
+endif
+if (¿Existe discrepancia en el importe?) then (Sí)
+  :Mostrar desglose y solicitar revisión;
+  :Mantener liquidación pendiente;
+else (No)
+  :Emitir resumen del servicio;
+  :Cerrar operación y notificar a las partes;
+endif
+stop
+
+@enduml

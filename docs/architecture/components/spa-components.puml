@@ -1,0 +1,47 @@
+@startuml
+!include <C4/C4_Component>
+
+title MaquiControl - Single Page Application Component Diagram (Bounded Contexts)
+
+Container(webServer, "Web Application", "Azure Static Web Apps", "Serves the compiled SPA to the browser.")
+
+Container_Boundary(spa, "Single Page Application [Angular 22]") {
+    Component(iam, "identity-access-management", "Bounded Context", "Sign in, sign up, roles, route guards and session.")
+    Component(profiles, "profiles-management", "Bounded Context", "User profile and organization.")
+    Component(fleet, "fleet-management", "Bounded Context", "Machinery catalog, machinery form and categories.")
+    Component(rental, "rental-management", "Bounded Context", "Rental requests and reservation list.")
+    Component(maintenance, "maintenance-management", "Bounded Context", "Maintenance schedule and breakdown reports.")
+    Component(operations, "operations-management", "Bounded Context", "Service operations and worked hours.")
+    Component(subscription, "subscription-management", "Bounded Context", "Plans and Mercado Pago checkout.")
+    Component(shared, "shared", "Shared Kernel", "Layout, language switcher, base API classes and shared pages.")
+}
+
+Container(api, "REST API", "Fake API (json-server) on Azure App Service; Spring Boot REST API planned", "Exposes the /api/v1 endpoints.")
+System_Ext(mercadoPago, "Mercado Pago", "Checkout Pro (sandbox).")
+
+Rel(webServer, spa, "Serves compiled SPA", "HTTPS")
+Rel(iam, shared, "Uses")
+Rel(profiles, shared, "Uses")
+Rel(fleet, shared, "Uses")
+Rel(rental, shared, "Uses")
+Rel(maintenance, shared, "Uses")
+Rel(operations, shared, "Uses")
+Rel(subscription, shared, "Uses")
+Rel(rental, fleet, "Reads machinery availability")
+Rel(maintenance, fleet, "Changes machinery status")
+Rel(operations, rental, "Reads confirmed rentals")
+Rel(fleet, iam, "Reads session and role")
+Rel(operations, fleet, "Reads machinery")
+Rel(profiles, iam, "Reads signed-in account")
+Rel(subscription, iam, "Reads signed-in account")
+
+Rel(iam, api, "/authentication/sign-up, /user-accounts, /roles", "HTTPS / JSON")
+Rel(profiles, api, "/profiles, /organizations", "HTTPS / JSON")
+Rel(fleet, api, "/machinery, /categories", "HTTPS / JSON")
+Rel(rental, api, "/rentals", "HTTPS / JSON")
+Rel(maintenance, api, "/maintenances", "HTTPS / JSON")
+Rel(operations, api, "/service-operations", "HTTPS / JSON")
+Rel(subscription, api, "/plans, /subscriptions, /payments", "HTTPS / JSON")
+Rel(subscription, mercadoPago, "Redirects buyer to checkout", "HTTPS")
+
+@enduml

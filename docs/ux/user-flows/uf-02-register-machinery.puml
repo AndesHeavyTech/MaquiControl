@@ -1,0 +1,49 @@
+@startuml
+title UF-02 - Registrar maquinaria
+
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam activity {
+  BackgroundColor #F8FAFC
+  BorderColor #334155
+  DiamondBackgroundColor #FFF7ED
+  DiamondBorderColor #F59E0B
+  StartColor #F59E0B
+  EndColor #0F172A
+}
+
+start
+:Abrir inventario de maquinaria;
+:Seleccionar "Nuevo equipo";
+:Ingresar datos técnicos, tarifa y ubicación;
+if (¿Datos obligatorios válidos?) then (Sí)
+  :Comprobar identificador del equipo;
+else (No)
+  :Resaltar campos incompletos o inválidos;
+  if (¿Corregir?) then (Sí)
+    :Editar información;
+    :Comprobar identificador del equipo;
+  else (Cancelar)
+    :Descartar borrador con confirmación;
+    stop
+  endif
+endif
+if (¿Equipo duplicado?) then (Sí)
+  :Mostrar registro existente;
+  if (¿Editar el registro existente?) then (Sí)
+    :Abrir detalle de maquinaria;
+  else (No)
+    :Volver al inventario;
+  endif
+else (No)
+  :Guardar maquinaria;
+  if (¿Guardado exitoso?) then (Sí)
+    :Mostrar confirmación y equipo disponible;
+  else (No)
+    :Conservar borrador y permitir reintento;
+  endif
+endif
+stop
+
+@enduml

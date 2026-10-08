@@ -9,8 +9,16 @@ Person(contractor, "Contractor / Site Manager", "Searches machinery, requests re
 
 System(maquicontrol, "MaquiControl", "Web platform for managing machinery rental operations, availability, reservations, maintenance and service execution.")
 
+System_Ext(sunat, "SUNAT", "Government tax platform that validates and receives electronic invoices.")
+
+System_Ext(paymentProvider, "Payment Provider", "External platform that processes subscription payments and renewals.")
+
 Rel(admin, maquicontrol, "Manages fleet, reservations, maintenance and operations")
 
 Rel(contractor, maquicontrol, "Searches machinery, requests rentals and tracks services")
+
+Rel(maquicontrol, sunat, "Issues and validates electronic invoices", "HTTPS")
+
+Rel(maquicontrol, paymentProvider, "Processes subscription payments", "HTTPS")
 
 @enduml

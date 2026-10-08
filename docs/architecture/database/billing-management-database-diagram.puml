@@ -1,0 +1,74 @@
+@startuml
+title MaquiControl - Billing Management Bounded Context\nDatabase Diagram
+
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam linetype ortho
+hide circle
+
+entity "invoices" as invoices {
+  * id : BIGINT <<PK, IDENTITY>>
+  --
+  * rental_id : BIGINT <<EXTERNAL REF, UNIQUE>>
+  invoice_number : VARCHAR(30)
+  sunat_cdr : VARCHAR(100)
+  * amount : DECIMAL(12,2) <<NOT NULL>>
+  * currency : CHAR(3) <<NOT NULL>>
+  * status : VARCHAR(20) <<NOT NULL>>
+  issued_at : TIMESTAMP
+  * created_at : TIMESTAMP <<NOT NULL>>
+}
+
+entity "late_penalties" as late_penalties {
+  * id : BIGINT <<PK, IDENTITY>>
+  --
+  * rental_id : BIGINT <<EXTERNAL REF>>
+  * amount : DECIMAL(12,2) <<NOT NULL>>
+  * currency : CHAR(3) <<NOT NULL>>
+  * reason : VARCHAR(300) <<NOT NULL>>
+  * applied_at : TIMESTAMP <<NOT NULL>>
+  * created_at : TIMESTAMP <<NOT NULL>>
+}
+
+note right of invoices
+  Constraints:
+  PK (id)
+  UNIQUE (rental_id)
+  CHECK (amount >= 0)
+  CHECK (currency IN ('PEN', 'USD'))
+  CHECK (status IN
+    PENDING, ISSUED, REJECTED)
+  CHECK (
+    status <> 'ISSUED'
+    OR (invoice_number IS NOT NULL
+        AND issued_at IS NOT NULL)
+  )
+
+  rental_id references Rental
+  in Rental Management.
+  No cross-context database FK is created.
+end note
+
+note right of late_penalties
+  Constraints:
+  PK (id)
+  CHECK (amount >= 0)
+  CHECK (currency IN ('PEN', 'USD'))
+
+  rental_id references Rental
+  in Rental Management.
+  No cross-context database FK is created.
+end note
+
+legend right
+  |= Mark |= Meaning |
+  | PK | Primary Key |
+  | IDENTITY | Database-generated numeric identifier |
+  | FK | Foreign Key |
+  | EXTERNAL REF | Identifier owned by another bounded context |
+  | NOT NULL | Mandatory column |
+  | UNIQUE | Value cannot be repeated |
+endlegend
+
+@enduml

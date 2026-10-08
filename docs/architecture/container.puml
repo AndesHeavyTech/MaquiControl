@@ -8,18 +8,32 @@ Person(contractor, "Contractor / Site Manager", "Searches machinery, requests re
 
 System_Boundary(maquicontrol, "MaquiControl") {
 
-    Container(webapp, "Single Page Application", "Angular", "Provides the user interface for fleet administrators and contractors through a web browser.")
+    Container(webServer, "Web Application", "Azure Static Web Apps", "Serves the compiled Angular application and its static assets to users' browsers over a CDN.")
 
-    Container(api, "REST API", "Spring Boot / Java", "Provides business capabilities for machinery, rentals, maintenance, operations, profiles and identity management.")
+    Container(spa, "Single Page Application", "Angular 22", "Runs in the browser and provides the interactive user experience for administrators and contractors.")
 
-    ContainerDb(database, "Database", "Relational Database", "Stores machinery, rental, maintenance, operational, account and profile information.")
+    Container(api, "REST API", "Spring Boot / Java (planned); Fake API json-server on Azure App Service (Sprint 2)", "Provides business capabilities for machinery, rentals, maintenance, operations, profiles, identity, subscriptions and payments under /api/v1.")
+
+    ContainerDb(database, "Database", "Relational Database", "Stores machinery, rental, maintenance, operational, account, profile, subscription and billing information.")
 }
 
-Rel(admin, webapp, "Uses", "HTTPS")
-Rel(contractor, webapp, "Uses", "HTTPS")
+System_Ext(sunat, "SUNAT", "Validates and receives electronic invoices.")
+System_Ext(paymentProvider, "Mercado Pago", "Checkout Pro payment provider (sandbox) for subscription payments.")
 
-Rel(webapp, api, "Uses", "HTTPS / JSON")
+Rel(admin, webServer, "Loads web application from", "HTTPS")
+Rel(contractor, webServer, "Loads web application from", "HTTPS")
+
+Rel(webServer, spa, "Delivers compiled application to browser", "HTTPS")
+
+Rel(admin, spa, "Manages fleet, reservations, maintenance and operations using", "HTTPS")
+Rel(contractor, spa, "Searches machinery, requests rentals and reviews services using", "HTTPS")
+
+Rel(spa, api, "Uses", "HTTPS / JSON")
 
 Rel(api, database, "Reads from and writes to", "Spring Data JPA")
+
+Rel(api, sunat, "Issues electronic invoices", "HTTPS / JSON")
+
+Rel(api, paymentProvider, "Processes subscription payments", "HTTPS / JSON")
 
 @enduml

@@ -1,0 +1,38 @@
+@startuml
+!include <C4/C4_Component>
+
+title MaquiControl - Profiles Frontend Component Diagram (DDD Layers)
+
+Container_Boundary(bc, "Profiles Management Bounded Context [Angular]") {
+    Boundary(presentation, "Presentation Layer") {
+        Component(profilePage, "ProfilePage", "Angular Component", "Shows and edits the user profile and calls saveProfile().")
+        Component(organizationForm, "OrganizationForm", "Angular Component", "Registers the company of the owner or contractor and calls saveOrganization().")
+    }
+    Boundary(application, "Application Layer") {
+        Component(profilesStore, "ProfilesManagementStore", "Angular Signals Store", "loadProfiles(), loadOrganizations(), saveProfile() and saveOrganization().")
+    }
+    Boundary(domain, "Domain Layer") {
+        Component(profile, "Profile", "Entity", "User profile; fullName() and belongsToOrganization().")
+        Component(organization, "Organization", "Entity", "Company data with tax id; isValidTaxId().")
+        Component(contact, "ContactInformation, OrganizationType", "Value Object / Enum", "Phone, email and address; formattedAddress() and isValid().")
+    }
+    Boundary(infrastructure, "Infrastructure Layer") {
+        Component(profilesApi, "ProfilesManagementApi", "Angular Service", "getProfiles(), createProfile(), updateProfile(), getOrganizations(), createOrganization(), updateOrganization().")
+        Component(endpoints, "ProfileApiEndpoint, OrganizationApiEndpoint", "BaseApiEndpoint", "HTTP calls to /profiles and /organizations.")
+        Component(assemblers, "ProfileAssembler, OrganizationAssembler", "BaseAssembler", "Convert API resources into entities and back.")
+    }
+}
+
+Container(api, "REST API", "Fake API (json-server) on Azure App Service; Spring Boot REST API planned", "Exposes /api/v1/profiles and /api/v1/organizations.")
+
+Rel(profilePage, profilesStore, "Calls saveProfile()")
+Rel(organizationForm, profilesStore, "Calls saveOrganization()")
+Rel(profilesStore, profile, "Holds and updates")
+Rel(profilesStore, organization, "Holds and updates")
+Rel(profile, contact, "Uses")
+Rel(profilesStore, profilesApi, "Invokes")
+Rel(profilesApi, endpoints, "Delegates to")
+Rel(endpoints, assemblers, "Maps with")
+Rel(endpoints, api, "GET/POST/PUT /api/v1/profiles, /api/v1/organizations", "HTTPS / JSON")
+
+@enduml

@@ -1,0 +1,43 @@
+@startuml
+!include <C4/C4_Component>
+
+title MaquiControl - Identity & Access Frontend Component Diagram (DDD Layers)
+
+Container_Boundary(bc, "Identity & Access Management Bounded Context [Angular]") {
+    Boundary(presentation, "Presentation Layer") {
+        Component(signInForm, "SignInForm", "Angular Component", "Captures email and password and calls signIn().")
+        Component(signUpForm, "SignUpForm", "Angular Component", "Registers an account as contractor or fleet owner and calls signUp().")
+        Component(authSection, "AuthenticationSection", "Angular Component", "Shows the signed-in user in the toolbar and calls signOut().")
+    }
+    Boundary(application, "Application Layer") {
+        Component(iamStore, "IdentityAccessStore", "Angular Signals Store", "Holds the current session; signIn(), signUp(), signOut(), loadRoles(), hasRole() and hasAnyRole().")
+    }
+    Boundary(domain, "Domain Layer") {
+        Component(userAccount, "UserAccount", "Entity", "Account with credential, roles and status; hasRole() and isActive().")
+        Component(role, "Role", "Entity", "Role such as FLEET_OWNER or CONTRACTOR.")
+        Component(commands, "SignInCommand, SignUpCommand, Credential", "Commands / Value Object", "Input data for sign-in and sign-up.")
+    }
+    Boundary(infrastructure, "Infrastructure Layer") {
+        Component(iamApi, "IdentityAccessApi", "Angular Service", "signIn(), signUp(), getRoles() and userAccountExists().")
+        Component(signInPort, "SignInPort", "Injection Token", "Selects FakeSignInApiEndpoint or SignInApiEndpoint according to the environment.")
+        Component(endpoints, "SignUpApiEndpoint, RoleApiEndpoint", "BaseApiEndpoint", "HTTP calls to /authentication/sign-up and /roles.")
+        Component(guards, "identityAccessGuard, roleGuard, identityAccessInterceptor", "Angular Guards / Interceptor", "Protect routes by session and role and attach the session to requests.")
+    }
+}
+
+Container(api, "REST API", "Fake API (json-server) on Azure App Service; Spring Boot REST API planned", "Exposes /api/v1/authentication/sign-up, /api/v1/user-accounts and /api/v1/roles.")
+
+Rel(signInForm, iamStore, "Calls signIn()")
+Rel(signUpForm, iamStore, "Calls signUp()")
+Rel(authSection, iamStore, "Calls signOut()")
+Rel(iamStore, userAccount, "Holds current account")
+Rel(userAccount, role, "Has")
+Rel(iamStore, commands, "Builds")
+Rel(iamStore, iamApi, "Invokes")
+Rel(iamApi, signInPort, "Signs in through")
+Rel(iamApi, endpoints, "Delegates to")
+Rel(guards, iamStore, "Reads session and roles")
+Rel(signInPort, api, "GET /api/v1/user-accounts", "HTTPS / JSON")
+Rel(endpoints, api, "POST /api/v1/authentication/sign-up, GET /api/v1/roles", "HTTPS / JSON")
+
+@enduml

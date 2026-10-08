@@ -7,24 +7,24 @@ Container(webapp, "Single Page Application", "Angular", "Provides the user inter
 
 Container_Boundary(operations, "Operations Management Bounded Context") {
 
-    Component(interfaces, "Interfaces Layer", "Spring Web", "Exposes endpoints for service execution and worked hours.")
+    Component(interfaces, "ServiceOperationController", "Spring Boot @RestController", "Exposes GET, POST, PUT, PATCH /api/v1/service-operations endpoints.")
 
-    Component(application, "Application Layer", "Spring Boot", "Coordinates service execution, worked hour registration and validation use cases.")
+    Component(application, "OperationsApplicationService", "Spring Boot @Service", "Coordinates startService(), recordWorkedHours() and completeService() use cases.")
 
-    Component(domain, "Domain Layer", "Java", "Contains the Service Operation aggregate and operational business rules.")
+    Component(domain, "ServiceOperation Aggregate", "Java Domain Entity", "Contains ServiceOperation aggregate root, WorkedHours value object and status logic.")
 
-    Component(infrastructure, "Infrastructure Layer", "Spring Data JPA", "Provides persistence for operational and worked-hour information.")
+    Component(infrastructure, "ServiceOperationRepository", "Spring Data JPA @Repository", "Provides persistence via save(), findById(), findByRentalId() and findByStatus().")
 
-    Component(security, "Security Connector", "Spring Security", "Validates authenticated users and permissions.")
+    Component(security, "SecurityConnector", "Spring Security Component", "Validates authenticated users and operational roles.")
 }
 
 ContainerDb(database, "Database", "Relational Database", "Stores service operation and worked-hour information.")
 
-Rel(webapp, interfaces, "Uses", "HTTPS / JSON")
-Rel(interfaces, application, "Invokes")
-Rel(application, domain, "Uses")
-Rel(application, infrastructure, "Uses")
-Rel(infrastructure, database, "Reads from and writes to")
-Rel(interfaces, security, "Validates access through")
+Rel(webapp, interfaces, "Calls /api/v1/service-operations/*", "HTTPS / JSON")
+Rel(interfaces, application, "Calls startService() / recordWorkedHours()")
+Rel(application, domain, "Invokes start() / recordHours() / complete()")
+Rel(application, infrastructure, "Calls save() / findById()")
+Rel(infrastructure, database, "Executes SQL queries")
+Rel(interfaces, security, "Validates security context")
 
-@enduml
+@enduml

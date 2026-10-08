@@ -1,0 +1,40 @@
+@startuml
+!include <C4/C4_Component>
+
+title MaquiControl - Fleet Management Frontend Component Diagram (DDD Layers)
+
+Container_Boundary(bc, "Fleet Management Bounded Context [Angular]") {
+    Boundary(presentation, "Presentation Layer") {
+        Component(machineryList, "MachineryList", "Angular Component", "Lists machinery for owners and contractors; calls loadMachinery(), deleteMachinery() and opens rental requests.")
+        Component(machineryForm, "MachineryForm", "Angular Component", "Registers and edits machinery; calls createMachinery() and updateMachinery().")
+        Component(categoryManagement, "CategoryManagement", "Angular Component", "Creates, renames and deletes categories; checks isCategoryNameTaken() and machineryCountByCategory().")
+    }
+    Boundary(application, "Application Layer") {
+        Component(fleetStore, "FleetManagementStore", "Angular Signals Store", "Holds machinery() and categories() signals; loadMachinery(), createMachinery(), updateMachinery(), deleteMachinery(), changeMachineryStatus() and category operations.")
+    }
+    Boundary(domain, "Domain Layer") {
+        Component(machinery, "Machinery", "Entity", "Name, brand, model, hourlyRate, status and location; isAvailable(), isInMaintenance(), withStatus().")
+        Component(category, "Category", "Entity", "Machinery category with unique name; rename() and hasName().")
+        Component(valueObjects, "MachineryLocation, Money, MachineryStatus", "Value Objects / Enum", "Location, hourly rate and status (AVAILABLE, RESERVED, RENTED, IN_MAINTENANCE, OUT_OF_SERVICE).")
+    }
+    Boundary(infrastructure, "Infrastructure Layer") {
+        Component(fleetApi, "FleetManagementApi", "Angular Service", "getMachinery(), createMachinery(), updateMachinery(), deleteMachinery(), getCategories(), createCategory(), updateCategory(), deleteCategory().")
+        Component(endpoints, "MachineryApiEndpoint, CategoryApiEndpoint", "BaseApiEndpoint", "HTTP calls to /machinery and /categories.")
+        Component(assemblers, "MachineryAssembler, CategoryAssembler", "BaseAssembler", "Convert API resources into entities and back.")
+    }
+}
+
+Container(api, "REST API", "Fake API (json-server) on Azure App Service; Spring Boot REST API planned", "Exposes /api/v1/machinery and /api/v1/categories.")
+
+Rel(machineryList, fleetStore, "Reads machinery() / calls deleteMachinery()")
+Rel(machineryForm, fleetStore, "Calls createMachinery() / updateMachinery()")
+Rel(categoryManagement, fleetStore, "Calls createCategory() / renameCategory() / deleteCategory()")
+Rel(fleetStore, machinery, "Holds and updates")
+Rel(fleetStore, category, "Holds and updates")
+Rel(machinery, valueObjects, "Uses")
+Rel(fleetStore, fleetApi, "Invokes")
+Rel(fleetApi, endpoints, "Delegates to")
+Rel(endpoints, assemblers, "Maps with")
+Rel(endpoints, api, "GET/POST/PUT/DELETE /api/v1/machinery, /api/v1/categories", "HTTPS / JSON")
+
+@enduml

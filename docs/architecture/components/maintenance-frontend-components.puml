@@ -1,0 +1,38 @@
+@startuml
+!include <C4/C4_Component>
+
+title MaquiControl - Maintenance Frontend Component Diagram (DDD Layers)
+
+Container_Boundary(bc, "Maintenance Management Bounded Context [Angular]") {
+    Boundary(presentation, "Presentation Layer") {
+        Component(schedulePage, "MaintenanceSchedulePage", "Angular Component", "Schedules, starts and completes maintenance and updates the machinery status.")
+        Component(breakdownForm, "BreakdownReportForm", "Angular Component", "Reports a machinery breakdown and calls reportBreakdown().")
+    }
+    Boundary(application, "Application Layer") {
+        Component(maintenanceStore, "MaintenanceManagementStore", "Angular Signals Store", "loadMaintenances(), scheduleMaintenance(), startMaintenance(), completeMaintenance() and reportBreakdown().")
+    }
+    Boundary(domain, "Domain Layer") {
+        Component(maintenance, "Maintenance", "Entity", "Preventive or corrective maintenance with technician and cost; isPending().")
+        Component(breakdown, "BreakdownReport", "Entity", "Breakdown with severity; isCritical().")
+        Component(valueObjects, "Money, MaintenanceType, MaintenanceStatus, BreakdownSeverity", "Value Object / Enums", "Cost and maintenance state.")
+    }
+    Boundary(infrastructure, "Infrastructure Layer") {
+        Component(maintenanceApi, "MaintenanceManagementApi", "Angular Service", "getMaintenances(), createMaintenance() and updateMaintenance().")
+        Component(endpoint, "MaintenanceApiEndpoint", "BaseApiEndpoint", "HTTP calls to /maintenances.")
+        Component(assembler, "MaintenanceAssembler", "BaseAssembler", "Converts API resources into entities and back.")
+    }
+}
+
+Container(api, "REST API", "Fake API (json-server) on Azure App Service; Spring Boot REST API planned", "Exposes /api/v1/maintenances.")
+
+Rel(schedulePage, maintenanceStore, "Calls scheduleMaintenance() / startMaintenance() / completeMaintenance()")
+Rel(breakdownForm, maintenanceStore, "Calls reportBreakdown()")
+Rel(maintenanceStore, maintenance, "Holds and updates")
+Rel(maintenance, breakdown, "Contains")
+Rel(maintenance, valueObjects, "Uses")
+Rel(maintenanceStore, maintenanceApi, "Invokes")
+Rel(maintenanceApi, endpoint, "Delegates to")
+Rel(endpoint, assembler, "Maps with")
+Rel(endpoint, api, "GET/POST/PUT /api/v1/maintenances", "HTTPS / JSON")
+
+@enduml

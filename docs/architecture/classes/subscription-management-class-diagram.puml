@@ -1,0 +1,142 @@
+@startuml
+title MaquiControl - Subscription Management Bounded Context\nClass Diagram
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam linetype ortho
+hide empty members
+
+package "Subscription Management" {
+
+  class SubscriptionPlan <<Entity>> {
+    - id: Long
+    - code: PlanCode
+    - name: String
+    - machineryLimit: Integer
+    - price: Money
+    - billingCycle: BillingCycle
+    + allowsAdditionalMachinery(currentCount: Integer): Boolean
+  }
+
+  class Subscription <<Aggregate Root>> {
+    - id: Long
+    - ownerProfileId: Long
+    - planId: Long
+    - status: SubscriptionStatus
+    - startedAt: LocalDateTime
+    - currentPeriodEnd: LocalDateTime
+    - payments: List<Payment>
+    - createdAt: LocalDateTime
+    - updatedAt: LocalDateTime
+    + selectPlan(plan: SubscriptionPlan): void
+    + registerPayment(payment: Payment): void
+    + activate(): void
+    + renew(periodEnd: LocalDateTime): void
+    + cancel(reason: String): void
+    + isActive(): Boolean
+  }
+
+  class Payment <<Entity>> {
+    - id: Long
+    - provider: PaymentProviderName
+    - providerPaymentId: String
+    - amount: Money
+    - status: PaymentStatus
+    - paidAt: LocalDateTime
+    + approve(): void
+    + reject(): void
+    + isApproved(): Boolean
+  }
+
+  class Money <<Value Object>> {
+    - amount: BigDecimal
+    - currency: Currency
+    + add(other: Money): Money
+    + isNonNegative(): Boolean
+  }
+
+  enum Currency {
+    PEN
+    USD
+  }
+
+  enum PlanCode {
+    ESSENTIAL
+    PRO
+  }
+
+  enum BillingCycle {
+    MONTHLY
+    ANNUAL
+  }
+
+  enum SubscriptionStatus {
+    PENDING
+    ACTIVE
+    PAST_DUE
+    CANCELLED
+    EXPIRED
+  }
+
+  enum PaymentProviderName {
+    MERCADO_PAGO
+  }
+
+  enum PaymentStatus {
+    PENDING
+    APPROVED
+    REJECTED
+  }
+
+  interface SubscriptionRepository {
+    + save(subscription: Subscription): Subscription
+    + findById(id: Long): Optional<Subscription>
+    + findByOwnerProfileId(ownerProfileId: Long): Optional<Subscription>
+    + existsActiveByOwnerProfileId(ownerProfileId: Long): Boolean
+  }
+
+  interface SubscriptionPlanRepository {
+    + findAll(): List<SubscriptionPlan>
+    + findByCode(code: PlanCode): Optional<SubscriptionPlan>
+  }
+
+  class SubscriptionManagementService <<Application Service>> {
+    - subscriptionRepository: SubscriptionRepository
+    - planRepository: SubscriptionPlanRepository
+    + selectPlan(ownerProfileId: Long, planCode: PlanCode): Subscription
+    + registerPayment(subscriptionId: Long, payment: Payment): Subscription
+    + activateSubscription(subscriptionId: Long): Subscription
+    + cancelSubscription(subscriptionId: Long, reason: String): Subscription
+    + viewSubscriptionPlans(): List<SubscriptionPlan>
+    + viewSubscriptionStatus(subscriptionId: Long): SubscriptionStatus
+    + viewPaymentHistory(subscriptionId: Long): List<Payment>
+  }
+}
+
+Subscription "1" *-- "0..*" Payment : records >
+Subscription "1" --> "1" SubscriptionPlan : contracts >
+Payment "1" *-- "1" Money : amount >
+SubscriptionPlan "1" *-- "1" Money : price >
+Money --> Currency : expressed in >
+Subscription --> SubscriptionStatus : has >
+Payment --> PaymentStatus : has >
+Payment --> PaymentProviderName : processed by >
+SubscriptionPlan --> PlanCode : identified by >
+SubscriptionPlan --> BillingCycle : billed as >
+SubscriptionManagementService "1" --> "1" SubscriptionRepository : uses >
+SubscriptionManagementService "1" --> "1" SubscriptionPlanRepository : uses >
+SubscriptionRepository ..> Subscription : persists >
+SubscriptionPlanRepository ..> SubscriptionPlan : persists >
+
+legend right
+  |= Symbol |= Meaning |
+  | + | Public |
+  | - | Private |
+  | *-- | Composition |
+  | --> | Association |
+  | ..> | Dependency |
+endlegend
+
+@enduml

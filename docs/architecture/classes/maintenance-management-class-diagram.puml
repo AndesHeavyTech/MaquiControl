@@ -11,8 +11,8 @@ hide empty members
 package "Maintenance Management" {
 
   class Maintenance <<Aggregate Root>> {
-    - id: UUID
-    - machineryId: UUID
+    - id: Long
+    - machineryId: Long
     - type: MaintenanceType
     - status: MaintenanceStatus
     - description: String
@@ -20,18 +20,18 @@ package "Maintenance Management" {
     - startedAt: LocalDateTime
     - completedAt: LocalDateTime
     - technicianName: String
-    - cost: BigDecimal
+    - cost: Money
     - breakdownReports: List<BreakdownReport>
     + schedule(): void
     + start(): void
-    + complete(cost: BigDecimal): void
+    + complete(cost: Money): void
     + updateStatus(status: MaintenanceStatus): void
     + reportBreakdown(report: BreakdownReport): void
     + isPending(): Boolean
   }
 
   class BreakdownReport <<Entity>> {
-    - id: UUID
+    - id: Long
     - description: String
     - severity: BreakdownSeverity
     - reportedAt: LocalDateTime
@@ -39,6 +39,18 @@ package "Maintenance Management" {
     - resolved: Boolean
     + resolve(): void
     + isCritical(): Boolean
+  }
+
+  class Money <<Value Object>> {
+    - amount: BigDecimal
+    - currency: Currency
+    + add(other: Money): Money
+    + isNonNegative(): Boolean
+  }
+
+  enum Currency {
+    PEN
+    USD
   }
 
   enum MaintenanceType {
@@ -63,25 +75,27 @@ package "Maintenance Management" {
 
   interface MaintenanceRepository {
     + save(maintenance: Maintenance): Maintenance
-    + findById(id: UUID): Optional<Maintenance>
-    + findByMachineryId(machineryId: UUID): List<Maintenance>
+    + findById(id: Long): Optional<Maintenance>
+    + findByMachineryId(machineryId: Long): List<Maintenance>
     + findByStatus(status: MaintenanceStatus): List<Maintenance>
-    + findCompletedByMachineryId(machineryId: UUID): List<Maintenance>
+    + findCompletedByMachineryId(machineryId: Long): List<Maintenance>
   }
 
   class MaintenanceManagementService <<Application Service>> {
     - maintenanceRepository: MaintenanceRepository
     + scheduleMaintenance(maintenance: Maintenance): Maintenance
-    + completeMaintenance(id: UUID, cost: BigDecimal): Maintenance
-    + reportBreakdown(id: UUID, report: BreakdownReport): Maintenance
-    + updateMaintenanceStatus(id: UUID, status: MaintenanceStatus): Maintenance
-    + viewMaintenanceHistory(machineryId: UUID): List<Maintenance>
+    + completeMaintenance(id: Long, cost: Money): Maintenance
+    + reportBreakdown(id: Long, report: BreakdownReport): Maintenance
+    + updateMaintenanceStatus(id: Long, status: MaintenanceStatus): Maintenance
+    + viewMaintenanceHistory(machineryId: Long): List<Maintenance>
     + viewPendingMaintenance(): List<Maintenance>
-    + checkMaintenanceDetails(id: UUID): Maintenance
+    + checkMaintenanceDetails(id: Long): Maintenance
   }
 }
 
 Maintenance "1" *-- "0..*" BreakdownReport : contains >
+Maintenance "1" *-- "0..1" Money : cost >
+Money --> Currency : expressed in >
 Maintenance --> MaintenanceType : classified as >
 Maintenance --> MaintenanceStatus : has >
 BreakdownReport --> BreakdownSeverity : has >

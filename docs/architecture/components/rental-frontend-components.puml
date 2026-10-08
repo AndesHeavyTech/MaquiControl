@@ -1,0 +1,36 @@
+@startuml
+!include <C4/C4_Component>
+
+title MaquiControl - Rental Frontend Component Diagram (DDD Layers)
+
+Container_Boundary(bc, "Rental Management Bounded Context [Angular]") {
+    Boundary(presentation, "Presentation Layer") {
+        Component(rentalRequestPage, "RentalRequestPage", "Angular Component", "Selects rental dates for available machinery and calls requestRental().")
+        Component(reservationList, "ReservationList", "Angular Component", "Lists the user own reservations and calls confirmReservation() or cancelReservation().")
+    }
+    Boundary(application, "Application Layer") {
+        Component(rentalStore, "RentalManagementStore", "Angular Signals Store", "loadRentals(), requestRental(), confirmReservation(), cancelReservation() and hasOverlappingActiveRental().")
+    }
+    Boundary(domain, "Domain Layer") {
+        Component(rental, "Rental", "Entity", "Rental request; calculateTotal(), isActive() and isPending().")
+        Component(valueObjects, "RentalPeriod, Money, RentalStatus", "Value Objects / Enum", "Dates with overlaps() and durationInDays(), and status (REQUESTED, CONFIRMED, IN_PROGRESS, COMPLETED, CANCELLED).")
+    }
+    Boundary(infrastructure, "Infrastructure Layer") {
+        Component(rentalApi, "RentalManagementApi", "Angular Service", "getRentals(), createRental() and updateRental().")
+        Component(endpoint, "RentalApiEndpoint", "BaseApiEndpoint", "HTTP calls to /rentals.")
+        Component(assembler, "RentalAssembler", "BaseAssembler", "Converts API resources into entities and back.")
+    }
+}
+
+Container(api, "REST API", "Fake API (json-server) on Azure App Service; Spring Boot REST API planned", "Exposes /api/v1/rentals.")
+
+Rel(rentalRequestPage, rentalStore, "Calls requestRental()")
+Rel(reservationList, rentalStore, "Calls confirmReservation() / cancelReservation()")
+Rel(rentalStore, rental, "Holds and updates")
+Rel(rental, valueObjects, "Uses")
+Rel(rentalStore, rentalApi, "Invokes")
+Rel(rentalApi, endpoint, "Delegates to")
+Rel(endpoint, assembler, "Maps with")
+Rel(endpoint, api, "GET/POST/PUT /api/v1/rentals", "HTTPS / JSON")
+
+@enduml
