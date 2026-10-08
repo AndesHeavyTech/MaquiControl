@@ -7,7 +7,7 @@ Container(webapp, "Single Page Application", "Angular", "Provides the user inter
 
 Container_Boundary(fleet, "Fleet Management Bounded Context") {
 
-    Component(interfaces, "MachineryController", "Spring Boot @RestController", "Exposes GET, POST, PUT /api/v1/machinery endpoints.")
+    Component(interfaces, "MachineryController", "Spring Boot @RestController", "Exposes GET, POST, PUT, DELETE /api/v1/machinery and /api/v1/categories endpoints.")
 
     Component(application, "FleetApplicationService", "Spring Boot @Service", "Coordinates registerMachinery(), updateMachinery() and checkAvailability() use cases.")
 
@@ -27,4 +27,4 @@ Rel(application, infrastructure, "Calls save() / findById()")
 Rel(infrastructure, database, "Executes SQL queries")
 Rel(interfaces, security, "Validates security context")
 
-@enduml
+@enduml

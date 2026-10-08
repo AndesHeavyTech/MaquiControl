@@ -8,17 +8,17 @@ Person(contractor, "Contractor / Site Manager", "Searches machinery, requests re
 
 System_Boundary(maquicontrol, "MaquiControl") {
 
-    Container(webServer, "Web Application", "Nginx", "Serves the compiled Angular application and its static assets to users' browsers.")
+    Container(webServer, "Web Application", "Azure Static Web Apps", "Serves the compiled Angular application and its static assets to users' browsers over a CDN.")
 
-    Container(spa, "Single Page Application", "Angular", "Runs in the browser and provides the interactive user experience for administrators and contractors.")
+    Container(spa, "Single Page Application", "Angular 22", "Runs in the browser and provides the interactive user experience for administrators and contractors.")
 
-    Container(api, "REST API", "Spring Boot / Java", "Provides business capabilities for machinery, rentals, maintenance, operations, profiles and identity management.")
+    Container(api, "REST API", "Spring Boot / Java (planned); Fake API json-server on Azure App Service (Sprint 2)", "Provides business capabilities for machinery, rentals, maintenance, operations, profiles, identity, subscriptions and payments under /api/v1.")
 
     ContainerDb(database, "Database", "Relational Database", "Stores machinery, rental, maintenance, operational, account, profile, subscription and billing information.")
 }
 
 System_Ext(sunat, "SUNAT", "Validates and receives electronic invoices.")
-System_Ext(paymentProvider, "Payment Provider", "Processes subscription payments and renewals.")
+System_Ext(paymentProvider, "Mercado Pago", "Checkout Pro payment provider (sandbox) for subscription payments.")
 
 Rel(admin, webServer, "Loads web application from", "HTTPS")
 Rel(contractor, webServer, "Loads web application from", "HTTPS")

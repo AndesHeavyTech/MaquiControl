@@ -7,29 +7,37 @@ Container(webapp, "Single Page Application", "Angular", "Provides the user inter
 
 Container_Boundary(api, "REST API") {
 
-    Component(iam, "Identity & Access Management Bounded Context", "Spring Boot", "Handles authentication, authorization, user accounts and roles via /api/v1/auth.")
+    Component(iam, "Identity & Access Management Bounded Context", "Spring Boot", "Handles authentication, authorization, user accounts and roles via /api/v1/authentication, /api/v1/user-accounts and /api/v1/roles.")
 
-    Component(profiles, "Profiles Management Bounded Context", "Spring Boot", "Manages user profile, contact and organization information via /api/v1/profiles.")
+    Component(profiles, "Profiles Management Bounded Context", "Spring Boot", "Manages user profile, contact and organization information via /api/v1/profiles and /api/v1/organizations.")
 
-    Component(fleet, "Fleet Management Bounded Context", "Spring Boot", "Manages machinery inventory, status and availability via /api/v1/machinery.")
+    Component(fleet, "Fleet Management Bounded Context", "Spring Boot", "Manages machinery inventory, status and availability via /api/v1/machinery and /api/v1/categories.")
 
     Component(rental, "Rental Management Bounded Context", "Spring Boot", "Manages rental requests, reservations, confirmations and cancellations via /api/v1/rentals.")
 
-    Component(maintenance, "Maintenance Management Bounded Context", "Spring Boot", "Manages maintenance scheduling, history and breakdown reports via /api/v1/maintenance.")
+    Component(maintenance, "Maintenance Management Bounded Context", "Spring Boot", "Manages maintenance scheduling, history and breakdown reports via /api/v1/maintenances.")
 
-    Component(operations, "Operations Management Bounded Context", "Spring Boot", "Manages service execution, worked hours and operational tracking via /api/v1/operations.")
+    Component(operations, "Operations Management Bounded Context", "Spring Boot", "Manages service execution, worked hours and operational tracking via /api/v1/service-operations.")
+
+    Component(subscription, "Subscription Management Bounded Context", "Spring Boot", "Manages plans and fleet owner subscriptions via /api/v1/plans and /api/v1/subscriptions.")
+
+    Component(billing, "Billing Management Bounded Context", "Spring Boot", "Creates Mercado Pago checkout preferences and confirms payments via /api/v1/payments.")
 
     Component(shared, "Shared Kernel Bounded Context", "Spring Boot", "Provides common domain and application elements shared across bounded contexts.")
 }
 
+System_Ext(mercadoPago, "Mercado Pago", "Checkout Pro payment provider (sandbox).")
+
 ContainerDb(database, "Database", "Relational Database", "Stores information required by the MaquiControl platform.")
 
-Rel(webapp, iam, "Dispatches /api/v1/auth/*")
-Rel(webapp, profiles, "Dispatches /api/v1/profiles/*")
-Rel(webapp, fleet, "Dispatches /api/v1/machinery/*")
+Rel(webapp, iam, "Dispatches /api/v1/authentication/*, /user-accounts, /roles")
+Rel(webapp, profiles, "Dispatches /api/v1/profiles/*, /organizations/*")
+Rel(webapp, fleet, "Dispatches /api/v1/machinery/*, /categories/*")
 Rel(webapp, rental, "Dispatches /api/v1/rentals/*")
-Rel(webapp, maintenance, "Dispatches /api/v1/maintenance/*")
-Rel(webapp, operations, "Dispatches /api/v1/operations/*")
+Rel(webapp, maintenance, "Dispatches /api/v1/maintenances/*")
+Rel(webapp, operations, "Dispatches /api/v1/service-operations/*")
+Rel(webapp, subscription, "Dispatches /api/v1/plans/*, /subscriptions/*")
+Rel(webapp, billing, "Dispatches /api/v1/payments/*")
 
 Rel(iam, database, "Reads from and writes to")
 Rel(profiles, database, "Reads from and writes to")
@@ -37,10 +45,14 @@ Rel(fleet, database, "Reads from and writes to")
 Rel(rental, database, "Reads from and writes to")
 Rel(maintenance, database, "Reads from and writes to")
 Rel(operations, database, "Reads from and writes to")
+Rel(subscription, database, "Reads from and writes to")
+Rel(billing, database, "Reads from and writes to")
 
 Rel(rental, fleet, "Checks machinery availability")
 Rel(maintenance, fleet, "Updates machinery operational status")
 Rel(operations, rental, "Uses confirmed rental information")
+Rel(billing, subscription, "Activates paid subscriptions")
+Rel(billing, mercadoPago, "Creates preferences and reads payments", "HTTPS / JSON")
 
 Rel(iam, shared, "Uses")
 Rel(profiles, shared, "Uses")
@@ -48,5 +60,7 @@ Rel(fleet, shared, "Uses")
 Rel(rental, shared, "Uses")
 Rel(maintenance, shared, "Uses")
 Rel(operations, shared, "Uses")
+Rel(subscription, shared, "Uses")
+Rel(billing, shared, "Uses")
 
-@enduml
+@enduml

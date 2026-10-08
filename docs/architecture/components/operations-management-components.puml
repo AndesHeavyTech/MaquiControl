@@ -7,7 +7,7 @@ Container(webapp, "Single Page Application", "Angular", "Provides the user inter
 
 Container_Boundary(operations, "Operations Management Bounded Context") {
 
-    Component(interfaces, "ServiceOperationController", "Spring Boot @RestController", "Exposes GET, POST, PUT, PATCH /api/v1/operations endpoints.")
+    Component(interfaces, "ServiceOperationController", "Spring Boot @RestController", "Exposes GET, POST, PUT, PATCH /api/v1/service-operations endpoints.")
 
     Component(application, "OperationsApplicationService", "Spring Boot @Service", "Coordinates startService(), recordWorkedHours() and completeService() use cases.")
 
@@ -20,11 +20,11 @@ Container_Boundary(operations, "Operations Management Bounded Context") {
 
 ContainerDb(database, "Database", "Relational Database", "Stores service operation and worked-hour information.")
 
-Rel(webapp, interfaces, "Calls /api/v1/operations/*", "HTTPS / JSON")
+Rel(webapp, interfaces, "Calls /api/v1/service-operations/*", "HTTPS / JSON")
 Rel(interfaces, application, "Calls startService() / recordWorkedHours()")
 Rel(application, domain, "Invokes start() / recordHours() / complete()")
 Rel(application, infrastructure, "Calls save() / findById()")
 Rel(infrastructure, database, "Executes SQL queries")
 Rel(interfaces, security, "Validates security context")
 
-@enduml
+@enduml

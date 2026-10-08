@@ -1,30 +1,39 @@
 @startuml
 !include <C4/C4_Component>
 
-title MaquiControl - Operations Management Frontend Component Diagram (DDD Layers)
+title MaquiControl - Operations Frontend Component Diagram (DDD Layers)
 
-Container_Boundary(operations, "Operations Management Bounded Context [Angular]") {
+Container_Boundary(bc, "Operations Management Bounded Context [Angular]") {
     Boundary(presentation, "Presentation Layer") {
-        Component(serviceOperationComponent, "ServiceOperationComponent", "Angular Component", "Displays operational status and calls operationsStore.loadOperation() and completeOperation(id).")
-        Component(workedHoursFormComponent, "WorkedHoursFormComponent", "Angular Component", "Captures hours worked form and calls operationsStore.submitWorkedHours(hoursData).")
+        Component(operationPage, "ServiceOperationPage", "Angular Component", "Starts and completes the service operation of a confirmed rental and validates worked hours.")
+        Component(workedHoursForm, "WorkedHoursForm", "Angular Component", "Captures the worked hours of a day and emits them to the page.")
     }
     Boundary(application, "Application Layer") {
-        Component(operationsStore, "OperationsStore", "Angular Signals Store", "Coordinates operations state; exposes currentOperation(), recordHours() and completeOperation() signals.")
+        Component(operationsStore, "OperationsManagementStore", "Angular Signals Store", "loadOperations(), startOperation(), recordWorkedHours(), validateWorkedHours() and completeOperation().")
     }
     Boundary(domain, "Domain Layer") {
-        Component(operationModel, "OperationModel", "TypeScript Interface / Class", "Defines operation domain model: id, rentalId, workedHours, operatorNotes and operationStatus.")
+        Component(operation, "ServiceOperation", "Entity", "Operation linked to a rental; calculateTotalHours() and isInProgress().")
+        Component(workedHours, "WorkedHours", "Entity", "Daily record of hours; isValidated().")
+        Component(enums, "OperationStatus, WorkedHoursStatus", "Enums", "Operation and worked hours state.")
     }
     Boundary(infrastructure, "Infrastructure Layer") {
-        Component(operationsApiService, "OperationsApiService", "Angular HttpClient Service", "Executes HTTP calls: getOperationStatus(), postWorkedHours() and patchOperationStatus().")
+        Component(operationsApi, "OperationsManagementApi", "Angular Service", "getServiceOperations(), createServiceOperation() and updateServiceOperation().")
+        Component(endpoint, "ServiceOperationApiEndpoint", "BaseApiEndpoint", "HTTP calls to /service-operations.")
+        Component(assembler, "ServiceOperationAssembler", "BaseAssembler", "Converts API resources into entities and back.")
     }
 }
 
-Container(api, "REST API", "Spring Boot / Java", "Exposes /api/v1/operations endpoints.")
+Container(api, "REST API", "Fake API (json-server) on Azure App Service; Spring Boot REST API planned", "Exposes /api/v1/service-operations.")
 
-Rel(serviceOperationComponent, operationsStore, "Calls loadOperation() / completeOperation(id)")
-Rel(workedHoursFormComponent, operationsStore, "Calls submitWorkedHours(hoursData)")
-Rel(operationsStore, operationModel, "Instantiates and updates state")
-Rel(operationsStore, operationsApiService, "Calls getOperationStatus() / postWorkedHours()")
-Rel(operationsApiService, api, "Dispatches HTTP GET/POST/PATCH /api/v1/operations/*", "HTTPS / JSON")
+Rel(operationPage, operationsStore, "Calls startOperation() / validateWorkedHours() / completeOperation()")
+Rel(workedHoursForm, operationPage, "Emits worked hours")
+Rel(operationPage, operationsStore, "Calls recordWorkedHours()")
+Rel(operationsStore, operation, "Holds and updates")
+Rel(operation, workedHours, "Contains")
+Rel(operation, enums, "Uses")
+Rel(operationsStore, operationsApi, "Invokes")
+Rel(operationsApi, endpoint, "Delegates to")
+Rel(endpoint, assembler, "Maps with")
+Rel(endpoint, api, "GET/POST/PUT /api/v1/service-operations", "HTTPS / JSON")
 
 @enduml

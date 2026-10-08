@@ -1,30 +1,38 @@
 @startuml
 !include <C4/C4_Component>
 
-title MaquiControl - Profiles Management Frontend Component Diagram (DDD Layers)
+title MaquiControl - Profiles Frontend Component Diagram (DDD Layers)
 
-Container_Boundary(profiles, "Profiles Management Bounded Context [Angular]") {
+Container_Boundary(bc, "Profiles Management Bounded Context [Angular]") {
     Boundary(presentation, "Presentation Layer") {
-        Component(profileViewComponent, "ProfileViewComponent", "Angular Component", "Displays user profile and calls profileStore.loadProfile() and updateProfile(data).")
-        Component(organizationFormComponent, "OrganizationFormComponent", "Angular Component", "Captures organization data and calls profileStore.setOrganization(orgData).")
+        Component(profilePage, "ProfilePage", "Angular Component", "Shows and edits the user profile and calls saveProfile().")
+        Component(organizationForm, "OrganizationForm", "Angular Component", "Registers the company of the owner or contractor and calls saveOrganization().")
     }
     Boundary(application, "Application Layer") {
-        Component(profileStore, "ProfileStore", "Angular Signals Store", "Coordinates profile state; exposes profile(), updateProfile() and setOrganization() signals.")
+        Component(profilesStore, "ProfilesManagementStore", "Angular Signals Store", "loadProfiles(), loadOrganizations(), saveProfile() and saveOrganization().")
     }
     Boundary(domain, "Domain Layer") {
-        Component(profileModel, "ProfileModel", "TypeScript Interface / Class", "Defines user profile domain model: id, fullName, email, phone and organization details.")
+        Component(profile, "Profile", "Entity", "User profile; fullName() and belongsToOrganization().")
+        Component(organization, "Organization", "Entity", "Company data with tax id; isValidTaxId().")
+        Component(contact, "ContactInformation, OrganizationType", "Value Object / Enum", "Phone, email and address; formattedAddress() and isValid().")
     }
     Boundary(infrastructure, "Infrastructure Layer") {
-        Component(profilesApiService, "ProfilesApiService", "Angular HttpClient Service", "Executes HTTP calls: getProfile(id), putProfile(data) and postOrganization(data).")
+        Component(profilesApi, "ProfilesManagementApi", "Angular Service", "getProfiles(), createProfile(), updateProfile(), getOrganizations(), createOrganization(), updateOrganization().")
+        Component(endpoints, "ProfileApiEndpoint, OrganizationApiEndpoint", "BaseApiEndpoint", "HTTP calls to /profiles and /organizations.")
+        Component(assemblers, "ProfileAssembler, OrganizationAssembler", "BaseAssembler", "Convert API resources into entities and back.")
     }
 }
 
-Container(api, "REST API", "Spring Boot / Java", "Exposes /api/v1/profiles endpoints.")
+Container(api, "REST API", "Fake API (json-server) on Azure App Service; Spring Boot REST API planned", "Exposes /api/v1/profiles and /api/v1/organizations.")
 
-Rel(profileViewComponent, profileStore, "Calls loadProfile() / updateProfile(data)")
-Rel(organizationFormComponent, profileStore, "Calls setOrganization(orgData)")
-Rel(profileStore, profileModel, "Instantiates and updates state")
-Rel(profileStore, profilesApiService, "Calls getProfile() / putProfile()")
-Rel(profilesApiService, api, "Dispatches HTTP GET/PUT /api/v1/profiles/*", "HTTPS / JSON")
+Rel(profilePage, profilesStore, "Calls saveProfile()")
+Rel(organizationForm, profilesStore, "Calls saveOrganization()")
+Rel(profilesStore, profile, "Holds and updates")
+Rel(profilesStore, organization, "Holds and updates")
+Rel(profile, contact, "Uses")
+Rel(profilesStore, profilesApi, "Invokes")
+Rel(profilesApi, endpoints, "Delegates to")
+Rel(endpoints, assemblers, "Maps with")
+Rel(endpoints, api, "GET/POST/PUT /api/v1/profiles, /api/v1/organizations", "HTTPS / JSON")
 
 @enduml

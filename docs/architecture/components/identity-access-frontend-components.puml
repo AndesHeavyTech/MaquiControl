@@ -3,30 +3,41 @@
 
 title MaquiControl - Identity & Access Frontend Component Diagram (DDD Layers)
 
-Container_Boundary(iam, "Identity & Access Bounded Context [Angular]") {
+Container_Boundary(bc, "Identity & Access Management Bounded Context [Angular]") {
     Boundary(presentation, "Presentation Layer") {
-        Component(loginComponent, "LoginComponent", "Angular Component", "Renders login form, validates user input and calls authStore.login(credentials).")
-        Component(registerComponent, "RegisterComponent", "Angular Component", "Renders registration form and calls authStore.register(accountData).")
+        Component(signInForm, "SignInForm", "Angular Component", "Captures email and password and calls signIn().")
+        Component(signUpForm, "SignUpForm", "Angular Component", "Registers an account as contractor or fleet owner and calls signUp().")
+        Component(authSection, "AuthenticationSection", "Angular Component", "Shows the signed-in user in the toolbar and calls signOut().")
     }
     Boundary(application, "Application Layer") {
-        Component(authStore, "AuthStore", "Angular Signals Store", "Coordinates auth state; exposes login(), register(), logout() and currentUser() signals.")
+        Component(iamStore, "IdentityAccessStore", "Angular Signals Store", "Holds the current session; signIn(), signUp(), signOut(), loadRoles(), hasRole() and hasAnyRole().")
     }
     Boundary(domain, "Domain Layer") {
-        Component(accountModel, "AccountModel", "TypeScript Interface / Class", "Defines user account domain model: id, email, roles, token and account status.")
+        Component(userAccount, "UserAccount", "Entity", "Account with credential, roles and status; hasRole() and isActive().")
+        Component(role, "Role", "Entity", "Role such as FLEET_OWNER or CONTRACTOR.")
+        Component(commands, "SignInCommand, SignUpCommand, Credential", "Commands / Value Object", "Input data for sign-in and sign-up.")
     }
     Boundary(infrastructure, "Infrastructure Layer") {
-        Component(authApiService, "AuthApiService", "Angular HttpClient Service", "Executes HTTP calls: postLogin(credentials) and postRegister(accountData).")
-        Component(authInterceptor, "AuthInterceptor", "Angular HttpInterceptorFn", "Implements intercept(req, next) to append Bearer JWT and handle 401 Unauthorized.")
+        Component(iamApi, "IdentityAccessApi", "Angular Service", "signIn(), signUp(), getRoles() and userAccountExists().")
+        Component(signInPort, "SignInPort", "Injection Token", "Selects FakeSignInApiEndpoint or SignInApiEndpoint according to the environment.")
+        Component(endpoints, "SignUpApiEndpoint, RoleApiEndpoint", "BaseApiEndpoint", "HTTP calls to /authentication/sign-up and /roles.")
+        Component(guards, "identityAccessGuard, roleGuard, identityAccessInterceptor", "Angular Guards / Interceptor", "Protect routes by session and role and attach the session to requests.")
     }
 }
 
-Container(api, "REST API", "Spring Boot / Java", "Exposes /api/v1/auth endpoints.")
+Container(api, "REST API", "Fake API (json-server) on Azure App Service; Spring Boot REST API planned", "Exposes /api/v1/authentication/sign-up, /api/v1/user-accounts and /api/v1/roles.")
 
-Rel(loginComponent, authStore, "Calls login(credentials)")
-Rel(registerComponent, authStore, "Calls register(accountData)")
-Rel(authStore, accountModel, "Instantiates and updates state")
-Rel(authStore, authApiService, "Calls postLogin() / postRegister()")
-Rel(authApiService, authInterceptor, "Processed by intercept(req, next)")
-Rel(authInterceptor, api, "Dispatches HTTP POST /api/v1/auth/*", "HTTPS / JSON")
+Rel(signInForm, iamStore, "Calls signIn()")
+Rel(signUpForm, iamStore, "Calls signUp()")
+Rel(authSection, iamStore, "Calls signOut()")
+Rel(iamStore, userAccount, "Holds current account")
+Rel(userAccount, role, "Has")
+Rel(iamStore, commands, "Builds")
+Rel(iamStore, iamApi, "Invokes")
+Rel(iamApi, signInPort, "Signs in through")
+Rel(iamApi, endpoints, "Delegates to")
+Rel(guards, iamStore, "Reads session and roles")
+Rel(signInPort, api, "GET /api/v1/user-accounts", "HTTPS / JSON")
+Rel(endpoints, api, "POST /api/v1/authentication/sign-up, GET /api/v1/roles", "HTTPS / JSON")
 
 @enduml

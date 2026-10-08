@@ -7,7 +7,7 @@ Container(webapp, "Single Page Application", "Angular", "Provides the user inter
 
 Container_Boundary(maintenance, "Maintenance Management Bounded Context") {
 
-    Component(interfaces, "MaintenanceController", "Spring Boot @RestController", "Exposes GET, POST, PUT /api/v1/maintenance endpoints.")
+    Component(interfaces, "MaintenanceController", "Spring Boot @RestController", "Exposes GET, POST, PUT /api/v1/maintenances endpoints.")
 
     Component(application, "MaintenanceApplicationService", "Spring Boot @Service", "Coordinates scheduleMaintenance(), reportBreakdown() and completeMaintenance() use cases.")
 
@@ -20,11 +20,11 @@ Container_Boundary(maintenance, "Maintenance Management Bounded Context") {
 
 ContainerDb(database, "Database", "Relational Database", "Stores maintenance and breakdown information.")
 
-Rel(webapp, interfaces, "Calls /api/v1/maintenance/*", "HTTPS / JSON")
+Rel(webapp, interfaces, "Calls /api/v1/maintenances/*", "HTTPS / JSON")
 Rel(interfaces, application, "Calls scheduleMaintenance() / reportBreakdown()")
 Rel(application, domain, "Invokes complete() / reschedule() / updateNotes()")
 Rel(application, infrastructure, "Calls save() / findById()")
 Rel(infrastructure, database, "Executes SQL queries")
 Rel(interfaces, security, "Validates security context")
 
-@enduml
+@enduml

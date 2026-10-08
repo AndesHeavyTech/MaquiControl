@@ -1,0 +1,38 @@
+@startuml
+!include <C4/C4_Component>
+
+title MaquiControl - Subscription Frontend Component Diagram (DDD Layers)
+
+Container_Boundary(bc, "Subscription Management Bounded Context [Angular]") {
+    Boundary(presentation, "Presentation Layer") {
+        Component(plansView, "Plans", "Angular Component", "Shows the Essential and Pro plans to fleet owners and calls subscribe().")
+        Component(checkoutResult, "CheckoutResult", "Angular Component", "Receives the Mercado Pago return and calls confirmCheckout().")
+    }
+    Boundary(application, "Application Layer") {
+        Component(subscriptionStore, "SubscriptionManagementStore", "Angular Signals Store", "loadPlans(), loadSubscriptions(), subscribe() and confirmCheckout().")
+    }
+    Boundary(domain, "Domain Layer") {
+        Component(plan, "Plan", "Entity", "Plan with code, price and machinery limit.")
+        Component(subscription, "Subscription", "Entity", "Subscription of a user account; activate(), cancel(), isActive() and isPendingPayment().")
+        Component(valueObjects, "Money, Payment, PlanCode, SubscriptionStatus, PaymentStatus", "Value Objects / Enums", "Price, payment data and states.")
+    }
+    Boundary(infrastructure, "Infrastructure Layer") {
+        Component(subscriptionApi, "SubscriptionManagementApi", "Angular Service", "getPlans(), createSubscription(), updateSubscription(), createCheckoutPreference() and getPayment().")
+        Component(endpoints, "PlanApiEndpoint, SubscriptionApiEndpoint, PaymentApiEndpoint", "BaseApiEndpoint", "HTTP calls to /plans, /subscriptions and /payments.")
+        Component(assemblers, "PlanAssembler, SubscriptionAssembler", "BaseAssembler", "Convert API resources into entities and back.")
+    }
+}
+
+Container(api, "REST API", "Fake API (json-server) on Azure App Service; Spring Boot REST API planned", "Exposes /api/v1/plans, /api/v1/subscriptions and /api/v1/payments.")
+
+Rel(plansView, subscriptionStore, "Calls subscribe()")
+Rel(checkoutResult, subscriptionStore, "Calls confirmCheckout()")
+Rel(subscriptionStore, plan, "Holds")
+Rel(subscriptionStore, subscription, "Holds and updates")
+Rel(subscription, valueObjects, "Uses")
+Rel(subscriptionStore, subscriptionApi, "Invokes")
+Rel(subscriptionApi, endpoints, "Delegates to")
+Rel(endpoints, assemblers, "Maps with")
+Rel(endpoints, api, "GET/POST/PUT /api/v1/plans, /api/v1/subscriptions, POST /api/v1/payments/checkout-preferences", "HTTPS / JSON")
+
+@enduml
