@@ -1,30 +1,36 @@
 @startuml
 !include <C4/C4_Component>
 
-title MaquiControl - Rental Management Frontend Component Diagram (DDD Layers)
+title MaquiControl - Rental Frontend Component Diagram (DDD Layers)
 
-Container_Boundary(rental, "Rental Management Bounded Context [Angular]") {
+Container_Boundary(bc, "Rental Management Bounded Context [Angular]") {
     Boundary(presentation, "Presentation Layer") {
-        Component(rentalRequestComponent, "RentalRequestComponent", "Angular Component", "Renders rental form and calls rentalStore.submitRentalRequest(rentalData).")
-        Component(reservationListComponent, "ReservationListComponent", "Angular Component", "Renders active reservations and calls rentalStore.confirmReservation(id) and cancelReservation(id).")
+        Component(rentalRequestPage, "RentalRequestPage", "Angular Component", "Selects rental dates for available machinery and calls requestRental().")
+        Component(reservationList, "ReservationList", "Angular Component", "Lists the user own reservations and calls confirmReservation() or cancelReservation().")
     }
     Boundary(application, "Application Layer") {
-        Component(rentalStore, "RentalStore", "Angular Signals Store", "Coordinates rental state; exposes reservations(), submitRentalRequest(), confirmReservation() and cancelReservation().")
+        Component(rentalStore, "RentalManagementStore", "Angular Signals Store", "loadRentals(), requestRental(), confirmReservation(), cancelReservation() and hasOverlappingActiveRental().")
     }
     Boundary(domain, "Domain Layer") {
-        Component(rentalModel, "RentalModel", "TypeScript Interface / Class", "Defines rental domain model: id, machineryId, startDate, endDate, totalCost and rentalStatus.")
+        Component(rental, "Rental", "Entity", "Rental request; calculateTotal(), isActive() and isPending().")
+        Component(valueObjects, "RentalPeriod, Money, RentalStatus", "Value Objects / Enum", "Dates with overlaps() and durationInDays(), and status (REQUESTED, CONFIRMED, IN_PROGRESS, COMPLETED, CANCELLED).")
     }
     Boundary(infrastructure, "Infrastructure Layer") {
-        Component(rentalApiService, "RentalApiService", "Angular HttpClient Service", "Executes HTTP calls: postRentalRequest(data), getReservations() and patchReservationStatus(id, status).")
+        Component(rentalApi, "RentalManagementApi", "Angular Service", "getRentals(), createRental() and updateRental().")
+        Component(endpoint, "RentalApiEndpoint", "BaseApiEndpoint", "HTTP calls to /rentals.")
+        Component(assembler, "RentalAssembler", "BaseAssembler", "Converts API resources into entities and back.")
     }
 }
 
-Container(api, "REST API", "Spring Boot / Java", "Exposes /api/v1/rentals endpoints.")
+Container(api, "REST API", "Fake API (json-server) on Azure App Service; Spring Boot REST API planned", "Exposes /api/v1/rentals.")
 
-Rel(rentalRequestComponent, rentalStore, "Calls submitRentalRequest(rentalData)")
-Rel(reservationListComponent, rentalStore, "Calls confirmReservation() / cancelReservation()")
-Rel(rentalStore, rentalModel, "Instantiates and updates state")
-Rel(rentalStore, rentalApiService, "Calls postRentalRequest() / getReservations()")
-Rel(rentalApiService, api, "Dispatches HTTP POST/GET/PATCH /api/v1/rentals/*", "HTTPS / JSON")
+Rel(rentalRequestPage, rentalStore, "Calls requestRental()")
+Rel(reservationList, rentalStore, "Calls confirmReservation() / cancelReservation()")
+Rel(rentalStore, rental, "Holds and updates")
+Rel(rental, valueObjects, "Uses")
+Rel(rentalStore, rentalApi, "Invokes")
+Rel(rentalApi, endpoint, "Delegates to")
+Rel(endpoint, assembler, "Maps with")
+Rel(endpoint, api, "GET/POST/PUT /api/v1/rentals", "HTTPS / JSON")
 
 @enduml

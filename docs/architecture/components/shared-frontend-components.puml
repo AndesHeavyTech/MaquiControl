@@ -3,31 +3,34 @@
 
 title MaquiControl - Shared Frontend Component Diagram (DDD Layers)
 
-Container_Boundary(shared, "Shared Kernel [Angular]") {
+Container_Boundary(bc, "Shared Bounded Context [Angular]") {
     Boundary(presentation, "Presentation Layer") {
-        Component(layout, "AppLayoutComponent", "Angular Component", "Hosts the application shell layout, router outlet and footer structure.")
-        Component(navigation, "NavbarComponent", "Angular Component", "Provides role-aware navigation bar; calls sessionStore.clearSession() on sign out.")
-        Component(feedback, "NotificationToastComponent", "Angular Component", "Displays system alerts, loading spinners and error feedback notifications.")
+        Component(layout, "Layout", "Angular Component", "Application shell with toolbar, role-aware navigation, router outlet and footer.")
+        Component(languageSwitcher, "LanguageSwitcher", "Angular Component", "Switches between English and Spanish with useLanguage().")
+        Component(footer, "FooterContent", "Angular Component", "Footer with links and terms of service.")
+        Component(views, "Home, PageNotFound, TermsOfService", "Angular Components", "Shared pages.")
     }
     Boundary(application, "Application Layer") {
-        Component(sessionStore, "SessionStore", "Angular Signals Store", "Coordinates global session state; exposes currentUser(), userRole() and clearSession().")
+        Component(titleStrategy, "TranslatedTitleStrategy", "Angular TitleStrategy", "Translates the browser title of each route.")
     }
     Boundary(domain, "Domain Layer") {
-        Component(sharedModel, "SharedDomainModel", "TypeScript Types / Interfaces", "Defines shared domain structures: Money, DateRange, PageResponse and EntityId.")
+        Component(baseEntity, "BaseEntity", "Interface", "Common id contract for all entities.")
     }
     Boundary(infrastructure, "Infrastructure Layer") {
-        Component(apiClient, "BaseHttpService", "Angular HttpClient Service", "Provides base HTTP request methods: get(), post(), put() and delete().")
-        Component(authInterceptor, "AuthInterceptor", "Angular HttpInterceptorFn", "Implements intercept(req, next) injecting Bearer JWT headers.")
+        Component(baseApi, "BaseApi", "Abstract Service", "Base class of every bounded context API.")
+        Component(baseEndpoint, "BaseApiEndpoint", "Generic Class", "getAll(), getById(), create(), update() and delete() with error handling.")
+        Component(baseAssembler, "BaseAssembler, BaseResponse, BaseResource", "Interfaces", "Contracts to map API resources and entities.")
     }
 }
 
-Container(api, "REST API", "Spring Boot / Java", "MaquiControl backend endpoints.")
+Container(api, "REST API", "Fake API (json-server) on Azure App Service; Spring Boot REST API planned", "Exposes /api/v1 endpoints.")
 
-Rel(layout, navigation, "Renders <app-navbar>")
-Rel(layout, feedback, "Renders <app-notification-toast>")
-Rel(navigation, sessionStore, "Reads currentUser() and userRole()")
-Rel(sessionStore, sharedModel, "Holds and validates session data")
-Rel(apiClient, authInterceptor, "Intercepted by intercept(req, next)")
-Rel(authInterceptor, api, "Dispatches authorized HTTP requests", "HTTPS / JSON")
+Rel(layout, languageSwitcher, "Renders")
+Rel(layout, footer, "Renders")
+Rel(layout, views, "Routes to")
+Rel(baseApi, baseEndpoint, "Composes")
+Rel(baseEndpoint, baseAssembler, "Maps with")
+Rel(baseEndpoint, baseEntity, "Returns")
+Rel(baseEndpoint, api, "HTTP requests", "HTTPS / JSON")
 
 @enduml

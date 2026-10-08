@@ -171,6 +171,15 @@
         - [Services Documentation Evidence](#5216-services-documentation-evidence-for-sprint-review)
         - [Deployment Evidence](#5217-software-deployment-evidence-for-sprint-review)
         - [Team Collaboration Insights](#5218-team-collaboration-insights-during-sprint)
+    - [5.2.2. Sprint 2](#522-sprint-2)
+        - [Sprint Planning 2](#5221-sprint-planning-2)
+        - [Aspect Leaders and Collaborators](#5222-aspect-leaders-and-collaborators)
+        - [Sprint Backlog 2](#5223-sprint-backlog-2)
+        - [Development Evidence](#5224-development-evidence-for-sprint-review)
+        - [Execution Evidence](#5225-execution-evidence-for-sprint-review)
+        - [Services Documentation Evidence](#5226-services-documentation-evidence-for-sprint-review)
+        - [Deployment Evidence](#5227-software-deployment-evidence-for-sprint-review)
+        - [Team Collaboration Insights](#5228-team-collaboration-insights-during-sprint)
 - [5.3. Validation Interviews](#53-validation-interviews)
     - [5.3.1. Diseño de Entrevistas](#531-diseño-de-entrevistas)
     - [5.3.2. Registro de Entrevistas](#532-registro-de-entrevistas)
@@ -207,6 +216,8 @@
 | 0.9 | 19/09/2026 | Carlos Gabriel Cespedes Lezcano | Corrección de inconsistencias del informe AV1: actualización de Student Outcome, consolidación estadística del análisis de entrevistas, corrección de Needfinding, alineación entre User Stories y Product Backlog, y mejora de la estructura y navegación del Capítulo IV. |
 | 0.10 | 19/09/2026 | Carlos Gabriel Cespedes Lezcano | Desarrollo del punto 4.7 Software Object-Oriented Design y del punto 4.8 Database Design, incorporando diagramas de clases y de base de datos para los seis Bounded Contexts de MaquiControl. |
 | 0.11 | 19/09/2026 | Carlos Gabriel Cespedes Lezcano | Desarrollo del punto 5.2.1 Sprint 1, incorporando Sprint Planning, matriz de líderes y colaboradores, Sprint Backlog, evidencias de desarrollo, ejecución y despliegue de la Landing Page, y análisis de colaboración del equipo. |
+| 0.12 | 07/10/2026 | Nicolas Tantalean Granda, Mathias Alejandro Castillo Guevara y Wilmer Sebastián Gutiérrez Lizarbe | Estructura inicial del punto 5.2.2 Sprint 2, diagramas PlantUML de Event Storming y Design-Level, y actualización de las descripciones de componentes y diagramas de arquitectura. |
+| 0.13 | 08/10/2026 | Carlos Gabriel Cespedes Lezcano | Actualización del Capítulo V para TB2: herramientas reales del entorno (Angular 22, Node.js 24, WebStorm, json-server), configuración de despliegue en GitHub Pages, Azure Static Web Apps y Azure App Service, desarrollo del punto 5.2.2 Sprint 2 con las evidencias de la aplicación web, la Fake API y la Landing Page v2.0.0, y corrección de los diagramas de contenedores y componentes para reflejar el código implementado. |
 
 ## Project Report Collaboration Insights
 
@@ -1400,7 +1411,7 @@ El Software Architecture Context Diagram presenta a MaquiControl como el sistema
 - **Fleet Administrator**: Utiliza MaquiControl para administrar el inventario de maquinaria pesada, programar y registrar tareas de mantenimiento preventivo y correctivo, evaluar solicitudes de alquiler y supervisar las operaciones en campo.
 - **Contractor / Site Manager**: Utiliza la plataforma para consultar el catálogo de maquinaria disponible por categoría y ubicación, enviar solicitudes de alquiler, realizar seguimiento a sus reservas activas y verificar la ejecución de los servicios contratados.
 - **SUNAT**: Sistema gubernamental tributario con el cual MaquiControl se comunica mediante HTTPS para la emisión, validación y control de comprobantes de pago electrónicos generados en la facturación de servicios.
-- **Payment Provider**: Plataforma externa encargada del procesamiento seguro de cobros recurrentes y transacciones electrónicas asociadas a los planes de suscripción de las empresas cliente.
+- **Payment Provider (Mercado Pago)**: Plataforma externa (Checkout Pro, en modo sandbox durante el desarrollo) encargada del procesamiento seguro de cobros recurrentes y transacciones electrónicas asociadas a los planes de suscripción de las empresas cliente.
 
 Este diagrama de nivel 1 del modelo C4 permite dimensionar el alcance funcional del ecosistema, estableciendo con claridad las fronteras del sistema sin profundizar en decisiones internas de tecnología o implementación.
 
@@ -1411,9 +1422,9 @@ Este diagrama de nivel 1 del modelo C4 permite dimensionar el alcance funcional 
 El Software Architecture Container Diagram detalla la arquitectura de alto nivel de MaquiControl, ilustrando las unidades de despliegue independientes (containers), las responsabilidades asignadas a cada una y los protocolos de comunicación utilizados.
 
 La solución se compone de los siguientes containers principales:
-- **Web Application Server (Nginx)**: Actúa como servidor web estático y reverse proxy, responsable de alojar y servir los paquetes compilados (HTML, JavaScript, CSS y assets) de la aplicación Angular hacia los navegadores cliente mediante HTTPS.
+- **Web Application (Azure Static Web Apps)**: Servicio de hospedaje estático con CDN y HTTPS, responsable de alojar y servir los paquetes compilados (HTML, JavaScript, CSS y assets) de la aplicación Angular hacia los navegadores cliente mediante HTTPS.
 - **Single Page Application (Angular)**: Ejecuta la lógica de presentación e interactividad directamente en el navegador del usuario cliente. Proporciona una interfaz reactiva desarrollada con TypeScript, componentes basados en Angular y Angular Material, y un manejo reactivo de estado.
-- **REST API (Spring Boot / Java)**: Container de backend que concentra la lógica de negocio, reglas de dominio y casos de uso organizados bajo principios de Domain-Driven Design (DDD). Expone servicios web RESTful seguros mediante HTTPS y serialización JSON.
+- **REST API (Spring Boot / Java)**: Container de backend que concentra la lógica de negocio, reglas de dominio y casos de uso organizados bajo principios de Domain-Driven Design (DDD). Expone servicios web RESTful seguros mediante HTTPS y serialización JSON. Durante el Sprint 2 sus endpoints `/api/v1` se sirven desde una Fake API (json-server) desplegada en Azure App Service, mientras se implementa la versión en Spring Boot.
 - **Database (Relational Database)**: Almacena de forma estructurada y persistente las entidades de la plataforma (cuentas de usuario, perfiles, maquinaria, alquileres, órdenes de mantenimiento, partes operativos de servicio, facturas y suscripciones).
 
 **Flujo de interacción y comunicaciones:**
@@ -1421,7 +1432,7 @@ La solución se compone de los siguientes containers principales:
 2. Una vez cargada en el navegador web, ambos usuarios interactúan de forma directa y continua con la **Single Page Application**, ejecutando allí sus operaciones cotidianas (búsqueda de flota, gestión de reservas, asignación de mantenimiento y registro de operaciones).
 3. La **Single Page Application** se comunica con la **REST API** mediante peticiones asíncronas HTTPS/JSON para autenticar usuarios y coordinar las transacciones de negocio.
 4. La **REST API** persiste y consulta los datos en la base de datos relacional mediante Spring Data JPA.
-5. Finalmente, la **REST API** gestiona la integración externa con **SUNAT** para la emisión de comprobantes electrónicos y con el **Payment Provider** para la recaudación de suscripciones.
+5. Finalmente, la **REST API** gestiona la integración externa con **SUNAT** para la emisión de comprobantes electrónicos y con **Mercado Pago** para la recaudación de suscripciones.
 
 ![MaquiControl Software Architecture Container Diagram](assets/container.png)
 
@@ -1431,132 +1442,136 @@ En esta sección se presentan los diagramas de componentes (Nivel 3 de C4 Model)
 
 #### Single Page Application Component Diagram
 
-Presenta la descomposición de alto nivel de la Single Page Application en módulos de funcionalidades (Feature Modules) organizados según los Bounded Contexts del dominio, junto con un núcleo reutilizable (Shared Kernel Module):
+Presenta la descomposición de alto nivel de la Single Page Application en carpetas por Bounded Context, tal como está organizado el código fuente en `src/app`. Cada Bounded Context se divide en las capas `presentation`, `application`, `domain` e `infrastructure`:
 
-- **IamFeatureModule**: Módulo frontend para autenticación, registro y control de sesión de usuarios.
-- **ProfilesFeatureModule**: Módulo frontend para la consulta y edición de perfiles personales y empresariales.
-- **FleetFeatureModule**: Módulo frontend para la visualización del catálogo, registro y actualización de maquinaria.
-- **RentalFeatureModule**: Módulo frontend para la emisión de solicitudes de alquiler y administración de reservas.
-- **MaintenanceFeatureModule**: Módulo frontend para la programación de revisiones técnicas y reporte de incidencias.
-- **OperationsFeatureModule**: Módulo frontend para el control de servicio y registro de partes de horas trabajadas.
-- **SharedKernelModule**: Provee componentes transversales (layout, barra de navegación, notificaciones), modelos comunes y el cliente HTTP base.
+- **identity-access-management**: inicio de sesión, registro con rol de propietario de flota o contratista, guards de rutas por sesión y rol, e interceptor HTTP.
+- **profiles-management**: perfil del usuario y organización.
+- **fleet-management**: catálogo de maquinaria, formulario de maquinaria y gestión de categorías.
+- **rental-management**: solicitud de alquiler y listado de reservas propias.
+- **maintenance-management**: programación de mantenimientos y reporte de averías.
+- **operations-management**: operación de servicio y registro y validación de horas trabajadas.
+- **subscription-management**: planes de suscripción y pago con Mercado Pago Checkout Pro (sandbox).
+- **shared**: layout, selector de idioma, páginas compartidas y clases base de infraestructura (`BaseApi`, `BaseApiEndpoint`, `BaseAssembler`).
 
-Todos los Feature Modules consumen la **REST API** a través de HTTPS y JSON, utilizando sus respectivos endpoints de negocio (`/api/v1/*`).
+Todos los Bounded Contexts consumen la **REST API** mediante HTTPS y JSON bajo el prefijo `/api/v1`.
 
 ![MaquiControl Single Page Application Component Diagram](assets/spa-components.png)
 
 #### Identity & Access Frontend Component Diagram
 
-Este diagrama descompone el Bounded Context de Identity & Access en el frontend siguiendo la arquitectura por capas de DDD:
-
 - **Presentation Layer**:
-  - `LoginComponent`: Componente Angular que renderiza el formulario de inicio de sesión, valida credenciales capturadas e invoca la función `authStore.login(credentials)`.
-  - `RegisterComponent`: Componente Angular que captura el formulario de registro de nueva cuenta e invoca la función `authStore.register(accountData)`.
+  - `SignInForm`: formulario de inicio de sesión que invoca `signIn()` del store.
+  - `SignUpForm`: formulario de registro que permite elegir el rol de contratista o propietario de flota e invoca `signUp()`.
+  - `AuthenticationSection`: muestra al usuario autenticado en la barra superior e invoca `signOut()`.
 - **Application Layer**:
-  - `AuthStore`: Almacén de estado reactivo (Angular Signals) que centraliza la sesión del usuario y expone funciones y señales como `login()`, `register()`, `logout()` y `currentUser()`.
+  - `IdentityAccessStore`: store basado en Angular Signals que mantiene la sesión y expone `signIn()`, `signUp()`, `signOut()`, `loadRoles()`, `hasRole()` y `hasAnyRole()`.
 - **Domain Layer**:
-  - `AccountModel`: Interfaz y clase TypeScript que modela la entidad de cuenta de usuario con propiedades como `id`, `email`, `roles`, `status` y token de sesión.
+  - `UserAccount`, `Role` y `Credential`, junto con los comandos `SignInCommand` y `SignUpCommand`.
 - **Infrastructure Layer**:
-  - `AuthApiService`: Servicio Angular (`HttpClient`) que encapsula las llamadas HTTP hacia los endpoints del backend implementando métodos como `postLogin(credentials)` y `postRegister(accountData)`.
-  - `AuthInterceptor`: Función interceptora (`HttpInterceptorFn`) que ejecuta el método `intercept(req, next)` para inyectar la cabecera `Authorization: Bearer <token>` y controlar respuestas HTTP 401 Unauthorized.
+  - `IdentityAccessApi`: expone `signIn()`, `signUp()`, `getRoles()` y `userAccountExists()`.
+  - `SignInPort`: token de inyección que selecciona `FakeSignInApiEndpoint` o `SignInApiEndpoint` según el entorno.
+  - `SignUpApiEndpoint` y `RoleApiEndpoint`: llamadas HTTP a `/api/v1/authentication/sign-up` y `/api/v1/roles`.
+  - `identityAccessGuard`, `roleGuard` e `identityAccessInterceptor`: protegen las rutas por sesión y rol, y adjuntan la sesión a las solicitudes.
 
 ![Identity and Access Frontend Component Diagram](assets/identity-access-frontend-components.png)
 
 #### Profiles Frontend Component Diagram
 
-Organiza los componentes del frontend correspondientes a la gestión de identidad de perfil y empresas:
-
 - **Presentation Layer**:
-  - `ProfileViewComponent`: Componente Angular que presenta la información del usuario y permite su actualización mediante `profileStore.loadProfile()` y `profileStore.updateProfile(data)`.
-  - `OrganizationFormComponent`: Componente Angular que captura la información corporativa de la empresa contratista o administradora e invoca `profileStore.setOrganization(orgData)`.
+  - `ProfilePage`: muestra y edita el perfil del usuario mediante `saveProfile()`.
+  - `OrganizationForm`: registra la empresa del usuario mediante `saveOrganization()`.
 - **Application Layer**:
-  - `ProfileStore`: Gestiona el estado reactivo del perfil mediante señales de Angular, coordinando operaciones a través de `fetchProfile()`, `updateProfile()` y `setOrganization()`.
+  - `ProfilesManagementStore`: expone `loadProfiles()`, `loadOrganizations()`, `saveProfile()` y `saveOrganization()`.
 - **Domain Layer**:
-  - `ProfileModel`: Modela la estructura TypeScript del perfil, incluyendo `id`, `fullName`, `email`, `phone` y los datos asociados a la organización.
+  - `Profile`, `Organization`, el Value Object `ContactInformation` y el enum `OrganizationType`.
 - **Infrastructure Layer**:
-  - `ProfilesApiService`: Servicio de comunicación HTTP que consume los endpoints `/api/v1/profiles/*` implementando métodos como `getProfile(id)`, `putProfile(data)` y `postOrganization(data)`.
+  - `ProfilesManagementApi`, `ProfileApiEndpoint` y `OrganizationApiEndpoint`: llamadas HTTP a `/api/v1/profiles` y `/api/v1/organizations`, con sus assemblers.
 
 ![Profiles Frontend Component Diagram](assets/profiles-frontend-components.png)
 
 #### Fleet Frontend Component Diagram
 
-Estructura los componentes de la interfaz dedicados al inventario de maquinaria y disponibilidad de flota:
-
 - **Presentation Layer**:
-  - `MachineryCatalogComponent`: Renderiza el listado y filtros de maquinaria disponible, invocando `fleetStore.loadCatalog()` y `fleetStore.filterCatalog(filter)`.
-  - `MachineryFormComponent`: Formulario de alta y edición de maquinaria que invoca la función `fleetStore.saveMachinery(machineryData)`.
+  - `MachineryList`: catálogo de maquinaria para propietarios y contratistas; permite eliminar maquinaria propia o solicitar su alquiler.
+  - `MachineryForm`: registro y edición de maquinaria mediante `createMachinery()` y `updateMachinery()`.
+  - `CategoryManagement`: creación, renombrado y eliminación de categorías, validando nombres únicos y categorías en uso.
 - **Application Layer**:
-  - `FleetStore`: Administra la reactividad del catálogo y estado de las máquinas mediante las funciones `loadCatalog()`, `saveMachinery()` y `updateMachineryStatus()`.
+  - `FleetManagementStore`: mantiene las señales `machinery()` y `categories()` y expone `loadMachinery()`, `createMachinery()`, `updateMachinery()`, `deleteMachinery()`, `changeMachineryStatus()` y las operaciones de categorías.
 - **Domain Layer**:
-  - `MachineryModel`: Entidad TypeScript que encapsula los atributos de la máquina (`id`, `name`, `category`, `hourlyRate`, `status`, `location`).
+  - `Machinery` (`isAvailable()`, `isInMaintenance()`, `withStatus()`), `Category`, los Value Objects `MachineryLocation` y `Money`, y el enum `MachineryStatus`.
 - **Infrastructure Layer**:
-  - `FleetApiService`: Servicio Angular que despacha peticiones HTTP hacia `/api/v1/machinery/*` a través de `getMachineryList()`, `postMachinery()` y `putMachinery()`.
+  - `FleetManagementApi`, `MachineryApiEndpoint` y `CategoryApiEndpoint`: llamadas HTTP a `/api/v1/machinery` y `/api/v1/categories`, con sus assemblers.
 
 ![Fleet Frontend Component Diagram](assets/fleet-frontend-components.png)
 
 #### Rental Frontend Component Diagram
 
-Representa los componentes frontend encargados de las solicitudes de alquiler y reservas:
-
 - **Presentation Layer**:
-  - `RentalRequestComponent`: Interfaz para especificar fechas, maquinaria y condiciones de alquiler, invocando `rentalStore.submitRentalRequest(rentalData)`.
-  - `ReservationListComponent`: Componente que visualiza reservas activas y permite su confirmación o cancelación mediante `rentalStore.confirmReservation(id)` y `rentalStore.cancelReservation(id)`.
+  - `RentalRequestPage`: selección de fechas para alquilar una maquinaria disponible mediante `requestRental()`.
+  - `ReservationList`: listado de las reservas del usuario, con confirmación y cancelación mediante `confirmReservation()` y `cancelReservation()`.
 - **Application Layer**:
-  - `RentalStore`: Coordina el estado de solicitudes y reservas mediante señales y métodos como `submitRentalRequest()`, `confirmReservation()` y `cancelReservation()`.
+  - `RentalManagementStore`: expone `loadRentals()`, `requestRental()`, `confirmReservation()`, `cancelReservation()` y `hasOverlappingActiveRental()`.
 - **Domain Layer**:
-  - `RentalModel`: Modelo de datos en TypeScript que representa el alquiler (`id`, `machineryId`, `startDate`, `endDate`, `totalCost`, `rentalStatus`).
+  - `Rental` (`calculateTotal()`, `isActive()`, `isPending()`), los Value Objects `RentalPeriod` y `Money`, y el enum `RentalStatus`.
 - **Infrastructure Layer**:
-  - `RentalApiService`: Servicio HTTP que ejecuta las peticiones hacia `/api/v1/rentals/*` mediante `postRentalRequest(data)`, `getReservations()` y `patchReservationStatus(id, status)`.
+  - `RentalManagementApi` y `RentalApiEndpoint`: llamadas HTTP a `/api/v1/rentals`, con `RentalAssembler`.
 
 ![Rental Frontend Component Diagram](assets/rental-frontend-components.png)
 
 #### Maintenance Frontend Component Diagram
 
-Muestra los componentes frontend orientados a la programación y control técnico de la maquinaria:
-
 - **Presentation Layer**:
-  - `MaintenanceScheduleComponent`: Muestra el cronograma de revisiones preventivas e invoca `maintenanceStore.loadSchedule()` y `maintenanceStore.scheduleMaintenance(data)`.
-  - `BreakdownReportComponent`: Formulario de reporte de averías mecánicas que invoca `maintenanceStore.reportBreakdown(breakdownData)`.
+  - `MaintenanceSchedulePage`: programa, inicia y completa mantenimientos, y actualiza el estado de la maquinaria en Fleet Management.
+  - `BreakdownReportForm`: reporte de averías mediante `reportBreakdown()`.
 - **Application Layer**:
-  - `MaintenanceStore`: Almacén reactivo que gestiona el estado de mantenimiento mediante `scheduleMaintenance()`, `reportBreakdown()` y `completeMaintenance()`.
+  - `MaintenanceManagementStore`: expone `loadMaintenances()`, `scheduleMaintenance()`, `startMaintenance()`, `completeMaintenance()` y `reportBreakdown()`.
 - **Domain Layer**:
-  - `MaintenanceModel`: Define la estructura técnica del mantenimiento (`id`, `machineryId`, `scheduledDate`, `maintenanceType`, `status`, `notes`).
+  - `Maintenance`, `BreakdownReport`, el Value Object `Money` y los enums `MaintenanceType`, `MaintenanceStatus` y `BreakdownSeverity`.
 - **Infrastructure Layer**:
-  - `MaintenanceApiService`: Servicio HTTP que interactúa con `/api/v1/maintenance/*` a través de los métodos `getMaintenanceSchedule()`, `postScheduleMaintenance()` y `postBreakdownReport()`.
+  - `MaintenanceManagementApi` y `MaintenanceApiEndpoint`: llamadas HTTP a `/api/v1/maintenances`, con `MaintenanceAssembler`.
 
 ![Maintenance Frontend Component Diagram](assets/maintenance-frontend-components.png)
 
 #### Operations Frontend Component Diagram
 
-Presenta los componentes frontend para la ejecución operativa en obra y el control de horas:
-
 - **Presentation Layer**:
-  - `ServiceOperationComponent`: Muestra el estado operativo de los servicios activos e invoca `operationsStore.loadOperation()` y `operationsStore.completeOperation(id)`.
-  - `WorkedHoursFormComponent`: Formulario de registro diario de horómetro y partes de trabajo que invoca `operationsStore.submitWorkedHours(hoursData)`.
+  - `ServiceOperationPage`: inicia y completa la operación de servicio de un alquiler confirmado y valida las horas trabajadas.
+  - `WorkedHoursForm`: captura las horas trabajadas de un día y las envía a la página.
 - **Application Layer**:
-  - `OperationsStore`: Coordina el ciclo de vida del servicio en campo exponiendo `startOperation()`, `recordHours()` y `completeOperation()`.
+  - `OperationsManagementStore`: expone `loadOperations()`, `startOperation()`, `recordWorkedHours()`, `validateWorkedHours()` y `completeOperation()`.
 - **Domain Layer**:
-  - `OperationModel`: Representa la entidad operativa (`id`, `rentalId`, `workedHours`, `operatorNotes`, `operationStatus`).
+  - `ServiceOperation` (`calculateTotalHours()`), `WorkedHours` (`isValidated()`) y los enums `OperationStatus` y `WorkedHoursStatus`.
 - **Infrastructure Layer**:
-  - `OperationsApiService`: Realiza llamadas HTTP hacia `/api/v1/operations/*` implementando `getOperationStatus()`, `postWorkedHours()` y `patchOperationStatus()`.
+  - `OperationsManagementApi` y `ServiceOperationApiEndpoint`: llamadas HTTP a `/api/v1/service-operations`, con `ServiceOperationAssembler`.
 
 ![Operations Frontend Component Diagram](assets/operations-frontend-components.png)
 
-#### Shared Frontend Component Diagram
-
-Detalla los componentes reutilizables compartidos por todos los Bounded Contexts de la aplicación web:
+#### Subscription Frontend Component Diagram
 
 - **Presentation Layer**:
-  - `AppLayoutComponent`: Componente contenedor que orquesta el encabezado, contenedor de rutas `<router-outlet>` y pie de página.
-  - `NavbarComponent`: Barra de navegación sensible al rol que permite cambiar de módulo e invoca `sessionStore.clearSession()` al cerrar sesión.
-  - `NotificationToastComponent`: Componente de retroalimentación visual para mostrar alertas, diálogos de confirmación y errores.
+  - `Plans`: muestra los planes Essential y Pro a los propietarios de flota e inicia la suscripción mediante `subscribe()`.
+  - `CheckoutResult`: recibe el retorno de Mercado Pago y confirma el pago mediante `confirmCheckout()`.
 - **Application Layer**:
-  - `SessionStore`: Almacén global que preserva el estado de la sesión, rol activo y credenciales mediante `currentUser()`, `userRole()` y `clearSession()`.
+  - `SubscriptionManagementStore`: expone `loadPlans()`, `loadSubscriptions()`, `subscribe()` y `confirmCheckout()`.
 - **Domain Layer**:
-  - `SharedDomainModel`: Colección de tipos y Value Objects comunes (`Money`, `DateRange`, `PageResponse`, `EntityId`).
+  - `Plan`, `Subscription` (`activate()`, `cancel()`, `isActive()`, `isPendingPayment()`), `Payment`, el Value Object `Money` y los enums `PlanCode`, `SubscriptionStatus` y `PaymentStatus`.
 - **Infrastructure Layer**:
-  - `BaseHttpService`: Servicio base configurable para ejecutar peticiones HTTP estandarizadas (`get()`, `post()`, `put()`, `delete()`).
-  - `AuthInterceptor`: Interceptor HTTP que inyecta automáticamente el token JWT en cada solicitud enviada a la REST API.
+  - `SubscriptionManagementApi`, `PlanApiEndpoint`, `SubscriptionApiEndpoint` y `PaymentApiEndpoint`: llamadas HTTP a `/api/v1/plans`, `/api/v1/subscriptions` y `/api/v1/payments`.
+
+![Subscription Frontend Component Diagram](assets/subscription-frontend-components.png)
+
+#### Shared Frontend Component Diagram
+
+- **Presentation Layer**:
+  - `Layout`: estructura de la aplicación con barra superior, navegación según el rol, `router-outlet` y pie de página.
+  - `LanguageSwitcher`: cambia el idioma entre inglés y español mediante `useLanguage()`.
+  - `FooterContent`, `Home`, `PageNotFound` y `TermsOfService`: componentes y páginas compartidas.
+- **Application Layer**:
+  - `TranslatedTitleStrategy`: traduce el título del navegador en cada ruta.
+- **Domain Layer**:
+  - `BaseEntity`: contrato común de identificador para todas las entidades.
+- **Infrastructure Layer**:
+  - `BaseApi`, `BaseApiEndpoint` (`getAll()`, `getById()`, `create()`, `update()`, `delete()`) y `BaseAssembler`: clases base que reutilizan todos los Bounded Contexts.
 
 ![Shared Frontend Component Diagram](assets/shared-frontend-components.png)
 
@@ -1566,13 +1581,15 @@ Los siguientes diagramas detallan la estructura interna de la REST API desarroll
 
 #### API Application Component Diagram
 
-Presenta la visión global de la REST API y la interconexión de sus seis Bounded Contexts principales con la Single Page Application y la base de datos relacional:
-- **Identity & Access Management**: Autenticación, asignación de roles y control de credenciales mediante endpoints `/api/v1/auth/*`.
-- **Profiles Management**: Gestión de datos de perfiles personales y empresas mediante endpoints `/api/v1/profiles/*`.
-- **Fleet Management**: Administración de maquinaria, disponibilidad y tarifas horarias mediante `/api/v1/machinery/*`.
+Presenta la visión global de la REST API y la interconexión de sus ocho Bounded Contexts principales con la Single Page Application y la base de datos relacional:
+- **Identity & Access Management**: Autenticación, asignación de roles y control de credenciales mediante `/api/v1/authentication/*`, `/api/v1/user-accounts` y `/api/v1/roles`.
+- **Profiles Management**: Gestión de datos de perfiles personales y empresas mediante `/api/v1/profiles/*` y `/api/v1/organizations/*`.
+- **Fleet Management**: Administración de maquinaria, disponibilidad y tarifas horarias mediante `/api/v1/machinery/*` y `/api/v1/categories/*`.
 - **Rental Management**: Gestión integral de solicitudes de alquiler y contratos mediante `/api/v1/rentals/*`.
-- **Maintenance Management**: Programación de mantenimientos y reporte de averías mediante `/api/v1/maintenance/*`.
-- **Operations Management**: Registro de horas operadas y cierre de servicios mediante `/api/v1/operations/*`.
+- **Maintenance Management**: Programación de mantenimientos y reporte de averías mediante `/api/v1/maintenances/*`.
+- **Operations Management**: Registro de horas operadas y cierre de servicios mediante `/api/v1/service-operations/*`.
+- **Subscription Management**: Planes y suscripciones de los propietarios de flota mediante `/api/v1/plans/*` y `/api/v1/subscriptions/*`.
+- **Billing Management**: Creación de preferencias de pago y confirmación de pagos con Mercado Pago mediante `/api/v1/payments/*`.
 - **Shared Kernel Bounded Context**: Clases transversales, Value Objects base y utilitarios compartidos.
 
 ![MaquiControl API Application Component Diagram](assets/c4-api-component-diagram.png)
@@ -1602,7 +1619,7 @@ Detalla la arquitectura interna del Bounded Context de Rental Management:
 #### Maintenance Management Bounded Context Component Diagram
 
 Detalla la arquitectura interna del Bounded Context de Maintenance Management:
-- `MaintenanceController`: Controlador REST (`@RestController`) con endpoints GET, POST y PUT en `/api/v1/maintenance`.
+- `MaintenanceController`: Controlador REST (`@RestController`) con endpoints GET, POST y PUT en `/api/v1/maintenances`.
 - `MaintenanceApplicationService`: Servicio de aplicación (`@Service`) que coordina `scheduleMaintenance()`, `reportBreakdown()` y `completeMaintenance()`.
 - `Maintenance Aggregate`: Agregado del dominio encargado de registrar revisiones técnicas, tipos de mantenimiento (`MaintenanceType`) y bloqueos operativos de maquinaria averiada.
 - `MaintenanceRepository`: Repositorio Spring Data JPA con métodos `save()`, `findById()`, `findByMachineryId()` y `findByStatus()`.
@@ -1613,7 +1630,7 @@ Detalla la arquitectura interna del Bounded Context de Maintenance Management:
 #### Operations Management Bounded Context Component Diagram
 
 Detalla la arquitectura interna del Bounded Context de Operations Management:
-- `ServiceOperationController`: Controlador REST (`@RestController`) con endpoints GET, POST, PUT y PATCH en `/api/v1/operations`.
+- `ServiceOperationController`: Controlador REST (`@RestController`) con endpoints GET, POST, PUT y PATCH en `/api/v1/service-operations`.
 - `OperationsApplicationService`: Servicio de aplicación (`@Service`) que coordina `startService()`, `recordWorkedHours()` y `completeService()`.
 - `ServiceOperation Aggregate`: Agregado que gobierna el parte diario de servicio, validación del horómetro (`WorkedHours`) y cierre operativo.
 - `ServiceOperationRepository`: Repositorio Spring Data JPA que ejecuta operaciones `save()`, `findById()`, `findByRentalId()` y `findByStatus()`.
@@ -1624,7 +1641,7 @@ Detalla la arquitectura interna del Bounded Context de Operations Management:
 #### Identity & Access Management Bounded Context Component Diagram
 
 Detalla la arquitectura interna del Bounded Context de Identity & Access Management:
-- `AuthController`: Controlador REST (`@RestController`) que publica los endpoints de autenticación y registro en `/api/v1/auth/login` y `/api/v1/auth/register`.
+- `AuthController`: Controlador REST (`@RestController`) que publica los endpoints de autenticación y registro en `/api/v1/authentication/sign-in` y `/api/v1/authentication/sign-up`.
 - `IdentityAccessService`: Servicio de aplicación (`@Service`) que ejecuta `authenticateUser()`, `registerUser()`, `assignRole()` y `changePassword()`.
 - `UserAccount Aggregate`: Agregado raíz de identidad que encapsula credenciales seguras (`Credential`), asignación de roles (`Role`) y políticas de activación o suspensión de cuentas.
 - `UserAccountRepository`: Repositorio Spring Data JPA que provee métodos de acceso a datos como `save()`, `findById()`, `findByEmail()` y `existsByEmail()`.
@@ -1635,7 +1652,7 @@ Detalla la arquitectura interna del Bounded Context de Identity & Access Managem
 #### Profiles Management Bounded Context Component Diagram
 
 Detalla la arquitectura interna del Bounded Context de Profiles Management:
-- `ProfileController`: Controlador REST (`@RestController`) que expone los endpoints GET y PUT en `/api/v1/profiles` y POST en `/api/v1/profiles/organization`.
+- `ProfileController`: Controlador REST (`@RestController`) que expone los endpoints GET, POST y PUT en `/api/v1/profiles` y `/api/v1/organizations`.
 - `ProfileApplicationService`: Servicio de aplicación (`@Service`) que coordina `viewProfile()`, `updateProfile()` y `registerOrganization()`.
 - `Profile Aggregate`: Agregado del dominio que contiene el perfil de usuario, información de contacto (`ContactInformation`) y pertenencia a empresa u organización (`Organization`).
 - `ProfileRepository`: Repositorio Spring Data JPA con métodos de persistencia `save()`, `findById()`, `findByEmail()` y `existsByUserId()`.
@@ -1793,16 +1810,21 @@ A continuación, se detallan los productos de software seleccionados, organizado
 | **Software Development (SDK & Runtime)** | Eclipse Temurin OpenJDK (Java SE) | Local | 21.0.x LTS | Kit de desarrollo oficial de Java para compilar y ejecutar la lógica de negocio, servicios RESTful y algoritmos transaccionales del backend. | [Adoptium Temurin 21](https://adoptium.net/temurin/releases/?version=21) |
 | **Software Development (Build Tool)** | Apache Maven | Local | 3.9.x | Herramienta de gestión de dependencias, automatización de construcción, compilación y empaquetado del backend en archivos ejecutables JAR. | [Apache Maven](https://maven.apache.org/download.cgi) |
 | **Software Development (Framework)** | Spring Boot | Framework | 3.3.x | Framework de desarrollo de backend Java para la creación rápida de servicios RESTful empresariales con Spring Data JPA y Spring Security. | [Spring Initializr](https://start.spring.io/) |
-| **Software Development (Runtime)** | Node.js & npm | Local | v20.x LTS (npm v10.x) | Entorno de ejecución de JavaScript y gestor de paquetes para la compilación, dependencias y ejecución de la aplicación cliente frontend. | [Node.js Downloads](https://nodejs.org/en/download) |
-| **Software Development (Framework/CLI)** | Angular CLI | Framework / CLI | 18.x / 19.x | Interfaz de línea de comandos para la generación de componentes, servicios, módulos y compilación optimizada de la Single Page Application. | [Angular Docs](https://angular.dev/tools/cli) |
+| **Software Development (Runtime)** | Node.js & npm | Local | v24.x LTS (npm v11.x) | Entorno de ejecución de JavaScript y gestor de paquetes para la compilación de la aplicación Angular y la ejecución de la Fake API. El `package.json` del frontend fija `"engines": { "node": "^22.22.3 \|\| ^24.15.0" }`. | [Node.js Downloads](https://nodejs.org/en/download) |
+| **Software Development (Framework/CLI)** | Angular CLI | Framework / CLI | 22.x | Interfaz de línea de comandos para la generación de componentes standalone, servicios y la compilación optimizada de la Single Page Application. | [Angular Docs](https://angular.dev/tools/cli) |
+| **Software Development (UI Library)** | Angular Material | Biblioteca | 22.x | Componentes de interfaz (formularios, tarjetas, tablas, toolbar) con tema global y personalización de colores para cumplir el contraste de accesibilidad. | [Angular Material](https://material.angular.dev/) |
+| **Software Development (i18n)** | ngx-translate | Biblioteca | 18.x | Internacionalización de la aplicación web en inglés (`en`) y español latinoamericano (`es-419`) mediante diccionarios JSON en `public/i18n`. | [ngx-translate](https://github.com/ngx-translate/core) |
 | **Software Development (IDE Backend)** | IntelliJ IDEA (Ultimate / Community) | Local | 2024.x | Entorno de desarrollo integrado especializado en Java y Spring Boot, con refactorización avanzada, navegación de código e integración con Maven. | [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) |
-| **Software Development (IDE Frontend)** | Visual Studio Code | Local | 1.90+ | Editor de código fuente ligero y extensible utilizado para el desarrollo del Landing Page, la aplicación frontend en Angular y la documentación Markdown. | [VS Code Download](https://code.visualstudio.com/Download) |
+| **Software Development (IDE Frontend)** | WebStorm | Local | 2025.x+ | IDE utilizado para el desarrollo de la Landing Page, la aplicación Angular y la Fake API, con terminal integrada y el plugin Git Flow Helper para aplicar GitFlow. | [WebStorm](https://www.jetbrains.com/webstorm/download/) |
+| **Software Development (Mock API)** | json-server | Local / Cloud | 0.17.4 | Fake API REST basada en `db.json` que expone las colecciones de los Bounded Contexts bajo `/api/v1` mientras se implementa la RESTful API en Spring Boot. | [json-server](https://github.com/typicode/json-server) |
 | **Software Development (VCS Client)** | Git | Local | 2.45+ | Sistema de control de versiones distribuido para la gestión de ramas, confirmaciones locales y sincronización con GitHub. | [Git SCM](https://git-scm.com/downloads) |
 | **Software Development (Database)** | PostgreSQL | Local / Server | 16.x | Sistema de gestión de bases de datos relacional para pruebas y desarrollo local de esquemas, tablas, restricciones e índices. | [PostgreSQL Downloads](https://www.postgresql.org/download/) |
 | **Software Development (DB Tool)** | DBeaver Community | Local | 24.x | Cliente universal de administración y consulta de bases de datos relacionales para validación de estructuras y datos en desarrollo. | [DBeaver Download](https://dbeaver.io/download/) |
-| **Software Deployment (Cloud Hosting)** | Render | SaaS | Cloud | Plataforma Cloud PaaS para el aprovisionamiento, compilación y despliegue del ejecutable JAR de la RESTful API (backend). | [Render Dashboard](https://render.com/) |
+| **Software Deployment (Cloud Hosting)** | Microsoft Azure App Service | SaaS | Plan F1 (Free) | Hospedaje en Linux (Node 24 LTS, región Central US) de la Fake API y de los endpoints de pago; en los siguientes Sprints alojará la RESTful API en Spring Boot. | [Azure App Service](https://azure.microsoft.com/products/app-service) |
 | **Software Deployment (Cloud Database)** | Neon Serverless PostgreSQL | SaaS | Cloud | Servicio de base de datos PostgreSQL Serverless alojado en la nube para el almacenamiento de datos en entornos de producción y pruebas. | [Neon Console](https://neon.tech/) |
-| **Software Deployment (Frontend Hosting)** | Vercel | SaaS | Cloud | Plataforma de alojamiento en la nube con soporte nativo de redes de entrega de contenidos (CDN) y despliegue continuo para el Landing Page y la SPA Angular. | [Vercel Platform](https://vercel.com/) |
+| **Software Deployment (Frontend Hosting)** | Azure Static Web Apps | SaaS | Plan Free | Hospedaje de la Single Page Application Angular con CDN, HTTPS y despliegue continuo desde la rama `main` mediante GitHub Actions. | [Azure Static Web Apps](https://azure.microsoft.com/products/app-service/static) |
+| **Software Deployment (Landing Hosting)** | GitHub Pages | SaaS | Cloud | Publicación del sitio estático de la Landing Page desde la rama `main` del repositorio `MaquiControl-LandingPage`. | [GitHub Pages](https://pages.github.com/) |
+| **Software Integration (Payments)** | Mercado Pago Checkout Pro | SaaS | Sandbox | Pasarela de pagos en modo de prueba para la contratación de los planes de suscripción. El Access Token se configura solo como variable de entorno en Azure. | [Mercado Pago Developers](https://www.mercadopago.com.pe/developers) |
 | **Software Deployment (CI/CD)** | GitHub Actions | SaaS | Cloud | Motor de automatización de flujos de trabajo para ejecutar pruebas unitarias, verificación de sintaxis y disparar el despliegue automático ante confirmaciones. | [GitHub Actions](https://github.com/features/actions) |
 | **Software Documentation (API Specs)** | SpringDoc OpenAPI & Swagger UI | Biblioteca / SaaS | 2.5.x | Generación automática y visualización interactiva de especificaciones OpenAPI 3.0 para la documentación y pruebas de los endpoints de la API REST. | [SpringDoc OpenAPI](https://springdoc.org/) |
 | **Software Documentation (API Client)** | Postman | SaaS / Local | v11.x | Plataforma colaborativa para el diseño, depuración, ejecución y pruebas de integración de solicitudes HTTP hacia los endpoints de la RESTful API. | [Postman Download](https://www.postman.com/downloads/) |
@@ -2056,142 +2078,92 @@ Feature: Machinery Rental Reservation
 
 ### 5.1.4. Software Deployment Configuration
 
-La estrategia de despliegue de MaquiControl está diseñada para garantizar disponibilidad, reproducibilidad automatizada y aislamiento entre los distintos entornos de operación. Se configuran tres entornos independientes:
-- **Development (Local):** Entorno de trabajo local en las estaciones de los desarrolladores (puertos locales: Frontend `http://localhost:4200`, Backend `http://localhost:8080`, BD `localhost:5432`).
-- **Staging / QA (Pruebas de Integración):** Entorno en la nube vinculado a la rama `develop` para la verificación continua de funcionalidades integradas.
-- **Production (Producción):** Entorno de operación final desplegado en infraestructuras Cloud de alta confiabilidad, vinculado a la rama `main` y etiquetado mediante versiones semánticas.
+La estrategia de despliegue de MaquiControl separa el trabajo local del entorno publicado y automatiza cada publicación con GitHub Actions:
+- **Development (Local):** estaciones de los desarrolladores. Aplicación Angular en `http://localhost:4200` y Fake API (json-server) en `http://localhost:3000/api/v1`.
+- **Production:** productos publicados en la nube, vinculados a la rama `main` de cada repositorio y etiquetados con versiones semánticas mediante GitFlow (`release/*` y tags).
 
-A continuación, se detalla la configuración paso a paso para el despliegue exitoso de cada uno de los productos que componen la solución:
+Cada producto se despliega de forma independiente:
 
 ```mermaid
 flowchart LR
-    subgraph GitHub ["GitHub Platform"]
-        RepoLanding["Repo: maquicontrol-landing-page\n(branch: main)"]
-        RepoBackend["Repo: maquicontrol-backend\n(branch: main)"]
-        RepoFrontend["Repo: maquicontrol-frontend\n(branch: main)"]
+    subgraph GitHub ["GitHub - AndesHeavyTech"]
+        RepoLanding["Repo: MaquiControl-LandingPage\n(branch: main)"]
+        RepoFrontend["Repo: MaquiControl-Frontend\n(branch: main)"]
+        RepoMock["Repo: maquicontrol-platform-mock\n(branch: main)"]
     end
 
-    subgraph CI_CD ["GitHub Actions / Cloud CI"]
-        ActionsBackend["Maven Build & Unit Tests\n(Java 21)"]
-        BuildFrontend["Angular Build Production\n(ng build --configuration production)"]
+    subgraph CI_CD ["GitHub Actions"]
+        PagesBuild["GitHub Pages\ndeployment"]
+        SwaBuild["Azure Static Web Apps CI/CD\n(ng build)"]
+        AppServiceBuild["Build and deploy Node.js app\nto Azure Web App"]
     end
 
-    subgraph CloudHosting ["Entorno de Producción Cloud"]
-        VercelLanding["Landing Page Hosting\n(Vercel Edge Network)"]
-        RenderAPI["RESTful API Service\n(Render Cloud PaaS)"]
-        NeonDB[("PostgreSQL Serverless\n(Neon Cloud DB)")]
-        VercelSPA["Web Application SPA\n(Vercel CDN)"]
+    subgraph Cloud ["Producción"]
+        Pages["Landing Page\n(GitHub Pages)"]
+        Swa["Web Application SPA\n(Azure Static Web Apps - Free)"]
+        AppService["Fake API json-server\n(Azure App Service F1 - Central US)"]
+        MercadoPago["Mercado Pago\nCheckout Pro (sandbox)"]
     end
 
-    RepoLanding -->|Automated Git Hook| VercelLanding
-    RepoBackend --> ActionsBackend
-    ActionsBackend -->|Deploy Trigger| RenderAPI
-    RenderAPI <-->|JDBC SSL| NeonDB
-    RepoFrontend --> BuildFrontend
-    BuildFrontend -->|Static Distribution| VercelSPA
-    VercelSPA -->|HTTPS REST / JSON| RenderAPI
+    RepoLanding --> PagesBuild --> Pages
+    RepoFrontend --> SwaBuild --> Swa
+    RepoMock --> AppServiceBuild --> AppService
+    Pages -->|Enlaces a la plataforma| Swa
+    Swa -->|HTTPS REST / JSON| AppService
+    AppService -->|Preferencias y consulta de pagos| MercadoPago
 ```
 
 #### 1. Despliegue del Landing Page
-- **Plataforma seleccionada:** Vercel / GitHub Pages.
-- **Tipo de producto:** Sitio web estático (HTML5, CSS3, JavaScript modular y activos multimedia).
+- **Plataforma seleccionada:** GitHub Pages.
+- **Tipo de producto:** sitio web estático (HTML5, CSS3, JavaScript y diccionarios de traducción `i18n/en.json` e `i18n/es.json`).
 - **Procedimiento de despliegue:**
-  1. Conectar la organización de GitHub `AndesHeavyTech` con la cuenta de hosting en Vercel.
-  2. Importar el repositorio `maquicontrol-landing-page` y seleccionar la rama `main` como rama de producción (*Production Branch*).
-  3. Configurar el directorio raíz (*Root Directory*) en `./`.
-  4. La plataforma detecta automáticamente los archivos estáticos y publica el sitio en la red de distribución de contenidos (*Edge Network*).
-  5. Cada confirmación de cambios (*push*) o fusión hacia la rama `main` dispara automáticamente una nueva versión en producción sin tiempo de inactividad (*zero-downtime deployment*).
-- **URL pública de despliegue:** `https://maquicontrol-landing.vercel.app`
+  1. En el repositorio `MaquiControl-LandingPage`, ingresar a **Settings → Pages**.
+  2. Seleccionar como origen la rama `main` y la carpeta raíz (`/`).
+  3. Cada release de GitFlow que integra cambios en `main` dispara una nueva publicación del sitio.
+- **Versión publicada:** `v2.0.0`, con los botones conectados a la aplicación web desplegada.
+- **URL pública de despliegue:** [https://andesheavytech.github.io/MaquiControl-LandingPage/](https://andesheavytech.github.io/MaquiControl-LandingPage/)
 
-#### 2. Despliegue de los Web Services (RESTful API - Spring Boot)
-- **Plataforma de cómputo seleccionada:** Render Cloud Platform (Web Service con entorno nativo Java 21 / Docker).
-- **Plataforma de persistencia seleccionada:** Neon Serverless PostgreSQL.
-- **Variables de entorno de producción requeridas:**  
-  La configuración sensible se desacopla del código fuente y se inyecta de forma segura a través del panel de control de Render:
-  - `SPRING_DATASOURCE_URL`: `jdbc:postgresql://ep-maquicontrol-db.aws.neon.tech/maquicontrol?sslmode=require`
-  - `SPRING_DATASOURCE_USERNAME`: `maquicontrol_admin`
-  - `SPRING_DATASOURCE_PASSWORD`: `<SECRET_PRODUCTION_PASSWORD>`
-  - `SPRING_JPA_HIBERNATE_DDL_AUTO`: `update`
-  - `SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT`: `org.hibernate.dialect.PostgreSQLDialect`
-  - `SERVER_PORT`: `8080`
-  - `JWT_SECRET`: `<SECRET_BASE64_ENCODED_256_BIT_KEY>`
-  - `JWT_EXPIRATION`: `86400000` (24 horas en milisegundos)
-  - `CORS_ALLOWED_ORIGINS`: `https://maquicontrol-app.vercel.app,https://maquicontrol-landing.vercel.app`
-- **Flujo de Integración y Despliegue Continuo (CI/CD) con GitHub Actions:**
-
-  En el repositorio `maquicontrol-backend`, se establece un pipeline de automatización en `.github/workflows/deploy.yml`:
-  ```yaml
-  name: Backend CI/CD Pipeline
-
-  on:
-    push:
-      branches: [ main ]
-
-  jobs:
-    build-and-test:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout Source Code
-          uses: actions/checkout@v4
-
-        - name: Set up JDK 21
-          uses: actions/setup-java@v4
-          with:
-            java-version: '21'
-            distribution: 'temurin'
-            cache: maven
-
-        - name: Run Unit Tests with Maven
-          run: mvn clean test
-
-        - name: Package JAR Application
-          run: mvn package -DskipTests
-
-        - name: Trigger Render Deploy Hook
-          if: success()
-          run: curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"
-  ```
-  - **Verificación del despliegue y monitoreo de salud:**
-  - Endpoint de comprobación de salud (*Health Check*): `GET https://maquicontrol-api.onrender.com/actuator/health` (debe responder `{"status":"UP"}`).
-  - Documentación interactiva de la API: `https://maquicontrol-api.onrender.com/swagger-ui/index.html`.
+#### 2. Despliegue de los Web Services (Fake API en Azure App Service)
+Durante el Sprint 2 los servicios se exponen mediante una Fake API construida con json-server, publicada como proyecto independiente en el repositorio `maquicontrol-platform-mock`. La RESTful API en Spring Boot se desplegará en el mismo servicio de Azure en los siguientes Sprints.
+- **Plataforma seleccionada:** Microsoft Azure App Service (Linux, Node 24 LTS, plan F1 Free, región Central US, grupo de recursos `maquicontrol-rg`).
+- **Comando de inicio:** `npm start` (`node server.js`), que lee el puerto desde la variable `PORT` asignada por Azure.
+- **Variables de entorno:** `MERCADO_PAGO_ACCESS_TOKEN`, configurada únicamente en **Configuración → Variables de entorno** del App Service. El token nunca se guarda en el repositorio ni en el frontend.
+- **Integración y despliegue continuo:** el Centro de implementación de Azure generó el workflow `.github/workflows/main_maquicontrol-mockapi.yml`, que instala dependencias con Node 24 y publica la aplicación ante cada push a `main`.
+- **Verificación del despliegue:**
+  - Estado del servicio: `GET https://maquicontrol-mockapi-beaxb2dta0grcpcd.centralus-01.azurewebsites.net/api/v1/health` responde `{"status":"ok"}`.
+  - Base de datos completa: `GET https://maquicontrol-mockapi-beaxb2dta0grcpcd.centralus-01.azurewebsites.net/db`.
 
 #### 3. Despliegue de la Frontend Web Application (Angular SPA)
-- **Plataforma seleccionada:** Vercel.
-- **Configuración de entorno de producción (`src/environments/environment.prod.ts`):**
+- **Plataforma seleccionada:** Azure Static Web Apps (plan Free, región Central US).
+- **Configuración de entorno de producción (`src/environments/environment.ts`):**
   ```typescript
   export const environment = {
     production: true,
-    apiUrl: 'https://maquicontrol-api.onrender.com/api/v1'
+    apiBaseUrl: 'https://maquicontrol-mockapi-beaxb2dta0grcpcd.centralus-01.azurewebsites.net/api/v1',
+    useFakeSignIn: true,
+    paymentsApiBaseUrl: 'https://maquicontrol-mockapi-beaxb2dta0grcpcd.centralus-01.azurewebsites.net/api/v1',
   };
   ```
-- **Configuración de enrutamiento para Single Page Application (`vercel.json`):**  
-  Dado que Angular gestiona las rutas del lado del cliente (*HTML5 PushState*), se define un archivo de configuración en la raíz del proyecto para reenviar todas las solicitudes hacia `index.html` y evitar errores 404 ante recargas del navegador:
+- **Configuración de enrutamiento para Single Page Application (`public/staticwebapp.config.json`):**
+  Angular gestiona las rutas del lado del cliente, por lo que todas las rutas se reescriben hacia `index.html` para evitar errores 404 al recargar el navegador:
   ```json
   {
-    "rewrites": [
-      {
-        "source": "/(.*)",
-        "destination": "/index.html"
-      }
-    ]
+    "navigationFallback": {
+      "rewrite": "/index.html"
+    }
   }
   ```
 - **Procedimiento de despliegue:**
-  1. Conectar el repositorio `maquicontrol-frontend` en la plataforma Vercel.
-  2. Seleccionar el framework predeterminado como **Angular**.
-  3. Establecer el comando de compilación (*Build Command*): `ng build --configuration production`.
-  4. Establecer el directorio de salida (*Output Directory*): `dist/maquicontrol-frontend/browser` (o `dist/maquicontrol-frontend`).
-  5. Configurar el despliegue automático ante confirmaciones en la rama `main`.
-- **Verificación del despliegue de la Landing Page:**
-  - Acceder a la URL pública: [https://andesheavytech.github.io/MaquiControl-LandingPage/](https://andesheavytech.github.io/MaquiControl-LandingPage/).
-  - Validar la carga de los recursos HTML, CSS, JavaScript e imágenes, la navegación interna entre secciones y el cambio de idioma.
-  - La RESTful API y la SPA Angular se desplegarán en los siguientes Sprints, una vez implementados sus respectivos productos.
+  1. Crear el recurso Static Web App en Azure y vincularlo con el repositorio `MaquiControl-Frontend`, rama `main`.
+  2. Seleccionar el preset de compilación **Angular**, con *App location* `/` y *Output location* `dist/maquicontrol-frontend/browser`.
+  3. Azure agrega el workflow `.github/workflows/azure-static-web-apps-lemon-pebble-0a946d810.yml`, que compila y publica la aplicación ante cada push a `main`.
+- **URL pública de despliegue:** [https://lemon-pebble-0a946d810.4.azurestaticapps.net](https://lemon-pebble-0a946d810.4.azurestaticapps.net)
 
 ## 5.2. Landing Page, Services & Applications Implementation
 
 Durante el Sprint 1 se desarrolló el primer incremento funcional de MaquiControl, enfocado en la implementación y despliegue de la Landing Page. El producto fue construido con HTML5, CSS3 y JavaScript, incorporando diseño responsive, contenido dirigido a los dos segmentos objetivo, planes comerciales e internacionalización en español e inglés.
 
-Los servicios RESTful y la Single Page Application se mantienen planificados para los siguientes Sprints. Por ello, las evidencias de este Sprint corresponden a la Landing Page y al trabajo de documentación, diseño y arquitectura necesario para preparar su implementación posterior.
+Durante el Sprint 2 se implementó y desplegó la Frontend Web Application en Angular, organizada por Bounded Contexts, junto con una Fake API que expone sus servicios y la integración de pagos en modo sandbox. Además, la Landing Page se conectó con la aplicación publicada. La RESTful API en Spring Boot se mantiene planificada para los siguientes Sprints.
 
 ### 5.2.1. Sprint 1
 
@@ -2308,111 +2280,182 @@ Las cantidades representan actividad registrada en los repositorios y no constit
 
 ![Project Report Collaboration Additional Commits](assets/project-report-collaboration-av1-commits-2.png)
 
-## 5.2.2. Sprint2
+### 5.2.2. Sprint 2
 
-El Sprint 2 estuvo orientado a continuar la implementación del producto MaquiControl mediante el desarrollo de los componentes principales de la solución web. Tomando como base el trabajo realizado durante el Sprint 1, el objetivo fue avanzar desde la Landing Page hacia la implementación de los servicios backend y la aplicación web frontend.
+#### 5.2.2.1. Sprint Planning 2
 
-Durante este Sprint se priorizó la construcción de la RESTful API desarrollada con Java y Spring Boot, así como el desarrollo inicial de la Single Page Application mediante Angular. Estas actividades permiten transformar los artefactos de arquitectura, diseño de clases y diseño de base de datos definidos previamente en componentes funcionales del producto.
-
+El Sprint 2 se enfocó en construir la primera versión funcional de la aplicación web de MaquiControl, publicarla en la nube junto con los servicios que consume y conectar la Landing Page con la plataforma.
 
 | Campo | Detalle |
 |---|---|
 | Sprint | Sprint 2 |
 | Fecha de inicio | 01/10/2026 |
 | Fecha de finalización | 07/10/2026 |
-| Duración | 6 dias |
-| Objetivo | Implementar los primeros servicios RESTful y avanzar en la construcción de la Single Page Application de MaquiControl. |
-| User Stories consideradas | US-001, US-002, US-003, US-004, US-005, US-006, US-007, US-008, US-009, US-010, US-011, US-016, US-017, US-019, US-026, US-027, US-029, US-030, US-032 y US-034. |
-| Productos incluidos | RESTful Web Services y primera versión de la Frontend Web Application. |
-| Tecnologías principales | Java 21, Spring Boot 3, Spring Data JPA, PostgreSQL, Angular y TypeScript. |
-| Resultado esperado | Contar con una primera versión funcional de los servicios backend y una interfaz frontend preparada para consumir la API REST. |
+| Duración | 7 días |
+| Sprint 1 Review Summary | Se publicó en GitHub Pages la Landing Page responsive y bilingüe (versión `1.1.0`), con contenido por segmento y planes comerciales. |
+| Sprint 1 Retrospective Summary | Se acordó mantener GitFlow y Conventional Commits, y se identificó como mejora contar con un tablero público desde el inicio del Sprint. |
+| Objetivo | Implementar y desplegar la Frontend Web Application de MaquiControl para propietarios de flota y contratistas, consumiendo una Fake API publicada en la nube, e integrar el pago de planes de suscripción en modo sandbox. |
+| User Stories consideradas | US-001, US-003, US-004, US-006, US-007, US-009, US-010, US-011, US-016, US-017, US-019, US-026, US-027, US-029, US-030, US-031, US-034, US-041 y US-042. |
+| Productos incluidos | Frontend Web Application (Angular), Fake API (json-server en Azure App Service), Landing Page `v2.0.0` e informe técnico. |
+| Productos planificados para siguientes Sprints | RESTful API en Spring Boot y User Stories pendientes de suscripción (US-043 a US-045). |
 
-El Sprint contempló la implementación progresiva de la arquitectura backend utilizando Java  y Spring Boot , siguiendo una arquitectura hexagonal guiada por Domain-Driven Design (DDD). Asimismo, se consideró PostgreSQL como sistema gestor de base de datos y Angular como tecnología principal para la aplicación web frontend.
+#### 5.2.2.2. Aspect Leaders and Collaborators
 
-## 5.2.2.2. Aspect Leaders and Collaborators
+La matriz se elaboró a partir del historial de commits de los repositorios del Sprint. Se utiliza `L` para líder y `C` para colaborador.
 
-La siguiente matriz identifica a los líderes y colaboradores de los principales aspectos trabajados durante el Sprint 2. Se utiliza `L` para líder y `C` para colaborador.
+| Team Member | GitHub Username / Git Author | Web Application (Angular) | Fake API & Payments | Landing Page | Architecture & Diagrams | Sprint Report | SCM & Deployment |
+|---|---|:---:|:---:|:---:|:---:|:---:|:---:|
+| Cespedes Lezcano, Carlos Gabriel | `Leikop` | L | L | C | C | C | L |
+| Fuentes Alvarez, Angiela Stephany | `angielafuentes` | C |  | L |  |  |  |
+| Tantalean Granda, Nicolas | `NicolasTantalean` |  |  |  |  | L |  |
+| Castillo Guevara, Mathias Alejandro | `mathias9939` |  |  |  | L |  |  |
+| Gutiérrez Lizarbe, Wilmer Sebastián | `WILMER SEBASTIAN` |  |  |  | C |  |  |
 
-| Team Member | GitHub Username / Git Author | Backend API | Frontend SPA | Architecture & Database | Testing | SCM & Deployment |
-|---|---|:---:|:---:|:---:|:---:|:---:|
-| Cespedes Lezcano, Carlos Gabriel | `Leikop` | L | C | L | C | C |
-| Fuentes Alvarez, Angiela Stephany | `angielafuentes` | C | L | C | C | C |
-| Tantalean Granda, Nicolas | `NicolasTantalean` | C | C | C | L | C |
-| Castillo Guevara, Mathias Alejandro | `mathias9939` | C | C | L | C | L |
-| Gutiérrez Lizarbe, Wilmer Sebastián | `WILMER SEBASTIAN` | C | C | C | C | C |
+#### 5.2.2.3. Sprint Backlog 2
 
-La distribución anterior mantiene la participación de los cinco integrantes del equipo y organiza el trabajo alrededor de los nuevos productos digitales definidos para esta etapa del proyecto.
-
-## 5.2.2.3. Sprint Backlog 2
-
-## 5.2.2.3. Sprint Backlog 2
-
-El Sprint Backlog 2 se estructuró considerando las actividades necesarias para implementar la RESTful API y la Frontend Web Application de MaquiControl. Las estimaciones corresponden a una planificación de trabajo basada en la complejidad de las tareas.
+Las horas corresponden a una estimación retrospectiva basada en la complejidad de cada tarea.
 
 | Sprint | Story ID | Story Title | Task ID | Task Title | Task Description | Estimation (Hours) | Assigned To | Status |
 |---|---|---|---|---|---|---:|---|---|
-| Sprint 2 | US-001 | Registrar maquinaria | S2-T01 | Configurar proyecto Backend | Crear y configurar el proyecto Spring Boot utilizando Java 21 y Maven. | 4 | Carlos Cespedes | Done |
-| Sprint 2 | US-001, US-002, US-003, US-016, US-017 | Gestión de maquinaria | S2-T02 | Implementar arquitectura Backend | Organizar el Backend mediante arquitectura hexagonal y principios de DDD. | 6 | Carlos Cespedes | Done |
-| Sprint 2 | US-001, US-002, US-003, US-004, US-005, US-006, US-007, US-008, US-009, US-010, US-011, US-016, US-017, US-019, US-026, US-027, US-029, US-030, US-032, US-034 | Funcionalidades del sistema | S2-T03 | Implementar modelo de dominio | Definir entidades, objetos y componentes correspondientes al dominio de MaquiControl. | 6 | Carlos Cespedes | Done |
-| Sprint 2 | US-001, US-003, US-004, US-005, US-006, US-007, US-009, US-010, US-011, US-016, US-017, US-019, US-026, US-027, US-029, US-030, US-032, US-034 | Gestión de información | S2-T04 | Configurar persistencia | Configurar PostgreSQL y los componentes necesarios para la persistencia de información. | 5 | Mathias Castillo | Done |
-| Sprint 2 | US-001, US-002, US-003, US-004, US-005, US-006, US-007, US-008, US-009, US-010, US-011, US-016, US-017, US-019, US-026, US-027, US-029, US-030, US-032, US-034 | Servicios de MaquiControl | S2-T05 | Implementar servicios RESTful | Desarrollar los endpoints necesarios para exponer la información del sistema mediante HTTP. | 8 | Carlos Cespedes | Done |
-| Sprint 2 | US-001, US-002, US-003, US-004, US-005, US-006, US-007, US-008, US-009, US-010, US-011, US-016, US-017, US-019, US-026, US-027, US-029, US-030, US-032, US-034 | Servicios RESTful | S2-T06 | Documentar API | Configurar SpringDoc OpenAPI y Swagger UI para documentar los servicios implementados. | 4 | Nicolas Tantalean | Done |
-| Sprint 2 | US-001, US-002, US-003, US-004, US-005, US-006, US-007, US-008, US-009, US-010, US-011, US-016, US-017, US-019, US-026, US-027, US-029, US-030, US-032, US-034 | Aplicación Web | S2-T07 | Configurar Frontend Angular | Crear y configurar la aplicación SPA utilizando Angular y TypeScript. | 5 | Angiela Fuentes | Done |
-| Sprint 2 | US-001, US-002, US-003, US-004, US-005, US-006, US-007, US-008, US-009, US-010, US-011, US-016, US-017, US-019, US-026, US-027, US-029, US-030, US-032, US-034 | Aplicación Web | S2-T08 | Implementar componentes Frontend | Desarrollar las vistas y componentes principales de la aplicación web. | 8 | Angiela Fuentes | Done |
-| Sprint 2 | US-001, US-002, US-003, US-004, US-005, US-006, US-007, US-008, US-009, US-010, US-011, US-016, US-017, US-019, US-026, US-027, US-029, US-030, US-032, US-034 | Integración Web | S2-T09 | Implementar consumo de API | Crear los servicios HTTP necesarios para consumir el Backend API desde Angular. | 6 | Angiela Fuentes | Done |
-| Sprint 2 | US-001, US-002, US-003, US-004, US-005, US-006, US-007, US-008, US-009, US-010, US-011, US-016, US-017, US-019, US-026, US-027, US-029, US-030, US-032, US-034 | Integración Web | S2-T10 | Integrar Frontend y Backend | Establecer la comunicación entre la SPA Angular y la RESTful API. | 5 | Equipo AndesHeavyTech | Done |
-| Sprint 2 | US-001, US-002, US-003, US-004, US-005, US-006, US-007, US-008, US-009, US-010, US-011, US-016, US-017, US-019, US-026, US-027, US-029, US-030, US-032, US-034 | Validación funcional | S2-T11 | Ejecutar pruebas | Validar el funcionamiento de los endpoints y de la aplicación web. | 5 | Nicolas Tantalean | Done |
-| Sprint 2 | — | Despliegue | S2-T12 | Preparar despliegue | Configurar los componentes necesarios para desplegar Backend, Frontend y base de datos. | 5 | Mathias Castillo | Done |
+| Sprint 2 | — | Base de la aplicación | S2-T01 | Configurar el proyecto Angular | Crear el workspace en Angular 22 con Angular Material, el shell de navegación, las clases base de infraestructura y la Fake API local. | 5 | Carlos Cespedes | Done |
+| Sprint 2 | US-026 | Registrar cuenta de usuario | S2-T02 | Implementar el registro | Desarrollar el modelo de cuenta, comandos, assemblers, endpoint y formulario de registro con selección de rol. | 5 | Carlos Cespedes | Done |
+| Sprint 2 | US-027 | Iniciar sesión | S2-T03 | Implementar el inicio de sesión | Desarrollar el puerto de inicio de sesión, el guard de rutas, el interceptor HTTP y la sección de autenticación en la barra superior. | 6 | Carlos Cespedes | Done |
+| Sprint 2 | US-029 | Gestionar roles de usuario | S2-T04 | Restringir rutas por rol | Implementar `roleGuard` para separar las funciones de propietario de flota y contratista. | 3 | Carlos Cespedes | Done |
+| Sprint 2 | US-001 | Registrar maquinaria | S2-T05 | Registrar maquinaria y categorías | Desarrollar el formulario de maquinaria y la gestión de categorías con nombres únicos y protección de categorías en uso. | 6 | Carlos Cespedes | Done |
+| Sprint 2 | US-016 | Editar datos de maquinaria | S2-T06 | Editar maquinaria | Habilitar la ruta de edición y la actualización de datos desde el catálogo. | 2 | Carlos Cespedes | Done |
+| Sprint 2 | US-017 | Dar de baja maquinaria | S2-T07 | Eliminar maquinaria | Agregar la acción de eliminación al catálogo de maquinaria del propietario. | 2 | Carlos Cespedes | Done |
+| Sprint 2 | US-007 | Consultar catálogo de maquinaria | S2-T08 | Mostrar el catálogo | Mostrar el catálogo de maquinaria publicada con su estado y la acción de alquilar. | 3 | Carlos Cespedes | Done |
+| Sprint 2 | US-030 | Actualizar perfil | S2-T09 | Gestionar perfil y organización | Desarrollar el modelo, la infraestructura y las vistas de perfil y organización. | 5 | Carlos Cespedes | Done |
+| Sprint 2 | US-004 | Crear una reserva | S2-T10 | Solicitar alquiler | Desarrollar el modelo de alquiler, periodo y monto, y la página de solicitud con validación de fechas y disponibilidad. | 6 | Carlos Cespedes | Done |
+| Sprint 2 | US-019 | Aprobar o rechazar reservas | S2-T11 | Confirmar reservas | Permitir que el propietario confirme las solicitudes pendientes de sus maquinarias. | 2 | Carlos Cespedes | Done |
+| Sprint 2 | US-006 | Cancelar una reserva | S2-T12 | Cancelar reservas | Permitir la cancelación de reservas con su motivo. | 2 | Carlos Cespedes | Done |
+| Sprint 2 | US-009 | Consultar reservas por obra | S2-T13 | Listar reservas propias | Mostrar solo las reservas en las que el usuario es solicitante o propietario de la maquinaria. | 2 | Carlos Cespedes | Done |
+| Sprint 2 | US-031 | Programar mantenimientos preventivos | S2-T14 | Programar mantenimientos | Desarrollar el modelo, la infraestructura y la página de programación de mantenimientos. | 5 | Carlos Cespedes | Done |
+| Sprint 2 | US-003 | Gestionar mantenimiento | S2-T15 | Actualizar el estado de la maquinaria | Marcar la maquinaria como en mantenimiento al iniciar el trabajo, liberarla al completarlo y bloquear su alquiler mientras tanto. | 3 | Carlos Cespedes | Done |
+| Sprint 2 | US-034 | Reportar avería en obra | S2-T16 | Reportar averías | Desarrollar el formulario de reporte de avería asociado a una maquinaria. | 3 | Carlos Cespedes | Done |
+| Sprint 2 | US-010 | Registrar horas trabajadas | S2-T17 | Registrar horas de operación | Desarrollar el modelo de operación de servicio y el formulario de horas trabajadas. | 5 | Carlos Cespedes | Done |
+| Sprint 2 | US-011 | Validar horas trabajadas | S2-T18 | Validar horas | Permitir que el propietario valide las horas registradas de una operación. | 2 | Carlos Cespedes | Done |
+| Sprint 2 | US-041 | Consultar planes de suscripción | S2-T19 | Crear la página de planes | Implementar la vista de planes Essential y Pro. | 3 | Angiela Fuentes | Done |
+| Sprint 2 | US-042 | Contratar un plan de suscripción | S2-T20 | Integrar Mercado Pago | Crear preferencias de Checkout Pro desde la Fake API, redirigir al pago sandbox y confirmar el resultado del pago. | 6 | Carlos Cespedes | Done |
+| Sprint 2 | — | Internacionalización y accesibilidad | S2-T21 | Traducir y mejorar accesibilidad | Incorporar ngx-translate con diccionarios `en` y `es-419`, etiquetas ARIA y correcciones de contraste. | 6 | Carlos Cespedes | Done |
+| Sprint 2 | US-013 | Mostrar propuesta de valor | S2-T22 | Conectar la Landing Page | Enlazar los botones de la Landing Page con las rutas de la aplicación web. | 3 | Angiela Fuentes | Done |
+| Sprint 2 | US-014 | Mostrar información por segmento | S2-T23 | Separar traducciones de la Landing Page | Mover los textos a `i18n/en.json` e `i18n/es.json` y apuntar los enlaces a la aplicación desplegada. | 2 | Carlos Cespedes | Done |
+| Sprint 2 | — | Despliegue | S2-T24 | Desplegar los productos | Publicar la Fake API en Azure App Service, la aplicación en Azure Static Web Apps y los releases `1.0.0` (frontend) y `v2.0.0` (Landing Page). | 5 | Carlos Cespedes | Done |
 
-Durante el Sprint se utilizaron las herramientas definidas para el entorno de desarrollo del proyecto, incluyendo GitHub para el control de versiones, IntelliJ IDEA para el desarrollo del Backend, Visual Studio Code para el Frontend y PostgreSQL para la persistencia de información.
+- [Repositorio de la Frontend Web Application](https://github.com/AndesHeavyTech/MaquiControl-Frontend)
+- [Repositorio de la Fake API](https://github.com/AndesHeavyTech/maquicontrol-platform-mock)
+- [Repositorio de la Landing Page](https://github.com/AndesHeavyTech/MaquiControl-LandingPage)
 
-## 5.2.2.4. Development Evidence for Sprint Review
+#### 5.2.2.4. Development Evidence for Sprint Review
 
-La siguiente tabla presenta las principales evidencias de desarrollo asociadas con la implementación de los componentes correspondientes al Sprint 2.
+La tabla presenta los commits principales del Sprint. Los identificadores y mensajes provienen del historial de cada repositorio.
 
 | Repository | Branch | Commit ID | Commit Message | Commit Message Body | Committed on |
 |---|---|---|---|---|---|
-| AndesHeavyTech/maquicontrol-backend | `develop` | `[COMPLETAR]` | `[COMPLETAR]` |  No se registró body adicional. | `[COMPLETAR]` |
-| AndesHeavyTech/maquicontrol-backend | `develop` | `[COMPLETAR]` | `[COMPLETAR]` |  No se registró body adicional. | `[COMPLETAR]` |
-| AndesHeavyTech/maquicontrol-backend | `develop` | `[COMPLETAR]` | `[COMPLETAR]` |  No se registró body adicional. | `[COMPLETAR]` |
-| AndesHeavyTech/maquicontrol-frontend | `develop` | `[COMPLETAR]` | `[COMPLETAR]` | No se registró body adicional. | `[COMPLETAR]` |
-| AndesHeavyTech/maquicontrol-frontend | `develop` | `[COMPLETAR]` | `[COMPLETAR]` | No se registró body adicional. | `[COMPLETAR]` |
-| AndesHeavyTech/maquicontrol-frontend | `develop` | `[COMPLETAR]` | `[COMPLETAR]` | No se registró body adicional. | `[COMPLETAR]` |
+| AndesHeavyTech/MaquiControl-Frontend | `develop` | `a9c3c5c` | `chore(project): initialize Angular workspace` | No se registró body adicional. | 01/10/2026 |
+| AndesHeavyTech/MaquiControl-Frontend | `develop` | `c73db7a` | `feat(shared): add the application shell and navigation.` | No se registró body adicional. | 01/10/2026 |
+| AndesHeavyTech/MaquiControl-Frontend | `develop` | `3d039c5` | `feat(fleet-management): display the machinery catalog.` | No se registró body adicional. | 01/10/2026 |
+| AndesHeavyTech/MaquiControl-Frontend | `develop` | `251137e` | `feat(identity-access-management): add UserAccount aggregate model.` | No se registró body adicional. | 06/10/2026 |
+| AndesHeavyTech/MaquiControl-Frontend | `develop` | `a35ae2f` | `feat(identity-access-management): add the identityAccessGuard route guard.` | No se registró body adicional. | 06/10/2026 |
+| AndesHeavyTech/MaquiControl-Frontend | `develop` | `5b3e346` | `feat(fleet-management): add publish, edit and delete actions to the machinery catalog.` | No se registró body adicional. | 06/10/2026 |
+| AndesHeavyTech/MaquiControl-Frontend | `develop` | `f9d49c9` | `feat(profiles-management): add profile page and organization form views` | No se registró body adicional. | 06/10/2026 |
+| AndesHeavyTech/MaquiControl-Frontend | `develop` | `58fd436` | `feat(rental-management): add rental request page and reservation list, gated by ownership` | No se registró body adicional. | 06/10/2026 |
+| AndesHeavyTech/MaquiControl-Frontend | `develop` | `6310df8` | `feat: add plans page` | No se registró body adicional. | 07/10/2026 |
+| AndesHeavyTech/MaquiControl-Frontend | `develop` | `6311df0` | `feat(maintenance-management): add maintenance schedule page and breakdown report form` | No se registró body adicional. | 07/10/2026 |
+| AndesHeavyTech/MaquiControl-Frontend | `develop` | `3bf8343` | `feat(operations-management): add service operation page and worked hours form` | No se registró body adicional. | 07/10/2026 |
+| AndesHeavyTech/MaquiControl-Frontend | `develop` | `bd07544` | `feat(shared): add ngx-translate with en and es-419 dictionaries and language switcher` | No se registró body adicional. | 07/10/2026 |
+| AndesHeavyTech/MaquiControl-Frontend | `develop` | `019b1a1` | `feat(identity-access-management): add role-based access and replace machinery type with category` | No se registró body adicional. | 07/10/2026 |
+| AndesHeavyTech/MaquiControl-Frontend | `develop` | `52cdfe0` | `feat(subscription-management): add subscription plans with Mercado Pago sandbox checkout` | No se registró body adicional. | 07/10/2026 |
+| AndesHeavyTech/MaquiControl-Frontend | `develop` | `86f98cd` | `feat(fleet-management): add category management with unique names and in-use protection` | No se registró body adicional. | 07/10/2026 |
+| AndesHeavyTech/MaquiControl-Frontend | `develop` | `ea50db1` | `fix(maintenance-management): mark machinery as in maintenance while in progress and remove code comments` | No se registró body adicional. | 07/10/2026 |
+| AndesHeavyTech/MaquiControl-Frontend | `develop` | `5230f71` | `feat(shared): add ARIA labels and contrast fixes, and show only the user's own reservations` | No se registró body adicional. | 07/10/2026 |
+| AndesHeavyTech/MaquiControl-Frontend | `develop` | `065ac7b` | `chore(release): bump version to 1.0.0 and set node engine for deployment` | No se registró body adicional. | 07/10/2026 |
+| AndesHeavyTech/maquicontrol-platform-mock | `main` | `2a54743` | `chore: add the mock API as its own deployable project` | No se registró body adicional. | 07/10/2026 |
+| AndesHeavyTech/maquicontrol-platform-mock | `main` | `e1bb8fd` | `feat(payments): add Mercado Pago sandbox checkout and payment confirmation endpoints` | No se registró body adicional. | 07/10/2026 |
+| AndesHeavyTech/MaquiControl-LandingPage | `develop` | `d9654ee` | `feat: connect landing page to platform` | No se registró body adicional. | 06/10/2026 |
+| AndesHeavyTech/MaquiControl-LandingPage | `develop` | `5d0961c` | `feat: connect plans buttons` | No se registró body adicional. | 07/10/2026 |
+| AndesHeavyTech/MaquiControl-LandingPage | `develop` | `2fa0cd0` | `feat(landing): move translations to i18n files and link to deployed platform` | No se registró body adicional. | 07/10/2026 |
 
-Las evidencias de desarrollo deben mostrar la evolución del código fuente del Backend API y del Frontend Web Application.
+#### 5.2.2.5. Execution Evidence for Sprint Review
 
-**Backend API**
+La aplicación web se encuentra disponible públicamente. Al ingresar, el usuario se registra como propietario de flota o contratista y accede a las funciones de su rol:
 
-El Backend se desarrolla utilizando Java 21 y Spring Boot 3, siguiendo una arquitectura hexagonal guiada por DDD. La solución contempla PostgreSQL como base de datos y servicios RESTful para la comunicación con otros componentes.
+- **Propietario de flota:** registro, edición y eliminación de maquinaria; gestión de categorías; confirmación y cancelación de reservas; programación de mantenimientos; validación de horas trabajadas; perfil y organización; contratación de planes con Mercado Pago (sandbox).
+- **Contratista:** consulta del catálogo, solicitud de alquiler de maquinaria disponible, consulta de sus reservas, reporte de averías y registro de horas trabajadas.
+- **Ambos roles:** cambio de idioma entre inglés y español, y cierre de sesión.
 
-![Sprint 2 Backend Development Evidence](assets/sprint-2-backend-development.png)
+| Producto | URL de ejecución |
+|---|---|
+| Frontend Web Application | [https://lemon-pebble-0a946d810.4.azurestaticapps.net](https://lemon-pebble-0a946d810.4.azurestaticapps.net) |
+| Landing Page | [https://andesheavytech.github.io/MaquiControl-LandingPage/](https://andesheavytech.github.io/MaquiControl-LandingPage/) |
 
-**Frontend Web Application**
+![Sprint 2 Web Application Execution Evidence](assets/sprint-2-web-application-execution.png)
 
-La aplicación frontend se desarrolla como una Single Page Application utilizando Angular y TypeScript. Esta aplicación consume los servicios expuestos por el Backend API.
+#### 5.2.2.6. Services Documentation Evidence for Sprint Review
 
-![Sprint 2 Frontend Development Evidence](assets/sprint-2-frontend-development.png)
+Durante el Sprint 2 los servicios se exponen mediante una Fake API construida con json-server. Todas las colecciones aceptan las operaciones `GET`, `POST`, `PUT`, `PATCH` y `DELETE` bajo el prefijo `/api/v1`. Por ser una Fake API, no se generó documentación OpenAPI/Swagger; esta se incorporará con la RESTful API en Spring Boot.
 
-## 5.2.2.5. Execution Evidence for Sprint Review
+**URL base:** `https://maquicontrol-mockapi-beaxb2dta0grcpcd.centralus-01.azurewebsites.net/api/v1`
 
-Durante el Sprint 2 se presenta la evidencia de ejecución del incremento funcional desarrollado por el equipo. Las capturas muestran el producto en funcionamiento y permiten verificar los principales escenarios implementados durante el Sprint, así como la correcta interacción con las funcionalidades desarrolladas.
+| Bounded Context | Endpoint | Acciones utilizadas por la aplicación |
+|---|---|---|
+| Identity & Access Management | `/roles`, `/user-accounts` | Consultar roles y validar credenciales en el inicio de sesión. |
+| Identity & Access Management | `POST /authentication/sign-up` | Registrar una cuenta de usuario (reescrito hacia `/user-accounts`). |
+| Profiles Management | `/profiles`, `/organizations` | Consultar y actualizar el perfil y la organización del usuario. |
+| Fleet Management | `/machinery`, `/categories` | Registrar, consultar, actualizar y eliminar maquinarias y categorías. |
+| Rental Management | `/rentals` | Solicitar, confirmar, cancelar y listar reservas. |
+| Maintenance Management | `/maintenances` | Programar, iniciar y completar mantenimientos. |
+| Operations Management | `/service-operations` | Registrar y validar horas trabajadas. |
+| Subscription Management | `/plans`, `/subscriptions` | Consultar planes y registrar suscripciones. |
+| Billing Management | `POST /payments/checkout-preferences` | Crear la preferencia de Checkout Pro de Mercado Pago (sandbox) y obtener la URL de pago. |
+| Billing Management | `GET /payments/{paymentId}` | Consultar el estado de un pago directamente en Mercado Pago. |
+| Plataforma | `GET /health` | Comprobar que el servicio está en ejecución. |
 
+**Ejemplo de solicitud:** `GET /api/v1/machinery/1`
 
-## 5.2.2.6. Services Documentation Evidence for Sprint Review
+```json
+{
+  "id": 1,
+  "ownerProfileId": 1,
+  "categoryId": 1,
+  "name": "Excavadora CAT 320",
+  "brand": "Caterpillar",
+  "model": "320",
+  "manufactureYear": 2022,
+  "hourlyRate": { "amount": 280, "currency": "PEN" },
+  "status": "AVAILABLE"
+}
+```
 
-Durante el Sprint 2 se presenta la documentación de los servicios RESTful implementados para MaquiControl. La evidencia permite verificar los endpoints desarrollados, sus métodos HTTP, rutas, parámetros, respuestas y códigos de estado. Asimismo, se utiliza la documentación interactiva mediante OpenAPI/Swagger para facilitar la consulta y validación de los servicios disponibles.
+#### 5.2.2.7. Software Deployment Evidence for Sprint Review
 
-## 5.2.2.7 Software Deployment Evidence for Sprint Review
+Los tres productos se publicaron con despliegue automático desde la rama `main` de cada repositorio, según la configuración descrita en el punto 5.1.4.
 
-Durante el Sprint 2 se presenta la evidencia correspondiente al despliegue del software desarrollado. Las capturas permiten verificar la configuración del entorno de ejecución, el despliegue de los productos y la disponibilidad de los servicios implementados. Estas evidencias permiten demostrar que el incremento desarrollado puede ejecutarse en el entorno definido para el proyecto.
+| Producto desplegado | Plataforma | Repositorio | URL pública | Versión |
+|---|---|---|---|---|
+| Landing Page | GitHub Pages | [MaquiControl-LandingPage](https://github.com/AndesHeavyTech/MaquiControl-LandingPage) | [Landing Page](https://andesheavytech.github.io/MaquiControl-LandingPage/) | `v2.0.0` |
+| Frontend Web Application | Azure Static Web Apps (Free) | [MaquiControl-Frontend](https://github.com/AndesHeavyTech/MaquiControl-Frontend) | [Web Application](https://lemon-pebble-0a946d810.4.azurestaticapps.net) | `1.0.0` |
+| Fake API | Azure App Service (F1, Central US) | [maquicontrol-platform-mock](https://github.com/AndesHeavyTech/maquicontrol-platform-mock) | [Fake API](https://maquicontrol-mockapi-beaxb2dta0grcpcd.centralus-01.azurewebsites.net/api/v1/health) | — |
 
+Durante el despliegue se resolvieron dos incidencias: la política de regiones de la suscripción Azure for Students rechazó la región East US 2, por lo que los recursos se crearon en Central US; y se agregó `staticwebapp.config.json` para que las rutas de Angular no devuelvan 404 al recargar la página.
 
-## 5.2.2.8. Team Collaboration Insights during Sprint
+![Sprint 2 Deployment Evidence](assets/sprint-2-deployment-evidence.png)
 
-Durante el Sprint 2, el equipo mantuvo un flujo de trabajo colaborativo basado en Git y GitHub, utilizando la rama develop para la integración de los cambios y commits descriptivos para mantener la trazabilidad de las actividades realizadas. La planificación, definición de responsables y elaboración del Sprint Backlog fueron registradas como parte de la documentación del Sprint.
+#### 5.2.2.8. Team Collaboration Insights during Sprint
 
-La colaboración también se evidencia mediante los commits realizados por los integrantes, la organización de las tareas y la integración de los cambios desarrollados durante el Sprint.
+Durante el Sprint 2 el equipo aplicó GitFlow con ramas `feature` y `release`, Conventional Commits e integración sobre `develop`. Las versiones publicadas se etiquetaron como `v1.0.0` en el frontend y `v2.0.0` en la Landing Page. Para el conteo se consideraron los commits del 01/10/2026 al 07/10/2026, se excluyeron los commits de merge y se normalizaron las identidades `Carlos`, `Leikop` y `leikop`, que corresponden al mismo integrante. El conteo del informe tiene corte en el commit `b9f368e`.
 
+| Integrante / Identidad Git | Commits en el Informe | Commits en el Frontend | Commits en la Fake API | Commits en la Landing Page | Total identificado |
+|---|---:|---:|---:|---:|---:|
+| Carlos Cespedes (`Carlos` / `Leikop`) | 5 | 98 | 4 | 1 | 108 |
+| Nicolas Tantalean (`NicolasTantalean`) | 11 | 0 | 0 | 0 | 11 |
+| Angiela Fuentes (`angielafuentes`) | 0 | 1 | 0 | 4 | 5 |
+| Mathias Castillo (`mathias9939`) | 2 | 0 | 0 | 0 | 2 |
+| Wilmer Gutiérrez (`WILMER SEBASTIAN`) | 1 | 0 | 0 | 0 | 1 |
+
+Las cantidades representan la actividad registrada en los repositorios y no miden por sí solas la calidad o complejidad de cada aporte.
+
+![Sprint 2 Frontend Commits](assets/sprint-2-frontend-commits.png)
 
 ## 5.3. Validation Interviews
 

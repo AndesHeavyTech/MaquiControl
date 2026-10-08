@@ -7,7 +7,7 @@ Container(webapp, "Single Page Application", "Angular", "Provides the user inter
 
 Container_Boundary(iam, "Identity & Access Management Bounded Context") {
 
-    Component(interfaces, "AuthController", "Spring Boot @RestController", "Exposes POST /api/v1/auth/login and POST /api/v1/auth/register endpoints.")
+    Component(interfaces, "AuthController", "Spring Boot @RestController", "Exposes POST /api/v1/authentication/sign-in and POST /api/v1/authentication/sign-up endpoints.")
 
     Component(application, "IdentityAccessService", "Spring Boot @Service", "Coordinates authenticateUser(), registerUser(), assignRole() and changePassword() use cases.")
 
@@ -20,11 +20,11 @@ Container_Boundary(iam, "Identity & Access Management Bounded Context") {
 
 ContainerDb(database, "Database", "Relational Database", "Stores user account, credential and role information.")
 
-Rel(webapp, interfaces, "Calls /api/v1/auth/*", "HTTPS / JSON")
+Rel(webapp, interfaces, "Calls /api/v1/authentication/*", "HTTPS / JSON")
 Rel(interfaces, application, "Calls authenticateUser() / registerUser()")
 Rel(application, domain, "Invokes authenticate() / register()")
 Rel(application, infrastructure, "Calls save() / findByEmail()")
 Rel(infrastructure, database, "Executes SQL queries")
 Rel(interfaces, security, "Validates security context")
 
-@enduml
+@enduml

@@ -7,7 +7,7 @@ Container(webapp, "Single Page Application", "Angular", "Provides the user inter
 
 Container_Boundary(profiles, "Profiles Management Bounded Context") {
 
-    Component(interfaces, "ProfileController", "Spring Boot @RestController", "Exposes GET, PUT /api/v1/profiles and POST /api/v1/profiles/organization endpoints.")
+    Component(interfaces, "ProfileController", "Spring Boot @RestController", "Exposes GET, POST, PUT /api/v1/profiles and /api/v1/organizations endpoints.")
 
     Component(application, "ProfileApplicationService", "Spring Boot @Service", "Coordinates viewProfile(), updateProfile() and registerOrganization() use cases.")
 
@@ -27,4 +27,4 @@ Rel(application, infrastructure, "Calls save() / findById()")
 Rel(infrastructure, database, "Executes SQL queries")
 Rel(interfaces, security, "Validates security context")
 
-@enduml
+@enduml
